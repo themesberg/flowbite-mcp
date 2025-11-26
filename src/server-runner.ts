@@ -8,7 +8,6 @@ import { isInitializeRequest, CallToolResult } from "@modelcontextprotocol/sdk/t
 
 const PORT = process.env.PORT || 3000;
 
-
 interface ServerOptions {
   name: string
 }
@@ -213,7 +212,6 @@ export const ExpressHttpStreamableMcpServer = (options: ServerOptions, setupCb: 
   const express_server = app.listen(PORT, () => {
     console.log(`MCP Streamable HTTP Server listening on port ${PORT}`);
   });
-
 
   // Add server event listeners for better visibility
   express_server.on('connect', (transport) => {

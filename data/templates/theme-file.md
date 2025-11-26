@@ -1,5 +1,5 @@
+```css
 @theme {
-
     --font-sans: 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-body: 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-mono: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
@@ -157,7 +157,7 @@
   --color-fg-indigo: var(--color-indigo-500);
   --color-fg-pink: var(--color-pink-500);
   --color-fg-lime: var(--color-lime-500);
-
+ 
    /* background color variables */
      --color-neutral-primary-soft: var(--color-gray-900);
      --color-neutral-primary: var(--color-gray-950);
@@ -203,7 +203,7 @@
      --color-fuchsia: var(--color-fuchsia-500);
      --color-indigo: var(--color-indigo-500);
      --color-orange: var(--color-orange-400);
-
+ 
       /* border color variables */
      --color-buffer: var(--color-gray-950);
      --color-buffer-medium: var(--color-gray-900);
@@ -224,4 +224,4 @@
      --color-dark-subtle: var(--color-gray-700);
      --color-dark-backdrop: var(--color-gray-950);
 }
-
+```
