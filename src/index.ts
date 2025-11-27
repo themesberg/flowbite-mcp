@@ -4,19 +4,33 @@ import { ExpressHttpStreamableMcpServer } from "./server-runner.js";
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-const COMPONENT_CATEGORIES = [
-  'https://flowbite.com/docs/components/accordion/',
-  'Alerts',
-  'Avatar',
-  'Badge',
-  'Banner',
-  'Bottom Navigation',
-  'Breadcrumb,'
-]
-
 const PORT = process.env.PORT || 3000;
 
 console.log("Initializing MCP Streamable-HTTP Server with Express")
+
+const COMPONENT_FILES = [
+  {
+    name: 'flowbite_accordion',
+    uri: 'flowbite://components/accordion',
+    title: 'Accordion',
+    path: 'data/components/accordion.md',
+    description: 'Use the accordion component to show hidden information based on the collapse and expand state of the child elements using data attribute options'
+  },
+  {
+    name: 'flowbite_alert',
+    uri: 'flowbite://components/alert',
+    title: 'Alert',
+    path: 'data/components/alert.md',
+    description: 'Show contextual information to your users using alert elements based on Tailwind CSS'
+  },
+  {
+    name: 'flowbite_avatar',
+    uri: 'flowbite://components/avatar',
+    title: 'Avatar',
+    path: 'data/components/avatar.md',
+    description: 'Use the avatar component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes'
+  }
+]
 
 const servers = ExpressHttpStreamableMcpServer(
   {
@@ -39,7 +53,7 @@ const servers = ExpressHttpStreamableMcpServer(
         mimeType: "text/markdown",
       },
       async (uri) => {
-        const componentsContent = readFileSync(join(process.cwd(), "data/components.md"), "utf-8");
+        const componentsContent = readFileSync(join(process.cwd(), "data/toc.md"), "utf-8");
         
         return {
           contents: [
@@ -52,6 +66,23 @@ const servers = ExpressHttpStreamableMcpServer(
         };
       }
     );
+
+    COMPONENT_FILES.forEach(
+      (component) => {
+        server.resource(component.name, component.uri, async (uri) => {
+          const componentContent = readFileSync(join(process.cwd(), component.path), "utf-8");
+          return {
+            contents: [
+              {
+                uri: uri.href,
+                text: componentContent,
+                mimeType: "text/markdown",
+              },
+            ],
+          };
+        });
+      }
+    )
 
     server.tool(
       'convert-figma-to-code',
