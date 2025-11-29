@@ -20,7 +20,7 @@ const COMPONENT_FILES = [
       name: 'flowbite_alert',
       uri: 'flowbite://components/alert',
       title: 'Alert',
-      path: 'data/components/alert.md',
+      path: 'data/components/alerts.md',
       description: 'Show contextual information to your users using alert elements based on Tailwind CSS'
     },
     {
@@ -317,6 +317,174 @@ const COMPONENT_FILES = [
     path: 'data/components/video.md',
     description: 'Use the video component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes'
   },
+  {
+    name: 'flowbite_checkbox',
+    uri: 'flowbite://forms/checkbox',
+    title: 'Checkbox',
+    path: 'data/forms/checkbox.md',
+    description: 'Get started with the checkbox component to allow the user to select one or more options in the form of a square box available in multiple sizes and colors'
+  },
+  {
+    name: 'flowbite_file_input',
+    uri: 'flowbite://forms/file-input',
+    title: 'File Input',
+    path: 'data/forms/file-input.md',
+    description: 'Get started with the file input component to allow the user to upload a file to the server'
+  },
+  {
+    name: 'flowbite_floating_label',
+    uri: 'flowbite://forms/floating-label',
+    title: 'Floating Label',
+    path: 'data/forms/floating-label.md',
+    description: 'Get started with the floating label component to allow the user to input a value into a text field by clicking on the label and typing the value'
+  },
+  {
+    name: 'flowbite_input_field',
+    uri: 'flowbite://forms/input-field',
+    title: 'Input Field',
+    path: 'data/forms/input-field.md',
+    description: 'Get started with the input field component to allow the user to input a value into a text field'
+  },
+  {
+    name: 'flowbite_number_input',
+    uri: 'flowbite://forms/number-input',
+    title: 'Number Input',
+    path: 'data/forms/number-input.md',
+    description: 'Get started with the number input component to allow the user to input a number into a text field'
+  },
+  {
+    name: 'flowbite_phone_input',
+    uri: 'flowbite://forms/phone-input',
+    title: 'Phone Input',
+    path: 'data/forms/phone-input.md',
+    description: 'Get started with the phone input component to allow the user to input a phone number into a text field'
+  },
+  {
+    name: 'flowbite_radio',
+    uri: 'flowbite://forms/radio',
+    title: 'Radio',
+    path: 'data/forms/radio.md',
+    description: 'Get started with the radio component to allow the user to select one option from a list of options'
+  },
+  {
+    name: 'flowbite_range_input',
+    uri: 'flowbite://forms/range-input',
+    title: 'Range Input',
+    path: 'data/forms/range.md',
+    description: 'Get started with the range input component to allow the user to input a range of values into a text field'
+  },
+  {
+    name: 'flowbite_search_input',
+    uri: 'flowbite://forms/search-input',
+    title: 'Search Input',
+    path: 'data/forms/search-input.md',
+    description: 'Get started with the search input component to allow the user to input a search query into a text field'
+  },
+  {
+    name: 'flowbite_select',
+    uri: 'flowbite://forms/select',
+    title: 'Select',
+    path: 'data/forms/select.md',
+    description: 'Get started with the select component to allow the user to select one option from a list of options'
+  },
+  {
+    name: 'flowbite_textarea',
+    uri: 'flowbite://forms/textarea',
+    title: 'Textarea',
+    path: 'data/forms/textarea.md',
+    description: 'Get started with the textarea component to allow the user to input a value into a text field'
+  },
+  {
+    name: 'flowbite_timepicker',
+    uri: 'flowbite://forms/timepicker',
+    title: 'Timepicker',
+    path: 'data/forms/timepicker.md',
+    description: 'Get started with the timepicker component to allow the user to input a time into a text field'
+  },
+  {
+    name: 'flowbite_toggle',
+    uri: 'flowbite://forms/toggle',
+    title: 'Toggle',
+    path: 'data/forms/toggle.md',
+    description: 'Get started with the toggle component to allow the user to toggle a value on and off'
+  },
+  {
+    name: 'flowbite_charts',
+    uri: 'flowbite://plugins/charts',
+    title: 'Charts',
+    path: 'data/plugins/charts.md',
+    description: 'Get started with the charts plugin to allow the user to create charts using the Chart.js library'
+  },
+  {
+    name: 'flowbite_datatables',
+    uri: 'flowbite://plugins/datatables',
+    title: 'Datatables',
+    path: 'data/plugins/datatables.md',
+    description: 'Get started with the datatables plugin to allow the user to create tables using the DataTables library'
+  },
+  {
+    name: 'flowbite_wysiwyg',
+    uri: 'flowbite://plugins/wysiwyg',
+    title: 'WYSIWYG',
+    path: 'data/plugins/wysiwyg.md',
+    description: 'Get started with the wysiwyg plugin to allow the user to create a rich text editor using the Quill library'
+  },
+  {
+    name: 'flowbite_blockquote',
+    uri: 'flowbite://typography/blockquote',
+    title: 'Blockquote',
+    path: 'data/typography/blockquote.md',
+    description: 'Get started with the blockquote component to allow the user to create a blockquote using theblockquote element'
+  },
+  {
+    name: 'flowbite_headings',
+    uri: 'flowbite://typography/headings',
+    title: 'Headings',
+    path: 'data/typography/headings.md',
+    description: 'Get started with the headings component to allow the user to create headings using the heading elements'
+  },
+  {
+    name: 'flowbite_hr',
+    uri: 'flowbite://typography/hr',
+    title: 'HR',
+    path: 'data/typography/hr.md',
+    description: 'Get started with the hr component to allow the user to create a horizontal rule using the hr element'
+  },
+  {
+    name: 'flowbite_images',
+    uri: 'flowbite://typography/images',
+    title: 'Images',
+    path: 'data/typography/images.md',
+    description: 'Get started with the images component to allow the user to create images using the img element'
+  },
+  {
+    name: 'flowbite_links',
+    uri: 'flowbite://typography/links',
+    title: 'Links',
+    path: 'data/typography/links.md',
+    description: 'Get started with the links component to allow the user to create links using the a element'
+  },
+  {
+    name: 'flowbite_lists',
+    uri: 'flowbite://typography/lists',
+    title: 'Lists',
+    path: 'data/typography/lists.md',
+    description: 'Get started with the lists component to allow the user to create lists using the ul and ol elements'
+  },
+  {
+    name: 'flowbite_paragraphs',
+    uri: 'flowbite://typography/paragraphs',
+    title: 'Paragraphs',
+    path: 'data/typography/paragraphs.md',
+    description: 'Get started with the paragraphs component to allow the user to create paragraphs using the p element'
+  },
+  {
+    name: 'flowbite_text',
+    uri: 'flowbite://typography/text',
+    title: 'Text',
+    path: 'data/typography/text.md',
+    description: 'Get started with the text component to allow the user to create text using the text element'
+  }
 ]
 
 const servers = ExpressHttpStreamableMcpServer(
