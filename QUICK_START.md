@@ -47,16 +47,16 @@ npm start
 
 3. Restart Claude Desktop
 
-### Option 2: Server-Sent Events (SSE) - For Production
+### Option 2: HTTP Server Mode - For Production
 
 Perfect for production deployments and multiple clients.
 
 ```bash
-# Start SSE server on port 3000
-npm run start:sse
+# Start HTTP server on port 3000
+npm run start:http
 
 # Or with custom port
-node build/index.js --mode sse --port 8080
+node build/index.js --mode http --port 8080
 ```
 
 **Test the server:**
@@ -66,7 +66,7 @@ node build/index.js --mode sse --port 8080
 curl http://localhost:3000/health
 
 # Expected response:
-# {"status":"ok","transport":"sse","timestamp":"..."}
+# {"status":"ok","transport":"http","timestamp":"..."}
 ```
 
 ## Test the Integration
@@ -226,11 +226,11 @@ node --version
 npm run build
 ```
 
-### Port already in use (SSE mode)
+### Port already in use (HTTP mode)
 
 ```bash
 # Use a different port
-node build/index.js --mode sse --port 3001
+node build/index.js --mode http --port 3001
 ```
 
 ### Can't connect from Claude Desktop

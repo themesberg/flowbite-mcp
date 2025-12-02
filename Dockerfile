@@ -35,7 +35,7 @@ COPY --from=builder /app/build ./build
 COPY --from=builder /app/data ./data
 
 # Set environment variables
-ENV MCP_TRANSPORT_MODE=sse
+ENV MCP_TRANSPORT_MODE=http
 ENV MCP_PORT=3000
 ENV MCP_HOST=0.0.0.0
 ENV NODE_ENV=production

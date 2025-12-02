@@ -126,7 +126,7 @@ export const ExpressHttpStreamableMcpServer = (options: ServerOptions, setupCb: 
     }
   });
 
-  // Handle GET requests for server-to-client notifications via SSE
+  // Handle GET requests for server-to-client notifications via HTTP Streaming
   app.get('/mcp', async (req: express.Request, res: express.Response) => {
     console.log(`GET Request received: ${req.method} ${req.url}`);
     
@@ -143,21 +143,21 @@ export const ExpressHttpStreamableMcpServer = (options: ServerOptions, setupCb: 
       if (lastEventId) {
         console.log(`Client reconnecting with Last-Event-ID: ${lastEventId}`);
       } else {
-        console.log(`Establishing new SSE stream for session ${sessionId}`);
+        console.log(`Establishing new HTTP stream for session ${sessionId}`);
       }
       
       const transport = transports[sessionId];
       
       // Set up connection close monitoring
       res.on('close', () => {
-        console.log(`SSE connection closed for session ${sessionId}`);
+        console.log(`HTTP stream closed for session ${sessionId}`);
       });
       
-      console.log(`Starting SSE transport.handleRequest for session ${sessionId}...`);
+      console.log(`Starting HTTP transport.handleRequest for session ${sessionId}...`);
       const startTime = Date.now();
       await transport.handleRequest(req, res);
       const duration = Date.now() - startTime;
-      console.log(`SSE stream setup completed in ${duration}ms for session: ${sessionId}`);
+      console.log(`HTTP stream setup completed in ${duration}ms for session: ${sessionId}`);
     } catch (error) {
       console.error('Error handling GET request:', error);
       if (!res.headersSent) {

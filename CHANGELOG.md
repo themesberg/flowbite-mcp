@@ -14,11 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for 8 typography components (headings, paragraphs, lists, etc.)
 - Support for 3 plugin integrations (charts, datatables, WYSIWYG)
 - AI-powered theme generator tool with intelligent color palette generation
-- Dual transport mode support (stdio and SSE)
+- Dual transport mode support (stdio and HTTP)
 - Complete Flowbite theme resource with all CSS variables
 - Quickstart guide resource for integration
 - Docker and Docker Compose support for production deployments
-- Health check endpoints for SSE mode
+- Health check endpoints for HTTP mode
 - Command-line arguments for transport mode and port configuration
 - Environment variable support for configuration
 - TypeScript implementation with full type safety
@@ -45,12 +45,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Transport Modes
 - **stdio** - Standard I/O for local development and CLI tools
-- **sse** - Server-Sent Events for production and multi-client deployments
+- **http** - HTTP Streamable transport for production and multi-client deployments
 
 ### Technical Details
 - Built with TypeScript 5.9+
 - Uses MCP SDK 1.22+
-- Express.js for SSE transport
+- Express.js for HTTP Streamable transport
 - Zod for runtime type validation
 - Node.js 18+ required
 

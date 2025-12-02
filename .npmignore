@@ -1,0 +1,46 @@
+# Source files (only publish built files)
+src/
+tsconfig.json
+
+# Development files
+.git/
+.github/
+.vscode/
+.idea/
+node_modules/
+*.log
+.DS_Store
+.env*
+
+# Documentation (keep README, LICENSE, CHANGELOG)
+DOCKER_GUIDE.md
+CONFIGURATION.md
+QUICK_START.md
+NPM_PUBLISHING.md
+.github-summary.md
+
+# Docker files
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Development and testing
+*.test.js
+*.spec.js
+test/
+tests/
+coverage/
+.nyc_output/
+
+# Build artifacts that aren't needed
+*.tgz
+package/
+
+# Keep these files
+!README.md
+!LICENSE
+!CHANGELOG.md
+!package.json
+!build/
+!data/
+

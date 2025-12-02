@@ -42,7 +42,7 @@ MCP_TRANSPORT_MODE=stdio node build/index.js
 }
 ```
 
-### sse (Server-Sent Events)
+### http (HTTP Streamable Mode)
 
 **Best for:**
 - Production deployments
@@ -53,20 +53,20 @@ MCP_TRANSPORT_MODE=stdio node build/index.js
 
 **How to use:**
 ```bash
-# Start SSE server on port 3000
-node build/index.js --mode sse --port 3000
+# Start http server on port 3000
+node build/index.js --mode http --port 3000
 
 # Or with environment variables
-MCP_TRANSPORT_MODE=sse MCP_PORT=3000 node build/index.js
+MCP_TRANSPORT_MODE=http MCP_PORT=3000 node build/index.js
 
 # Or use npm script
-npm run start:sse
+npm run start:http
 ```
 
 **Configuration example:**
 ```bash
 # .env file
-MCP_TRANSPORT_MODE=sse
+MCP_TRANSPORT_MODE=http
 MCP_PORT=3000
 MCP_HOST=0.0.0.0
 MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
@@ -77,19 +77,19 @@ MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 ### MCP_TRANSPORT_MODE
 
 - **Type:** String
-- **Values:** `stdio` | `sse`
+- **Values:** `stdio` | `http`
 - **Default:** `stdio`
 - **Description:** Transport mode for the MCP server
 
 ```bash
-MCP_TRANSPORT_MODE=sse
+MCP_TRANSPORT_MODE=http
 ```
 
 ### MCP_PORT
 
 - **Type:** Number
 - **Default:** `3000`
-- **Description:** Port number for SSE mode (ignored in stdio mode)
+- **Description:** Port number for HTTP mode (ignored in stdio mode)
 
 ```bash
 MCP_PORT=3000
@@ -99,7 +99,7 @@ MCP_PORT=3000
 
 - **Type:** String
 - **Default:** `0.0.0.0`
-- **Description:** Host binding for SSE mode (ignored in stdio mode)
+- **Description:** Host binding for HTTP mode (ignored in stdio mode)
 
 ```bash
 MCP_HOST=127.0.0.1  # Localhost only
@@ -110,7 +110,7 @@ MCP_HOST=0.0.0.0    # All interfaces
 
 - **Type:** String (comma-separated)
 - **Default:** `*`
-- **Description:** Allowed CORS origins for SSE mode
+- **Description:** Allowed CORS origins for HTTP mode
 
 ```bash
 MCP_CORS_ORIGINS=*  # Allow all (development only)
@@ -136,16 +136,16 @@ Specifies the transport mode:
 
 ```bash
 node build/index.js --mode stdio
-node build/index.js --mode sse
+node build/index.js --mode http
 ```
 
 ### --port
 
-Specifies the port for SSE mode:
+Specifies the port for HTTP mode:
 
 ```bash
-node build/index.js --mode sse --port 3000
-node build/index.js --mode sse --port 8080
+node build/index.js --mode http --port 3000
+node build/index.js --mode http --port 8080
 ```
 
 ## npm Scripts
@@ -159,8 +159,8 @@ npm run build
 # Start in default mode (stdio)
 npm start
 
-# Start in SSE mode
-npm run start:sse
+# Start in HTTP mode
+npm run start:http
 
 # Start in stdio mode explicitly
 npm run start:stdio
@@ -186,7 +186,7 @@ npm run docker:down
 ### Using docker run
 
 ```bash
-# Basic usage (SSE mode, port 3000)
+# Basic usage (HTTP mode, port 3000)
 docker run -p 3000:3000 flowbite-mcp
 
 # Custom port
@@ -215,14 +215,14 @@ docker-compose up -d
 
 ### Health Checks
 
-The SSE mode includes health check endpoints:
+The HTTP mode includes health check endpoints:
 
 ```bash
 # Check server health
 curl http://localhost:3000/health
 
 # Expected response
-{"status":"ok","transport":"sse","timestamp":"..."}
+{"status":"ok","transport":"http","timestamp":"..."}
 ```
 
 ## Editor Integrations
@@ -282,7 +282,7 @@ curl http://localhost:3000/health
 
 ```bash
 # .env file for production
-MCP_TRANSPORT_MODE=sse
+MCP_TRANSPORT_MODE=http
 MCP_PORT=3000
 MCP_HOST=0.0.0.0
 MCP_CORS_ORIGINS=https://yourdomain.com
@@ -296,7 +296,7 @@ NODE_ENV=production
 npm install -g pm2
 
 # Start with PM2
-pm2 start build/index.js --name flowbite-mcp -- --mode sse --port 3000
+pm2 start build/index.js --name flowbite-mcp -- --mode http --port 3000
 
 # Save PM2 configuration
 pm2 save
@@ -318,7 +318,7 @@ After=network.target
 Type=simple
 User=www-data
 WorkingDirectory=/path/to/flowbite-mcp
-Environment="MCP_TRANSPORT_MODE=sse"
+Environment="MCP_TRANSPORT_MODE=http"
 Environment="MCP_PORT=3000"
 Environment="NODE_ENV=production"
 ExecStart=/usr/bin/node build/index.js
@@ -345,7 +345,7 @@ sudo systemctl status flowbite-mcp
 lsof -i :3000
 
 # Use a different port
-node build/index.js --mode sse --port 3001
+node build/index.js --mode http --port 3001
 ```
 
 ### Permission Denied (build/index.js)
@@ -363,7 +363,7 @@ npm run build
 Configure CORS origins properly:
 
 ```bash
-MCP_CORS_ORIGINS=http://localhost:3000,https://yourapp.com npm run start:sse
+MCP_CORS_ORIGINS=http://localhost:3000,https://yourapp.com npm run start:http
 ```
 
 ### Connection Refused

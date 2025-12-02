@@ -61,7 +61,7 @@ docker build -t flowbite-mcp .
 docker run -d \
   --name flowbite-mcp \
   -p 3000:3000 \
-  -e MCP_TRANSPORT_MODE=sse \
+  -e MCP_TRANSPORT_MODE=http \
   flowbite-mcp
 
 # View logs
@@ -83,7 +83,7 @@ Configure the server using environment variables:
 services:
   flowbite-mcp:
     environment:
-      - MCP_TRANSPORT_MODE=sse
+      - MCP_TRANSPORT_MODE=http
       - MCP_PORT=3000
       - MCP_HOST=0.0.0.0
       - NODE_ENV=production
@@ -94,7 +94,7 @@ Or with Docker CLI:
 ```bash
 docker run -d \
   -p 3000:3000 \
-  -e MCP_TRANSPORT_MODE=sse \
+  -e MCP_TRANSPORT_MODE=http \
   -e MCP_PORT=3000 \
   -e NODE_ENV=production \
   flowbite-mcp
@@ -134,7 +134,7 @@ Health check endpoint:
 
 ```bash
 curl http://localhost:3000/health
-# Response: {"status":"ok","transport":"sse","timestamp":"..."}
+# Response: {"status":"ok","transport":"http","timestamp":"..."}
 ```
 
 ## Volume Mounts (Optional)

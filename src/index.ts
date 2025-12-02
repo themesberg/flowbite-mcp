@@ -3,19 +3,78 @@ import { z } from 'zod';
 import { isInitializeRequest, CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ExpressHttpStreamableMcpServer } from "./server-runner.js";
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 // Get transport mode from environment or command-line args
 const args = process.argv.slice(2);
+
+// Handle --version flag
+if (args.includes('--version') || args.includes('-v')) {
+  try {
+    const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8'));
+    console.log(`Flowbite MCP Server v${packageJson.version}`);
+    process.exit(0);
+  } catch (error) {
+    console.log('Flowbite MCP Server (version unknown)');
+    process.exit(0);
+  }
+}
+
+// Handle --help flag
+if (args.includes('--help') || args.includes('-h')) {
+  console.log(`
+Flowbite MCP Server - AI-powered Flowbite component and theme generation
+
+Usage:
+  flowbite-mcp [options]
+  npx flowbite-mcp [options]
+
+Options:
+  --mode <stdio|http>   Transport mode (default: stdio)
+  --port <number>       Port for HTTP mode (default: 3000)
+  --version, -v         Show version number
+  --help, -h            Show this help message
+
+Examples:
+  # Run in stdio mode (for Claude Desktop, Cursor)
+  npx flowbite-mcp
+
+  # Run in HTTP server mode on port 3000
+  npx flowbite-mcp --mode http --port 3000
+
+  # Show version
+  npx flowbite-mcp --version
+
+Documentation:
+  https://github.com/themesberg/flowbite-mcp#readme
+
+Claude Desktop Configuration:
+  {
+    "mcpServers": {
+      "flowbite": {
+        "command": "npx",
+        "args": ["-y", "flowbite-mcp"]
+      }
+    }
+  }
+`);
+  process.exit(0);
+}
+
 const modeIndex = args.indexOf('--mode');
 const portIndex = args.indexOf('--port');
 
 const TRANSPORT_MODE = modeIndex !== -1 ? args[modeIndex + 1] : process.env.MCP_TRANSPORT_MODE || 'stdio';
 const PORT = portIndex !== -1 ? parseInt(args[portIndex + 1]) : parseInt(process.env.MCP_PORT || '3000');
 
-console.log(`Initializing Flowbite MCP Server in ${TRANSPORT_MODE} mode${TRANSPORT_MODE === 'sse' ? ` on port ${PORT}` : ''}`)
+console.log(`Initializing Flowbite MCP Server in ${TRANSPORT_MODE} mode${TRANSPORT_MODE === 'http' ? ` on port ${PORT}` : ''}`)
 
 const COMPONENT_FILES = [
     {
@@ -496,6 +555,19 @@ const COMPONENT_FILES = [
   }
 ]
 
+// Helper function to get data directory path
+const getDataPath = (relativePath: string): string => {
+  // Try relative to current working directory first (for development)
+  const cwdPath = join(process.cwd(), 'data', relativePath);
+  try {
+    readFileSync(cwdPath, 'utf-8');
+    return cwdPath;
+  } catch {
+    // Fall back to package directory (for npm installation)
+    return join(__dirname, '..', 'data', relativePath);
+  }
+};
+
 // Function to setup all resources and tools
 const setupServer = (server: McpServer) => {
   
@@ -508,7 +580,7 @@ const setupServer = (server: McpServer) => {
         mimeType: "text/markdown",
       },
       async (uri) => {
-        const themeContent = readFileSync(join(process.cwd(), "data/theme.md"), "utf-8");
+        const themeContent = readFileSync(getDataPath("theme.md"), "utf-8");
         
         return {
           contents: [
@@ -531,7 +603,7 @@ const setupServer = (server: McpServer) => {
         mimeType: "text/markdown",
       },
       async (uri) => {
-        const quickstartContent = readFileSync(join(process.cwd(), "data/quickstart.md"), "utf-8");
+        const quickstartContent = readFileSync(getDataPath("quickstart.md"), "utf-8");
         
         return {
           contents: [
@@ -554,7 +626,7 @@ const setupServer = (server: McpServer) => {
         mimeType: "text/markdown",
       },
       async (uri) => {
-        const componentsContent = readFileSync(join(process.cwd(), "data/toc.md"), "utf-8");
+        const componentsContent = readFileSync(getDataPath("toc.md"), "utf-8");
         
         return {
           contents: [
@@ -571,7 +643,9 @@ const setupServer = (server: McpServer) => {
     COMPONENT_FILES.forEach(
       (component) => {
         server.resource(component.name, component.uri, async (uri) => {
-          const componentContent = readFileSync(join(process.cwd(), component.path), "utf-8");
+          // Extract filename from path (e.g., 'data/components/accordion.md' -> 'components/accordion.md')
+          const relativePath = component.path.replace('data/', '');
+          const componentContent = readFileSync(getDataPath(relativePath), "utf-8");
           return {
             contents: [
               {
@@ -761,7 +835,7 @@ const setupServer = (server: McpServer) => {
           };
 
           // Read the base theme file
-          const themeContent = readFileSync(join(process.cwd(), "data/theme.md"), "utf-8");
+          const themeContent = readFileSync(getDataPath("theme.md"), "utf-8");
           
           // Generate color shades for the brand color
           const brandShades = generateColorShades(brandColor);
@@ -961,9 +1035,9 @@ if (TRANSPORT_MODE === 'stdio') {
   console.log('Flowbite MCP Server running in stdio mode');
   console.log('Ready to accept requests via standard I/O');
   
-} else if (TRANSPORT_MODE === 'sse') {
-  // Server-Sent Events mode for HTTP/production deployments
-  console.log(`Starting Flowbite MCP Server in SSE mode on port ${PORT}...`);
+} else if (TRANSPORT_MODE === 'http') {
+  // HTTP Streamable mode for server/production deployments
+  console.log(`Starting Flowbite MCP Server in HTTP mode on port ${PORT}...`);
   
   ExpressHttpStreamableMcpServer(
     {
@@ -972,13 +1046,13 @@ if (TRANSPORT_MODE === 'stdio') {
     setupServer
   );
   
-  console.log(`Flowbite MCP Server running in SSE mode`);
+  console.log(`Flowbite MCP Server running in HTTP mode`);
   console.log(`Server listening on http://localhost:${PORT}`);
   console.log(`Health check: http://localhost:${PORT}/health`);
   console.log(`MCP endpoint: http://localhost:${PORT}/mcp`);
   
 } else {
   console.error(`Invalid transport mode: ${TRANSPORT_MODE}`);
-  console.error('Valid modes: stdio, sse');
+  console.error('Valid modes: stdio, http');
   process.exit(1);
 }

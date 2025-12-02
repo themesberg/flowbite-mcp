@@ -9,20 +9,28 @@
   },
   "files": [
     "build",
-    "data"
+    "data",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepublishOnly": "npm run build",
     "watch": "tsc --watch",
     "inspector": "npx @modelcontextprotocol/inspector build/index.js",
     "dev": "nodemon --watch src --ext ts --exec \"npm run build && node build/index.js\"",
     "start": "node build/index.js",
-    "start:sse": "MCP_TRANSPORT_MODE=sse node build/index.js",
+    "start:http": "MCP_TRANSPORT_MODE=http node build/index.js",
     "start:stdio": "MCP_TRANSPORT_MODE=stdio node build/index.js",
     "docker:build": "docker build -t flowbite-mcp .",
     "docker:run": "docker run -p 3000:3000 flowbite-mcp",
     "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "test:npx": "npm pack && tar -xzf flowbite-mcp-*.tgz && node package/build/index.js --version || true && rm -rf package flowbite-mcp-*.tgz"
   },
   "keywords": [
     "flowbite",

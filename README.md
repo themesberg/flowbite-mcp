@@ -23,43 +23,43 @@ An MCP server that enables AI assistants to access the [Flowbite](https://flowbi
 - **🎯 AI-Powered Theme Generator** - Create custom branded themes from any hex color
 - **📦 Component Source Code** - Latest Flowbite Tailwind CSS implementations
 - **📋 Metadata Access** - Component descriptions, usage patterns, and integration guides
-- **🌐 Dual Transport Support** - Standard I/O (stdio) for CLI or Server-Sent Events (SSE) for HTTP
+- **🌐 Dual Transport Support** - Standard I/O (stdio) for CLI or HTTP Streamable for server deployments
 - **⚡ Production Ready** - Docker support with health checks and monitoring
 - **🎨 Quickstart Guide** - Complete setup and integration documentation
 
 ## Quick Start
 
-### Standard I/O Mode (stdio)
+### Using npx (Recommended - After npm Publish)
 
-Perfect for local development and single-client usage:
-
-```bash
-# Run with stdio transport (default)
-node build/index.js
-
-# Or with npm
-npm start
-
-# Development mode with auto-reload
-npm run dev
-```
-
-### Server-Sent Events Mode (SSE)
-
-Ideal for production deployments and multiple concurrent clients:
+The simplest way to use Flowbite MCP Server:
 
 ```bash
-# Run with SSE transport
-node build/index.js --mode sse --port 3000
+# Run directly with npx (no installation needed)
+npx flowbite-mcp
 
-# With environment variables
-MCP_TRANSPORT_MODE=sse MCP_PORT=3000 node build/index.js
+# Show help and options
+npx flowbite-mcp --help
 
-# Production mode with Docker
-docker-compose up -d
+# Run in HTTP server mode for production
+npx flowbite-mcp --mode http --port 3000
 ```
 
-### Quick Installation
+**Claude Desktop Configuration with npx:**
+
+```json
+{
+  "mcpServers": {
+    "flowbite": {
+      "command": "npx",
+      "args": ["-y", "flowbite-mcp"]
+    }
+  }
+}
+```
+
+### Local Development
+
+For development or running from source:
 
 ```bash
 # Install dependencies
@@ -68,8 +68,26 @@ npm install
 # Build the project
 npm run build
 
-# Start the server
+# Run in stdio mode
 npm start
+
+# Run in HTTP server mode
+npm run start:http
+
+# Development mode with auto-reload
+npm run dev
+```
+
+### Docker Deployment
+
+For production deployments:
+
+```bash
+# Run with Docker Compose
+docker-compose up -d
+
+# Check health
+curl http://localhost:3000/health
 ```
 
 ## Transport Modes
@@ -98,18 +116,17 @@ node build/index.js
 }
 ```
 
-### Server-Sent Events (SSE)
+### HTTP server
 
 HTTP-based transport for production and multi-client scenarios:
 
 - **Use Case**: Production servers, cloud deployments, multiple clients
-- **Connection**: HTTP endpoints with SSE streaming
+- **Connection**: HTTP endpoints
 - **Clients**: Multiple concurrent connections
 - **Setup**: Requires port configuration and network access
 
 ```bash
-# Start SSE server
-node build/index.js --mode sse --port 3000
+node build/index.js --mode http --port 3000
 
 # Connect with Claude Code or HTTP clients
 curl http://localhost:3000/health
@@ -120,117 +137,18 @@ curl http://localhost:3000/health
 Configure the server behavior with these environment variables:
 
 ```bash
-# Transport mode: stdio (default) or sse
-MCP_TRANSPORT_MODE=sse
+# Transport mode: stdio (default) or http
+MCP_TRANSPORT_MODE=http
 
-# Server port for SSE mode
+# Server port for HTTP mode
 MCP_PORT=3000
 
-# Host binding for SSE mode
+# Host binding for HTTP mode
 MCP_HOST=0.0.0.0
 
 # CORS origins (comma-separated)
 MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 ```
-
-## Theme Generator Tool
-
-The Flowbite MCP Server includes an AI-powered theme generator that creates custom Flowbite themes based on your brand color and natural language instructions.
-
-### How It Works
-
-1. **Provide a Brand Color** - Any hex color (e.g., `#FF5733`)
-2. **Describe Your Vision** - Natural language instructions (e.g., "modern and minimalist")
-3. **Get Custom Theme** - Complete CSS theme file with all variables customized
-
-### Example Usage
-
-```javascript
-// Tool: generate-theme
-{
-  "brandColor": "#FF5733",
-  "instructions": "Create a modern, minimalist design with soft rounded corners and subtle borders",
-  "fileName": "my-brand-theme.css"
-}
-```
-
-### What Gets Generated
-
-- ✅ Complete color palette (50-950 shades) from your brand color
-- ✅ AI-analyzed customizations for typography, spacing, and borders
-- ✅ Both light and dark mode support
-- ✅ All Tailwind CSS theme variables
-- ✅ Ready-to-use CSS file with integration instructions
-
-### Theme Customization Examples
-
-**Modern & Minimalist:**
-```
-"Make it modern and minimalist with sharp edges and clean lines"
-```
-
-**Playful & Friendly:**
-```
-"Design for a children's app - playful, colorful, with rounded corners"
-```
-
-**Corporate & Professional:**
-```
-"Professional corporate style with subtle elegance and conservative styling"
-```
-
-**Luxury & Premium:**
-```
-"Create a luxury feel with elegant spacing and sophisticated aesthetics"
-```
-
-## 📚 Available Resources
-
-The server provides access to comprehensive Flowbite documentation and components:
-
-### Components (60+)
-- **UI Components**: Accordion, Alerts, Avatar, Badge, Banner, Breadcrumb, Buttons, Button Group, Cards, Carousel, Chat Bubble, Clipboard, Datepicker, Device Mockups, Drawer, Dropdowns, Footer, Gallery, Indicators, Jumbotron, KBD, List Group, Mega Menu, Modal, Navbar, Pagination, Popover, Progress, QR Code, Rating, Sidebar, Skeleton, Speed Dial, Spinner, Stepper, Tables, Tabs, Timeline, Toast, Tooltips, Typography, Video
-
-### Forms (13 Components)
-- Checkbox, File Input, Floating Label, Input Field, Number Input, Phone Input, Radio, Range, Search Input, Select, Textarea, Timepicker, Toggle
-
-### Typography (8 Components)
-- Blockquote, Headings, Horizontal Rule, Images, Links, Lists, Paragraphs, Text
-
-### Plugins (3 Integrations)
-- Charts, Datatables, WYSIWYG Editor
-
-### Additional Resources
-- **Theme File**: Complete Tailwind CSS theme variable reference
-- **Quickstart Guide**: Setup and integration documentation
-- **Component List**: Table of contents with all available components
-
-## Available Tools
-
-### `generate-theme`
-
-Generates a custom Flowbite theme CSS file based on brand color and design instructions.
-
-**Parameters:**
-- `brandColor` (required): Hex color code (e.g., `#3B82F6`)
-- `instructions` (required): Natural language description of desired aesthetic
-- `fileName` (optional): Output filename (default: `custom-theme.css`)
-
-**Returns:**
-- Complete CSS theme file with brand colors integrated
-- Color palette breakdown (all generated shades)
-- AI-analyzed customization suggestions
-- Integration and usage instructions
-
-### `convert-figma-to-code`
-
-Converts Figma design layers to Flowbite component code.
-
-**Parameters:**
-- `figmaNodeUrl` (required): URL of the Figma node to convert
-
-**Status:** In development
-
 ## Installation & Setup
 
 ### Prerequisites
@@ -254,8 +172,8 @@ npm run build
 # Run in stdio mode (for Claude Desktop, Cursor)
 npm start
 
-# Run in SSE mode (for production/multi-client)
-MCP_TRANSPORT_MODE=sse npm start
+# Run in HTTP server mode (for production/multi-client)
+MCP_TRANSPORT_MODE=http npm start
 ```
 
 ### Docker Deployment
@@ -265,7 +183,7 @@ MCP_TRANSPORT_MODE=sse npm start
 docker build -t flowbite-mcp .
 
 # Run with Docker
-docker run -p 3000:3000 -e MCP_TRANSPORT_MODE=sse flowbite-mcp
+docker run -p 3000:3000 -e MCP_TRANSPORT_MODE=http flowbite-mcp
 
 # Or use Docker Compose
 docker-compose up -d
@@ -274,29 +192,24 @@ docker-compose up -d
 curl http://localhost:3000/health
 ```
 
-## 🔌 Integration Examples
+## Integration Examples
 
-### Claude Desktop (stdio)
+### Claude Desktop
 
-Add to your Claude Desktop configuration (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+**Method 1: Using npx (Recommended - After npm publish)**
 
 ```json
 {
   "mcpServers": {
     "flowbite": {
-      "command": "node",
-      "args": ["/absolute/path/to/flowbite-mcp/build/index.js"],
-      "env": {
-        "MCP_TRANSPORT_MODE": "stdio"
-      }
+      "command": "npx",
+      "args": ["-y", "flowbite-mcp"]
     }
   }
 }
 ```
 
-### Cursor Editor (stdio)
-
-Add to your Cursor MCP settings:
+**Method 2: Using local Node.js**
 
 ```json
 {
@@ -309,62 +222,62 @@ Add to your Cursor MCP settings:
 }
 ```
 
-### HTTP Client (SSE)
+### Cursor Editor
 
-Connect via HTTP when running in SSE mode:
+**With npx:**
 
-```bash
-# Start server in SSE mode
-MCP_TRANSPORT_MODE=sse MCP_PORT=3000 npm start
+```json
+{
+  "mcpServers": {
+    "flowbite": {
+      "command": "npx",
+      "args": ["-y", "flowbite-mcp"]
+    }
+  }
+}
+```
 
-# Health check
-curl http://localhost:3000/health
+**With Node.js:**
 
-# Connect with MCP client
-# Use endpoint: http://localhost:3000/mcp
+```json
+{
+  "mcpServers": {
+    "flowbite": {
+      "command": "node",
+      "args": ["/absolute/path/to/flowbite-mcp/build/index.js"]
+    }
+  }
+}
 ```
 
 ### Continue.dev
-
-Configure in Continue settings:
 
 ```json
 {
   "mcpServers": [
     {
       "name": "flowbite",
-      "command": "node",
-      "args": ["/absolute/path/to/flowbite-mcp/build/index.js"]
+      "command": "npx",
+      "args": ["-y", "flowbite-mcp"]
     }
   ]
 }
 ```
 
-## Use Cases
+### Production Deployment (HTTP Mode)
 
-### For AI-Powered Development
-- Build complete UIs with Flowbite components via AI assistants
-- Generate custom-branded themes instantly
-- Get component code with proper Tailwind CSS classes
-- Access usage patterns and examples
+For production servers with multiple clients:
 
-### For Design Systems
-- Create consistent themes across projects
-- Generate color palettes from brand colors
-- Maintain design system documentation
-- Quick component reference lookup
+```bash
+# Using npx
+npx flowbite-mcp --mode http --port 3000
 
-### For Rapid Prototyping
-- Get component implementations instantly
-- Test different theme aesthetics
-- Build forms and layouts quickly
-- Access plugin integrations
+# Using Docker Compose
+docker-compose up -d
 
-### For Multi-Framework Projects
-- Consistent Flowbite components across projects
-- Shared theme generation tool
-- Centralized component documentation
-- Team collaboration via SSE mode
+# Health check
+curl http://localhost:3000/health
+```
 
 ## Development Scripts
 
@@ -389,7 +302,7 @@ npm start
 
 The project includes a production-ready Docker setup with multi-stage builds for optimal performance.
 
-### Quick Start with Docker
+### Quickstart with Docker
 
 ```bash
 # Build and run with Docker Compose (recommended)
@@ -414,36 +327,7 @@ docker-compose down
 
 For complete Docker documentation, troubleshooting, and production best practices, see [DOCKER_GUIDE.md](DOCKER_GUIDE.md).
 
-## Debugging & Troubleshooting
-
-### Common Issues
-
-**Server won't start:**
-```bash
-# Check if port is already in use
-lsof -i :3000
-
-# Try a different port
-MCP_PORT=3001 npm start
-```
-
-**Components not loading:**
-```bash
-# Verify data files exist
-ls -la data/components/
-
-# Rebuild the project
-npm run build
-```
-
-**Theme generator errors:**
-```bash
-# Ensure valid hex color format
-# ✅ Correct: #FF5733
-# ❌ Wrong: FF5733, rgb(255,87,51)
-```
-
-### Debug Mode
+### MCP inspector
 
 Use the MCP Inspector for interactive debugging:
 
@@ -459,8 +343,8 @@ Check server logs for detailed information:
 # stdio mode logs to console
 node build/index.js
 
-# SSE mode includes HTTP request logs
-MCP_TRANSPORT_MODE=sse node build/index.js
+# HTTP mode includes HTTP request logs
+MCP_TRANSPORT_MODE=http node build/index.js
 ```
 
 ## File structure
@@ -469,7 +353,7 @@ MCP_TRANSPORT_MODE=sse node build/index.js
 flowbite-mcp/
 ├── src/
 │   ├── index.ts              # Main server entry point
-│   └── server-runner.ts      # Express HTTP/SSE transport
+│   └── server-runner.ts      # Express HTTP Streamable transport
 ├── data/
 │   ├── components/           # 60+ component markdown files
 │   ├── forms/                # Form component documentation
@@ -508,6 +392,7 @@ This project is licensed under the MIT License License - see the [LICENSE](LICEN
 ### Documentation
 - 📖 [Main Documentation](README.md) - This file
 - 🚀 [Quick Start Guide](QUICK_START.md) - Get started in 5 minutes
+- 📦 [NPM Publishing Guide](NPM_PUBLISHING.md) - How to publish to npm
 - ⚙️ [Configuration Guide](CONFIGURATION.md) - All configuration options
 - 🐳 [Docker Guide](DOCKER_GUIDE.md) - Docker deployment and troubleshooting
 - 📝 [Changelog](CHANGELOG.md) - Version history and updates
@@ -523,7 +408,7 @@ This project is licensed under the MIT License License - see the [LICENSE](LICEN
 
 - [x] Complete component resource access
 - [x] AI-powered theme generator
-- [x] Dual transport support (stdio + SSE)
+- [x] Dual transport support (stdio + HTTP)
 - [ ] Flowbite Pro blocks integration (with license authentication)
 - [ ] Figma to code conversion tool
 - [ ] Enhanced theme customization options

@@ -9,7 +9,7 @@ services:
     ports:
       - "${MCP_PORT:-3000}:3000"
     environment:
-      - MCP_TRANSPORT_MODE=sse
+      - MCP_TRANSPORT_MODE=http
       - MCP_PORT=3000
       - MCP_HOST=0.0.0.0
       - MCP_CORS_ORIGINS=${MCP_CORS_ORIGINS:-*}
