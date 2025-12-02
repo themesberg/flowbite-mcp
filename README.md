@@ -93,36 +93,6 @@ MCP_HOST=0.0.0.0
 MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 ```
 
-## Installation & Setup
-
-Make sure that you have the following installed:
-
-- Node.js 16+ installed
-- Tailwind CSS v4+ (for generated themes)
-
-### Local development
-
-```bash
-# Clone the repository
-git clone https://github.com/themesberg/flowbite-mcp.git
-cd flowbite-mcp
-
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
-
-# Run in stdio mode (for Claude Desktop, Cursor)
-npm start
-
-# Run inspector
-npm run start inspector
-
-# Run in HTTP server mode (for production/multi-client)
-MCP_TRANSPORT_MODE=http npm start
-```
-
 ## Integration Examples
 
 ### Claude desktop
@@ -169,25 +139,27 @@ MCP_TRANSPORT_MODE=http npm start
 }
 ```
 
-### Local Development
-
-For development or running from source:
+### Local development
 
 ```bash
+# Clone the repository
+git clone https://github.com/themesberg/flowbite-mcp.git
+cd flowbite-mcp
+
 # Install dependencies
 npm install
 
 # Build the project
 npm run build
 
-# Run in stdio mode
+# Run in stdio mode (for Claude Desktop, Cursor)
 npm start
 
-# Run in HTTP server mode
-npm run start:http
+# Run inspector
+npm run start inspector
 
-# Development mode with auto-reload
-npm run dev
+# Run in HTTP server mode (for production/multi-client)
+MCP_TRANSPORT_MODE=http npm start
 ```
 
 ### Production deployment (HTTP Mode)
