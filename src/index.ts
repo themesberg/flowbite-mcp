@@ -54,16 +54,6 @@ Examples:
 
 Documentation:
   https://github.com/themesberg/flowbite-mcp#readme
-
-Claude Desktop Configuration:
-  {
-    "mcpServers": {
-      "flowbite": {
-        "command": "npx",
-        "args": ["-y", "flowbite-mcp"]
-      }
-    }
-  }
 `);
   process.exit(0);
 }

@@ -44,39 +44,6 @@ npx flowbite-mcp --help
 npx flowbite-mcp --mode http --port 3000
 ```
 
-### Local Development
-
-For development or running from source:
-
-```bash
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
-
-# Run in stdio mode
-npm start
-
-# Run in HTTP server mode
-npm run start:http
-
-# Development mode with auto-reload
-npm run dev
-```
-
-### Docker Deployment
-
-For production deployments:
-
-```bash
-# Run with Docker Compose
-docker-compose up -d
-
-# Check health
-curl http://localhost:3000/health
-```
-
 ## Transport Modes
 
 ### Standard I/O (stdio)
@@ -160,7 +127,7 @@ MCP_TRANSPORT_MODE=http npm start
 
 ### Claude desktop
 
-**Method 1: Using NPX
+**Method 1: Using NPX**
 
 ```json
 {
@@ -168,19 +135,6 @@ MCP_TRANSPORT_MODE=http npm start
     "flowbite": {
       "command": "npx",
       "args": ["-y", "flowbite-mcp"]
-    }
-  }
-}
-```
-
-**Method 2: Using local Node.js**
-
-```json
-{
-  "mcpServers": {
-    "flowbite": {
-      "command": "node",
-      "args": ["/absolute/path/to/flowbite-mcp/build/index.js"]
     }
   }
 }
@@ -201,19 +155,6 @@ MCP_TRANSPORT_MODE=http npm start
 }
 ```
 
-**With Node.js:**
-
-```json
-{
-  "mcpServers": {
-    "flowbite": {
-      "command": "node",
-      "args": ["/absolute/path/to/flowbite-mcp/build/index.js"]
-    }
-  }
-}
-```
-
 ### Continue.dev
 
 ```json
@@ -226,6 +167,27 @@ MCP_TRANSPORT_MODE=http npm start
     }
   ]
 }
+```
+
+### Local Development
+
+For development or running from source:
+
+```bash
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Run in stdio mode
+npm start
+
+# Run in HTTP server mode
+npm run start:http
+
+# Development mode with auto-reload
+npm run dev
 ```
 
 ### Production deployment (HTTP Mode)
