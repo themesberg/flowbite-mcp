@@ -1,6 +1,6 @@
 <p>
     <a href="https://flowbite.com" >
-      <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/flowbite-mcp-github.png">
+      <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/flowbite-mcp-github-2.png">
     </a><br>
     Official MCP server for Flowbite to leverage AI for UI creation and theme generation
 </p>
