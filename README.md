@@ -1,11 +1,18 @@
-# Flowbite MCP Server
+<p>
+    <a href="https://flowbite.com" >
+      <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/logo-github.png">
+    </a><br>
+    Official MCP server for Flowbite to leverage AI for UI creation and theme generation
+</p>
 
-[![npm version](https://badge.fury.io/js/flowbite-mcp.svg)](https://badge.fury.io/js/flowbite-mcp)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+<p>
+    <a href="https://discord.com/invite/4eeurUVvTy"><img src="https://img.shields.io/discord/902911619032576090?color=%237289da&label=Discord" alt="Discord"></a>
+    <a href="https://www.npmjs.com/package/flowbite-mcp"><img src="https://img.shields.io/npm/dt/flowbite.svg" alt="Total Downloads"></a>
+    <a href="https://github.com/themesberg/flowbite-mcp/releases"><img src="https://img.shields.io/npm/v/flowbite.svg" alt="Latest Release"></a>
+    <a href="https://flowbite.com/docs/getting-started/license/"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License"></a>
+</p>
 
-> **🚀 The fastest way to integrate Flowbite components and generate custom themes with AI**
-
-A Model Context Protocol (MCP) server that provides AI assistants with comprehensive access to [Flowbite](https://flowbite.com/) components, forms, typography elements, plugins, and an intelligent theme generator. Seamlessly retrieve Tailwind CSS-powered UI components and create custom branded themes directly from your AI-powered development workflow.
+An MCP server that enables AI assistants to access the [Flowbite](https://flowbite.com/) library of Tailwind CSS components—including UI elements, forms, typography, and plugins—while offering an intelligent theme generator for creating custom branded designs within AI-driven development environments.
 
 ## MCP Features
 
