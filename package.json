@@ -1,34 +1,51 @@
 {
   "name": "flowbite-mcp",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Model Context Protocol server providing AI assistants with access to Flowbite UI components and an intelligent theme generator for Tailwind CSS",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "flowbite-mcp": "./build/index.js"
+  },
+  "files": [
+    "build",
+    "data"
+  ],
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
-    "prepare": "npm run build",
     "watch": "tsc --watch",
     "inspector": "npx @modelcontextprotocol/inspector build/index.js",
     "dev": "nodemon --watch src --ext ts --exec \"npm run build && node build/index.js\"",
-    "start": "node build/index.js"
+    "start": "node build/index.js",
+    "start:sse": "MCP_TRANSPORT_MODE=sse node build/index.js",
+    "start:stdio": "MCP_TRANSPORT_MODE=stdio node build/index.js",
+    "docker:build": "docker build -t flowbite-mcp .",
+    "docker:run": "docker run -p 3000:3000 flowbite-mcp",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
   },
-  "type": "module",
-  "bin": {
-    "streamable-mcp-server": "./build/index.js"
-  },
-  "files": [
-    "build"
+  "keywords": [
+    "flowbite",
+    "mcp",
+    "model-context-protocol",
+    "tailwind",
+    "tailwindcss",
+    "ui-components",
+    "theme-generator",
+    "ai",
+    "claude",
+    "cursor"
   ],
+  "author": "Themesberg",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/themesberg/flowbite-mcp.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/themesberg/flowbite-mcp/issues"
   },
   "homepage": "https://github.com/themesberg/flowbite-mcp#readme",
-  "description": "",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.22.0",
     "dotenv": "^17.2.3",

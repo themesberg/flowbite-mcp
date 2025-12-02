@@ -1,12 +1,21 @@
+#!/usr/bin/env node
 import { z } from 'zod';
 import { isInitializeRequest, CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ExpressHttpStreamableMcpServer } from "./server-runner.js";
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
-const PORT = process.env.PORT || 3000;
+// Get transport mode from environment or command-line args
+const args = process.argv.slice(2);
+const modeIndex = args.indexOf('--mode');
+const portIndex = args.indexOf('--port');
 
-console.log("Initializing MCP Streamable-HTTP Server with Express")
+const TRANSPORT_MODE = modeIndex !== -1 ? args[modeIndex + 1] : process.env.MCP_TRANSPORT_MODE || 'stdio';
+const PORT = portIndex !== -1 ? parseInt(args[portIndex + 1]) : parseInt(process.env.MCP_PORT || '3000');
+
+console.log(`Initializing Flowbite MCP Server in ${TRANSPORT_MODE} mode${TRANSPORT_MODE === 'sse' ? ` on port ${PORT}` : ''}`)
 
 const COMPONENT_FILES = [
     {
@@ -487,13 +496,10 @@ const COMPONENT_FILES = [
   }
 ]
 
-const servers = ExpressHttpStreamableMcpServer(
-  {
-    name: "flowbite-pro-mcp",
-  },
-  server => {
-
-    server.resource(
+// Function to setup all resources and tools
+const setupServer = (server: McpServer) => {
+  
+  server.resource(
       "flowbite_theme",
       "flowbite://theme/file",
       {
@@ -927,6 +933,52 @@ Example usage:
         }
       }
     );
+};
 
-});
+// Start server based on transport mode
+if (TRANSPORT_MODE === 'stdio') {
+  // Standard I/O mode for local development and CLI integrations
+  console.log('Starting Flowbite MCP Server in stdio mode...');
+  
+  const server = new McpServer({
+    name: "flowbite-mcp",
+    version: "1.0.0",
+  }, {
+    capabilities: {
+      resources: {},
+      tools: {},
+    }
+  });
 
+  setupServer(server);
+
+  const transport = new StdioServerTransport();
+  server.connect(transport).catch((error) => {
+    console.error('Failed to connect stdio transport:', error);
+    process.exit(1);
+  });
+
+  console.log('Flowbite MCP Server running in stdio mode');
+  console.log('Ready to accept requests via standard I/O');
+  
+} else if (TRANSPORT_MODE === 'sse') {
+  // Server-Sent Events mode for HTTP/production deployments
+  console.log(`Starting Flowbite MCP Server in SSE mode on port ${PORT}...`);
+  
+  ExpressHttpStreamableMcpServer(
+    {
+      name: "flowbite-mcp",
+    },
+    setupServer
+  );
+  
+  console.log(`Flowbite MCP Server running in SSE mode`);
+  console.log(`Server listening on http://localhost:${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/health`);
+  console.log(`MCP endpoint: http://localhost:${PORT}/mcp`);
+  
+} else {
+  console.error(`Invalid transport mode: ${TRANSPORT_MODE}`);
+  console.error('Valid modes: stdio, sse');
+  process.exit(1);
+}

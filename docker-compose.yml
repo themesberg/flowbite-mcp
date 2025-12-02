@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  flowbite-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flowbite-mcp-server
+    ports:
+      - "${MCP_PORT:-3000}:3000"
+    environment:
+      - MCP_TRANSPORT_MODE=sse
+      - MCP_PORT=3000
+      - MCP_HOST=0.0.0.0
+      - MCP_CORS_ORIGINS=${MCP_CORS_ORIGINS:-*}
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1); }).on('error', () => process.exit(1));"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    volumes:
+      # Mount data directory if you want to update documentation without rebuilding
+      - ./data:/app/data:ro
+    networks:
+      - flowbite-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  flowbite-network:
+    driver: bridge
+
