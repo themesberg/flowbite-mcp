@@ -83,11 +83,6 @@ curl http://localhost:3000/health
 
 The default mode for local development and CLI integrations:
 
-- **Use Case**: Claude Desktop, Cursor, VS Code extensions
-- **Connection**: Direct process communication via stdin/stdout
-- **Clients**: Single client per instance
-- **Setup**: Simple, no network configuration needed
-
 ```bash
 # Start in stdio mode (default)
 node build/index.js
@@ -107,17 +102,11 @@ node build/index.js
 
 HTTP-based transport for production and multi-client scenarios:
 
-- **Use Case**: Production servers, cloud deployments, multiple clients
-- **Connection**: HTTP endpoints
-- **Clients**: Multiple concurrent connections
-- **Setup**: Requires port configuration and network access
-
 ```bash
 node build/index.js --mode http --port 3000
-
-# Connect with Claude Code or HTTP clients
-curl http://localhost:3000/health
 ```
+
+This will make the MCP server available at 'http://localhost:3000/mcp'.
 
 ### Environment variables
 
@@ -160,6 +149,9 @@ npm run build
 # Run in stdio mode (for Claude Desktop, Cursor)
 npm start
 
+# Run inspector
+npm run start inspector
+
 # Run in HTTP server mode (for production/multi-client)
 MCP_TRANSPORT_MODE=http npm start
 ```
@@ -168,7 +160,7 @@ MCP_TRANSPORT_MODE=http npm start
 
 ### Claude desktop
 
-**Method 1: Using npx (Recommended - After npm publish)**
+**Method 1: Using NPX
 
 ```json
 {
@@ -196,7 +188,7 @@ MCP_TRANSPORT_MODE=http npm start
 
 ### Cursor editor
 
-**With npx:**
+**With NPX:**
 
 ```json
 {
