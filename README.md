@@ -27,9 +27,9 @@ An MCP server that enables AI assistants to access the [Flowbite](https://flowbi
 - **⚡ Production Ready** - Docker support with health checks and monitoring
 - **🎨 Quickstart Guide** - Complete setup and integration documentation
 
-## Quick Start
+## Quickstart
 
-### Using npx (Recommended - After npm Publish)
+### Using NPX
 
 The simplest way to use Flowbite MCP Server:
 
@@ -42,19 +42,6 @@ npx flowbite-mcp --help
 
 # Run in HTTP server mode for production
 npx flowbite-mcp --mode http --port 3000
-```
-
-**Claude Desktop Configuration with npx:**
-
-```json
-{
-  "mcpServers": {
-    "flowbite": {
-      "command": "npx",
-      "args": ["-y", "flowbite-mcp"]
-    }
-  }
-}
 ```
 
 ### Local Development
@@ -132,7 +119,7 @@ node build/index.js --mode http --port 3000
 curl http://localhost:3000/health
 ```
 
-### Environment Variables
+### Environment variables
 
 Configure the server behavior with these environment variables:
 
@@ -149,14 +136,15 @@ MCP_HOST=0.0.0.0
 # CORS origins (comma-separated)
 MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 ```
+
 ## Installation & Setup
 
-### Prerequisites
+Make sure that you have the following installed:
 
 - Node.js 16+ installed
 - Tailwind CSS v4+ (for generated themes)
 
-### Local Development
+### Local development
 
 ```bash
 # Clone the repository
@@ -176,25 +164,9 @@ npm start
 MCP_TRANSPORT_MODE=http npm start
 ```
 
-### Docker Deployment
-
-```bash
-# Build Docker image
-docker build -t flowbite-mcp .
-
-# Run with Docker
-docker run -p 3000:3000 -e MCP_TRANSPORT_MODE=http flowbite-mcp
-
-# Or use Docker Compose
-docker-compose up -d
-
-# Check health
-curl http://localhost:3000/health
-```
-
 ## Integration Examples
 
-### Claude Desktop
+### Claude desktop
 
 **Method 1: Using npx (Recommended - After npm publish)**
 
@@ -222,7 +194,7 @@ curl http://localhost:3000/health
 }
 ```
 
-### Cursor Editor
+### Cursor editor
 
 **With npx:**
 
@@ -264,7 +236,7 @@ curl http://localhost:3000/health
 }
 ```
 
-### Production Deployment (HTTP Mode)
+### Production deployment (HTTP Mode)
 
 For production servers with multiple clients:
 
@@ -317,15 +289,6 @@ docker-compose logs -f
 # Stop
 docker-compose down
 ```
-
-### Docker Features
-
-- ✅ **Multi-stage build** - Smaller image size, faster deployment
-- ✅ **Health checks** - Automatic container recovery
-- ✅ **Production optimized** - Only production dependencies included
-- ✅ **Easy configuration** - Environment variables for all settings
-
-For complete Docker documentation, troubleshooting, and production best practices, see [DOCKER_GUIDE.md](DOCKER_GUIDE.md).
 
 ### MCP inspector
 
@@ -389,15 +352,6 @@ This project is licensed under the MIT License License - see the [LICENSE](LICEN
 
 ## Resources
 
-### Documentation
-- 📖 [Main Documentation](README.md) - This file
-- 🚀 [Quick Start Guide](QUICK_START.md) - Get started in 5 minutes
-- 📦 [NPM Publishing Guide](NPM_PUBLISHING.md) - How to publish to npm
-- ⚙️ [Configuration Guide](CONFIGURATION.md) - All configuration options
-- 🐳 [Docker Guide](DOCKER_GUIDE.md) - Docker deployment and troubleshooting
-- 📝 [Changelog](CHANGELOG.md) - Version history and updates
-
-### External Links
 - 🎨 [Flowbite Documentation](https://flowbite.com/docs/getting-started/introduction/)
 - 📦 [Flowbite Components](https://flowbite.com/docs/components/accordion/)
 - 🌐 [Model Context Protocol](https://modelcontextprotocol.io/)
