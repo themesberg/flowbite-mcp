@@ -19,15 +19,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/themesberg/flowbite-pro-mcp.git"
+    "url": "git+https://github.com/themesberg/flowbite-mcp.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/themesberg/flowbite-pro-mcp/issues"
+    "url": "https://github.com/themesberg/flowbite-mcp/issues"
   },
-  "homepage": "https://github.com/themesberg/flowbite-pro-mcp#readme",
+  "homepage": "https://github.com/themesberg/flowbite-mcp#readme",
   "description": "",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.22.0",

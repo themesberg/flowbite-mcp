@@ -493,12 +493,6 @@ const servers = ExpressHttpStreamableMcpServer(
   },
   server => {
 
-    // TODO tools, resources
-    // ✅ create resources for all components like buttons, cards, forms, etc. (show code, image screenshot, link to docs, link to figma)
-    // generate theme file (prompt for brand color)
-    // pro: create resources for blocks when authenticated with license key + subscription to mcp server
-    // pro: convert figma layers to code blocks when subscription to mcp server
-
     server.resource(
       "flowbite_theme",
       "flowbite://theme/file",
@@ -515,6 +509,29 @@ const servers = ExpressHttpStreamableMcpServer(
             {
               uri: uri.href,
               text: themeContent,
+              mimeType: "text/markdown",
+            },
+          ],
+        };
+      }
+    );
+
+    server.resource(
+      "flowbite_quickstart",
+      "flowbite://quickstart/file",
+      {
+        description: "The quickstart file that sets the Tailwind CSS variables to make UI look unique for every website.",
+        title: "Flowbite Quickstart",
+        mimeType: "text/markdown",
+      },
+      async (uri) => {
+        const quickstartContent = readFileSync(join(process.cwd(), "data/quickstart.md"), "utf-8");
+        
+        return {
+          contents: [
+            {
+              uri: uri.href,
+              text: quickstartContent,
               mimeType: "text/markdown",
             },
           ],
@@ -912,3 +929,4 @@ Example usage:
     );
 
 });
+
