@@ -93,11 +93,11 @@ MCP_HOST=0.0.0.0
 MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 ```
 
-## Integration Examples
+## Integration examples
 
 ### Claude desktop
 
-**Method 1: Using NPX**
+Update the `claude_desktop_config.json` file and add the following configuration:
 
 ```json
 {
@@ -112,7 +112,7 @@ MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 
 ### Cursor editor
 
-**With NPX:**
+Update the `mcp.json` file and add the following configuration:
 
 ```json
 {
@@ -125,17 +125,18 @@ MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 }
 ```
 
-### Continue.dev
+### Windsurf editor
+
+Update the `mcp_config.json` file and add the following configuration:
 
 ```json
 {
-  "mcpServers": [
-    {
-      "name": "flowbite",
+  "mcpServers": {
+    "flowbite": {
       "command": "npx",
       "args": ["-y", "flowbite-mcp"]
     }
-  ]
+  }
 }
 ```
 
