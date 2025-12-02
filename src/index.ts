@@ -608,4 +608,307 @@ const servers = ExpressHttpStreamableMcpServer(
       }
     );
 
+    server.tool(
+      'generate-theme',
+      'Generates a custom Flowbite theme CSS file based on a brand color (hex format) and user instructions. The AI will intelligently analyze the instructions and customize ALL theme variables (border radius, spacing, colors, typography, etc.) to match the desired aesthetic. This tool creates color shades and variations, adapting the entire theme system to match your brand identity.',
+      {
+        brandColor: z.string().describe('The primary brand color in hex format (e.g., #3B82F6, #FF5733). This will be used as the base for generating all brand color variations.'),
+        instructions: z.string().describe('Natural language instructions describing the desired theme aesthetic and customizations. The AI will interpret these instructions to modify all relevant theme variables. Examples: "Make it modern and minimalist with soft rounded corners", "Create a luxury feel with gold accents and elegant spacing", "Design for a playful children\'s app with bright colors", "Professional corporate style with subtle borders", etc.'),
+        fileName: z.string().optional().describe('Optional filename for the generated theme (e.g., "my-brand-theme.css"). Defaults to "custom-theme.css"'),
+      },
+      async ({ brandColor, instructions, fileName }): Promise<CallToolResult> => {
+        try {
+          // Helper function to convert hex to RGB
+          const hexToRgb = (hex: string): { r: number; g: number; b: number } => {
+            const cleanHex = hex.replace('#', '');
+            const r = parseInt(cleanHex.substring(0, 2), 16);
+            const g = parseInt(cleanHex.substring(2, 4), 16);
+            const b = parseInt(cleanHex.substring(4, 6), 16);
+            return { r, g, b };
+          };
+
+          // Helper function to convert RGB to HSL
+          const rgbToHsl = (r: number, g: number, b: number): { h: number; s: number; l: number } => {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+            
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            let h = 0, s = 0, l = (max + min) / 2;
+
+            if (max !== min) {
+              const d = max - min;
+              s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+              
+              switch (max) {
+                case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+                case g: h = ((b - r) / d + 2) / 6; break;
+                case b: h = ((r - g) / d + 4) / 6; break;
+              }
+            }
+
+            return { h: h * 360, s: s * 100, l: l * 100 };
+          };
+
+          // Helper function to convert HSL to RGB
+          const hslToRgb = (h: number, s: number, l: number): { r: number; g: number; b: number } => {
+            h /= 360;
+            s /= 100;
+            l /= 100;
+
+            let r, g, b;
+
+            if (s === 0) {
+              r = g = b = l;
+            } else {
+              const hue2rgb = (p: number, q: number, t: number) => {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1/6) return p + (q - p) * 6 * t;
+                if (t < 1/2) return q;
+                if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                return p;
+              };
+
+              const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+              const p = 2 * l - q;
+
+              r = hue2rgb(p, q, h + 1/3);
+              g = hue2rgb(p, q, h);
+              b = hue2rgb(p, q, h - 1/3);
+            }
+
+            return {
+              r: Math.round(r * 255),
+              g: Math.round(g * 255),
+              b: Math.round(b * 255)
+            };
+          };
+
+          // Helper function to convert RGB to hex
+          const rgbToHex = (r: number, g: number, b: number): string => {
+            const toHex = (n: number) => {
+              const hex = Math.round(n).toString(16);
+              return hex.length === 1 ? '0' + hex : hex;
+            };
+            return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+          };
+
+          // Generate color shades from base color (50, 100, 200, ..., 900, 950)
+          const generateColorShades = (baseHex: string): Record<number, string> => {
+            const rgb = hexToRgb(baseHex);
+            const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+            
+            const shades: Record<number, string> = {};
+            
+            // Lightness values for each shade based on Tailwind's color system
+            const lightnessMap: Record<number, number> = {
+              50: 97,
+              100: 93,
+              200: 86,
+              300: 77,
+              400: 66,
+              500: 55,  // Base color around here
+              600: 45,
+              700: 37,
+              800: 28,
+              900: 20,
+              950: 13
+            };
+
+            // Adjust saturation slightly for different shades
+            Object.entries(lightnessMap).forEach(([shade, lightness]) => {
+              let adjustedSaturation = hsl.s;
+              
+              // Reduce saturation for very light and very dark shades
+              if (lightness > 90) {
+                adjustedSaturation = hsl.s * 0.3;
+              } else if (lightness > 80) {
+                adjustedSaturation = hsl.s * 0.5;
+              } else if (lightness < 20) {
+                adjustedSaturation = hsl.s * 0.8;
+              }
+
+              const adjustedRgb = hslToRgb(hsl.h, adjustedSaturation, lightness);
+              shades[parseInt(shade)] = rgbToHex(adjustedRgb.r, adjustedRgb.g, adjustedRgb.b);
+            });
+
+            return shades;
+          };
+
+          // Read the base theme file
+          const themeContent = readFileSync(join(process.cwd(), "data/theme.md"), "utf-8");
+          
+          // Generate color shades for the brand color
+          const brandShades = generateColorShades(brandColor);
+          
+          // Extract the CSS content from the markdown
+          const cssMatch = themeContent.match(/```css\n([\s\S]*?)\n```/);
+          if (!cssMatch) {
+            throw new Error('Could not parse theme CSS content');
+          }
+
+          let customTheme = cssMatch[1];
+
+          // Replace all blue color references with the new brand color shades
+          const blueReplacements: Record<string, string> = {
+            '--color-blue-50': brandShades[50],
+            '--color-blue-100': brandShades[100],
+            '--color-blue-200': brandShades[200],
+            '--color-blue-300': brandShades[300],
+            '--color-blue-400': brandShades[400],
+            '--color-blue-500': brandShades[500],
+            '--color-blue-600': brandShades[600],
+            '--color-blue-700': brandShades[700],
+            '--color-blue-800': brandShades[800],
+            '--color-blue-900': brandShades[900],
+            '--color-blue-950': brandShades[950],
+          };
+
+          // Apply brand color replacements
+          Object.entries(blueReplacements).forEach(([cssVar, hexValue]) => {
+            const regex = new RegExp(`var\\(${cssVar}\\)`, 'g');
+            customTheme = customTheme.replace(regex, hexValue);
+          });
+
+          // Generate output
+          const themeFileName = fileName || 'custom-theme.css';
+          
+          // Create a detailed explanation with all customizable variables
+          const explanation = `
+# Theme Generator - Base Theme with Brand Colors Applied
+
+## Configuration
+- **File Name**: \`${themeFileName}\`
+- **Brand Color**: ${brandColor}
+- **User Instructions**: "${instructions}"
+
+## Generated Brand Color Palette
+Your brand color has been expanded into a complete color system:
+- **50** (Lightest): ${brandShades[50]}
+- **100**: ${brandShades[100]}
+- **200**: ${brandShades[200]}
+- **300**: ${brandShades[300]}
+- **400**: ${brandShades[400]}
+- **500** (Base): ${brandShades[500]}
+- **600**: ${brandShades[600]}
+- **700**: ${brandShades[700]}
+- **800**: ${brandShades[800]}
+- **900**: ${brandShades[900]}
+- **950** (Darkest): ${brandShades[950]}
+
+## Base Theme with Brand Colors Applied
+
+Here is the theme with brand colors integrated. Based on the instructions "${instructions}", you should now customize the following variables to achieve the desired aesthetic:
+
+### Customizable Variable Categories:
+
+#### 1. **Typography Variables**
+- \`--font-sans\`: Main sans-serif font stack
+- \`--font-body\`: Body text font
+- \`--font-mono\`: Monospace font for code
+- \`--text-2xs\`: Extra small text size
+- \`--leading-*\`: Line height variables (4, 5, 6, 7, 8, 9, none, heading-none)
+- \`--tracking-*\`: Letter spacing (tighter, tight)
+
+#### 2. **Border Radius Variables** (Control roundness/sharpness)
+- \`--radius-0\`: No radius (default: 0px)
+- \`--radius-xxs\`: Extra extra small (default: 2px)
+- \`--radius-xs\`: Extra small (default: 4px)
+- \`--radius-sm\`: Small (default: 6px)
+- \`--radius\`: Base radius (default: 8px)
+- \`--radius-base\`: Base radius alternative (default: 12px)
+- \`--radius-lg\`: Large radius (default: 16px)
+
+#### 3. **Border Width Variables**
+- \`--default-border-width\`: Global border thickness (default: 1px)
+
+#### 4. **Spacing Variables**
+- \`--spacing-8xl\`: Extra large spacing (default: 90rem)
+
+### Current Theme CSS:
+
+\`\`\`css
+@theme {
+${customTheme}
+}
+\`\`\`
+
+## How to Customize
+
+Based on the instructions "${instructions}", analyze what changes should be made to the variables above. Consider:
+
+**For aesthetics like "modern", "minimalist", "clean":**
+- Reduce border radius for sharper look
+- Adjust spacing for breathing room
+- Consider modern font stacks
+
+**For "playful", "friendly", "soft":**
+- Increase border radius significantly
+- Use more spacing
+- Consider rounded, friendly typography
+
+**For "luxury", "elegant", "sophisticated":**
+- Moderate border radius
+- Refined spacing
+- Elegant font choices
+
+**For "bold", "strong", "impactful":**
+- Increase border widths
+- Adjust typography weights
+- Consider spacing adjustments
+
+**For "corporate", "professional", "formal":**
+- Conservative border radius
+- Standard spacing
+- Professional font stacks
+
+**For "children", "kid-friendly", "fun":**
+- Maximum border radius
+- Bright, cheerful spacing
+- Playful font choices
+
+## Next Steps
+
+1. Analyze the instructions and determine which variables need modification
+2. Update the CSS variables in the theme above
+3. Generate the final \`${themeFileName}\` file with your customizations
+4. Provide usage instructions for integration
+
+The brand colors have been applied. Now intelligently modify the other variables based on the design intent in the instructions.
+`;
+
+          return {
+            content: [
+              {
+                type: 'text',
+                text: explanation,
+              },
+            ],
+          };
+        } catch (error) {
+          console.error(`Error generating theme: ${error}`);
+          return {
+            content: [
+              {
+                type: 'text',
+                text: `Error generating theme: ${error instanceof Error ? error.message : String(error)}
+
+Please make sure:
+1. The brand color is in valid hex format (e.g., #3B82F6)
+2. Instructions are clear and specific
+3. The theme.md file is accessible
+
+Example usage:
+- brandColor: "#FF5733"
+- instructions: "Make it modern and minimalist with rounded corners"
+- fileName: "my-brand-theme.css"`,
+              },
+            ],
+          };
+        }
+      }
+    );
+
 });
