@@ -1,14 +1,14 @@
 <p>
     <a href="https://flowbite.com" >
-      <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/logo-github.png">
+      <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/flowbite-mcp-github.png">
     </a><br>
     Official MCP server for Flowbite to leverage AI for UI creation and theme generation
 </p>
 
 <p>
     <a href="https://discord.com/invite/4eeurUVvTy"><img src="https://img.shields.io/discord/902911619032576090?color=%237289da&label=Discord" alt="Discord"></a>
-    <a href="https://www.npmjs.com/package/flowbite-mcp"><img src="https://img.shields.io/npm/dt/flowbite.svg" alt="Total Downloads"></a>
-    <a href="https://github.com/themesberg/flowbite-mcp/releases"><img src="https://img.shields.io/npm/v/flowbite.svg" alt="Latest Release"></a>
+    <a href="https://www.npmjs.com/package/flowbite-mcp"><img src="https://img.shields.io/npm/dt/flowbite-mcp.svg" alt="Total Downloads"></a>
+    <a href="https://github.com/themesberg/flowbite-mcp/releases"><img src="https://img.shields.io/npm/v/flowbite-mcp.svg" alt="Latest Release"></a>
     <a href="https://flowbite.com/docs/getting-started/license/"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License"></a>
 </p>
 
