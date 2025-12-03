@@ -12,6 +12,8 @@
     <a href="https://flowbite.com/docs/getting-started/license/"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License"></a>
 </p>
 
+<a href="https://cursor.com/en-US/install-mcp?name=flowbite&config=eyJjb21tYW5kIjoibnB4IC15IGZsb3diaXRlLW1jcCJ9"><img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Add flowbite MCP server to Cursor" height="32" /></a>
+
 An MCP server that enables AI assistants to access the [Flowbite](https://flowbite.com/) library of Tailwind CSS components—including UI elements, forms, typography, and plugins—while offering an intelligent theme generator for creating custom branded designs within AI-driven development environments.
 
 ## MCP Features
