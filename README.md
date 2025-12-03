@@ -114,6 +114,8 @@ Update the `claude_desktop_config.json` file and add the following configuration
 
 ### Cursor editor
 
+<a href="https://cursor.com/en-US/install-mcp?name=flowbite&config=eyJjb21tYW5kIjoibnB4IC15IGZsb3diaXRlLW1jcCJ9"><img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Add flowbite MCP server to Cursor" height="32" /></a>
+
 Update the `mcp.json` file and add the following configuration:
 
 ```json
