@@ -560,8 +560,31 @@ const getDataPath = (relativePath: string): string => {
 
 // Function to setup all resources and tools
 const setupServer = (server: McpServer) => {
+
+    server.resource(
+      "flowbite_overview",
+      "flowbite://overview/file",
+      {
+        description: "Overview of the Flowbite MCP server and its capabilities.",
+        title: "Flowbite Overview",
+        mimeType: "text/markdown",
+      },
+      async (uri) => {
+        const overviewContent = readFileSync(getDataPath("overview.md"), "utf-8");
+        
+        return {
+          contents: [
+            {
+              uri: uri.href,
+              text: overviewContent,
+              mimeType: "text/markdown",
+            },
+          ],
+        };
+      }
+    );
   
-  server.resource(
+    server.resource(
       "flowbite_theme",
       "flowbite://theme/file",
       {
