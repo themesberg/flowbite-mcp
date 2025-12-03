@@ -95,9 +95,7 @@ MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 
 ## Integration examples
 
-<a href="https://glama.ai/mcp/servers/@zoltanszogyenyi/flowbite-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@zoltanszogyenyi/flowbite-mcp/badge" />
-</a>
+Use the following configuration examples to install the Flowbite MCP server in popular clients such as Cursor, Claude, Windsurf, and more.
 
 ### Claude desktop
 
@@ -143,6 +141,12 @@ Update the `mcp_config.json` file and add the following configuration:
   }
 }
 ```
+
+### Glama.ai
+
+<a href="https://glama.ai/mcp/servers/@zoltanszogyenyi/flowbite-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@zoltanszogyenyi/flowbite-mcp/badge" />
+</a>
 
 ### Local development
 
