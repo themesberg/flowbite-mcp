@@ -95,6 +95,10 @@ MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 
 ## Integration examples
 
+<a href="https://glama.ai/mcp/servers/@zoltanszogyenyi/flowbite-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@zoltanszogyenyi/flowbite-mcp/badge" />
+</a>
+
 ### Claude desktop
 
 Update the `claude_desktop_config.json` file and add the following configuration:
