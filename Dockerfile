@@ -1,6 +1,13 @@
 # Stage 1: Build stage
 FROM node:18-alpine AS builder
 
+# Add metadata labels
+LABEL org.opencontainers.image.title="Flowbite MCP"
+LABEL org.opencontainers.image.description="Flowbite MCP server for UI components and theme generation"
+LABEL org.opencontainers.image.version="1.0.0"
+LABEL org.opencontainers.image.source="https://github.com/themesberg/flowbite-mcp"
+LABEL org.opencontainers.image.licenses="MIT"
+
 # Set working directory
 WORKDIR /app
 
