@@ -25,7 +25,7 @@ An MCP server that enables AI assistants to access the [Flowbite](https://flowbi
 ### Tools:
 
 - **🎯 AI-Powered Theme Generator** - Create custom branded themes from any branded hex color
-- **🎨 [NEW] Figma to Code Generator** - Copy the Figma node url and generate code based on Flowbite and Tailwind CSS
+- **🎨 [NEW] Figma to Code Generator** - Copy the Figma node url and generate code ([video demo](https://x.com/zoltanszogyenyi/status/1996953610966405547))
 
 ### Server:
 

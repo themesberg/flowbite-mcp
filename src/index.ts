@@ -803,6 +803,132 @@ Node data was retrieved successfully.`,
           // Extract the image URL from the response
           const imageUrl = imageData.images?.[nodeId] || imageData.images?.[Object.keys(imageData.images)[0]] || null;
 
+          // Helper function to simplify Figma node data - extracts only essential info for code conversion
+          const simplifyNode = (node: any): any => {
+            if (!node) return null;
+            
+            const simplified: any = {
+              type: node.type,
+              name: node.name,
+            };
+
+            // Add dimensions if available
+            if (node.absoluteBoundingBox) {
+              simplified.size = {
+                width: Math.round(node.absoluteBoundingBox.width),
+                height: Math.round(node.absoluteBoundingBox.height),
+              };
+            }
+
+            // Add layout info for frames
+            if (node.layoutMode) {
+              simplified.layout = {
+                mode: node.layoutMode, // HORIZONTAL, VERTICAL, NONE
+                padding: node.paddingLeft || node.paddingTop ? {
+                  top: node.paddingTop,
+                  right: node.paddingRight,
+                  bottom: node.paddingBottom,
+                  left: node.paddingLeft,
+                } : undefined,
+                gap: node.itemSpacing,
+                align: node.primaryAxisAlignItems,
+                justify: node.counterAxisAlignItems,
+              };
+            }
+
+            // Add corner radius
+            if (node.cornerRadius) {
+              simplified.borderRadius = node.cornerRadius;
+            } else if (node.rectangleCornerRadii) {
+              simplified.borderRadius = node.rectangleCornerRadii;
+            }
+
+            // Add fills (background colors)
+            if (node.fills && node.fills.length > 0) {
+              simplified.fills = node.fills
+                .filter((fill: any) => fill.visible !== false)
+                .map((fill: any) => ({
+                  type: fill.type,
+                  color: fill.color ? {
+                    r: Math.round(fill.color.r * 255),
+                    g: Math.round(fill.color.g * 255),
+                    b: Math.round(fill.color.b * 255),
+                    a: fill.color.a !== undefined ? Math.round(fill.color.a * 100) / 100 : 1,
+                  } : undefined,
+                  opacity: fill.opacity,
+                }));
+            }
+
+            // Add strokes (borders)
+            if (node.strokes && node.strokes.length > 0) {
+              simplified.strokes = node.strokes
+                .filter((stroke: any) => stroke.visible !== false)
+                .map((stroke: any) => ({
+                  type: stroke.type,
+                  color: stroke.color ? {
+                    r: Math.round(stroke.color.r * 255),
+                    g: Math.round(stroke.color.g * 255),
+                    b: Math.round(stroke.color.b * 255),
+                  } : undefined,
+                }));
+              if (node.strokeWeight) {
+                simplified.strokeWeight = node.strokeWeight;
+              }
+            }
+
+            // Add effects (shadows, blur)
+            if (node.effects && node.effects.length > 0) {
+              simplified.effects = node.effects
+                .filter((effect: any) => effect.visible !== false)
+                .map((effect: any) => ({
+                  type: effect.type,
+                  radius: effect.radius,
+                  offset: effect.offset,
+                  color: effect.color ? {
+                    r: Math.round(effect.color.r * 255),
+                    g: Math.round(effect.color.g * 255),
+                    b: Math.round(effect.color.b * 255),
+                    a: Math.round(effect.color.a * 100) / 100,
+                  } : undefined,
+                }));
+            }
+
+            // Add text-specific properties
+            if (node.type === 'TEXT') {
+              simplified.text = node.characters;
+              if (node.style) {
+                simplified.textStyle = {
+                  fontFamily: node.style.fontFamily,
+                  fontWeight: node.style.fontWeight,
+                  fontSize: node.style.fontSize,
+                  lineHeight: node.style.lineHeightPx,
+                  letterSpacing: node.style.letterSpacing,
+                  textAlign: node.style.textAlignHorizontal,
+                };
+              }
+            }
+
+            // Recursively process children
+            if (node.children && node.children.length > 0) {
+              simplified.children = node.children.map(simplifyNode).filter(Boolean);
+            }
+
+            return simplified;
+          };
+
+          // Simplify the node data
+          const simplifiedNodeData = nodeData.nodes ? 
+            Object.keys(nodeData.nodes).reduce((acc: any, key: string) => {
+              const node = nodeData.nodes[key];
+              acc[key] = {
+                document: simplifyNode(node.document),
+                components: node.components ? Object.keys(node.components).length + ' components' : undefined,
+                styles: node.styles ? Object.keys(node.styles).length + ' styles' : undefined,
+              };
+              return acc;
+            }, {}) 
+            : simplifyNode(nodeData);
+
           // Return combined result with AI instructions
           return {
             content: [
@@ -893,15 +1019,17 @@ Generate clean, semantic HTML with Tailwind CSS classes following these guidelin
 - **Source URL**: ${figmaNodeUrl}
 
 ### Rendered Design Image
-${imageUrl ? `![Figma Design](${imageUrl})
+${imageUrl ? `
+
+<img src="${imageUrl}">
 
 **Direct Image URL**: ${imageUrl}` : '⚠️ No image URL available - analyze the node data structure below'}
 
-### Node Structure Data
-The following JSON contains the Figma node structure with layers, styles, and properties:
+### Node Structure Data (Simplified)
+The following JSON contains the essential Figma node structure for code conversion:
 
 \`\`\`json
-${JSON.stringify(nodeData, null, 2)}
+${JSON.stringify(simplifiedNodeData, null, 2)}
 \`\`\`
 
 ---
