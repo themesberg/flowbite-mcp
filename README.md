@@ -70,6 +70,8 @@ node build/index.js
 }
 ```
 
+Learn how to get the [Figma personal access token](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens) to enable the Figma to code generation tool.
+
 ### HTTP server
 
 HTTP-based transport for production and multi-client scenarios:
@@ -81,6 +83,17 @@ node build/index.js --mode http --port 3000
 This will make the MCP server available at 'http://localhost:3000/mcp'.
 
 ### Environment variables
+
+Currently you only need the Figma personal access token if you want to enable the [Figma to code generation tool](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens). You set this variable in your MCP client configuration file.
+
+```bash
+// other options
+"env": {
+  "FIGMA_ACCESS_TOKEN": "YOUR_PERSONAL_FIGMA_ACCESS_TOKEN"
+}
+```
+
+### Hosting variables
 
 Configure the server behavior with these environment variables:
 
