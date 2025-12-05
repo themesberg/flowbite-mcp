@@ -18,13 +18,17 @@ An MCP server that enables AI assistants to access the [Flowbite](https://flowbi
 
 ## MCP Features
 
-- **🎨 60+ UI Components** - Complete access to buttons, cards, modals, dropdowns, and more
-- **📝 Form Elements** - Input fields, checkboxes, radio buttons, select, textarea, and advanced form components
-- **✍️ Typography Components** - Headings, paragraphs, blockquotes, lists, and text styling
-- **🔌 Plugin Integrations** - Charts, datatables, WYSIWYG editors, and datepickers
-- **🎯 AI-Powered Theme Generator** - Create custom branded themes from any hex color
-- **📦 Component Source Code** - Latest Flowbite Tailwind CSS implementations
-- **📋 Metadata Access** - Component descriptions, usage patterns, and integration guides
+### Resources:
+
+- **📦 60+ UI Components** - Complete access the [Flowbite Library](https://flowbite.com/docs/getting-started/introduction/) components of buttons, cards, modals, dropdowns, and more
+
+### Tools:
+
+- **🎯 AI-Powered Theme Generator** - Create custom branded themes from any branded hex color
+- **🎨 [NEW] Figma to Code Generator** - Copy the Figma node url and generate code based on Flowbite and Tailwind CSS
+
+### Server:
+
 - **🌐 Dual Transport Support** - Standard I/O (stdio) for CLI or HTTP Streamable for server deployments
 - **⚡ Production Ready** - Docker support with health checks and monitoring
 - **🎨 Quickstart Guide** - Complete setup and integration documentation
@@ -46,7 +50,7 @@ npx flowbite-mcp --help
 npx flowbite-mcp --mode http --port 3000
 ```
 
-## Transport Modes
+## Local Transport Modes
 
 ### Standard I/O (stdio)
 
@@ -328,7 +332,7 @@ This project is licensed under the MIT License License - see the [LICENSE](LICEN
 - [x] AI-powered theme generator
 - [x] Dual transport support (stdio + HTTP)
 - [ ] Flowbite Pro blocks integration (with license authentication)
-- [ ] Figma to code conversion tool
+- [x] Figma to code conversion tool
 - [ ] Enhanced theme customization options
 - [ ] Component search and filtering
 - [ ] Real-time component preview generation
