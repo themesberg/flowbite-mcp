@@ -56,12 +56,15 @@ The default mode for local development and CLI integrations:
 # Start in stdio mode (default)
 node build/index.js
 
-# Configure in Claude, Cursor, Windsurf
+# Configure in MCP client (ie. Cursor, Windsurf, Claude)
 {
   "mcpServers": {
     "flowbite": {
       "command": "node",
-      "args": ["/path/to/flowbite-mcp/build/index.js"]
+      "args": ["/path/to/flowbite-mcp/build/index.js"],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "YOUR_PERSONAL_FIGMA_ACCESS_TOKEN"
+      }
     }
   }
 }
