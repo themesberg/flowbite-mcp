@@ -674,47 +674,266 @@ const setupServer = (server: McpServer) => {
 
     server.tool(
       'convert-figma-to-code',
-      'Converts a Figma layer to a code block',
+      'Fetches a Figma node and its rendered image from the Figma API and converts it to a code block. Requires FIGMA_ACCESS_TOKEN environment variable to be set.',
       {
-        figmaNodeUrl: z.string().describe('The URL of the Figma node to convert'),
+        figmaNodeUrl: z.string().describe('The URL of the Figma node (e.g., https://www.figma.com/design/fileKey/fileName?node-id=123-456)'),
       },
       async ({ figmaNodeUrl }): Promise<CallToolResult> => {
         try {
+          // Get Figma access token from environment variables
+          const figmaAccessToken = process.env.FIGMA_ACCESS_TOKEN;
+          
+          if (!figmaAccessToken) {
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: `Error: FIGMA_ACCESS_TOKEN environment variable is not set.
+
+To use this tool, you need to:
+1. Generate a Personal Access Token from Figma:
+   - Go to Figma > Settings > Account > Personal access tokens
+   - Generate a new token
+2. Set the FIGMA_ACCESS_TOKEN environment variable with your token
+
+Example for your MCP config:
+{
+  "env": {
+    "FIGMA_ACCESS_TOKEN": "your-personal-access-token"
+  }
+}`,
+                },
+              ],
+            };
+          }
+
+          // Parse Figma URL to extract fileKey and nodeId
+          // URL formats:
+          // https://www.figma.com/file/{fileKey}/{fileName}?node-id={nodeId}
+          // https://www.figma.com/design/{fileKey}/{fileName}?node-id={nodeId}
+          const urlPattern = /figma\.com\/(file|design)\/([a-zA-Z0-9]+)(?:\/[^?]*)?(?:\?.*node-id=([^&]+))?/;
+          const match = figmaNodeUrl.match(urlPattern);
+
+          if (!match) {
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: `Error: Invalid Figma URL format.
+
+Expected formats:
+- https://www.figma.com/file/{fileKey}/{fileName}?node-id={nodeId}
+- https://www.figma.com/design/{fileKey}/{fileName}?node-id={nodeId}
+
+Provided URL: ${figmaNodeUrl}`,
+                },
+              ],
+            };
+          }
+
+          const fileKey = match[2];
+          const nodeId = match[3] ? decodeURIComponent(match[3]) : null;
+
+          if (!nodeId) {
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: `Error: No node-id found in the Figma URL.
+
+Please make sure your URL includes a node-id parameter.
+Example: https://www.figma.com/design/${fileKey}/FileName?node-id=123-456
+
+Provided URL: ${figmaNodeUrl}`,
+                },
+              ],
+            };
+          }
+
+          // API headers
+          const headers = {
+            'X-Figma-Token': figmaAccessToken,
+          };
+
+          // Fetch node data
+          const nodeApiUrl = `https://api.figma.com/v1/files/${fileKey}/nodes?ids=${encodeURIComponent(nodeId)}`;
+          const nodeResponse = await fetch(nodeApiUrl, { headers });
+
+          if (!nodeResponse.ok) {
+            const errorText = await nodeResponse.text();
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: `Error fetching Figma node data:
+Status: ${nodeResponse.status} ${nodeResponse.statusText}
+Response: ${errorText}
+
+API URL: ${nodeApiUrl}`,
+                },
+              ],
+            };
+          }
+
+          const nodeData = await nodeResponse.json();
+
+          // Fetch node image
+          const imageApiUrl = `https://api.figma.com/v1/images/${fileKey}?ids=${encodeURIComponent(nodeId)}&scale=2`;
+          const imageResponse = await fetch(imageApiUrl, { headers });
+
+          if (!imageResponse.ok) {
+            const errorText = await imageResponse.text();
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: `Error fetching Figma node image:
+Status: ${imageResponse.status} ${imageResponse.statusText}
+Response: ${errorText}
+
+API URL: ${imageApiUrl}
+Node data was retrieved successfully.`,
+                },
+              ],
+            };
+          }
+
+          const imageData = await imageResponse.json();
+
+          // Extract the image URL from the response
+          const imageUrl = imageData.images?.[nodeId] || imageData.images?.[Object.keys(imageData.images)[0]] || null;
+
+          // Return combined result with AI instructions
           return {
             content: [
               {
                 type: 'text',
-                text: `Code block converted`,
+                text: `# Figma to Code Conversion Task
+
+## Instructions for AI
+
+You have received a Figma design that needs to be converted to code. Follow these steps:
+
+### Step 1: Analyze the Design
+Look at the rendered image below and the node structure data to understand:
+- The layout and component hierarchy
+- Colors, typography, and spacing used
+- Interactive elements (buttons, inputs, links, etc.)
+- Component patterns that match Flowbite components
+
+### Step 2: Use Flowbite MCP Resources
+Before writing code, fetch the relevant Flowbite component documentation using the MCP resources. Based on the design, you may need:
+
+**Common Components to Check:**
+- \`flowbite://components/buttons\` - For button styles
+- \`flowbite://components/card\` - For card layouts
+- \`flowbite://components/navbar\` - For navigation bars
+- \`flowbite://components/modal\` - For modal dialogs
+- \`flowbite://components/forms\` - For form layouts
+- \`flowbite://forms/input-field\` - For input fields
+- \`flowbite://components/avatar\` - For user avatars
+- \`flowbite://components/badge\` - For badges/tags
+- \`flowbite://components/tables\` - For data tables
+- \`flowbite://components/tabs\` - For tab navigation
+- \`flowbite://components/dropdowns\` - For dropdown menus
+- \`flowbite://components/sidebar\` - For sidebar navigation
+- \`flowbite://components/footer\` - For footer sections
+- \`flowbite://typography/headings\` - For heading styles
+- \`flowbite://typography/text\` - For text styles
+
+### Step 3: Write the Code
+Generate clean, semantic HTML with Tailwind CSS classes following these guidelines:
+
+1. **Use Flowbite Components**: Match the Figma design to Flowbite components whenever possible
+2. **Tailwind CSS Classes**: Use Tailwind utility classes for styling
+3. **Responsive Design**: Include responsive breakpoints (sm:, md:, lg:, xl:)
+4. **Semantic HTML**: Use proper HTML5 semantic elements
+5. **Accessibility**: Include ARIA attributes and proper alt texts
+6. **Match Colors**: Use Flowbite variables and secondly Tailwind color classes that best match the Figma design colors
+7. **Match Spacing**: Use Tailwind spacing utilities (p-*, m-*, gap-*) to match the design
+
+### Step 4: Output Format - IMPORTANT
+
+**⚠️ ONLY output the component code block - DO NOT include:**
+- \`<!DOCTYPE html>\`
+- \`<html>\`, \`</html>\` tags
+- \`<head>\`, \`</head>\` tags
+- \`<body>\`, \`</body>\` tags
+- \`<link>\` tags (CSS imports)
+- \`<script>\` tags (JS imports)
+- Any meta tags or document structure
+
+**✅ DO output:**
+- Only the component HTML markup itself
+- The actual UI component code that would go inside a \`<body>\` tag
+- Clean, well-formatted code block with proper indentation
+- Just the reusable component/section code
+- When possible use the "brand" variables from Flowbite instead of hardcoded colors from Tailwind CSS
+
+**Example of what to output:**
+\`\`\`html
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <img class="rounded-t-lg" src="/image.png" alt="" />
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Card title</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Card description here.</p>
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800">
+            Read more
+        </a>
+    </div>
+</div>
+\`\`\`
+
+---
+
+## Figma Design Data
+
+### File Information
+- **File Key**: ${fileKey}
+- **Node ID**: ${nodeId}
+- **Source URL**: ${figmaNodeUrl}
+
+### Rendered Design Image
+${imageUrl ? `![Figma Design](${imageUrl})
+
+**Direct Image URL**: ${imageUrl}` : '⚠️ No image URL available - analyze the node data structure below'}
+
+### Node Structure Data
+The following JSON contains the Figma node structure with layers, styles, and properties:
+
+\`\`\`json
+${JSON.stringify(nodeData, null, 2)}
+\`\`\`
+
+---
+
+## Now Convert This Design
+
+Based on the image and node data above:
+1. Identify the UI components visible in the design
+2. Fetch the relevant Flowbite component documentation from the MCP resources
+3. Generate ONLY the component HTML/Tailwind CSS code (no document wrapper, no \`<html>\`, \`<head>\`, \`<body>\`, \`<link>\`, or \`<script>\` tags)
+4. Ensure the code is production-ready with proper responsiveness and accessibility`,
               },
             ],
           };
+
         } catch (error) {
-          console.error(`Error converting Figma node to code: ${error}`);
+          console.error(`Error fetching Figma node: ${error}`);
           return {
             content: [
               {
                 type: 'text',
-                text: `Error converting Figma node to code: ${error}`,
+                text: `Error fetching Figma node: ${error instanceof Error ? error.message : String(error)}
+
+Please check:
+1. Your FIGMA_ACCESS_TOKEN is valid
+2. The Figma URL is correct
+3. You have access to the Figma file`,
               },
             ],
-          }
+          };
         }
-      }
-    );
-
-    server.tool(
-      'get_session',
-      'gets the session id and context',
-      {},
-      async ({}): Promise<CallToolResult> => {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: `session`,
-            },
-          ],
-        };
       }
     );
 

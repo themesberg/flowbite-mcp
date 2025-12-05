@@ -56,7 +56,7 @@ The default mode for local development and CLI integrations:
 # Start in stdio mode (default)
 node build/index.js
 
-# Configure in Claude Desktop config.json
+# Configure in Claude, Cursor, Windsurf
 {
   "mcpServers": {
     "flowbite": {
