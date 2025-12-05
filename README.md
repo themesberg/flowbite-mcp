@@ -108,7 +108,10 @@ Update the `claude_desktop_config.json` file and add the following configuration
   "mcpServers": {
     "flowbite": {
       "command": "npx",
-      "args": ["-y", "flowbite-mcp"]
+      "args": ["-y", "flowbite-mcp"],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "YOUR_PERSONAL_FIGMA_ACCESS_TOKEN"
+      }
     }
   }
 }
@@ -125,7 +128,10 @@ Update the `mcp.json` file and add the following configuration:
   "mcpServers": {
     "flowbite": {
       "command": "npx",
-      "args": ["-y", "flowbite-mcp"]
+      "args": ["-y", "flowbite-mcp"],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "YOUR_PERSONAL_FIGMA_ACCESS_TOKEN"
+      }
     }
   }
 }
@@ -140,7 +146,10 @@ Update the `mcp_config.json` file and add the following configuration:
   "mcpServers": {
     "flowbite": {
       "command": "npx",
-      "args": ["-y", "flowbite-mcp"]
+      "args": ["-y", "flowbite-mcp"],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "YOUR_PERSONAL_FIGMA_ACCESS_TOKEN"
+      }
     }
   }
 }
