@@ -18,15 +18,14 @@ An MCP server that enables AI assistants to access the [Flowbite](https://flowbi
 
 ## MCP Features
 
-### Resources:
-
-- **📦 60+ UI Components** - Complete access the [Flowbite Library](https://flowbite.com/docs/getting-started/introduction/) components of buttons, cards, modals, dropdowns, and more
-
 ### Tools:
 
-- **🎯 AI-Powered Theme Generator** - Create custom branded themes from any branded hex color
-- **🎨 [NEW] Figma to Code Generator** - Copy the Figma node url and generate code ([video demo](https://x.com/zoltanszogyenyi/status/1996953610966405547))
+- **🎨 [NEW] Figma to Code Convertor** - Copy the Figma node url and generate code ([video demo](https://x.com/zoltanszogyenyi/status/1996953610966405547))
+- **🎯 Theme file generator** - Create custom branded themes from any branded hex color
 
+### Resources:
+
+- **📦 60+ UI Components** - Complete access to the [Flowbite UI components](https://flowbite.com/docs/getting-started/introduction/)
 ### Server:
 
 - **🌐 Dual Transport Support** - Standard I/O (stdio) for CLI or HTTP Streamable for server deployments
