@@ -1,5 +1,5 @@
 <p>
-    <a href="https://flowbite.com" >
+    <a href="[https://flowbite.com](https://flowbite.com/docs/getting-started/mcp/)" >
       <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/flowbite-mcp-github-2.png">
     </a><br>
     Official MCP server for Flowbite to leverage AI for UI creation and theme generation
@@ -14,7 +14,7 @@
 
 [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=flowbite&config=eyJlbnYiOnsiRklHTUFfQUNDRVNTX1RPS0VOIjoiWU9VUl9QRVJTT05BTF9GSUdNQV9BQ0NFU1NfVE9LRU4ifSwiY29tbWFuZCI6Im5weCAteSBmbG93Yml0ZS1tY3AifQ%3D%3D)
 
-An MCP server that enables AI assistants to access the [Flowbite](https://flowbite.com/) library of Tailwind CSS components—including UI elements, forms, typography, and plugins—while offering an intelligent theme generator for creating custom branded designs within AI-driven development environments.
+An [MCP server](https://flowbite.com/docs/getting-started/mcp/) that enables AI assistants to access the [Flowbite](https://flowbite.com/) library of Tailwind CSS components—including UI elements, forms, typography, and plugins—while offering an intelligent theme generator for creating custom branded designs within AI-driven development environments.
 
 ## MCP Features
 
