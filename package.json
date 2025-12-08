@@ -1,6 +1,6 @@
 {
   "name": "flowbite-mcp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Model Context Protocol server providing AI assistants with access to Flowbite UI components and an intelligent theme generator for Tailwind CSS",
   "main": "build/index.js",
   "type": "module",
