@@ -1,11 +1,12 @@
 {
   "name": "flowbite-mcp",
-  "version": "1.1.1",
-  "description": "Model Context Protocol server providing AI assistants with access to Flowbite UI components and an intelligent theme generator for Tailwind CSS",
+  "version": "1.1.4",
+  "mcpName": "io.github.themesberg/flowbite-mcp",
+  "description": "MCP server to convert Figma designs to Flowbite UI components in Tailwind CSS",
   "main": "build/index.js",
   "type": "module",
   "bin": {
-    "flowbite-mcp": "./build/index.js"
+    "flowbite-mcp": "build/index.js"
   },
   "files": [
     "build",

@@ -64,7 +64,7 @@ const portIndex = args.indexOf('--port');
 const TRANSPORT_MODE = modeIndex !== -1 ? args[modeIndex + 1] : process.env.MCP_TRANSPORT_MODE || 'stdio';
 const PORT = portIndex !== -1 ? parseInt(args[portIndex + 1]) : parseInt(process.env.MCP_PORT || '3000');
 
-console.log(`Initializing Flowbite MCP Server in ${TRANSPORT_MODE} mode${TRANSPORT_MODE === 'http' ? ` on port ${PORT}` : ''}`)
+console.error(`Initializing Flowbite MCP Server in ${TRANSPORT_MODE} mode${TRANSPORT_MODE === 'http' ? ` on port ${PORT}` : ''}`)
 
 const COMPONENT_FILES = [
     {
@@ -1371,7 +1371,7 @@ Example usage:
 // Start server based on transport mode
 if (TRANSPORT_MODE === 'stdio') {
   // Standard I/O mode for local development and CLI integrations
-  console.log('Starting Flowbite MCP Server in stdio mode...');
+  console.error('Starting Flowbite MCP Server in stdio mode...');
   
   const server = new McpServer({
     name: "flowbite-mcp",
@@ -1391,8 +1391,8 @@ if (TRANSPORT_MODE === 'stdio') {
     process.exit(1);
   });
 
-  console.log('Flowbite MCP Server running in stdio mode');
-  console.log('Ready to accept requests via standard I/O');
+  console.error('Flowbite MCP Server running in stdio mode');
+  console.error('Ready to accept requests via standard I/O');
   
 } else if (TRANSPORT_MODE === 'http') {
   // HTTP Streamable mode for server/production deployments
