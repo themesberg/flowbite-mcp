@@ -38,51 +38,8 @@ An [MCP server](https://flowbite.com/docs/getting-started/mcp/) that enables AI 
 The simplest way to use Flowbite MCP Server:
 
 ```bash
-# Run directly with npx (no installation needed)
 npx flowbite-mcp
-
-# Show help and options
-npx flowbite-mcp --help
-
-# Run in HTTP server mode for production
-npx flowbite-mcp --mode http --port 3000
 ```
-
-## Local Transport Modes
-
-### Standard I/O (stdio)
-
-The default mode for local development and CLI integrations:
-
-```bash
-# Start in stdio mode (default)
-node build/index.js
-
-# Configure in MCP client (ie. Cursor, Windsurf, Claude)
-{
-  "mcpServers": {
-    "flowbite": {
-      "command": "node",
-      "args": ["/path/to/flowbite-mcp/build/index.js"],
-      "env": {
-        "FIGMA_ACCESS_TOKEN": "YOUR_PERSONAL_FIGMA_ACCESS_TOKEN"
-      }
-    }
-  }
-}
-```
-
-Learn how to get the [Figma personal access token](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens) to enable the Figma to code generation tool.
-
-### HTTP server
-
-HTTP-based transport for production and multi-client scenarios:
-
-```bash
-node build/index.js --mode http --port 3000
-```
-
-This will make the MCP server available at 'http://localhost:3000/mcp'.
 
 ### Environment variables
 
@@ -95,27 +52,9 @@ Currently you only need the Figma personal access token if you want to enable th
 }
 ```
 
-### Hosting variables
-
-Configure the server behavior with these environment variables:
-
-```bash
-# Transport mode: stdio (default) or http
-MCP_TRANSPORT_MODE=http
-
-# Server port for HTTP mode
-MCP_PORT=3000
-
-# Host binding for HTTP mode
-MCP_HOST=0.0.0.0
-
-# CORS origins (comma-separated)
-MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
-```
-
 ## Integration examples
 
-Use the following configuration examples to install the Flowbite MCP server in popular clients such as Cursor, Claude, Windsurf, and more.
+Use the following configuration examples to install the Flowbite MCP server in popular clients such as Cursor, Claude, Windsurf, and others.
 
 ### Claude desktop
 
@@ -179,6 +118,41 @@ Update the `mcp_config.json` file and add the following configuration:
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@zoltanszogyenyi/flowbite-mcp/badge" />
 </a>
 
+## Local Transport Modes
+
+### Standard I/O (stdio)
+
+The default mode for local development and CLI integrations:
+
+```bash
+# Start in stdio mode (default)
+node build/index.js
+
+{
+  "mcpServers": {
+    "flowbite": {
+      "command": "node",
+      "args": ["/path/to/flowbite-mcp/build/index.js"],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "YOUR_PERSONAL_FIGMA_ACCESS_TOKEN"
+      }
+    }
+  }
+}
+```
+
+Learn how to get the [Figma personal access token](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens) to enable the Figma to code generation tool.
+
+### HTTP server
+
+HTTP-based transport for production and multi-client scenarios:
+
+```bash
+node build/index.js --mode http --port 3000
+```
+
+This will make the MCP server available at 'http://localhost:3000/mcp'.
+
 ### Local development
 
 ```bash
@@ -217,23 +191,22 @@ docker-compose up -d
 curl http://localhost:3000/health
 ```
 
-## Development Scripts
+### Hosting variables
+
+Configure the server behavior with these environment variables:
 
 ```bash
-# Build TypeScript to JavaScript
-npm run build
+# Transport mode: stdio (default) or http
+MCP_TRANSPORT_MODE=http
 
-# Watch mode for development
-npm run watch
+# Server port for HTTP mode
+MCP_PORT=3000
 
-# Development with auto-reload
-npm run dev
+# Host binding for HTTP mode
+MCP_HOST=0.0.0.0
 
-# Run MCP Inspector for debugging
-npm run inspector
-
-# Start production server
-npm start
+# CORS origins (comma-separated)
+MCP_CORS_ORIGINS=http://localhost:3000,https://myapp.com
 ```
 
 ## Docker Configuration
