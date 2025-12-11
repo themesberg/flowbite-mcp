@@ -43,7 +43,7 @@ npx flowbite-mcp
 
 ### Environment variables
 
-Currently you only need the [Figma personal access token](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens) if you want to enable the [igma to code generation tool. 
+Currently you only need the [Figma personal access token](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens) if you want to enable the Figma to code generation tool. 
 
 ```bash
 // other options
