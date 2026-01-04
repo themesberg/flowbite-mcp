@@ -1,18 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Datatables - Flowbite
-description: Use the datatable component to search, sort, filter, export and paginate table data of rows and columns for your web application coded with the utility classes from Tailwind CSS
-group: plugins
-toc: true
-requires_js: true
-
-previous: Charts
-previousLink: plugins/charts/
-
-next: WYSIWYG
-nextLink: plugins/wysiwyg/
----
-
 The datatable component examples from Flowbite are open-source under the MIT License and they are based on the [simple-datatables](https://github.com/fiduswriter/simple-datatables) repository from GitHub which you need to install via NPM or CDN.
 
 This page provides multiple examples of datatable components where you can search, sort, filter, paginate and export table data up to thousands of entries coded with Tailwind CSS and leveraging JavaScript code provided by the parent library.
@@ -23,19 +8,19 @@ All examples are responsive, dark mode and RTL support included and by installin
 
 Before continuing make sure that you have Tailwind CSS, Flowbite, and Simple Datables in your project.
 
-1. Install Tailwind CSS and follow our <a href="{{< ref "getting-started/quickstart" >}}">quickstart guide</a> to install Flowbite and the official plugin
+1. Install Tailwind CSS and follow our quickstart guide to install Flowbite and the official plugin
 
 2. Install the `simple-datatables` library using NPM:
 
-{{< code lang="bash" >}}
+```bash
 npm install simple-datatables --save
-{{< /code >}}
+```
 
 Alternatively, you can also include it in your project using CDN:
 
-{{< code lang="html" file="datatables.html" icon="file" >}}
+```html
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
-{{< /code >}}
+```
 
 Now that you have installed all libraries you can start copy-pasting the datatable components from Flowbite.
 
@@ -45,14 +30,7 @@ Make sure that in addition to the HTML markup you also copy the JavaScript code 
 
 Use this example to show table data with default sorting and pagination functionalities.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/datatables.md" show_dark=true datatables=true disable_init_js=true javascript=`
-if (document.getElementById("default-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-    const dataTable = new simpleDatatables.DataTable("#default-table", {
-        searchable: false,
-        perPageSelect: false
-    });
-}
-` >}}
+```html
 <table id="default-table">
     <thead>
         <tr>
@@ -219,20 +197,22 @@ if (document.getElementById("default-table") && typeof simpleDatatables.DataTabl
         </tr>
     </tbody>
 </table>
-{{< /example >}}
+```
+
+```javascript
+if (document.getElementById("default-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+    const dataTable = new simpleDatatables.DataTable("#default-table", {
+        searchable: false,
+        perPageSelect: false
+    });
+}
+```
 
 ## Table search
 
 Set the `searchable` option to `true` to enable the search functionality for all table data.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/datatables.md" show_dark=true datatables=true disable_init_js=true javascript=`
-if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-    const dataTable = new simpleDatatables.DataTable("#search-table", {
-        searchable: true,
-        sortable: false
-    });
-}
-` >}}
+```html
 <table id="search-table">
     <thead>
         <tr>
@@ -442,45 +422,22 @@ if (document.getElementById("search-table") && typeof simpleDatatables.DataTable
     </tbody>
 </table>
 
-{{< /example >}}
+```
+
+```javascript
+if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+    const dataTable = new simpleDatatables.DataTable("#search-table", {
+        searchable: true,
+        sortable: false
+    });
+}
+```
 
 ## Filtering data
 
 To enable filtering data based on a search query for each column you need to copy the custom code from the JavaScript tab and the HTML structure of the table. Enabling search for each individual data column is an advanced way of letting users browse complex data.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/datatables.md" show_dark=true datatables=true disable_init_js=true javascript=`
-if (document.getElementById("filter-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-    const dataTable = new simpleDatatables.DataTable("#filter-table", {
-        tableRender: (_data, table, type) => {
-            if (type === "print") {
-                return table
-            }
-            const tHead = table.childNodes[0]
-            const filterHeaders = {
-                nodeName: "TR",
-                attributes: {
-                    class: "search-filtering-row"
-                },
-                childNodes: tHead.childNodes[0].childNodes.map(
-                    (_th, index) => ({nodeName: "TH",
-                        childNodes: [
-                            {
-                                nodeName: "INPUT",
-                                attributes: {
-                                    class: "datatable-input",
-                                    type: "search",
-                                    "data-columns": "[" + index + "]"
-                                }
-                            }
-                        ]})
-                )
-            }
-            tHead.childNodes.push(filterHeaders)
-            return table
-        }
-    });
-}
-` >}}
+```html
 <table id="filter-table">
     <thead>
         <tr>
@@ -797,21 +754,47 @@ if (document.getElementById("filter-table") && typeof simpleDatatables.DataTable
         </tr>
     </tbody>
 </table>
-{{< /example >}}
+```
+
+```javascript
+if (document.getElementById("filter-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+    const dataTable = new simpleDatatables.DataTable("#filter-table", {
+        tableRender: (_data, table, type) => {
+            if (type === "print") {
+                return table
+            }
+            const tHead = table.childNodes[0]
+            const filterHeaders = {
+                nodeName: "TR",
+                attributes: {
+                    class: "search-filtering-row"
+                },
+                childNodes: tHead.childNodes[0].childNodes.map(
+                    (_th, index) => ({nodeName: "TH",
+                        childNodes: [
+                            {
+                                nodeName: "INPUT",
+                                attributes: {
+                                    class: "datatable-input",
+                                    type: "search",
+                                    "data-columns": "[" + index + "]"
+                                }
+                            }
+                        ]})
+                )
+            }
+            tHead.childNodes.push(filterHeaders)
+            return table
+        }
+    });
+}
+```
 
 ## Sorting data
 
 By setting the value `sortable` to `true` you'll enable all data rows from the datatable to be sortable by clicking on the table column heading. You can also disable it by setting the same option to `false`.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/datatables.md" show_dark=true datatables=true disable_init_js=true javascript=`
-if (document.getElementById("sorting-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-    const dataTable = new simpleDatatables.DataTable("#sorting-table", {
-        searchable: false,
-        perPageSelect: false,
-        sortable: true
-    });
-}
-` >}}
+```html
 <table id="sorting-table">
     <thead>
         <tr>
@@ -972,7 +955,17 @@ if (document.getElementById("sorting-table") && typeof simpleDatatables.DataTabl
         </tr>
     </tbody>
 </table>
-{{< /example >}}
+```
+
+```javascript
+if (document.getElementById("sorting-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+    const dataTable = new simpleDatatables.DataTable("#sorting-table", {
+        searchable: false,
+        perPageSelect: false,
+        sortable: true
+    });
+}
+```
 
 ## Table pagination
 
@@ -980,16 +973,7 @@ Pagination is enabled by default for all datatables from Flowbite, however, you 
 
 You can also set the `perPageSelect` option to set the selection options of the table.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/datatables.md" show_dark=true datatables=true disable_init_js=true javascript=`
-if (document.getElementById("pagination-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-    const dataTable = new simpleDatatables.DataTable("#pagination-table", {
-        paging: true,
-        perPage: 5,
-        perPageSelect: [5, 10, 15, 20, 25],
-        sortable: false
-    });
-}
-` >}}
+```html
 <table id="pagination-table">
     <thead>
         <tr>
@@ -1212,7 +1196,18 @@ if (document.getElementById("pagination-table") && typeof simpleDatatables.DataT
         </tr>
     </tbody>
 </table>
-{{< /example >}}
+```
+
+```javascript
+if (document.getElementById("pagination-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+    const dataTable = new simpleDatatables.DataTable("#pagination-table", {
+        paging: true,
+        perPage: 5,
+        perPageSelect: [5, 10, 15, 20, 25],
+        sortable: false
+    });
+}
+```
 
 ## Selecting rows
 
@@ -1220,72 +1215,7 @@ Use this example to enable the selection of rows by clicking anywhere one of the
 
 Use the `datatable.selectrow` event to write your own code and get the data from the selected table row.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/datatables.md" show_dark=true datatables=true disable_init_js=true javascript=`
-if (document.getElementById("selection-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-
-    let multiSelect = true;
-    let rowNavigation = false;
-    let table = null;
-
-    const resetTable = function() {
-        if (table) {
-            table.destroy();
-        }
-
-        const options = {
-            rowRender: (row, tr, _index) => {
-                if (!tr.attributes) {
-                    tr.attributes = {};
-                }
-                if (!tr.attributes.class) {
-                    tr.attributes.class = "";
-                }
-                if (row.selected) {
-                    tr.attributes.class += " selected";
-                } else {
-                    tr.attributes.class = tr.attributes.class.replace(" selected", "");
-                }
-                return tr;
-            }
-        };
-        if (rowNavigation) {
-            options.rowNavigation = true;
-            options.tabIndex = 1;
-        }
-
-        table = new simpleDatatables.DataTable("#selection-table", options);
-
-        // Mark all rows as unselected
-        table.data.data.forEach(data => {
-            data.selected = false;
-        });
-
-        table.on("datatable.selectrow", (rowIndex, event) => {
-            event.preventDefault();
-            const row = table.data.data[rowIndex];
-            if (row.selected) {
-                row.selected = false;
-            } else {
-                if (!multiSelect) {
-                    table.data.data.forEach(data => {
-                        data.selected = false;
-                    });
-                }
-                row.selected = true;
-            }
-            table.update();
-        });
-    };
-
-    // Row navigation makes no sense on mobile, so we deactivate it and hide the checkbox.
-    const isMobile = window.matchMedia("(any-pointer:coarse)").matches;
-    if (isMobile) {
-        rowNavigation = false;
-    }
-
-    resetTable();
-}
-` >}}
+```html
 <table id="selection-table">
     <thead>
         <tr>
@@ -1452,152 +1382,80 @@ if (document.getElementById("selection-table") && typeof simpleDatatables.DataTa
         </tr>
     </tbody>
 </table>
-{{< /example >}}
+```
+
+```javascript
+if (document.getElementById("selection-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+
+    let multiSelect = true;
+    let rowNavigation = false;
+    let table = null;
+
+    const resetTable = function() {
+        if (table) {
+            table.destroy();
+        }
+
+        const options = {
+            rowRender: (row, tr, _index) => {
+                if (!tr.attributes) {
+                    tr.attributes = {};
+                }
+                if (!tr.attributes.class) {
+                    tr.attributes.class = "";
+                }
+                if (row.selected) {
+                    tr.attributes.class += " selected";
+                } else {
+                    tr.attributes.class = tr.attributes.class.replace(" selected", "");
+                }
+                return tr;
+            }
+        };
+        if (rowNavigation) {
+            options.rowNavigation = true;
+            options.tabIndex = 1;
+        }
+
+        table = new simpleDatatables.DataTable("#selection-table", options);
+
+        // Mark all rows as unselected
+        table.data.data.forEach(data => {
+            data.selected = false;
+        });
+
+        table.on("datatable.selectrow", (rowIndex, event) => {
+            event.preventDefault();
+            const row = table.data.data[rowIndex];
+            if (row.selected) {
+                row.selected = false;
+            } else {
+                if (!multiSelect) {
+                    table.data.data.forEach(data => {
+                        data.selected = false;
+                    });
+                }
+                row.selected = true;
+            }
+            table.update();
+        });
+    };
+
+    // Row navigation makes no sense on mobile, so we deactivate it and hide the checkbox.
+    const isMobile = window.matchMedia("(any-pointer:coarse)").matches;
+    if (isMobile) {
+        rowNavigation = false;
+    }
+
+    resetTable();
+}
+```
 
 ## Export files
 
 If you want to enable the export of the table data, you can use the `simpleDatatables.exportCSV` function to export the data as a CSV file. The option is also available for TXT, JSON, and SQL formats.
 
-{{< example class="dark:bg-gray-900" github="plugins/datatables.md" show_dark=true datatables=true disable_init_js=true javascript=`
-if (document.getElementById("export-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-
-    const exportCustomCSV = function(dataTable, userOptions = {}) {
-        // A modified CSV export that includes a row of minuses at the start and end.
-        const clonedUserOptions = {
-            ...userOptions
-        }
-        clonedUserOptions.download = false
-        const csv = simpleDatatables.exportCSV(dataTable, clonedUserOptions)
-        // If CSV didn't work, exit.
-        if (!csv) {
-            return false
-        }
-        const defaults = {
-            download: true,
-            lineDelimiter: "\n",
-            columnDelimiter: ";"
-        }
-        const options = {
-            ...defaults,
-            ...clonedUserOptions
-        }
-        const separatorRow = Array(dataTable.data.headings.filter((_heading, index) => !dataTable.columns.settings[index]?.hidden).length)
-            .fill("+")
-            .join("+"); // Use "+" as the delimiter
-
-        const str = separatorRow + options.lineDelimiter + csv + options.lineDelimiter + separatorRow;
-
-        if (userOptions.download) {
-            // Create a link to trigger the download
-            const link = document.createElement("a");
-            link.href = encodeURI("data:text/csv;charset=utf-8," + str);
-            link.download = (options.filename || "datatable_export") + ".txt";
-            // Append the link
-            document.body.appendChild(link);
-            // Trigger the download
-            link.click();
-            // Remove the link
-            document.body.removeChild(link);
-        }
-
-        return str
-    }
-    const table = new simpleDatatables.DataTable("#export-table", {
-        template: (options, dom) => "<div class='" + options.classes.top + "'>" +
-            "<div class='flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-3 rtl:space-x-reverse w-full sm:w-auto'>" +
-            (options.paging && options.perPageSelect ?
-                "<div class='" + options.classes.dropdown + "'>" +
-                    "<label>" +
-                        "<select class='" + options.classes.selector + "'></select> " + options.labels.perPage +
-                    "</label>" +
-                "</div>" : ""
-            ) + "<button id='exportDropdownButton' type='button' class='flex w-full sm:w-auto text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none'>" +
-            "Export as" +
-            "<svg class='-me-0.5 ms-1.5 h-4 w-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'>" +
-                "<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 9-7 7-7-7' />" +
-            "</svg>" +
-        "</button>" +
-        "<div id='exportDropdown' class='z-10 hidden w-52 divide-y divide-gray-100 rounded-lg bg-white shadow-sm dark:bg-gray-700' data-popper-placement='bottom'>" +
-            "<ul class='p-2 text-left text-sm font-medium text-gray-500 dark:text-gray-400' aria-labelledby='exportDropdownButton'>" +
-                "<li>" +
-                    "<button id='export-csv' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
-                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
-                            "<path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2 2h12a2 2 0 0 0 2-2 2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2V4a2 2 0 0 0-2-2h-7Zm1.018 8.828a2.34 2.34 0 0 0-2.373 2.13v.008a2.32 2.32 0 0 0 2.06 2.497l.535.059a.993.993 0 0 0 .136.006.272.272 0 0 1 .263.367l-.008.02a.377.377 0 0 1-.018.044.49.49 0 0 1-.078.02 1.689 1.689 0 0 1-.297.021h-1.13a1 1 0 1 0 0 2h1.13c.417 0 .892-.05 1.324-.279.47-.248.78-.648.953-1.134a2.272 2.272 0 0 0-2.115-3.06l-.478-.052a.32.32 0 0 1-.285-.341.34.34 0 0 1 .344-.306l.94.02a1 1 0 1 0 .043-2l-.943-.02h-.003Zm7.933 1.482a1 1 0 1 0-1.902-.62l-.57 1.747-.522-1.726a1 1 0 0 0-1.914.578l1.443 4.773a1 1 0 0 0 1.908.021l1.557-4.773Zm-13.762.88a.647.647 0 0 1 .458-.19h1.018a1 1 0 1 0 0-2H6.647A2.647 2.647 0 0 0 4 13.647v1.706A2.647 2.647 0 0 0 6.647 18h1.018a1 1 0 1 0 0-2H6.647A.647.647 0 0 1 6 15.353v-1.706c0-.172.068-.336.19-.457Z' clip-rule='evenodd'/>" +
-                        "</svg>" +
-                        "<span>Export CSV</span>" +
-                    "</button>" +
-                "</li>" +
-                "<li>" +
-                    "<button id='export-json' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
-                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
-                            "<path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Zm-.293 9.293a1 1 0 0 1 0 1.414L9.414 14l1.293 1.293a1 1 0 0 1-1.414 1.414l-2-2a1 1 0 0 1 0-1.414l2-2a1 1 0 0 1 1.414 0Zm2.586 1.414a1 1 0 0 1 1.414-1.414l2 2a1 1 0 0 1 0 1.414l-2 2a1 1 0 0 1-1.414-1.414L14.586 14l-1.293-1.293Z' clip-rule='evenodd'/>" +
-                        "</svg>" +
-                        "<span>Export JSON</span>" +
-                    "</button>" +
-                "</li>" +
-                "<li>" +
-                    "<button id='export-txt' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
-                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
-                            "<path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z' clip-rule='evenodd'/>" +
-                        "</svg>" +
-                        "<span>Export TXT</span>" +
-                    "</button>" +
-                "</li>" +
-                "<li>" +
-                    "<button id='export-sql' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
-                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
-                            "<path d='M12 7.205c4.418 0 8-1.165 8-2.602C20 3.165 16.418 2 12 2S4 3.165 4 4.603c0 1.437 3.582 2.602 8 2.602ZM12 22c4.963 0 8-1.686 8-2.603v-4.404c-.052.032-.112.06-.165.09a7.75 7.75 0 0 1-.745.387c-.193.088-.394.173-.6.253-.063.024-.124.05-.189.073a18.934 18.934 0 0 1-6.3.998c-2.135.027-4.26-.31-6.3-.998-.065-.024-.126-.05-.189-.073a10.143 10.143 0 0 1-.852-.373 7.75 7.75 0 0 1-.493-.267c-.053-.03-.113-.058-.165-.09v4.404C4 20.315 7.037 22 12 22Zm7.09-13.928a9.91 9.91 0 0 1-.6.253c-.063.025-.124.05-.189.074a18.935 18.935 0 0 1-6.3.998c-2.135.027-4.26-.31-6.3-.998-.065-.024-.126-.05-.189-.074a10.163 10.163 0 0 1-.852-.372 7.816 7.816 0 0 1-.493-.268c-.055-.03-.115-.058-.167-.09V12c0 .917 3.037 2.603 8 2.603s8-1.686 8-2.603V7.596c-.052.031-.112.059-.165.09a7.816 7.816 0 0 1-.745.386Z'/>" +
-                        "</svg>" +
-                        "<span>Export SQL</span>" +
-                    "</button>" +
-                "</li>" +
-            "</ul>" +
-        "</div>" + "</div>" +
-            (options.searchable ?
-                "<div class='" + options.classes.search + "'>" +
-                    "<input class='" + options.classes.input + "' placeholder='" + options.labels.placeholder + "' type='search' title='" + options.labels.searchTitle + "'" + (dom.id ? " aria-controls='" + dom.id + "'" : "") + ">" +
-                "</div>" : ""
-            ) +
-        "</div>" +
-        "<div class='" + options.classes.container + "'" + (options.scrollY.length ? " style='height: " + options.scrollY + "; overflow-Y: auto;'" : "") + "></div>" +
-        "<div class='" + options.classes.bottom + "'>" +
-            (options.paging ?
-                "<div class='" + options.classes.info + "'></div>" : ""
-            ) +
-            "<nav class='" + options.classes.pagination + "'></nav>" +
-        "</div>"
-    })
-    const $exportButton = document.getElementById("exportDropdownButton");
-    const $exportDropdownEl = document.getElementById("exportDropdown");
-    const dropdown = new Dropdown($exportDropdownEl, $exportButton);
-    console.log(dropdown)
-
-    document.getElementById("export-csv").addEventListener("click", () => {
-        simpleDatatables.exportCSV(table, {
-            download: true,
-            lineDelimiter: "\n",
-            columnDelimiter: ";"
-        })
-    })
-    document.getElementById("export-sql").addEventListener("click", () => {
-        simpleDatatables.exportSQL(table, {
-            download: true,
-            tableName: "export_table"
-        })
-    })
-    document.getElementById("export-txt").addEventListener("click", () => {
-        simpleDatatables.exportTXT(table, {
-            download: true
-        })
-    })
-    document.getElementById("export-json").addEventListener("click", () => {
-        simpleDatatables.exportJSON(table, {
-            download: true,
-            space: 3
-        })
-    })
-}
-` >}}
+```html
 <table id="export-table">
     <thead>
         <tr>
@@ -1764,7 +1622,148 @@ if (document.getElementById("export-table") && typeof simpleDatatables.DataTable
         </tr>
     </tbody>
 </table>
-{{< /example >}}
+```
+
+```javascript
+if (document.getElementById("export-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+
+    const exportCustomCSV = function(dataTable, userOptions = {}) {
+        // A modified CSV export that includes a row of minuses at the start and end.
+        const clonedUserOptions = {
+            ...userOptions
+        }
+        clonedUserOptions.download = false
+        const csv = simpleDatatables.exportCSV(dataTable, clonedUserOptions)
+        // If CSV didn't work, exit.
+        if (!csv) {
+            return false
+        }
+        const defaults = {
+            download: true,
+            lineDelimiter: "\n",
+            columnDelimiter: ";"
+        }
+        const options = {
+            ...defaults,
+            ...clonedUserOptions
+        }
+        const separatorRow = Array(dataTable.data.headings.filter((_heading, index) => !dataTable.columns.settings[index]?.hidden).length)
+            .fill("+")
+            .join("+"); // Use "+" as the delimiter
+
+        const str = separatorRow + options.lineDelimiter + csv + options.lineDelimiter + separatorRow;
+
+        if (userOptions.download) {
+            // Create a link to trigger the download
+            const link = document.createElement("a");
+            link.href = encodeURI("data:text/csv;charset=utf-8," + str);
+            link.download = (options.filename || "datatable_export") + ".txt";
+            // Append the link
+            document.body.appendChild(link);
+            // Trigger the download
+            link.click();
+            // Remove the link
+            document.body.removeChild(link);
+        }
+
+        return str
+    }
+    const table = new simpleDatatables.DataTable("#export-table", {
+        template: (options, dom) => "<div class='" + options.classes.top + "'>" +
+            "<div class='flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-3 rtl:space-x-reverse w-full sm:w-auto'>" +
+            (options.paging && options.perPageSelect ?
+                "<div class='" + options.classes.dropdown + "'>" +
+                    "<label>" +
+                        "<select class='" + options.classes.selector + "'></select> " + options.labels.perPage +
+                    "</label>" +
+                "</div>" : ""
+            ) + "<button id='exportDropdownButton' type='button' class='flex w-full sm:w-auto text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none'>" +
+            "Export as" +
+            "<svg class='-me-0.5 ms-1.5 h-4 w-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'>" +
+                "<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 9-7 7-7-7' />" +
+            "</svg>" +
+        "</button>" +
+        "<div id='exportDropdown' class='z-10 hidden w-52 divide-y divide-gray-100 rounded-lg bg-white shadow-sm dark:bg-gray-700' data-popper-placement='bottom'>" +
+            "<ul class='p-2 text-left text-sm font-medium text-gray-500 dark:text-gray-400' aria-labelledby='exportDropdownButton'>" +
+                "<li>" +
+                    "<button id='export-csv' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
+                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
+                            "<path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2 2h12a2 2 0 0 0 2-2 2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2V4a2 2 0 0 0-2-2h-7Zm1.018 8.828a2.34 2.34 0 0 0-2.373 2.13v.008a2.32 2.32 0 0 0 2.06 2.497l.535.059a.993.993 0 0 0 .136.006.272.272 0 0 1 .263.367l-.008.02a.377.377 0 0 1-.018.044.49.49 0 0 1-.078.02 1.689 1.689 0 0 1-.297.021h-1.13a1 1 0 1 0 0 2h1.13c.417 0 .892-.05 1.324-.279.47-.248.78-.648.953-1.134a2.272 2.272 0 0 0-2.115-3.06l-.478-.052a.32.32 0 0 1-.285-.341.34.34 0 0 1 .344-.306l.94.02a1 1 0 1 0 .043-2l-.943-.02h-.003Zm7.933 1.482a1 1 0 1 0-1.902-.62l-.57 1.747-.522-1.726a1 1 0 0 0-1.914.578l1.443 4.773a1 1 0 0 0 1.908.021l1.557-4.773Zm-13.762.88a.647.647 0 0 1 .458-.19h1.018a1 1 0 1 0 0-2H6.647A2.647 2.647 0 0 0 4 13.647v1.706A2.647 2.647 0 0 0 6.647 18h1.018a1 1 0 1 0 0-2H6.647A.647.647 0 0 1 6 15.353v-1.706c0-.172.068-.336.19-.457Z' clip-rule='evenodd'/>" +
+                        "</svg>" +
+                        "<span>Export CSV</span>" +
+                    "</button>" +
+                "</li>" +
+                "<li>" +
+                    "<button id='export-json' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
+                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
+                            "<path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Zm-.293 9.293a1 1 0 0 1 0 1.414L9.414 14l1.293 1.293a1 1 0 0 1-1.414 1.414l-2-2a1 1 0 0 1 0-1.414l2-2a1 1 0 0 1 1.414 0Zm2.586 1.414a1 1 0 0 1 1.414-1.414l2 2a1 1 0 0 1 0 1.414l-2 2a1 1 0 0 1-1.414-1.414L14.586 14l-1.293-1.293Z' clip-rule='evenodd'/>" +
+                        "</svg>" +
+                        "<span>Export JSON</span>" +
+                    "</button>" +
+                "</li>" +
+                "<li>" +
+                    "<button id='export-txt' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
+                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
+                            "<path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z' clip-rule='evenodd'/>" +
+                        "</svg>" +
+                        "<span>Export TXT</span>" +
+                    "</button>" +
+                "</li>" +
+                "<li>" +
+                    "<button id='export-sql' class='group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white'>" +
+                        "<svg class='me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'>" +
+                            "<path d='M12 7.205c4.418 0 8-1.165 8-2.602C20 3.165 16.418 2 12 2S4 3.165 4 4.603c0 1.437 3.582 2.602 8 2.602ZM12 22c4.963 0 8-1.686 8-2.603v-4.404c-.052.032-.112.06-.165.09a7.75 7.75 0 0 1-.745.387c-.193.088-.394.173-.6.253-.063.024-.124.05-.189.073a18.934 18.934 0 0 1-6.3.998c-2.135.027-4.26-.31-6.3-.998-.065-.024-.126-.05-.189-.073a10.143 10.143 0 0 1-.852-.373 7.75 7.75 0 0 1-.493-.267c-.053-.03-.113-.058-.165-.09v4.404C4 20.315 7.037 22 12 22Zm7.09-13.928a9.91 9.91 0 0 1-.6.253c-.063.025-.124.05-.189.074a18.935 18.935 0 0 1-6.3.998c-2.135.027-4.26-.31-6.3-.998-.065-.024-.126-.05-.189-.074a10.163 10.163 0 0 1-.852-.372 7.816 7.816 0 0 1-.493-.268c-.055-.03-.115-.058-.167-.09V12c0 .917 3.037 2.603 8 2.603s8-1.686 8-2.603V7.596c-.052.031-.112.059-.165.09a7.816 7.816 0 0 1-.745.386Z'/>" +
+                        "</svg>" +
+                        "<span>Export SQL</span>" +
+                    "</button>" +
+                "</li>" +
+            "</ul>" +
+        "</div>" + "</div>" +
+            (options.searchable ?
+                "<div class='" + options.classes.search + "'>" +
+                    "<input class='" + options.classes.input + "' placeholder='" + options.labels.placeholder + "' type='search' title='" + options.labels.searchTitle + "'" + (dom.id ? " aria-controls='" + dom.id + "'" : "") + ">" +
+                "</div>" : ""
+            ) +
+        "</div>" +
+        "<div class='" + options.classes.container + "'" + (options.scrollY.length ? " style='height: " + options.scrollY + "; overflow-Y: auto;'" : "") + "></div>" +
+        "<div class='" + options.classes.bottom + "'>" +
+            (options.paging ?
+                "<div class='" + options.classes.info + "'></div>" : ""
+            ) +
+            "<nav class='" + options.classes.pagination + "'></nav>" +
+        "</div>"
+    })
+    const $exportButton = document.getElementById("exportDropdownButton");
+    const $exportDropdownEl = document.getElementById("exportDropdown");
+    const dropdown = new Dropdown($exportDropdownEl, $exportButton);
+    console.log(dropdown)
+
+    document.getElementById("export-csv").addEventListener("click", () => {
+        simpleDatatables.exportCSV(table, {
+            download: true,
+            lineDelimiter: "\n",
+            columnDelimiter: ";"
+        })
+    })
+    document.getElementById("export-sql").addEventListener("click", () => {
+        simpleDatatables.exportSQL(table, {
+            download: true,
+            tableName: "export_table"
+        })
+    })
+    document.getElementById("export-txt").addEventListener("click", () => {
+        simpleDatatables.exportTXT(table, {
+            download: true
+        })
+    })
+    document.getElementById("export-json").addEventListener("click", () => {
+        simpleDatatables.exportJSON(table, {
+            download: true,
+            space: 3
+        })
+    })
+}
+```
 
 ## JavaScript behaviour
 
@@ -1772,20 +1771,20 @@ Learn more about how you can customize the DataTables plugin such as changing th
 
 After installing the DataTables plugin either via NPM or CDN you can initialize by calling the `DataTable` constructor and passing the table selector as the first argument.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 // if you installed via CDN
 const dataTable = new simpleDatatables.DataTable("#default-table");
 
 // if you installed via NPM
 import { DataTable } from "simple-datatables";
 const dataTable = DataTable("#default-table");
-{{< /code >}}
+```
 
 You can pass an object of options as the second argument to customize the table appearance and behavior.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 const dataTable = new simpleDatatables.DataTable("#default-table", options);
-{{< /code >}}
+```
 
 After initializing the DataTable, you can access the instance methods and properties.
 
@@ -1799,7 +1798,7 @@ Check out some of the more commonly used options that you can pass to the DataTa
 
 Use the `data` option to pass data from an array of arrays to the table using JavaScript.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 const customData = {
     "headings": [
         "Name",
@@ -1820,7 +1819,7 @@ const customData = {
 };
 
 const dataTable = new DataTable("#default-table", { data: customData });
-{{< /code >}}
+```
 
 This is a useful feature where instead of a hard coded array you can pass data from an API or a JSON file.
 
@@ -1828,7 +1827,7 @@ This is a useful feature where instead of a hard coded array you can pass data f
 
 Use the following options to customize the appearance of the table such as adding a caption, custom classes, footer, header, updating the HTML rendering template, and enabling vertical scrolling, and more.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 const dataTable = new DataTable("#default-table", {
     caption: "Flowbite is an open-source library",
     classes: {
@@ -1845,7 +1844,7 @@ const dataTable = new DataTable("#default-table", {
     },
     scrollY: "300px", // enable vertical scrolling
 });
-{{< /code >}}
+```
 
 These options are useful if you want to add your own HTML elements inside the dynamically generated table header or footer as we used in the export a file example above.
 
@@ -1853,7 +1852,7 @@ These options are useful if you want to add your own HTML elements inside the dy
 
 Use these options to enable pagination, set the number of rows per page, and customize the appearance.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 const dataTable = new DataTable("#default-table", {
     paging: true, // enable or disable pagination
     perPage: 10, // set the number of rows per page
@@ -1861,7 +1860,7 @@ const dataTable = new DataTable("#default-table", {
     firstLast: true, // enable or disable the first and last buttons
     nextPrev: true, // enable or disable the next and previous buttons
 });
-{{< /code >}}
+```
 
 Pagination is a useful feature when you have a large dataset and you want to split it into multiple pages.
 
@@ -1869,13 +1868,13 @@ Pagination is a useful feature when you have a large dataset and you want to spl
 
 These options can be used to enable searching, set the search placeholder, and customize the appearance.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 const dataTable = new DataTable("#default-table", {
     searchable: true, // enable or disable searching
     sensitivity: "base" // set the search sensitivity (base, accent, case, variant)
     searchQuerySeparator: " ", // set the search query separator
 });
-{{< /code >}}
+```
 
 The searching feature is great when you have a large dataset and you want to search for a specific row.
 
@@ -1883,7 +1882,7 @@ The searching feature is great when you have a large dataset and you want to sea
 
 Use these options to enable sorting, set the default sort column, and customize the sort appearance.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 const dataTable = new DataTable("#default-table", {
     sortable: true, // enable or disable sorting
     locale: "en-US", // set the locale for sorting
@@ -1891,7 +1890,7 @@ const dataTable = new DataTable("#default-table", {
     caseFirst: "false", // set the case first for sorting (upper, lower)
     ignorePunctuation: true // enable or disable punctuation sorting
 });
-{{< /code >}}
+```
 
 The sorting feature is useful when you want to sort the table rows based on a specific column.
 
@@ -1899,7 +1898,7 @@ The sorting feature is useful when you want to sort the table rows based on a sp
 
 Check out some of the common methods that you can use to interact with the DataTable instance.
 
-{{< code lang="javascript" file="datatables.js" icon="file" >}}
+```javascript
 // programatically search the table where the "term" variable is the query string
 dataTable.search(term, columns);
 
@@ -1913,7 +1912,7 @@ dataTable.insert({
 
 // updates the DOM of the table
 dataTable.update();
-{{< /code >}}
+```
 
 Here's a full list of the <a href="https://fiduswriter.github.io/simple-datatables/documentation/#methods" target="_blank" rel="nofollow">exposed methods and properties</a> from the simple-datatables repository.
 

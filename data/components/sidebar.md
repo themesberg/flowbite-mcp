@@ -1,23 +1,10 @@
----
-layout: docs
-title: Tailwind CSS Sidebar - Flowbite
-description: Use the sidebar component to show a list of menu items and multi-level menu items on either side of the page to navigate on your website
-group: components
-toc: true
-
-previous: Rating
-previousLink: components/rating/
-next: Skeleton
-nextLink: components/skeleton/
----
-
 The sidebar component can be used as a complementary element relative to the navbar shown on either the left or right side of the page used for the navigation on your web application, including menu items, multi-level menu items, call to actions elements, and more.
 
 ## Default sidebar
 
 Use this example to show a responsive list of menu items inside the sidebar with icons and labels.
 
-{{< example github="components/sidebar.md" bodyClass="!p-0" iframeHeight="600" iframeMaxHeight="640" show_dark=true >}}
+```html
 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
    <span class="sr-only">Open sidebar</span>
    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -145,17 +132,15 @@ Use this example to show a responsive list of menu items inside the sidebar with
       </div>
    </div>
 </div>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Multi-level menu
 
 Use this sidebar example to create multi-level menu items by applying the `data-collapse-toggle="id"` data attribute from Flowbite and toggle the second-level menu item.
 
-{{< example github="components/sidebar.md" bodyClass="!p-0" iframeHeight="640" iframeMaxHeight="640" show_dark=true >}}
+```html
 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
    <span class="sr-only">Open sidebar</span>
    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -301,13 +286,13 @@ Use this sidebar example to create multi-level menu items by applying the `data-
       </div>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Content separator
 
 Separate the content inside the sidebar component by applying a border separator between the two menus.
 
-{{< example github="components/sidebar.md" bodyClass="!p-0" iframeHeight="640" iframeMaxHeight="640" show_dark=true >}}
+```html
 <button  data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
    <span class="sr-only">Open sidebar</span>
    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -473,13 +458,13 @@ Separate the content inside the sidebar component by applying a border separator
       </div>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## CTA button
 
 Use this example to add a CTA button inside the sidebar component and encourage your users to visit the dedicated page.
 
-{{< example github="components/sidebar.md" bodyClass="!p-0" iframeHeight="640" iframeMaxHeight="640" show_dark=true >}}
+```html
 
 <button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
    <span class="sr-only">Open sidebar</span>
@@ -645,13 +630,13 @@ Use this example to add a CTA button inside the sidebar component and encourage 
       </div>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Logo branding
 
 Show the logo of your brand and link back to the homepage from the top part of the sidebar.
 
-{{< example github="components/sidebar.md" bodyClass="!p-0" iframeHeight="640" iframeMaxHeight="640" show_dark=true >}}
+```html
 <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
    <span class="sr-only">Open sidebar</span>
    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -783,13 +768,13 @@ Show the logo of your brand and link back to the homepage from the top part of t
       </div>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Sidebar with navbar
 
 Use this example to show a navbar together with a sidebar layout for your web application.
 
-{{< example github="components/sidebar.md" bodyClass="!p-0" iframeHeight="640" iframeMaxHeight="640" show_dark=true >}}
+```html
 
 <nav class="fixed top-0 z-50 w-full bg-neutral-primary-soft border-b border-default">
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -968,13 +953,13 @@ Use this example to show a navbar together with a sidebar layout for your web ap
       </div>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Off-canvas sidebar
 
 Use this example to show the navigation as an off-canvas drawer component when clicking on an element.
 
-{{< example github="components/sidebar.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and show -->
 <div class="text-center">
@@ -1056,7 +1041,7 @@ Use this example to show the navigation as an off-canvas drawer component when c
       </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## More examples
 

@@ -1,23 +1,10 @@
----
-layout: docs
-title: Tailwind CSS Spinner - Flowbite
-description: Use the spinner component as a loader indicator in your projects when fetching data based on an animated SVG using the utility classes from Tailwind CSS
-group: components
-toc: true
-
-previous: Speed Dial
-previousLink: components/speed-dial/
-next: Stepper
-nextLink: components/stepper/
----
-
 The spinner component can be used as a loading indicator which comes in multiple colors, sizes, and styles separately or inside elements such as buttons to improve the user experience whenever data is being fetched from your server.
 
 ## Default spinner
 
 Use the following SVG element with the `animate-spin` animation class to show a loading animation:
 
-{{< example github="components/spinner.md" show_dark=true >}}
+```html
 <div role="status">
     <svg aria-hidden="true" class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -25,7 +12,7 @@ Use the following SVG element with the `animate-spin` animation class to show a 
     </svg>
     <span class="sr-only">Loading...</span>
 </div>
-{{< /example >}}
+```
 
 ## Colors
 
@@ -34,7 +21,7 @@ You can change the colors of the spinner element using the fill and color utilit
 -   use `fill-{*}` to change the main colors
 -   use `text-{*}` to change the background
 
-{{< example github="components/spinner.md" class="flex items-center space-x-2 rtl:space-x-reverse" show_dark=true >}}
+```html
 <div role="status">
     <svg aria-hidden="true" class="inline w-8 h-8 w-8 h-8 text-neutral-tertiary animate-spin fill-brand" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -84,13 +71,13 @@ You can change the colors of the spinner element using the fill and color utilit
     </svg>
     <span class="sr-only">Loading...</span>
 </div>
-{{< /example >}}
+```
 
 ## Sizes
 
 Change the size of the spinner component using the `h-{*}` and `w-{*}` utility classes from Tailwind CSS:
 
-{{< example github="components/spinner.md" class="flex items-center space-x-2 rtl:space-x-reverse" show_dark=true >}}
+```html
 
 <div role="status">
     <svg aria-hidden="true" class="inline w-4 h-4 w-8 h-8 text-neutral-tertiary animate-spin fill-brand" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,13 +107,13 @@ Change the size of the spinner component using the `h-{*}` and `w-{*}` utility c
     </svg>
     <span class="sr-only">Loading...</span>
 </div>
-{{< /example >}}
+```
 
 ## Alignment
 
 Because the spinner component is an inline HTML element it can easily be aligned on the left, center, or right side using the `text-{left|center|right}` utility classes:
 
-{{< example github="components/spinner.md" show_dark=true >}}
+```html
 
 <div class="text-left rtl:text-right">
     <div role="status">
@@ -155,13 +142,13 @@ Because the spinner component is an inline HTML element it can easily be aligned
         <span class="sr-only">Loading...</span>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Spinner with card
 
 Use this animated loading indicator when content inside of a card is still loading.
 
-{{< example github="components/spinner.md" show_dark=true >}}
+```html
 
 <div class="relative items-center block max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <h5 class="mb-2 text-xl font-semibold tracking-tight text-heading opacity-20">Noteworthy technology acquisitions 2021</h5>
@@ -171,13 +158,13 @@ Use this animated loading indicator when content inside of a card is still loadi
         <span class="sr-only">Loading...</span>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Progress spinner
 
 Use this animated spinner component inside a list of steppers elements.
 
-{{< example github="components/spinner.md" show_dark=true >}}
+```html
 
 <h2 class="mb-4 text-lg font-medium text-heading">Converting your image:</h2>
 <ul class="max-w-md space-y-3 text-body list-inside">
@@ -197,13 +184,13 @@ Use this animated spinner component inside a list of steppers elements.
         Preparing your file
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Buttons
 
 The spinner component can also be used inside elements such as buttons when submitting form data:
 
-{{< example github="components/spinner.md" show_dark=true >}}
+```html
 
 <button type="button" class="inline-flex items-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary-soft shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     <svg aria-hidden="true" class="w-4 h-4 text-neutral-tertiary animate-spin fill-brand me-2" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -213,7 +200,7 @@ The spinner component can also be used inside elements such as buttons when subm
     Loading...
 </button>
 
-{{< /example >}}
+```
 
 ## Accessibillity
 

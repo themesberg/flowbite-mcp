@@ -1,24 +1,10 @@
----
-layout: docs
-title: Tailwind CSS Forms - Flowbite
-description: Use the Tailwind CSS form and input elements such as checkboxes, radios, textarea, text inputs to collect information from users with Flowbite
-group: components
-toc: true
-requires_js: true
-
-previous: Footer
-previousLink: components/footer/
-next: Gallery
-nextLink: components/gallery/
----
-
 Get started with these custom Tailwind CSS form components to gather information from your users using input text elements, checkboxes, radios, textareas, selects, file uploads, toggle switches, and more.
 
 ## Default form
 
 This is an example of a form component including an email, password, checkbox, and submit button that you can use as a starting point for any form element in your website using Flowbite and Tailwind CSS.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <div class="mb-5">
     <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Your email</label>
@@ -34,17 +20,15 @@ This is an example of a form component including an email, password, checkbox, a
   </label>
   <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
 </form>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_tw3 >}}
-</div>
+
 
 ## Floating labels
 
 Use these form elements inspired by material design from Google to adjust the `label` tag as the visual placeholder for the input elements using the `peer-placeholder-shown` and `peer-focus` utility classes. These components require Tailwind CSS v3.x and above.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 
 <form class="max-w-md mx-auto">
   <div class="relative z-0 w-full mb-5 group">
@@ -81,13 +65,13 @@ Use these form elements inspired by material design from Google to adjust the `l
   </div>
   <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
 </form>
-{{< /example >}}
+```
 
 ## Input Sizes
 
 Use the following utility classes to create three different sizing options (large, base, and small) for your form input elements.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto space-y-4">
     <div>
         <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Small Input</label>
@@ -106,24 +90,24 @@ Use the following utility classes to create three different sizing options (larg
         <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required />
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Disabled inputs
 
 Use the following utility classes to indicate a disabled form input item.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto space-y-4">
   <input type="text" id="disabled-input" aria-label="disabled input" class="bg-neutral-secondary-medium border border-default-medium text-fg-disabled text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="Disabled input" disabled>
   <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="Disabled readonly input" disabled readonly>
 </form>
-{{< /example >}}
+```
 
 ## Shadow inputs
 
 Alternatively, you can decide to apply a shadow styling using the `shadow-xs` class to any of your form input elements.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 
 <form class="max-w-sm mx-auto">
   <div class="mb-5">
@@ -143,26 +127,26 @@ Alternatively, you can decide to apply a shadow styling using the `shadow-xs` cl
   <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
 </form>
 
-{{< /example >}}
+```
 
 ## Helper text
 
 Use the following markup to also add a helper text below your form input item. Usually used for newsletter signup elements.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto"> 
   <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Your email</label>
   <input type="email" id="email" aria-describedby="helper-text-explanation" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="name@flowbite.com">
 
   <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Read our <a href="#" class="font-medium text-fg-brand hover:underline ">Privacy Policy</a>.</p>
 </form>
-{{< /example >}}
+```
 
 ## Input element with icon
 
 Use the following Tailwind utility classes and [SVG icon](https://flowbite.com/icons/) to add an icon inside input form elements.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="input-group-1" class="block mb-2.5 text-sm font-medium text-heading">Your Email</label>
   <div class="relative">
@@ -172,13 +156,13 @@ Use the following Tailwind utility classes and [SVG icon](https://flowbite.com/i
     <input type="text" id="input-group-1" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="name@flowbite.com">
   </div>
 </form>
-{{< /example >}}
+```
 
 ## Input element with addon
 
 Use this example to add a SVG icon or special character with an addon style to the input element.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="website-admin" class="block mb-2.5 text-sm font-medium text-heading">Username</label>
   <div class="flex shadow-xs rounded-base">
@@ -188,13 +172,13 @@ Use this example to add a SVG icon or special character with an addon style to t
     <input type="text" id="website-admin" class="rounded-none rounded-e-base block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand placeholder:text-body" placeholder="elonmusk">
   </div>
 </form>
-{{< /example >}}
+```
 
 ## Form validation
 
 Use the following two success and error styles when validation your forms.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <div class="mb-6">
     <label for="success" class="block mb-2.5 text-sm font-medium text-fg-success-strong">Your name</label>
@@ -207,24 +191,24 @@ Use the following two success and error styles when validation your forms.
     <p class="mt-2.5 text-sm text-fg-danger-strong"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
   </div>
 </form>
-{{< /example >}}
+```
 
 ## Textarea
 
 Use the following code to create a textarea form element.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="message" class="block mb-2.5 text-sm font-medium text-heading">Your message</label>
   <textarea id="message" rows="4" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body" placeholder="Write your thoughts here..."></textarea>
 </form>
-{{< /example >}}
+```
 
 ## Select input
 
 Use the following select input element to show selectable list of items.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="countries" class="block mb-2.5 text-sm font-medium text-heading">Select an option</label>
   <select id="countries" class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
@@ -235,13 +219,13 @@ Use the following select input element to show selectable list of items.
     <option value="DE">Germany</option>
   </select>
 </form>
-{{< /example >}}
+```
 
 ## Checkbox
 
 The code below can be used to create a fieldset of checkbox elements inside a form. We also created a checkbox variant with extra description and one in a disabled form.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 
 <fieldset>
   <legend class="sr-only">Checkbox variants</legend>
@@ -276,13 +260,13 @@ The code below can be used to create a fieldset of checkbox elements inside a fo
       <label for="international-shipping-disabled" class="ms-2 text-sm font-medium text-fg-disabled select-none">Eligible for international shipping (disabled)</label>
   </div>
 </fieldset>
-{{< /example >}}
+```
 
 ## Radio buttons
 
 Group a series of buttons together on a single line or stack them in a vertical column.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 
 <fieldset>
   <legend class="sr-only">Countries</legend>
@@ -322,28 +306,26 @@ Group a series of buttons together on a single line or stack them in a vertical 
     </label>
   </div>
 </fieldset>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## File upload
 
 Use the following Tailwind CSS file upload element to receive any type of file from users.
 
-{{< example github="components/forms.md" show_dark=true >}}
+```html
 <form class="max-w-lg mx-auto">
   <label class="block mb-2.5 text-sm font-medium text-heading" for="file_input">Upload file</label>
   <input class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" id="file_input" type="file">
 </form>
-{{< /example >}}
+```
 
 ## Toggle Switch
 
 Use the following toggle switch component to ask for a yes or no type of input from your users without the use of JavaScript.
 
-{{< example class="flex flex-col flex-wrap space-y-4" github="components/forms.md" show_dark=true >}}
+```html
 <label class="inline-flex items-center cursor-pointer">
   <input type="checkbox" value="" class="sr-only peer">
   <div class="relative w-9 h-5 bg-neutral-quaternary peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-soft dark:peer-focus:ring-brand-soft rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-buffer after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand"></div>
@@ -355,7 +337,7 @@ Use the following toggle switch component to ask for a yes or no type of input f
   <div class="relative w-9 h-5 bg-neutral-quaternary peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-soft dark:peer-focus:ring-brand-soft rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-buffer after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand"></div>
   <span class="ms-3 text-sm font-medium text-heading select-none">Checked toggle</span>
 </label>
-{{< /example >}}
+```
 
 ## More examples
 

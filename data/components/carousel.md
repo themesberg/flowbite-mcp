@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Carousel - Flowbite
-description: Use the carousel component to slide through multiple elements and images using custom controls, indicators, intervals, and options
-group: components
-toc: true
-requires_js: true
-
-previous: Card
-previousLink: components/card/
-next: Chat bubble
-nextLink: components/chat-bubble/
----
-
 The carousel component can be used to cycle through a set of elements using custom options, controls, and indicators based on the JavaScript object from Flowbite.
 
 ## Default slider
@@ -25,7 +11,7 @@ You can add as many carousel items as you want, but make sure that you add the `
 
 Use the `duration-*` and the animation classes from Tailwind CSS to apply custom effects to the carousel items and don't forget to set the `hidden` class by default to prevent flickering.
 
-{{< example github="components/carousel.md" show_dark=true >}}
+```html
 
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
@@ -73,7 +59,7 @@ Use the `duration-*` and the animation classes from Tailwind CSS to apply custom
         </span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Controls
 
@@ -81,7 +67,7 @@ Use the `data-carousel-prev` and `data-carousel-next` data attribute to listen t
 
 You can customize the control elements with the classes from Tailwind CSS anyhow you want.
 
-{{< example github="components/carousel.md" show_dark=true >}}
+```html
 
 <div id="controls-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
@@ -121,13 +107,13 @@ You can customize the control elements with the classes from Tailwind CSS anyhow
         </span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Indicators
 
 Show the carousel indicators by adding the `data-carousel-slide-to={position}` to any number or style of indicator elements where the value equals the position of the slider element.
 
-{{< example github="components/carousel.md" show_dark=true >}}
+```html
 
 <div id="indicators-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
@@ -175,13 +161,13 @@ Show the carousel indicators by adding the `data-carousel-slide-to={position}` t
         </span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Animation
 
 You can easily customize the duration and animation style of the carousel component by using the `duration-*` and `ease-*` utility classes from Tailwind CSS.
 
-{{< example github="components/carousel.md" show_dark=true >}}
+```html
 
 <div id="animation-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
@@ -221,7 +207,7 @@ You can easily customize the duration and animation style of the carousel compon
         </span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -505,7 +491,7 @@ Use the following methods on the Carousel object to programmatically manipulate 
 
 Check out the following example to learn how to programmatically create a new Carousel object by passing the parameters, using the methods, and the callback functions.
 
-{{< code lang="javascript" file="carousel.js" icon="file" >}}
+```javascript
 const carouselElement = document.getElementById('carousel-example');
 
 const items = [
@@ -573,48 +559,48 @@ const instanceOptions = {
   id: 'carousel-example',
   override: true
 };
-{{< /code >}}
+```
 
 Create a new carousel object using the options set above.
 
-{{< code lang="javascript" file="carousel.js" icon="file" >}}
+```javascript
 import { Carousel } from 'flowbite';
 
 const carousel = new Carousel(carouselElement, items, options, instanceOptions);
-{{< /code >}}
+```
 
 Use the `next()` and `prev()` public methods on the carousel object to jump to the left or right carousel slide item based on the position of the current active item.
 
-{{< code lang="javascript" file="carousel.js" icon="file" >}}
+```javascript
 // goes to the next (right) slide
 carousel.next();
 
 // goes to the previous (left) slide
 carousel.prev();
-{{< /code >}}
+```
 
 Use the `slideTo(position)` public method to jump to the carousel slide item with the specified position.
 
-{{< code lang="javascript" file="carousel.js" icon="file" >}}
+```javascript
 // jumps to the 3rd position (position starts from 0)
 carousel.slideTo(2);
-{{< /code >}}
+```
 
 Use the `cycle()` method to start an automated cycling where the duration is the milliseconds of time between each slide and the `pause()` method to clear the cycle event.
 
-{{< code lang="javascript" file="carousel.js" icon="file" >}}
+```javascript
 // starts or resumes the carousel cycling (automated sliding)
 carousel.cycle();
 
 // pauses the cycling (automated sliding)
 carousel.pause();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Here is an example of the HTML markup that you can use for the JavaScript example above. Please note that you should use the `hidden` class from Tailwind CSS to hide the carousel items by default.
 
-{{< code lang="html" file="carousel.html" icon="file" >}}
+```html
 <div id="carousel-example" class="relative w-full">
     <!-- Carousel wrapper -->
     <div
@@ -740,11 +726,11 @@ Here is an example of the HTML markup that you can use for the JavaScript exampl
         </span>
     </button>
 </div>
-{{< /code >}}
+```
 
 If you want to set trigger the next or previous slide item for the any button, just add some event listeners and call the `next()` and `prev()` methods on the Carousel object.
 
-{{< code lang="javascript" file="carousel.js" icon="file" >}}
+```javascript
 const $prevButton = document.getElementById('data-carousel-prev');
 const $nextButton = document.getElementById('data-carousel-next');
 
@@ -755,15 +741,15 @@ $prevButton.addEventListener('click', () => {
 $nextButton.addEventListener('click', () => {
     carousel.next();
 });
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Carousel class, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Carousel class, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="carousel.ts" icon="file" >}}
+```typescript
 import { Carousel } from 'flowbite';
 import type {
     CarouselItem,
@@ -855,4 +841,4 @@ $prevButton.addEventListener('click', () => {
 $nextButton.addEventListener('click', () => {
     carousel.next();
 });
-{{< /code >}}
+```

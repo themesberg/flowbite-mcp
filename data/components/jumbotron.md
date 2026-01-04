@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Jumbotron - Flowbite
-description: Use the jumbotron component to show a marketing message to your users based on a headline and image inside of a card box based on Tailwind CSS
-group: components
-toc: true
-
-previous: Indicators
-previousLink: components/indicators/
-next: KBD (Keyboard)
-nextLink: components/kbd/
----
-
 The Jumbotron (hero) component can be used as the first section of your website with a focus on a marketing message to increase the likelihood of the user to continue browsing your website.
 
 This UI component features a heading title, a short description, an optional CTA button, background image, gradient or solid background color and it's generally inside of a card element.
@@ -21,7 +8,7 @@ The jumbotron component from Flowbite is responsive on all devices, natively sup
 
 Use this default example to show a title, description, and two CTA buttons for the jumbotron component.
 
-{{< example bodyClass="p-0" github="components/jumbotron.md" show_dark=true >}}
+```html
 
 <section class="bg-neutral-primary">
     <div class="py-8 px-4 mx-auto max-w-screen-2xl text-center lg:py-16">
@@ -36,13 +23,13 @@ Use this default example to show a title, description, and two CTA buttons for t
         </div>
     </div>
 </section>
-{{< /example >}}
+```
 
 ## Background image
 
 Use this jumbotron to apply a background image with a darkening opacity effect to improve readability.
 
-{{< example bodyClass="!p-0" github="components/jumbotron.md" show_dark=true >}}
+```html
 
 <section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-dark bg-blend-multiply">
     <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
@@ -57,13 +44,13 @@ Use this jumbotron to apply a background image with a darkening opacity effect t
         </div>
     </div>
 </section>
-{{< /example >}}
+```
 
 ## Featured video
 
 This component can be used to feature a video together with a heading title, description, and CTA buttons.
 
-{{< example bodyClass="!p-0" github="components/jumbotron.md" show_dark=true >}}
+```html
 
 <section class="bg-neutral-primary">
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
@@ -83,13 +70,13 @@ This component can be used to feature a video together with a heading title, des
         </div>
     </div>
 </section>
-{{< /example >}}
+```
 
 ## Authentication form
 
 Use this component to show a sign in or register form as the first section of your website.
 
-{{< example bodyClass="!p-0 bg-gray-50 dark:bg-gray-900" github="components/jumbotron.md" show_dark=true >}}
+```html
 
 <section class="bg-neutral-primary">
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
@@ -126,13 +113,13 @@ Use this component to show a sign in or register form as the first section of yo
         </div>
     </div>
 </section>
-{{< /example >}}
+```
 
 ## Gradient background
 
 Use this component to show a hero pattern with a linear gradient layout as an overlay for added effects.
 
-{{< example bodyClass="!p-0" github="components/jumbotron.md" show_dark=true >}}
+```html
 
 <section class="bg-neutral-primary bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
@@ -158,13 +145,13 @@ Use this component to show a hero pattern with a linear gradient layout as an ov
     </div>
     <div class="bg-gradient-to-b from-blue-50 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div>
 </section>
-{{< /example >}}
+```
 
 ## Jumbotron with cards
 
 This example can be used to show cards with headings, descriptions, and CTA buttons inside a grid layout.
 
-{{< example bodyClass="!p-0" github="components/jumbotron.md" show_dark=true >}}
+```html
 
 <section class="bg-neutral-primary">
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
@@ -206,7 +193,7 @@ This example can be used to show cards with headings, descriptions, and CTA butt
         </div>
     </div>
 </section>
-{{< /example >}}
+```
 
 ## More examples
 

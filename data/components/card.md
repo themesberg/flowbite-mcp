@@ -1,34 +1,21 @@
----
-layout: docs
-title: Tailwind CSS Cards - Flowbite
-description: Get started with a large variety of Tailwind CSS card examples for your web project
-group: components
-toc: true
-
-previous: Button group
-previousLink: components/button-group/
-next: Carousel
-nextLink: components/carousel/
----
-
 Use these responsive card components to show data entries and information to your users in multiple forms and contexts such as for your blog, application, user profiles, and more.
 
 ## Default card
 
 Use the following simple card component with a title and description.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 <a href="#" class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
     <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy technology acquisitions 2021</h5>
     <p class="text-body">Here are the biggest technology acquisitions of 2025 so far, in reverse chronological order.</p>
 </a>
-{{< /example >}}
+```
 
 ## Card with button
 
 Use the following example of a card element if you also want to have an action button.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
     <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy technology acquisitions 2021</h5>
@@ -38,13 +25,13 @@ Use the following example of a card element if you also want to have an action b
         <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
     </a>
 </div>
-{{< /example >}}
+```
 
 ## Card with link
 
 This example can be used to show a CTA as a link instead of a button inside the card.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
     <svg class="w-7 h-7 mb-3 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21v-9m3-4H7.5a2.5 2.5 0 1 1 0-5c1.5 0 2.875 1.25 3.875 2.5M14 21v-9m-9 0h14v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8ZM4 8h16a1 1 0 0 1 1 1v3H3V9a1 1 0 0 1 1-1Zm12.155-5c-3 0-5.5 5-5.5 5h5.5a2.5 2.5 0 0 0 0-5Z"/></svg>
@@ -57,13 +44,13 @@ This example can be used to show a CTA as a link instead of a button inside the 
         <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
     </a>
 </div>
-{{< /example >}}
+```
 
 ## Card with image
 
 You can use the following example of a card element with an image for blog posts, user cards, and many more.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="bg-neutral-primary-soft block max-w-sm border border-default rounded-base shadow-xs">
     <a href="#">
@@ -83,13 +70,13 @@ You can use the following example of a card element with an image for blog posts
         </a>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Card with description
 
 Use this alternative styled card with an image for features, blog posts, and more.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
     <a href="#">
@@ -104,13 +91,13 @@ Use this alternative styled card with an image for features, blog posts, and mor
         <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
     </a>
 </div>
-{{< /example >}}
+```
 
 ## Horizontal card
 
 If you want to spice up your cards you can use the following card which has its child elements aligned horizontally.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 <a href="#" class="flex flex-col items-center bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs md:flex-row md:max-w-xl md:flex-row md:max-w-xl">
     <img class="object-cover w-full rounded-base h-64 md:h-auto md:w-48 mb-4 md:mb-0" src="/docs/images/blog/image-4.jpg" alt="">
     <div class="flex flex-col justify-between md:p-4 leading-normal">
@@ -124,13 +111,13 @@ If you want to spice up your cards you can use the following card which has its 
         </div>
     </div>
 </a>
-{{< /example >}}
+```
 
 ## User profile card
 
 Use this user profile card example if you want to show a dropdown menu and buttons to enable multiple actions from your user.
 
-{{< example class="flex flex-wrap justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="relative bg-neutral-primary-soft max-w-xs w-full p-6 border border-default rounded-base shadow-xs">
         <button id="dropdownButton" data-dropdown-toggle="dropdown" class="absolute top-2 end-2 text-body hover:text-heading bg-neutral-primary-soft box-border border border-transparent hover:bg-neutral-tertiary focus:ring-4 focus:ring-neutral-tertiary rounded-base p-1.5 focus:outline-none" type="button">
@@ -166,13 +153,13 @@ Use this user profile card example if you want to show a dropdown menu and butto
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Card with form inputs
 
 Use this card example where you can add form input elements that can be used for authentication actions or any other context where you need to receive information from your users.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="w-full max-w-sm bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs">
     <form action="#">
@@ -196,13 +183,13 @@ Use this card example where you can add form input elements that can be used for
         <div class="text-sm font-medium text-body">Not registered? <a href="#" class="text-fg-brand hover:underline">Create account</a></div>
     </form>
 </div>
-{{< /example >}}
+```
 
 ## E-commerce card
 
 Use this card for your e-commerce websites and show information about the products and enable actions such as adding a review and adding the product to the cart.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="w-full max-w-sm bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs">
     <a href="#">
@@ -231,13 +218,13 @@ Use this card for your e-commerce websites and show information about the produc
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Call to action card
 
 Use this CTA card example to encourage your users to visit a certain page such as downloading the iOS or Android application for your project.
 
-{{< example github="components/card.md" show_dark=true >}}
+```html
 
 <div class="w-full text-center bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs">
     <h5 class="mb-3 text-2xl tracking-tight font-semibold text-heading">Work fast from anywhere</h5>
@@ -259,13 +246,13 @@ Use this CTA card example to encourage your users to visit a certain page such a
         </a>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Card with nav tabs
 
 Use this example of a card component with navigation tabs that can change the content inside the card based on which one is currently active.
 
-{{< example github="components/card.md" show_dark=true >}}
+```html
 
 <div class="w-full bg-neutral-primary border border-default rounded-base shadow-xs">
     <ul class="flex flex-wrap text-sm font-medium text-center text-body bg-neutral-secondary-soft border-b border-default rounded-t-base" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
@@ -328,13 +315,13 @@ Use this example of a card component with navigation tabs that can change the co
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Card full width tabs
 
 Use this example of a card component to show tabs that span the full width of the element and change the content area clicking on each one.
 
-{{< example github="components/card.md" show_dark=true >}}
+```html
 
 <div class="w-full bg-neutral-primary border border-default rounded-base shadow-xs">
     <div class="sm:hidden">
@@ -418,7 +405,7 @@ Use this example of a card component to show tabs that span the full width of th
               <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
                 <div class="py-5 border-b border-default text-body">
                   <p class="mb-2">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
-                  <p>Check out the <a href="{{< param homepage >}}/figma/" class="text-fg-brand hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                  <p>Check out the <a href="https://flowbite.com/figma/" class="text-fg-brand hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
                 </div>
               </div>
               <h2 id="accordion-flush-heading-3">
@@ -433,7 +420,7 @@ Use this example of a card component to show tabs that span the full width of th
                   <p class="mb-2">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
                   <p class="mb-2">Learn more about these technologies:</p>
                   <ul class="ps-5 list-disc">
-                    <li><a href="{{< param homepage >}}/pro/" class="text-fg-brand hover:underline">Flowbite Pro</a></li>
+                    <li><a href="https://flowbite.com/pro/" class="text-fg-brand hover:underline">Flowbite Pro</a></li>
                     <li><a href="https://tailwindui.com/" rel="nofollow" class="text-fg-brand hover:underline">Tailwind UI</a></li>
                   </ul>
                 </div>
@@ -442,13 +429,13 @@ Use this example of a card component to show tabs that span the full width of th
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Card with list
 
 Use this card example if you want to show a list of data:
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="w-full max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <div class="flex items-center justify-between mb-4">
@@ -550,13 +537,13 @@ Use this card example if you want to show a list of data:
         </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Pricing card
 
 Show detailed information to potential customers about your product's pricing plan, list of features, and a purchase button.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 
 <div class="w-full max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
@@ -596,13 +583,13 @@ Show detailed information to potential customers about your product's pricing pl
     </ul>
     <button type="button" class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose plan</button>
 </div>
-{{< /example >}}
+```
 
 ## Testimonial card
 
 Use this example to split cards into multiple sections such as for testimonials or reviews.
 
-{{< example github="components/card.md" show_dark=true >}}
+```html
 
 <div class="grid mb-8 bg-neutral-primary-soft border border-default rounded-base shadow-xs md:mb-12 md:grid-cols-2">
     <figure class="flex flex-col items-center justify-center p-8 text-center border-b border-default rounded-t-base md:rounded-t-none md:rounded-ss-base md:border-e">
@@ -658,13 +645,13 @@ Use this example to split cards into multiple sections such as for testimonials 
         </figcaption>    
     </figure>
 </div>
-{{< /example >}}
+```
 
 ## Crypto card
 
 Use this web3 card component to show a list of applications that you can use to connect your crypto wallet for NFT related trading and authentication.
 
-{{< example class="flex justify-center" github="components/card.md" show_dark=true >}}
+```html
 <div class="w-full max-w-sm p-4 sm:p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <h5 class="mb-2 text-base md:text-xl font-semibold text-heading">Connect wallet</h5>
     <p class="text-body">Connect with one of our available wallet providers or create a new one.</p>
@@ -708,4 +695,4 @@ Use this web3 card component to show a list of applications that you can use to 
     </a>
     </div>
 </div>
-{{< /example >}}
+```

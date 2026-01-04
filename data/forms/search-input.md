@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Search Input - Flowbite
-description: Use the search input component as a text field to allow users to enter search queries and receive relevant page results available in multiple styles and sizes
-group: forms
-toc: true
-
-previous: File Input
-previousLink: forms/file-input/
-next: Number Input
-nextLink: forms/number-input/
----
-
 The search input component can be used to let your users search through your website using string queries and it comes in multiple styles, variants, and sizes built with the utility classes from Tailwind CSS.
 
 You will also find more advanced search components on this page including dropdown category selections, search buttons positioned inside the input field, voice search fields and more.
@@ -19,7 +6,7 @@ You will also find more advanced search components on this page including dropdo
 
 Get started with the default example of a search input component including and icon and submit button.
 
-{{< example github="forms/search-input.md" show_dark=true >}}
+```html
 <form class="max-w-md mx-auto">   
     <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
     <div class="relative">
@@ -30,17 +17,15 @@ Get started with the default example of a search input component including and i
         <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
     </div>
 </form>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Search with dropdown
 
 Use this search component with a dropdown to let your users select a category in which they would like the search query to be targeted in.
 
-{{< example github="forms/search-input.md" show_dark=true iframeHeight="290" >}}
+```html
 <form class="max-w-2xl mx-auto">
     <div class="flex shadow-xs rounded-base -space-x-0.5">
         <label for="search-dropdown" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Your Email</label>
@@ -72,13 +57,13 @@ Use this search component with a dropdown to let your users select a category in
         </button>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Simple search input
 
 Use the simplest form of a search input component with an icon and a search button next to the text field.
 
-{{< example github="forms/search-input.md" show_dark=true >}}
+```html
 <form class="flex items-center max-w-sm mx-auto space-x-2">   
     <label for="simple-search" class="sr-only">Search</label>
     <div class="relative w-full">
@@ -92,17 +77,15 @@ Use the simplest form of a search input component with an icon and a search butt
         <span class="sr-only">Icon description</span>
     </button>
 </form>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Location search
 
 Use this example where you can select a country in which you want to search for an address or city.
 
-{{< example github="forms/search-input.md" show_dark=true iframeHeight="290" >}}
+```html
 <form class="max-w-lg mx-auto">
     <div class="flex shadow-xs rounded-base -space-x-0.5">
         <label for="search-dropdown-location" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Choose city</label>
@@ -198,13 +181,13 @@ Use this example where you can select a country in which you want to search for 
         </button>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Voice search
 
 Get started with this example if you would like to enable voice search for your website and users.
 
-{{< example github="forms/search-input.md" show_dark=true >}}
+```html
 <form class="flex items-center max-w-lg mx-auto space-x-2">   
     <label for="voice-search" class="sr-only">Search</label>
     <div class="relative w-full">
@@ -221,13 +204,13 @@ Get started with this example if you would like to enable voice search for your 
         Search
     </button>
 </form>
-{{< /example >}}
+```
 
 ## Advanced search input
 
 Use this example to show multiple dropdown selection elements next to the search field.
 
-{{< example github="forms/search-input.md" show_dark=true iframeHeight="290" >}}
+```html
 
 <form class="max-w-2xl mx-auto">
     <div class="flex shadow-xs rounded-base -space-x-0.5">
@@ -277,4 +260,4 @@ Use this example to show multiple dropdown selection elements next to the search
     </div>
 </form>
 
-{{< /example >}}
+```

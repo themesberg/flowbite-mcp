@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Gallery (Masonry) - Flowbite
-description: Use the image gallery component based on a masonry grid layout using flex and grid classes from Tailwind CSS to show multiple pictures based on various styles
-group: components
-toc: true
-
-previous: Forms
-previousLink: components/forms/
-next: Indicators
-nextLink: components/indicators/
----
-
 The gallery component can be used to show multiple images inside a masonry grid layout styles with the utility-first classes from Tailwind CSS to show a collection of pictures to your users based on various layouts, styles, sizes, and colors.
 
 This component is recommended for usage within marketing UI interfaces and website sections when you want to show pictures of your team members, office pictures, or even case study images.
@@ -19,7 +6,7 @@ This component is recommended for usage within marketing UI interfaces and websi
 
 Use this component to show a collection of images inside a gallery with three pictures on a row.
 
-{{< example class="flex justify-center" github="components/gallery.md" show_dark=true >}}
+```html
 
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
     <div>
@@ -59,13 +46,13 @@ Use this component to show a collection of images inside a gallery with three pi
         <img class="h-auto max-w-full rounded-base" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" alt="">
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Masonry grid
 
 This example can be used to show the images inside a masonry grid layouts with four columns.
 
-{{< example class="flex justify-center" github="components/gallery.md" show_dark=true >}}
+```html
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     <div class="grid gap-4">
@@ -113,13 +100,13 @@ This example can be used to show the images inside a masonry grid layouts with f
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Featured image
 
 This example can be used to feature the most important image and show a row of five pictures below.
 
-{{< example class="flex justify-center" github="components/gallery.md" show_dark=true >}}
+```html
 
 <div class="grid gap-4">
     <div>
@@ -143,13 +130,13 @@ This example can be used to feature the most important image and show a row of f
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Quad gallery
 
 Use this example to show four larger images with two items on a row.
 
-{{< example class="flex justify-center" github="components/gallery.md" show_dark=true >}}
+```html
 
 <div class="grid grid-cols-2 gap-2">
         <div>
@@ -165,17 +152,15 @@ Use this example to show four larger images with two items on a row.
             <img class="h-auto max-w-full rounded-base" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
         </div>
     </div>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Gallery with slider
 
 This example uses the [carousel slider](https://flowbite.com/docs/components/carousel/) functionality to show multiple images inside a slider gallery.
 
-{{< example class="flex justify-center" github="components/gallery.md" show_dark=true >}}
+```html
 
 <div id="gallery" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
@@ -215,17 +200,15 @@ This example uses the [carousel slider](https://flowbite.com/docs/components/car
         </span>
     </button>
 </div>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Custom slider controls
 
 This example uses an alternative style for the control button for the carousel slider component.
 
-{{< example class="flex justify-center" github="components/gallery.md" show_dark=true >}}
+```html
 
 <div id="custom-controls-gallery" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
@@ -266,13 +249,13 @@ This example uses an alternative style for the control button for the carousel s
         </button>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Gallery with tag filters
 
 Use this example to show a list of tags and filter the images below based on the activately selected tag.
 
-{{< example bodyClass="mt-0" github="components/gallery.md" show_dark=true >}}
+```html
 
 <div class="flex items-center justify-center py-4 md:py-8 flex-wrap">
     <button type="button" class="text-fg-brand border border-brand bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-base font-medium px-5 py-2.5 text-center me-3 mb-3">All categories</button>
@@ -319,4 +302,4 @@ Use this example to show a list of tags and filter the images below based on the
         <img class="h-auto max-w-full rounded-base" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" alt="">
     </div>
 </div>
-{{< /example >}}
+```

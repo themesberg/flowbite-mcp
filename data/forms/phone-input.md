@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Phone Input - Flowbite
-description: Use the phone number input component from Flowbite to set a phone number inside a form field and use a dropdown menu to select the country code based on various styles, sizes and colors
-group: forms
-requires_js: true
-toc: true
-
-previous: Number Input
-previousLink: forms/number-input/
-next: Select
-nextLink: forms/select/
----
-
 The phone number input component from Flowbite can be used to set a phone number inside a form field by using the native `type="tel"` attribute and also use a dropdown menu to select the country code.
 
 The examples are built with the utility classes from Tailwind CSS and they are fully responsive, dark mode compatible and support RTL layouts and can be used for any type of web project.
@@ -20,7 +6,7 @@ The examples are built with the utility classes from Tailwind CSS and they are f
 
 Use this component to set a phone number inside an input field by setting the `type="tel"` attribute.
 
-{{< example github="components/phone-input.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
     <label for="phone-input" class="block mb-2.5 text-sm font-medium text-heading">Phone number:</label>
     <div class="relative">
@@ -31,13 +17,13 @@ Use this component to set a phone number inside an input field by setting the `t
     </div>
     <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Select a phone number that matches the format.</p>
 </form>
-{{< /example >}}
+```
 
 ## Phone input country code
 
 This example can be used to select the country code from a dropdown menu and set the phone number inside an input field and use the `pattern` attribute to validate the phone number.
 
-{{< example github="components/phone-input.md" show_dark=true iframeHeight="360" >}}
+```html
 
 <form class="max-w-sm mx-auto">
     <div class="flex items-center -space-x-px shadow-xs rounded-base">
@@ -139,13 +125,13 @@ This example can be used to select the country code from a dropdown menu and set
     </div>
 </form>
 
-{{< /example >}}
+```
 
 ## Floating label input
 
 Set a phone number inside an input field with a floating label inspired by Material UI from Google.
 
-{{< example github="forms/phone-input.md" show_dark=true >}}
+```html
 <form class="max-w-xs mx-auto">
     <div class="relative">
         <span class="absolute start-0 bottom-3 text-body">
@@ -155,13 +141,13 @@ Set a phone number inside an input field with a floating label inspired by Mater
         <label for="floating-phone-number" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:start-6 peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Phone number</label>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Verification code input
 
 Use this example to send a verification code to the user's phone number for authentication.
 
-{{< example github="components/phone-input.md" show_dark=true iframeHeight="360" disable_init_js="true" >}}
+```html
 <form class="max-w-sm mx-auto">
     <div class="flex items-center -space-x-px shadow-xs rounded-base">
         <button id="dropdown-phone-button-2" data-dropdown-toggle="dropdown-phone-2" type="button" class="inline-flex items-center shrink-0 z-10 text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-s-base text-sm px-4 py-2.5 focus:outline-none">
@@ -265,13 +251,41 @@ Use this example to send a verification code to the user's phone number for auth
 </form>
 
 
-{{< /example >}}
+```
 
 ## Phone number select
 
 Use this example to select one of your saved phone numbers from an application with a copy-paste feature.
 
-{{< example github="components/phone-input.md" show_dark=true disable_init_js="true" javascript=`
+```html
+<form class="max-w-sm mx-auto">
+    <div class="mb-2.5 flex justify-between items-center">
+        <label for="phone-numbers" class="text-sm font-medium text-heading">Primary phone number:</label>
+        <a href="#" class="text-fg-brand text-xs font-medium hover:underline">Manage numbers</a>
+    </div>
+    <div class="flex items-center shadow-xs rounded-base">
+        <div class="relative w-full">
+            <select id="phone-numbers" aria-describedby="helper-text-explanation" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-s-base border-e-0 focus:ring-brand focus:border-brand block w-full px-3 py-2.5 placeholder:text-body">
+                <option selected value="+1 234 456 7890">+1 234 456 7890</option>
+                <option value="+1 456 234 7890">+1 456 234 7890</option>
+                <option value="+1 432 621 3163">+1 432 621 3163</option>
+            </select>
+        </div>
+        <button id="copy-number" data-copy-to-clipboard-target="phone-numbers" data-tooltip-target="tooltip-phone" class="shrink-0 z-10 flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-e-base text-sm px-4 h-[42px] focus:outline-none" type="button">
+            <svg id="copy-icon" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+            <svg id="copy-icon-success" class="w-4 h-4 hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+        </button>
+        <div id="tooltip-phone" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-lg shadow-xs opacity-0 tooltip">
+            <span id="tooltip-text">Copy number</span>
+            <span id="tooltip-text-success" class="hidden">Copied!</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </div>
+    <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Please set your primary phone number.</p>
+</form>
+```
+
+```javascript
 window.addEventListener('load', function() {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'phone-numbers');
     const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-phone');
@@ -307,39 +321,13 @@ window.addEventListener('load', function() {
         tooltip.hide();
     }
 });
-` >}}
-<form class="max-w-sm mx-auto">
-    <div class="mb-2.5 flex justify-between items-center">
-        <label for="phone-numbers" class="text-sm font-medium text-heading">Primary phone number:</label>
-        <a href="#" class="text-fg-brand text-xs font-medium hover:underline">Manage numbers</a>
-    </div>
-    <div class="flex items-center shadow-xs rounded-base">
-        <div class="relative w-full">
-            <select id="phone-numbers" aria-describedby="helper-text-explanation" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-s-base border-e-0 focus:ring-brand focus:border-brand block w-full px-3 py-2.5 placeholder:text-body">
-                <option selected value="+1 234 456 7890">+1 234 456 7890</option>
-                <option value="+1 456 234 7890">+1 456 234 7890</option>
-                <option value="+1 432 621 3163">+1 432 621 3163</option>
-            </select>
-        </div>
-        <button id="copy-number" data-copy-to-clipboard-target="phone-numbers" data-tooltip-target="tooltip-phone" class="shrink-0 z-10 flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-e-base text-sm px-4 h-[42px] focus:outline-none" type="button">
-            <svg id="copy-icon" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-            <svg id="copy-icon-success" class="w-4 h-4 hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-        </button>
-        <div id="tooltip-phone" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-lg shadow-xs opacity-0 tooltip">
-            <span id="tooltip-text">Copy number</span>
-            <span id="tooltip-text-success" class="hidden">Copied!</span>
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
-    </div>
-    <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Please set your primary phone number.</p>
-</form>
-{{< /example >}}
+```
 
 ## Authentication form
 
 Use this example to authenticate users with a login form using a phone number instead of an email address.
 
-{{< example github="components/phone-input.md" show_dark=true iframeHeight="390" disable_init_js="true" >}}
+```html
 <form class="max-w-sm mx-auto">
     <label for="dropdown-phone-3" class="block mb-2.5 text-sm font-medium text-heading">Phone number</label>
     <div class="flex items-center -space-x-px shadow-xs rounded-base">
@@ -449,13 +437,13 @@ Use this example to authenticate users with a login form using a phone number in
     </div>
     <button type="submit" class="w-full text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Sign Up</button>
 </form>
-{{< /example >}}
+```
 
 ## Advanced phone verification
 
 Use this example to verify a phone number via SMS or phone call using a dropdown component.
 
-{{< example github="components/phone-input.md" show_dark=true iframeHeight="360" disable_init_js="true" >}}
+```html
 <form class="max-w-sm mx-auto">
     <div class="flex items-center mt-2 shadow-xs rounded-base">
         <button id="dropdown-phone-button-4" data-dropdown-toggle="dropdown-phone-4" class="inline-flex items-center shrink-0 z-10 text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-s-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -574,4 +562,4 @@ Use this example to verify a phone number via SMS or phone call using a dropdown
     </div>
     <button type="submit" class="mt-4 w-full text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Activate account</button>
 </form>
-{{< /example >}}
+```

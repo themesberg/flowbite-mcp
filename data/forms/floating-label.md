@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Floating Label - Flowbite
-description: Use the floating label style for the input field elements to replicate the Material UI design system from Google and choose from multiple styles and sizes
-group: forms
-toc: true
-
-previous: Range Slider
-previousLink: forms/range/
-next: Headings
-nextLink: typography/headings/
----
-
 The floating label style was first pioneered by Google in its infamous Material UI design system and it's basically a label tag which floats just above the input field when it is being focused or already has content inside.
 
 On this page you will find a three different input field styles including a standard, outlined, and filled style including validation styles and sizes coded with Tailwind CSS and supported for dark mode.
@@ -19,7 +6,7 @@ On this page you will find a three different input field styles including a stan
 
 Get started with the following three styles for the floating label component and use the `label` tag as a visual placeholder using the `peer-placeholder-shown` and `peer-focus` utility classes from Tailwind CSS.
 
-{{< example class="grid items-end w-full gap-6 md:grid-cols-3" github="forms/floating-label.md" show_dark=true >}}
+```html
 <div class="relative">
     <input type="text" id="floating_filled" class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " />
     <label for="floating_filled" class="absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Floating filled</label>
@@ -32,13 +19,13 @@ Get started with the following three styles for the floating label component and
     <input type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " />
     <label for="floating_standard" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Floating standard</label>
 </div>
-{{< /example >}}
+```
 
 ## Floating label with icons
 
 Use these examples of floating label input fields with a descriptive [SVG icon](https://flowbite.com/icons/).
 
-{{< example class="grid items-end w-full gap-6 md:grid-cols-3" github="forms/floating-label.md" show_dark=true >}}
+```html
 <div class="relative">
     <input type="text" id="floating_filled" class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " />
     <label for="floating_filled" class="inline-flex items-center absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
@@ -60,13 +47,13 @@ Use these examples of floating label input fields with a descriptive [SVG icon](
     Floating standard
     </label>
 </div>
-{{< /example >}}
+```
 
 ## Disabled state
 
 Apply the `disabled` attribute to the input fields to disallow the user from changing the content.
 
-{{< example class="grid items-end gap-6 md:grid-cols-3" github="forms/floating-label.md" show_dark=true >}}
+```html
 <div class="relative">
     <input type="text" id="disabled_filled" class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " disabled />
     <label for="disabled_filled" class="absolute text-sm text-fg-disabled duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Disabled filled</label>
@@ -79,13 +66,13 @@ Apply the `disabled` attribute to the input fields to disallow the user from cha
     <input type="text" id="disabled_standard" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " disabled />
     <label for="disabled_standard" class="absolute text-sm text-fg-disabled duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Disabled standard</label>
 </div>
-{{< /example >}}
+```
 
 ## Validation
 
 Use the following examples of input validation for the success and error messages by applying the validation text below the input field and using the green or red color classes from Tailwind CSS.
 
-{{< example github="forms/floating-label.md" show_dark=true >}}
+```html
 <!-- Success messages -->
 <div class="grid items-end gap-6 mb-6 md:grid-cols-3">
     <div>
@@ -135,13 +122,13 @@ Use the following examples of input validation for the success and error message
         <p id="standard_error_help" class="mt-2 text-xs text-fg-danger-strong"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Sizes
 
 Use the small and default sizes of the floating label input fields from the following example.
 
-{{< example github="forms/floating-label.md" show_dark=true >}}
+```html
 <div class="grid items-end gap-6 mb-6 md:grid-cols-3">
     <div class="relative">
         <input type="text" id="small_filled" class="block rounded-t-base px-2.5 pb-1.5 pt-4 w-full text-sm text-heading bg-neutral-secondary-medium border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " />
@@ -170,16 +157,16 @@ Use the small and default sizes of the floating label input fields from the foll
         <label for="default_standard" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Default standard</label>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Helper text
 
 Add a helper text in addition to the label if you want to show more information below the input field.
 
-{{< example github="forms/floating-label.md" show_dark=true >}}
+```html
 <div class="relative">
     <input type="text" id="floating_helper" aria-describedby="floating_helper_text" class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " />
     <label for="floating_helper" class="absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Floating helper</label>
 </div>
 <p id="floating_helper_text" class="mt-2.5 text-xs text-body">Remember, contributions to this topic should follow our <a href="#" class="text-fg-brand hover:underline">Community Guidelines</a>.</p>
-{{< /example >}}
+```

@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Textarea - Flowbite
-description: Use the textarea component as a multi-line text field input and use it inside form elements available in multiple sizes, styles, and variants
-group: forms
-toc: true
-
-previous: Select
-previousLink: forms/select/
-next: Timepicker
-nextLink: forms/timepicker/
----
-
 The textarea component is a multi-line text field input that can be used to receive longer chunks of text from the user in the form of a comment box, description field, and more.
 
 From the examples on this page you will find multiple styles and variants of the textarea component coded with the utility classes from Tailwind CSS including a WYSIWYG editor, comment box, chatroom textarea, all available in dark mode as well. 
@@ -19,16 +6,16 @@ From the examples on this page you will find multiple styles and variants of the
 
 Get started with the default example of a textarea component below.
 
-{{< example github="forms/textarea.md" show_dark=true >}}
+```html
 <label for="message" class="block mb-2.5 text-sm font-medium text-heading">Your message</label>
 <textarea id="message" rows="4" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body" placeholder="Write your thoughts here..."></textarea>
-{{< /example >}}
+```
 
 ## WYSIWYG Editor
 
 If you want to add other actions as buttons alongside your textarea component, such as with a WYSIWYG editor, then you can use the example below.
 
-{{< example github="forms/textarea.md" show_dark=true >}}
+```html
 <form>
    <div class="w-full mb-4 border border-default-medium rounded-base bg-neutral-secondary-medium shadow-xs">
        <div class="flex items-center justify-between px-3 py-2 border-b border-default-medium">
@@ -90,13 +77,13 @@ If you want to add other actions as buttons alongside your textarea component, s
    </div>
     <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Publish post</button>
 </form>
-{{< /example >}}
+```
 
 ## Comment box
 
 Most often the textarea component is used as the main text field input element in comment sections. Use this example to also apply a helper text and buttons below the textarea itself.
 
-{{< example github="forms/textarea.md" show_dark=true >}}
+```html
 <form>
    <div class="w-full mb-4 border border-default-medium rounded-base bg-neutral-secondary-medium shadow-xs">
        <div class="px-4 py-2 bg-neutral-secondary-medium rounded-t-base">
@@ -127,13 +114,13 @@ Most often the textarea component is used as the main text field input element i
    </div>
 </form>
 <p class="ms-auto text-xs text-body">Remember, contributions to this topic should follow our <a href="#" class="text-fg-brand hover:underline">Community Guidelines</a>.</p>
-{{< /example >}}
+```
 
 ## Chatroom input
 
 If you want to build a chatroom component you will usually want to use a textarea element to allow users to write multi-line chunks of text.
 
-{{< example github="forms/textarea.md" show_dark=true >}}
+```html
 <form>
     <label for="chat" class="sr-only">Your message</label>
     <div class="flex items-center px-3 py-2 rounded-base bg-neutral-secondary-soft">
@@ -152,4 +139,4 @@ If you want to build a chatroom component you will usually want to use a textare
         </button>
     </div>
 </form>
-{{< /example >}}
+```

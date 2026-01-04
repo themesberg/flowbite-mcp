@@ -1,15 +1,3 @@
----
-layout: docs
-title: Tailwind CSS WYSIWYG Text Editor - Flowbite
-description: Use the wysiwyg text editor component from Flowbite to create and modify content by manipulating paragraphs, headings, images and styling them using all available options
-group: plugins
-toc: true
-requires_js: true
-
-previous: Datatables
-previousLink: plugins/datatables/
----
-
 The WYSIWYG text editor from Flowbite is open-source under the MIT license based on the [Tip Tap library](https://github.com/ueberdosis/tiptap) and allows you to easily edit complex text data with typography styles, links, images, videos, and more.
 
 The markup and styles provided by Flowbite are all built with the utility classes from Tailwind CSS and the styles for the content inside the WYSIWYG text editor are based on the [Flowbite Typography](https://flowbite.com/docs/components/typography/) plugin.
@@ -24,19 +12,19 @@ Before continuing make sure that you have Tailwind CSS, Flowbite, and Tip Tap in
 
 2. Install the [Flowbite Typography](https://flowbite.com/docs/components/typography/) plugin to format the content of text inside the WYSYIWYG editor preview:
 
-{{< code lang="bash" >}}
+```bash
 npm i flowbite-typography
-{{< /code >}}
+```
 
 3. Import the `flowbite-typography` plugin inside your main Tailwind CSS file:
 
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
+```javascript
 @plugin "flowbite-typography";
-{{< /code >}}
+```
 
 Alternatively you can do the same but in your `tailwind.config.js` file:
 
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
+```javascript
 // import the tailwind.config.js file in your main CSS file if using Tailwind CSS v4
 module.exports = {
   theme: {
@@ -47,13 +35,13 @@ module.exports = {
     // ...
   ],
 }
-{{< /code >}}
+```
 
 4. Finally, install Tip Tap either via NPM or skip this step if you're using CDN:
 
-{{< code lang="bash" >}}
+```bash
 npm install @tiptap/core @tiptap/pm @tiptap/starter-kit
-{{< /code >}}
+```
 
 Now you're ready to use the examples below by copying the HTML markup and the JavaScript code.
 
@@ -61,228 +49,7 @@ Now you're ready to use the examples below by copying the HTML markup and the Ja
 
 Use this example of a WYSIWYG text editor to enable basic typography styling and formatting, adding lists, links, images, videos, code blocks, aligning text, blockquotes, setting headers and paragraphs and more.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
-import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
-import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
-import Highlight from 'https://esm.sh/@tiptap/extension-highlight@2.6.6';
-import Underline from 'https://esm.sh/@tiptap/extension-underline@2.6.6';
-import Link from 'https://esm.sh/@tiptap/extension-link@2.6.6';
-import TextAlign from 'https://esm.sh/@tiptap/extension-text-align@2.6.6';
-import Image from 'https://esm.sh/@tiptap/extension-image@2.6.6';
-import YouTube from 'https://esm.sh/@tiptap/extension-youtube@2.6.6';
-import TextStyle from 'https://esm.sh/@tiptap/extension-text-style@2.6.6';
-import FontFamily from 'https://esm.sh/@tiptap/extension-font-family@2.6.6';
-import { Color } from 'https://esm.sh/@tiptap/extension-color@2.6.6';
-import Bold from 'https://esm.sh/@tiptap/extension-bold@2.6.6'; // Import the Bold extension
-
-
-window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-example")) {
-
-    const FontSizeTextStyle = TextStyle.extend({
-        addAttributes() {
-            return {
-            fontSize: {
-                default: null,
-                parseHTML: element => element.style.fontSize,
-                renderHTML: attributes => {
-                if (!attributes.fontSize) {
-                    return {};
-                }
-                return { style: 'font-size: ' + attributes.fontSize };
-                },
-            },
-            };
-        },
-    });
-    const CustomBold = Bold.extend({
-        // Override the renderHTML method
-        renderHTML({ mark, HTMLAttributes }) {
-            const { style, ...rest } = HTMLAttributes;
-
-            // Merge existing styles with font-weight
-            const newStyle = 'font-weight: bold;' + (style ? ' ' + style : '');
-
-            return ['span', { ...rest, style: newStyle.trim() }, 0];
-        },
-        // Ensure it doesn't exclude other marks
-        addOptions() {
-            return {
-                ...this.parent?.(),
-                HTMLAttributes: {},
-            };
-        },
-    });
-    // tip tap editor setup
-    const editor = new Editor({
-        element: document.querySelector('#wysiwyg-example'),
-        extensions: [
-            StarterKit.configure({
-                textStyle: false,
-                bold: false,
-                marks: {
-                    bold: false,
-                },
-            }),
-            // Include the custom Bold extension
-            CustomBold,
-            TextStyle,
-            Color,
-            FontSizeTextStyle,
-            FontFamily,
-            Highlight,
-            Underline,
-            Link.configure({
-                openOnClick: false,
-                autolink: true,
-                defaultProtocol: 'https',
-            }),
-            TextAlign.configure({
-                types: ['heading', 'paragraph'],
-            }),
-            Image,
-            YouTube,
-        ],
-        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
-        editorProps: {
-            attributes: {
-                class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
-            },
-        }
-    });
-
-    // set up custom event listeners for the buttons
-    document.getElementById('toggleBoldButton').addEventListener('click', () => editor.chain().focus().toggleBold().run());
-    document.getElementById('toggleItalicButton').addEventListener('click', () => editor.chain().focus().toggleItalic().run());
-    document.getElementById('toggleUnderlineButton').addEventListener('click', () => editor.chain().focus().toggleUnderline().run());
-    document.getElementById('toggleStrikeButton').addEventListener('click', () => editor.chain().focus().toggleStrike().run());
-    document.getElementById('toggleHighlightButton').addEventListener('click', () => {
-    const isHighlighted = editor.isActive('highlight');
-    // when using toggleHighlight(), judge if is is already highlighted.
-    editor.chain().focus().toggleHighlight({
-        color: isHighlighted ? undefined : '#ffc078' // if is already highlighted，unset the highlight color
-    }).run();
-    });
-
-    document.getElementById('toggleLinkButton').addEventListener('click', () => {
-        const url = window.prompt('Enter image URL:', 'https://flowbite.com');
-        editor.chain().focus().toggleLink({ href: url }).run();
-    });
-    document.getElementById('removeLinkButton').addEventListener('click', () => {
-        editor.chain().focus().unsetLink().run()
-    });
-    document.getElementById('toggleCodeButton').addEventListener('click', () => {
-        editor.chain().focus().toggleCode().run();
-    })
-
-    document.getElementById('toggleLeftAlignButton').addEventListener('click', () => {
-        editor.chain().focus().setTextAlign('left').run();
-    });
-    document.getElementById('toggleCenterAlignButton').addEventListener('click', () => {
-        editor.chain().focus().setTextAlign('center').run();
-    });
-    document.getElementById('toggleRightAlignButton').addEventListener('click', () => {
-        editor.chain().focus().setTextAlign('right').run();
-    });
-    document.getElementById('toggleListButton').addEventListener('click', () => {
-       editor.chain().focus().toggleBulletList().run();
-    });
-    document.getElementById('toggleOrderedListButton').addEventListener('click', () => {
-        editor.chain().focus().toggleOrderedList().run();
-    });
-    document.getElementById('toggleBlockquoteButton').addEventListener('click', () => {
-        editor.chain().focus().toggleBlockquote().run();
-    });
-    document.getElementById('toggleHRButton').addEventListener('click', () => {
-        editor.chain().focus().setHorizontalRule().run();
-    });
-    document.getElementById('addImageButton').addEventListener('click', () => {
-        const url = window.prompt('Enter image URL:', 'https://placehold.co/600x400');
-        if (url) {
-            editor.chain().focus().setImage({ src: url }).run();
-        }
-    });
-    document.getElementById('addVideoButton').addEventListener('click', () => {
-        const url = window.prompt('Enter YouTube URL:', 'https://www.youtube.com/watch?v=KaLxCiilHns');
-        if (url) {
-            editor.commands.setYoutubeVideo({
-                src: url,
-                width: 640,
-                height: 480,
-            })
-        }
-    });
-
-    // typography dropdown
-    const typographyDropdown = FlowbiteInstances.getInstance('Dropdown', 'typographyDropdown');
-
-    document.getElementById('toggleParagraphButton').addEventListener('click', () => {
-        editor.chain().focus().setParagraph().run();
-        typographyDropdown.hide();
-    });
-    
-    document.querySelectorAll('[data-heading-level]').forEach((button) => {
-        button.addEventListener('click', () => {
-            const level = button.getAttribute('data-heading-level');
-            editor.chain().focus().toggleHeading({ level: parseInt(level) }).run()
-            typographyDropdown.hide();
-        });
-    });
-
-    const textSizeDropdown = FlowbiteInstances.getInstance('Dropdown', 'textSizeDropdown');
-
-    // Loop through all elements with the data-text-size attribute
-    document.querySelectorAll('[data-text-size]').forEach((button) => {
-        button.addEventListener('click', () => {
-            const fontSize = button.getAttribute('data-text-size');
-
-            // Apply the selected font size via pixels using the TipTap editor chain
-            editor.chain().focus().setMark('textStyle', { fontSize }).run();
-
-            // Hide the dropdown after selection
-            textSizeDropdown.hide();
-        });
-    });
-
-    // Listen for color picker changes
-    const colorPicker = document.getElementById('color');
-    colorPicker.addEventListener('input', (event) => {
-        const selectedColor = event.target.value;
-
-        // Apply the selected color to the selected text
-        editor.chain().focus().setColor(selectedColor).run();
-    })
-
-    document.querySelectorAll('[data-hex-color]').forEach((button) => {
-        button.addEventListener('click', () => {
-            const selectedColor = button.getAttribute('data-hex-color');
-
-            // Apply the selected color to the selected text
-            editor.chain().focus().setColor(selectedColor).run();
-        });
-    });
-
-    document.getElementById('reset-color').addEventListener('click', () => {
-        editor.commands.unsetColor();
-    })
-
-    const fontFamilyDropdown = FlowbiteInstances.getInstance('Dropdown', 'fontFamilyDropdown');
-
-    // Loop through all elements with the data-font-family attribute
-    document.querySelectorAll('[data-font-family]').forEach((button) => {
-        button.addEventListener('click', () => {
-            const fontFamily = button.getAttribute('data-font-family');
-
-            // Apply the selected font size via pixels using the TipTap editor chain
-            editor.chain().focus().setFontFamily(fontFamily).run();
-
-            // Hide the dropdown after selection
-            fontFamilyDropdown.hide();
-        });
-    });
-}
-})
-` >}}
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
         <div class="flex flex-wrap items-center">
@@ -649,55 +416,25 @@ window.addEventListener('load', function() {
     <div id="wysiwyg-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
 </div>
 </div>
-{{< /example >}}
+```
 
-Notice: there is a <a href="https://github.com/ueberdosis/tiptap/issues/577" target="_blank" rel="nofollow noreferrer">known issue from TipTap</a> when splitting blocks (ie. using enter to create break lines) and using the bullet list item. A quickfix for `v2.6.6` when using CDN is to match the import statements:
-
-{{< code lang="html" file="wysiwyg.html" icon="file" >}}
-<script type="importmap">
-    {
-        "imports": {
-            "https://esm.sh/v135/prosemirror-model@1.22.3/es2022/prosemirror-model.mjs": "https://esm.sh/v135/prosemirror-model@1.19.3/es2022/prosemirror-model.mjs", 
-            "https://esm.sh/v135/prosemirror-model@1.22.1/es2022/prosemirror-model.mjs": "https://esm.sh/v135/prosemirror-model@1.19.3/es2022/prosemirror-model.mjs"
-        }
-    }
-</script>
-{{< /code >}}
-
-If you're importing the package with Yarn or NPM then you need to add this in your `package.json` file:
-
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
-// when using Yarn
-"resolutions": {
-    "prosemirror-model": "1.19.3"
-}
-
-// when using NPM
-"overrides": {
-    "prosemirror-model": "1.19.3"
-}
-{{< /code >}}
-
-We recommend later checking the Tip Tap library for a proper update to prevent this quickfix in the future.
-
-## Text formatting
-
-Use this example of a WYSIWYG text editor to enable typography styling, formatting and marking such as underline, bold, italic, strikethrough, code, highlight and also selecting text size, color, font family and more using the utility classes from Tailwind CSS.
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
+```javascript
 import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
 import Highlight from 'https://esm.sh/@tiptap/extension-highlight@2.6.6';
 import Underline from 'https://esm.sh/@tiptap/extension-underline@2.6.6';
-import Subscript from 'https://esm.sh/@tiptap/extension-subscript@2.6.6';
-import Superscript from 'https://esm.sh/@tiptap/extension-superscript@2.6.6';
+import Link from 'https://esm.sh/@tiptap/extension-link@2.6.6';
+import TextAlign from 'https://esm.sh/@tiptap/extension-text-align@2.6.6';
+import Image from 'https://esm.sh/@tiptap/extension-image@2.6.6';
+import YouTube from 'https://esm.sh/@tiptap/extension-youtube@2.6.6';
 import TextStyle from 'https://esm.sh/@tiptap/extension-text-style@2.6.6';
 import FontFamily from 'https://esm.sh/@tiptap/extension-font-family@2.6.6';
 import { Color } from 'https://esm.sh/@tiptap/extension-color@2.6.6';
-import Bold from 'https://esm.sh/@tiptap/extension-bold@2.6.6';
+import Bold from 'https://esm.sh/@tiptap/extension-bold@2.6.6'; // Import the Bold extension
+
 
 window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-text-example")) {
+    if (document.getElementById("wysiwyg-example")) {
 
     const FontSizeTextStyle = TextStyle.extend({
         addAttributes() {
@@ -716,18 +453,27 @@ window.addEventListener('load', function() {
         },
     });
     const CustomBold = Bold.extend({
-    // Override the renderHTML method
-    renderHTML({ HTMLAttributes }) {
-    return ['span', { ...HTMLAttributes, style: 'font-weight: bold;' }, 0];
-    },
-    // Ensure it doesn't exclude other marks
-    excludes: '',
-    });
+        // Override the renderHTML method
+        renderHTML({ mark, HTMLAttributes }) {
+            const { style, ...rest } = HTMLAttributes;
 
+            // Merge existing styles with font-weight
+            const newStyle = 'font-weight: bold;' + (style ? ' ' + style : '');
+
+            return ['span', { ...rest, style: newStyle.trim() }, 0];
+        },
+        // Ensure it doesn't exclude other marks
+        addOptions() {
+            return {
+                ...this.parent?.(),
+                HTMLAttributes: {},
+            };
+        },
+    });
     // tip tap editor setup
     const editor = new Editor({
-        element: document.querySelector('#wysiwyg-text-example'),
-          extensions: [
+        element: document.querySelector('#wysiwyg-example'),
+        extensions: [
             StarterKit.configure({
                 textStyle: false,
                 bold: false,
@@ -737,16 +483,24 @@ window.addEventListener('load', function() {
             }),
             // Include the custom Bold extension
             CustomBold,
+            TextStyle,
+            Color,
+            FontSizeTextStyle,
+            FontFamily,
             Highlight,
             Underline,
-            Subscript,
-            Superscript,
-            TextStyle,
-            FontSizeTextStyle,
-            Color,
-            FontFamily
+            Link.configure({
+                openOnClick: false,
+                autolink: true,
+                defaultProtocol: 'https',
+            }),
+            TextAlign.configure({
+                types: ['heading', 'paragraph'],
+            }),
+            Image,
+            YouTube,
         ],
-        content: '<p>Flowbite React is an <strong>open-source library of UI components</strong> built using React and Tailwind CSS. It supports dark mode, a Figma design system, and more.</p><p>It includes essential components for web apps like buttons, dropdowns, navigation bars, modals, datepickers, and charts, all optimized for React.</p><p>Example button component in Flowbite React:</p><code>import &#123; Button &#125; from &#39;flowbite-react&#39;; &lt;Button color&#x3D;&quot;blue&quot;&gt;Default&lt;/Button&gt;</code><p>These components can also be easily customized using the theme props from the Flowbite Docs and allows you to add your own Tailwind CSS utility classes to override the default styles.</p><p>Explore more components and props values in the Flowbite Docs.</p>',
+        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
         editorProps: {
             attributes: {
                 class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
@@ -759,8 +513,6 @@ window.addEventListener('load', function() {
     document.getElementById('toggleItalicButton').addEventListener('click', () => editor.chain().focus().toggleItalic().run());
     document.getElementById('toggleUnderlineButton').addEventListener('click', () => editor.chain().focus().toggleUnderline().run());
     document.getElementById('toggleStrikeButton').addEventListener('click', () => editor.chain().focus().toggleStrike().run());
-    document.getElementById('toggleSubscriptButton').addEventListener('click', () => editor.chain().focus().toggleSubscript().run());
-    document.getElementById('toggleSuperscriptButton').addEventListener('click', () => editor.chain().focus().toggleSuperscript().run());
     document.getElementById('toggleHighlightButton').addEventListener('click', () => {
     const isHighlighted = editor.isActive('highlight');
     // when using toggleHighlight(), judge if is is already highlighted.
@@ -769,8 +521,69 @@ window.addEventListener('load', function() {
     }).run();
     });
 
+    document.getElementById('toggleLinkButton').addEventListener('click', () => {
+        const url = window.prompt('Enter image URL:', 'https://flowbite.com');
+        editor.chain().focus().toggleLink({ href: url }).run();
+    });
+    document.getElementById('removeLinkButton').addEventListener('click', () => {
+        editor.chain().focus().unsetLink().run()
+    });
     document.getElementById('toggleCodeButton').addEventListener('click', () => {
         editor.chain().focus().toggleCode().run();
+    })
+
+    document.getElementById('toggleLeftAlignButton').addEventListener('click', () => {
+        editor.chain().focus().setTextAlign('left').run();
+    });
+    document.getElementById('toggleCenterAlignButton').addEventListener('click', () => {
+        editor.chain().focus().setTextAlign('center').run();
+    });
+    document.getElementById('toggleRightAlignButton').addEventListener('click', () => {
+        editor.chain().focus().setTextAlign('right').run();
+    });
+    document.getElementById('toggleListButton').addEventListener('click', () => {
+       editor.chain().focus().toggleBulletList().run();
+    });
+    document.getElementById('toggleOrderedListButton').addEventListener('click', () => {
+        editor.chain().focus().toggleOrderedList().run();
+    });
+    document.getElementById('toggleBlockquoteButton').addEventListener('click', () => {
+        editor.chain().focus().toggleBlockquote().run();
+    });
+    document.getElementById('toggleHRButton').addEventListener('click', () => {
+        editor.chain().focus().setHorizontalRule().run();
+    });
+    document.getElementById('addImageButton').addEventListener('click', () => {
+        const url = window.prompt('Enter image URL:', 'https://placehold.co/600x400');
+        if (url) {
+            editor.chain().focus().setImage({ src: url }).run();
+        }
+    });
+    document.getElementById('addVideoButton').addEventListener('click', () => {
+        const url = window.prompt('Enter YouTube URL:', 'https://www.youtube.com/watch?v=KaLxCiilHns');
+        if (url) {
+            editor.commands.setYoutubeVideo({
+                src: url,
+                width: 640,
+                height: 480,
+            })
+        }
+    });
+
+    // typography dropdown
+    const typographyDropdown = FlowbiteInstances.getInstance('Dropdown', 'typographyDropdown');
+
+    document.getElementById('toggleParagraphButton').addEventListener('click', () => {
+        editor.chain().focus().setParagraph().run();
+        typographyDropdown.hide();
+    });
+    
+    document.querySelectorAll('[data-heading-level]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const level = button.getAttribute('data-heading-level');
+            editor.chain().focus().toggleHeading({ level: parseInt(level) }).run()
+            typographyDropdown.hide();
+        });
     });
 
     const textSizeDropdown = FlowbiteInstances.getInstance('Dropdown', 'textSizeDropdown');
@@ -824,10 +637,44 @@ window.addEventListener('load', function() {
             fontFamilyDropdown.hide();
         });
     });
-
-    }
+}
 })
-` >}}
+```
+
+Notice: there is a <a href="https://github.com/ueberdosis/tiptap/issues/577" target="_blank" rel="nofollow noreferrer">known issue from TipTap</a> when splitting blocks (ie. using enter to create break lines) and using the bullet list item. A quickfix for `v2.6.6` when using CDN is to match the import statements:
+
+```html
+<script type="importmap">
+    {
+        "imports": {
+            "https://esm.sh/v135/prosemirror-model@1.22.3/es2022/prosemirror-model.mjs": "https://esm.sh/v135/prosemirror-model@1.19.3/es2022/prosemirror-model.mjs", 
+            "https://esm.sh/v135/prosemirror-model@1.22.1/es2022/prosemirror-model.mjs": "https://esm.sh/v135/prosemirror-model@1.19.3/es2022/prosemirror-model.mjs"
+        }
+    }
+</script>
+```
+
+If you're importing the package with Yarn or NPM then you need to add this in your `package.json` file:
+
+```javascript
+// when using Yarn
+"resolutions": {
+    "prosemirror-model": "1.19.3"
+}
+
+// when using NPM
+"overrides": {
+    "prosemirror-model": "1.19.3"
+}
+```
+
+We recommend later checking the Tip Tap library for a proper update to prevent this quickfix in the future.
+
+## Text formatting
+
+Use this example of a WYSIWYG text editor to enable typography styling, formatting and marking such as underline, bold, italic, strikethrough, code, highlight and also selecting text size, color, font family and more using the utility classes from Tailwind CSS.
+
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
         <div class="flex flex-wrap items-center">
@@ -1042,13 +889,209 @@ window.addEventListener('load', function() {
     <div id="wysiwyg-text-example" class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
 </div>
 </div>
-{{< /example >}}
+```
+
+```javascript
+import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
+import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
+import Highlight from 'https://esm.sh/@tiptap/extension-highlight@2.6.6';
+import Underline from 'https://esm.sh/@tiptap/extension-underline@2.6.6';
+import Subscript from 'https://esm.sh/@tiptap/extension-subscript@2.6.6';
+import Superscript from 'https://esm.sh/@tiptap/extension-superscript@2.6.6';
+import TextStyle from 'https://esm.sh/@tiptap/extension-text-style@2.6.6';
+import FontFamily from 'https://esm.sh/@tiptap/extension-font-family@2.6.6';
+import { Color } from 'https://esm.sh/@tiptap/extension-color@2.6.6';
+import Bold from 'https://esm.sh/@tiptap/extension-bold@2.6.6';
+
+window.addEventListener('load', function() {
+    if (document.getElementById("wysiwyg-text-example")) {
+
+    const FontSizeTextStyle = TextStyle.extend({
+        addAttributes() {
+            return {
+            fontSize: {
+                default: null,
+                parseHTML: element => element.style.fontSize,
+                renderHTML: attributes => {
+                if (!attributes.fontSize) {
+                    return {};
+                }
+                return { style: 'font-size: ' + attributes.fontSize };
+                },
+            },
+            };
+        },
+    });
+    const CustomBold = Bold.extend({
+    // Override the renderHTML method
+    renderHTML({ HTMLAttributes }) {
+    return ['span', { ...HTMLAttributes, style: 'font-weight: bold;' }, 0];
+    },
+    // Ensure it doesn't exclude other marks
+    excludes: '',
+    });
+
+    // tip tap editor setup
+    const editor = new Editor({
+        element: document.querySelector('#wysiwyg-text-example'),
+          extensions: [
+            StarterKit.configure({
+                textStyle: false,
+                bold: false,
+                marks: {
+                    bold: false,
+                },
+            }),
+            // Include the custom Bold extension
+            CustomBold,
+            Highlight,
+            Underline,
+            Subscript,
+            Superscript,
+            TextStyle,
+            FontSizeTextStyle,
+            Color,
+            FontFamily
+        ],
+        content: '<p>Flowbite React is an <strong>open-source library of UI components</strong> built using React and Tailwind CSS. It supports dark mode, a Figma design system, and more.</p><p>It includes essential components for web apps like buttons, dropdowns, navigation bars, modals, datepickers, and charts, all optimized for React.</p><p>Example button component in Flowbite React:</p><code>import &#123; Button &#125; from &#39;flowbite-react&#39;; &lt;Button color&#x3D;&quot;blue&quot;&gt;Default&lt;/Button&gt;</code><p>These components can also be easily customized using the theme props from the Flowbite Docs and allows you to add your own Tailwind CSS utility classes to override the default styles.</p><p>Explore more components and props values in the Flowbite Docs.</p>',
+        editorProps: {
+            attributes: {
+                class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
+            },
+        }
+    });
+
+    // set up custom event listeners for the buttons
+    document.getElementById('toggleBoldButton').addEventListener('click', () => editor.chain().focus().toggleBold().run());
+    document.getElementById('toggleItalicButton').addEventListener('click', () => editor.chain().focus().toggleItalic().run());
+    document.getElementById('toggleUnderlineButton').addEventListener('click', () => editor.chain().focus().toggleUnderline().run());
+    document.getElementById('toggleStrikeButton').addEventListener('click', () => editor.chain().focus().toggleStrike().run());
+    document.getElementById('toggleSubscriptButton').addEventListener('click', () => editor.chain().focus().toggleSubscript().run());
+    document.getElementById('toggleSuperscriptButton').addEventListener('click', () => editor.chain().focus().toggleSuperscript().run());
+    document.getElementById('toggleHighlightButton').addEventListener('click', () => {
+    const isHighlighted = editor.isActive('highlight');
+    // when using toggleHighlight(), judge if is is already highlighted.
+    editor.chain().focus().toggleHighlight({
+        color: isHighlighted ? undefined : '#ffc078' // if is already highlighted，unset the highlight color
+    }).run();
+    });
+
+    document.getElementById('toggleCodeButton').addEventListener('click', () => {
+        editor.chain().focus().toggleCode().run();
+    });
+
+    const textSizeDropdown = FlowbiteInstances.getInstance('Dropdown', 'textSizeDropdown');
+
+    // Loop through all elements with the data-text-size attribute
+    document.querySelectorAll('[data-text-size]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const fontSize = button.getAttribute('data-text-size');
+
+            // Apply the selected font size via pixels using the TipTap editor chain
+            editor.chain().focus().setMark('textStyle', { fontSize }).run();
+
+            // Hide the dropdown after selection
+            textSizeDropdown.hide();
+        });
+    });
+
+    // Listen for color picker changes
+    const colorPicker = document.getElementById('color');
+    colorPicker.addEventListener('input', (event) => {
+        const selectedColor = event.target.value;
+
+        // Apply the selected color to the selected text
+        editor.chain().focus().setColor(selectedColor).run();
+    })
+
+    document.querySelectorAll('[data-hex-color]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const selectedColor = button.getAttribute('data-hex-color');
+
+            // Apply the selected color to the selected text
+            editor.chain().focus().setColor(selectedColor).run();
+        });
+    });
+
+    document.getElementById('reset-color').addEventListener('click', () => {
+        editor.commands.unsetColor();
+    })
+
+    const fontFamilyDropdown = FlowbiteInstances.getInstance('Dropdown', 'fontFamilyDropdown');
+
+    // Loop through all elements with the data-font-family attribute
+    document.querySelectorAll('[data-font-family]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const fontFamily = button.getAttribute('data-font-family');
+
+            // Apply the selected font size via pixels using the TipTap editor chain
+            editor.chain().focus().setFontFamily(fontFamily).run();
+
+            // Hide the dropdown after selection
+            fontFamilyDropdown.hide();
+        });
+    });
+
+    }
+})
+```
 
 ## Text alignment
 
 Enable text alignment to the left, center, right, and justify for the content inside of the WYSIWYG component.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
+```html
+<div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
+    <div class="p-2 border-b border-default-medium">
+        <div class="flex flex-wrap items-center">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse flex-wrap">
+                <button id="toggleLeftAlignButton" type="button" data-tooltip-target="tooltip-left-align" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6h8m-8 4h12M6 14h8m-8 4h12"/></svg>
+                    <span class="sr-only">Align left</span>
+                </button>
+                <div id="tooltip-left-align" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
+                    Align left
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button id="toggleCenterAlignButton" type="button" data-tooltip-target="tooltip-center-align" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h8M6 10h12M8 14h8M6 18h12"/></svg>
+                    <span class="sr-only">Align center</span>
+                </button>
+                <div id="tooltip-center-align" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
+                    Align center
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button id="toggleRightAlignButton" type="button" data-tooltip-target="tooltip-right-align" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6h-8m8 4H6m12 4h-8m8 4H6"/>
+                    </svg>
+                    <span class="sr-only">Align right</span>
+                </button>
+                <div id="tooltip-right-align" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
+                    Align right
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button id="toggleJustifyButton" type="button" data-tooltip-target="tooltip-justify" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6H6m12 4H6m12 4H6m12 4H6"/>
+                    </svg>
+                    <span class="sr-only">Justify</span>
+                </button>
+                <div id="tooltip-justify" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
+                    Justify text
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="p-3 rounded-b-base bg-neutral-primary">
+    <label for="wysiwyg-alignment-example" class="sr-only">Publish post</label>
+    <div id="wysiwyg-alignment-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
+</div>
+</div>
+```
+
+```javascript
 import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
 import Highlight from 'https://esm.sh/@tiptap/extension-highlight@2.6.6';
@@ -1102,117 +1145,13 @@ window.addEventListener('load', function() {
     });
     }
 })
-` >}}
-<div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
-    <div class="p-2 border-b border-default-medium">
-        <div class="flex flex-wrap items-center">
-            <div class="flex items-center space-x-1 rtl:space-x-reverse flex-wrap">
-                <button id="toggleLeftAlignButton" type="button" data-tooltip-target="tooltip-left-align" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6h8m-8 4h12M6 14h8m-8 4h12"/></svg>
-                    <span class="sr-only">Align left</span>
-                </button>
-                <div id="tooltip-left-align" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
-                    Align left
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                <button id="toggleCenterAlignButton" type="button" data-tooltip-target="tooltip-center-align" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h8M6 10h12M8 14h8M6 18h12"/></svg>
-                    <span class="sr-only">Align center</span>
-                </button>
-                <div id="tooltip-center-align" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
-                    Align center
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                <button id="toggleRightAlignButton" type="button" data-tooltip-target="tooltip-right-align" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6h-8m8 4H6m12 4h-8m8 4H6"/>
-                    </svg>
-                    <span class="sr-only">Align right</span>
-                </button>
-                <div id="tooltip-right-align" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
-                    Align right
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                <button id="toggleJustifyButton" type="button" data-tooltip-target="tooltip-justify" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6H6m12 4H6m12 4H6m12 4H6"/>
-                    </svg>
-                    <span class="sr-only">Justify</span>
-                </button>
-                <div id="tooltip-justify" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
-                    Justify text
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-            </div>
-    </div>
-</div>
-<div class="p-3 rounded-b-base bg-neutral-primary">
-    <label for="wysiwyg-alignment-example" class="sr-only">Publish post</label>
-    <div id="wysiwyg-alignment-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
-</div>
-</div>
-{{< /example >}}
+```
 
 ## Typography elements
 
 Use this example to create typography elements like bullet lists, ordered lists, blockquotes, horizontal rules, paragraphs, headings, code blocks based on Tailwind CSS utility classees and the Flowbite API.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
-import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
-import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
-
-window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-typography-example")) {
-
-    // tip tap editor setup
-    const editor = new Editor({
-        element: document.querySelector('#wysiwyg-typography-example'),
-        extensions: [
-            StarterKit
-        ],
-        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><ul><li>Over 600+ open-source UI components</li><li>Supports dark mode and RTL</li><li>Available in React, Vue, Svelte frameworks</li></ul><p>Here is an example of a button component:</p><pre><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code></pre><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
-        editorProps: {
-            attributes: {
-                class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
-            },
-        }
-    });
-
-    // set up custom event listeners for the buttons
-    document.getElementById('toggleListButton').addEventListener('click', () => {
-       editor.chain().focus().toggleBulletList().run();
-    });
-    document.getElementById('toggleOrderedListButton').addEventListener('click', () => {
-        editor.chain().focus().toggleOrderedList().run();
-    });
-    document.getElementById('toggleBlockquoteButton').addEventListener('click', () => {
-        editor.chain().focus().toggleBlockquote().run();
-    });
-    document.getElementById('toggleHRButton').addEventListener('click', () => {
-        editor.chain().focus().setHorizontalRule().run();
-    });
-    document.getElementById('toggleCodeBlockButton').addEventListener('click', () => {
-        editor.chain().focus().toggleCodeBlock().run();
-    });
-
-    // typography dropdown
-    const typographyDropdown = FlowbiteInstances.getInstance('Dropdown', 'typographyDropdown');
-
-    document.getElementById('toggleParagraphButton').addEventListener('click', () => {
-        editor.chain().focus().setParagraph().run();
-        typographyDropdown.hide();
-    });
-    
-    document.querySelectorAll('[data-heading-level]').forEach((button) => {
-        button.addEventListener('click', () => {
-            const level = button.getAttribute('data-heading-level');
-            editor.chain().focus().toggleHeading({ level: parseInt(level) }).run()
-            typographyDropdown.hide();
-        });
-    });
-}
-})
-` >}}
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
     <div class="flex items-center gap-2">
@@ -1351,13 +1290,105 @@ window.addEventListener('load', function() {
     <div id="wysiwyg-typography-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
 </div>
 </div>
-{{< /example >}}
+```
+
+```javascript
+import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
+import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
+
+window.addEventListener('load', function() {
+    if (document.getElementById("wysiwyg-typography-example")) {
+
+    // tip tap editor setup
+    const editor = new Editor({
+        element: document.querySelector('#wysiwyg-typography-example'),
+        extensions: [
+            StarterKit
+        ],
+        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><ul><li>Over 600+ open-source UI components</li><li>Supports dark mode and RTL</li><li>Available in React, Vue, Svelte frameworks</li></ul><p>Here is an example of a button component:</p><pre><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code></pre><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
+        editorProps: {
+            attributes: {
+                class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
+            },
+        }
+    });
+
+    // set up custom event listeners for the buttons
+    document.getElementById('toggleListButton').addEventListener('click', () => {
+       editor.chain().focus().toggleBulletList().run();
+    });
+    document.getElementById('toggleOrderedListButton').addEventListener('click', () => {
+        editor.chain().focus().toggleOrderedList().run();
+    });
+    document.getElementById('toggleBlockquoteButton').addEventListener('click', () => {
+        editor.chain().focus().toggleBlockquote().run();
+    });
+    document.getElementById('toggleHRButton').addEventListener('click', () => {
+        editor.chain().focus().setHorizontalRule().run();
+    });
+    document.getElementById('toggleCodeBlockButton').addEventListener('click', () => {
+        editor.chain().focus().toggleCodeBlock().run();
+    });
+
+    // typography dropdown
+    const typographyDropdown = FlowbiteInstances.getInstance('Dropdown', 'typographyDropdown');
+
+    document.getElementById('toggleParagraphButton').addEventListener('click', () => {
+        editor.chain().focus().setParagraph().run();
+        typographyDropdown.hide();
+    });
+    
+    document.querySelectorAll('[data-heading-level]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const level = button.getAttribute('data-heading-level');
+            editor.chain().focus().toggleHeading({ level: parseInt(level) }).run()
+            typographyDropdown.hide();
+        });
+    });
+}
+})
+```
 
 ## Configuring links
 
 Use this example to add and remove anchor links for the content inside of the WYSIWYG text editor.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
+```html
+<div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
+    <div class="p-2 border-b border-default-medium">
+        <div class="flex flex-wrap items-center">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse flex-wrap">
+                <button id="toggleLinkButton" data-tooltip-target="tooltip-link" type="button" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304m-.321-4.49a3.39 3.39 0 0 0 4.795 0l3.424-3.426a3.39 3.39 0 0 0-4.794-4.795l-1.028.961"/>
+                    </svg>
+                    <span class="sr-only">Link</span>
+                </button>
+                <div id="tooltip-link" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
+                    Add link
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button id="removeLinkButton" data-tooltip-target="tooltip-remove-link" type="button" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M13.2 9.8a3.4 3.4 0 0 0-4.8 0L5 13.2A3.4 3.4 0 0 0 9.8 18l.3-.3m-.3-4.5a3.4 3.4 0 0 0 4.8 0L18 9.8A3.4 3.4 0 0 0 13.2 5l-1 1m7.4 14-1.8-1.8m0 0L16 16.4m1.8 1.8 1.8-1.8m-1.8 1.8L16 20"/>
+                    </svg>
+                    <span class="sr-only">Remove link</span>
+                </button>
+                <div id="tooltip-remove-link" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
+                    Remove link
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="p-3 rounded-b-base bg-neutral-primary">
+    <label for="wysiwyg-links-example" class="sr-only">Publish post</label>
+    <div id="wysiwyg-links-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
+</div>
+</div>
+```
+
+```javascript
 import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
 import Link from 'https://esm.sh/@tiptap/extension-link@2.6.6';
@@ -1394,96 +1425,13 @@ window.addEventListener('load', function() {
     });
 }
 })
-` >}}
-<div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
-    <div class="p-2 border-b border-default-medium">
-        <div class="flex flex-wrap items-center">
-            <div class="flex items-center space-x-1 rtl:space-x-reverse flex-wrap">
-                <button id="toggleLinkButton" data-tooltip-target="tooltip-link" type="button" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304m-.321-4.49a3.39 3.39 0 0 0 4.795 0l3.424-3.426a3.39 3.39 0 0 0-4.794-4.795l-1.028.961"/>
-                    </svg>
-                    <span class="sr-only">Link</span>
-                </button>
-                <div id="tooltip-link" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
-                    Add link
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                <button id="removeLinkButton" data-tooltip-target="tooltip-remove-link" type="button" class="p-1.5 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-quaternary">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M13.2 9.8a3.4 3.4 0 0 0-4.8 0L5 13.2A3.4 3.4 0 0 0 9.8 18l.3-.3m-.3-4.5a3.4 3.4 0 0 0 4.8 0L18 9.8A3.4 3.4 0 0 0 13.2 5l-1 1m7.4 14-1.8-1.8m0 0L16 16.4m1.8 1.8 1.8-1.8m-1.8 1.8L16 20"/>
-                    </svg>
-                    <span class="sr-only">Remove link</span>
-                </button>
-                <div id="tooltip-remove-link" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark-strong rounded-base shadow-xs opacity-0 tooltip">
-                    Remove link
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-            </div>
-    </div>
-</div>
-<div class="p-3 rounded-b-base bg-neutral-primary">
-    <label for="wysiwyg-links-example" class="sr-only">Publish post</label>
-    <div id="wysiwyg-links-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
-</div>
-</div>
-{{< /example >}}
+```
 
 ## Using images
 
 Use this example to learn how to add images inside of the WYSIWYG text editor and configure settings such as the image URL, image alt attribute which is important for SEO and accessibility and the image title.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
-import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
-import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
-import Image from 'https://esm.sh/@tiptap/extension-image@2.6.6';
-
-window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-images-example")) {
-
-    // tip tap editor setup
-    const editor = new Editor({
-        element: document.querySelector('#wysiwyg-images-example'),
-        extensions: [
-            StarterKit,
-            Image
-        ],
-        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><img src="https://placehold.co/600x400" contenteditable="false" draggable="true"><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
-        editorProps: {
-            attributes: {
-                class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
-            },
-        }
-    });
-
-    // set up custom event listeners for the buttons
-    document.getElementById('addImageButton').addEventListener('click', () => {
-        const url = window.prompt('Enter image URL:', 'https://placehold.co/600x400');
-        if (url) {
-            editor.chain().focus().setImage({ src: url }).run();
-        }
-    });
-
-    const advancedImageModal = FlowbiteInstances.getInstance('Modal', 'advanced-image-modal');
-    
-    document.getElementById('advancedImageForm').addEventListener('submit', (e) => {
-
-        e.preventDefault();
-        
-        const imageUrl = document.getElementById('URL').value;
-        const imageAlt = document.getElementById('alt').value;
-        const imageTitle = document.getElementById('title').value;
-
-        if (imageUrl) {
-            editor.chain().focus().setImage({ src: imageUrl, alt: imageAlt ? imageAlt : '', title: imageTitle ? imageTitle: '' }).run();
-            document.getElementById('advancedImageForm').reset();
-            advancedImageModal.hide();
-        }
-    });
-    
-}
-})
-` >}}
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
     <div class="flex items-center gap-2">
@@ -1557,26 +1505,22 @@ window.addEventListener('load', function() {
         </div>
     </div>
 </div> 
-{{< /example >}}
+```
 
-## Adding videos
-
-Use this example to embed videos inside the WYSIWYG text editor based on a YouTube URL source and set the width and height of the video by using the Flowbite modal component API.
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
+```javascript
 import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
-import YouTube from 'https://esm.sh/@tiptap/extension-youtube@2.6.6';
+import Image from 'https://esm.sh/@tiptap/extension-image@2.6.6';
 
 window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-video-example")) {
+    if (document.getElementById("wysiwyg-images-example")) {
 
     // tip tap editor setup
     const editor = new Editor({
-        element: document.querySelector('#wysiwyg-video-example'),
+        element: document.querySelector('#wysiwyg-images-example'),
         extensions: [
             StarterKit,
-            YouTube
+            Image
         ],
         content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><img src="https://placehold.co/600x400" contenteditable="false" draggable="true"><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
         editorProps: {
@@ -1587,37 +1531,39 @@ window.addEventListener('load', function() {
     });
 
     // set up custom event listeners for the buttons
-    document.getElementById('addVideoButton').addEventListener('click', () => {
-        const url = window.prompt('Enter YouTube URL:', 'https://www.youtube.com/watch?v=KaLxCiilHns');
+    document.getElementById('addImageButton').addEventListener('click', () => {
+        const url = window.prompt('Enter image URL:', 'https://placehold.co/600x400');
         if (url) {
-            editor.commands.setYoutubeVideo({
-                src: url,
-                width: 640,
-                height: 480,
-            })
+            editor.chain().focus().setImage({ src: url }).run();
         }
     });
 
-    const advancedVideoModal = FlowbiteInstances.getInstance('Modal', 'advanced-video-modal');
+    const advancedImageModal = FlowbiteInstances.getInstance('Modal', 'advanced-image-modal');
     
-    document.getElementById('advancedVideoForm').addEventListener('submit', (e) => {
+    document.getElementById('advancedImageForm').addEventListener('submit', (e) => {
 
         e.preventDefault();
         
-        const videoUrl = document.getElementById('URL').value;
-        const videoWidth = document.getElementById('width').value;
-        const videoHeight = document.getElementById('height').value;
+        const imageUrl = document.getElementById('URL').value;
+        const imageAlt = document.getElementById('alt').value;
+        const imageTitle = document.getElementById('title').value;
 
-        if (videoUrl) {
-            editor.commands.setYoutubeVideo({ src: videoUrl, width: videoWidth ? videoWidth : 640, height: videoHeight ? videoHeight: 480 });
-            document.getElementById('advancedVideoForm').reset();
-            advancedVideoModal.hide();
+        if (imageUrl) {
+            editor.chain().focus().setImage({ src: imageUrl, alt: imageAlt ? imageAlt : '', title: imageTitle ? imageTitle: '' }).run();
+            document.getElementById('advancedImageForm').reset();
+            advancedImageModal.hide();
         }
     });
     
 }
 })
-` >}}
+```
+
+## Adding videos
+
+Use this example to embed videos inside the WYSIWYG text editor based on a YouTube URL source and set the width and height of the video by using the Flowbite modal component API.
+
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
     <div class="flex items-center gap-2">
@@ -1686,60 +1632,24 @@ window.addEventListener('load', function() {
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
-## Editing tables
-
-Use this example to edit table data inside the WYSIWYG text editor by adding and removing table column, rows, and cells and use other features to navigate through the table data for a convenient editing process.
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
+```javascript
 import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
-import Table from 'https://esm.sh/@tiptap/extension-table@2.6.6';
-import TableCell from 'https://esm.sh/@tiptap/extension-table-cell@2.6.6';
-import TableHeader from 'https://esm.sh/@tiptap/extension-table-header@2.6.6';
-import TableRow from 'https://esm.sh/@tiptap/extension-table-row@2.6.6';
-
-const TipTapExtensionTableCell = TableCell.extend({
-	addAttributes() {
-		return {
-			...this.parent?.(),
-			backgroundColor: {
-				default: null,
-				renderHTML: (attributes) => {
-					if (!attributes.backgroundColor) {
-						return {}
-					}
-
-					return {
-						style: 'background-color: ' + attributes.backgroundColor,
-					}
-				},
-				parseHTML: (element) => {
-					return element.style.backgroundColor.replace(/['"]+/g, '')
-				},
-			},
-		}
-	},
-});
+import YouTube from 'https://esm.sh/@tiptap/extension-youtube@2.6.6';
 
 window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-tables-example")) {
+    if (document.getElementById("wysiwyg-video-example")) {
 
     // tip tap editor setup
     const editor = new Editor({
-        element: document.querySelector('#wysiwyg-tables-example'),
+        element: document.querySelector('#wysiwyg-video-example'),
         extensions: [
             StarterKit,
-            Table.configure({
-                resizable: true,
-            }),
-            TableRow,
-            TableHeader,
-            TableCell,
-            TipTapExtensionTableCell
+            YouTube
         ],
-        content: '<p>Understanding global <strong>population growth trends</strong> is essential for analyzing the development and future of nations. Population growth rates provide insights into economic prospects, resource allocation, and potential challenges for countries worldwide.</p><p>Here is an example of population data:</p><div class=tableWrapper><table style=min-width:75px><col><col><col><tr><th colspan=1 rowspan=1><p>Country<th colspan=1 rowspan=1><p>Population<th colspan=1 rowspan=1><p>Growth rate<tr><td colspan=1 rowspan=1><p>United States<td colspan=1 rowspan=1><p>333 million<td colspan=1 rowspan=1><p>0.4%<tr><td colspan=1 rowspan=1><p>China<td colspan=1 rowspan=1><p>1.41 billion<td colspan=1 rowspan=1><p>0%<tr><td colspan=1 rowspan=1><p>Germany<td colspan=1 rowspan=1><p>83.8 million<td colspan=1 rowspan=1><p>0.7%<tr><td colspan=1 rowspan=1><p>India<td colspan=1 rowspan=1><p>1.42 billion<td colspan=1 rowspan=1><p>1.0%<tr><td colspan=1 rowspan=1><p>Brazil<td colspan=1 rowspan=1><p>214 million<td colspan=1 rowspan=1><p>0.6%<tr><td colspan=1 rowspan=1><p>Indonesia<td colspan=1 rowspan=1><p>273 million<td colspan=1 rowspan=1><p>1.1%<tr><td colspan=1 rowspan=1><p>Pakistan<td colspan=1 rowspan=1><p>231 million<td colspan=1 rowspan=1><p>2.0%<tr><td colspan=1 rowspan=1><p>Nigeria<td colspan=1 rowspan=1><p>223 million<td colspan=1 rowspan=1><p>2.5%</table></div><p>Learn more about global population trends from reliable sources like the <a href=https://www.worldpopulationreview.com>World Population Review</a>.</p>',
+        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><img src="https://placehold.co/600x400" contenteditable="false" draggable="true"><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
         editorProps: {
             attributes: {
                 class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
@@ -1748,108 +1658,43 @@ window.addEventListener('load', function() {
     });
 
     // set up custom event listeners for the buttons
-    document.getElementById('addTableButton').addEventListener('click', () => {
-        editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
-    });
-
-    // add column before
-    document.getElementById('addColumnBeforeButton').addEventListener('click', () => {
-        editor.chain().focus().addColumnBefore().run();
-    });
-
-    // add column after
-    document.getElementById('addColumnAfterButton').addEventListener('click', () => {
-        editor.chain().focus().addColumnAfter().run();
-    });
-
-    // remove column
-    document.getElementById('removeColumnButton').addEventListener('click', () => {
-        editor.chain().focus().deleteColumn().run();
-    });
-
-    // add row before
-    document.getElementById('addRowBeforeButton').addEventListener('click', () => {
-        editor.chain().focus().addRowBefore().run();
-    });
-
-    // add row after
-    document.getElementById('addRowAfterButton').addEventListener('click', () => {
-        editor.chain().focus().addRowAfter().run();
-    });
-
-    // remove row
-    document.getElementById('removeRowButton').addEventListener('click', () => {
-        editor.chain().focus().deleteRow().run();
-    });
-
-    // delete table
-    document.getElementById('deleteTableButton').addEventListener('click', () => {
-        editor.chain().focus().deleteTable().run();
-    });
-
-    // merge cells
-    document.getElementById('mergeCellsButton').addEventListener('click', () => {
-        editor.chain().focus().mergeCells().run();
-    });
-
-    // split cells
-    document.getElementById('splitCellsButton').addEventListener('click', () => {
-        editor.chain().focus().splitCell().run();
-    });
-
-    // merge or split
-    document.getElementById('mergeOrSplitButton').addEventListener('click', () => {
-        editor.chain().focus().mergeOrSplit().run();
-    });
-
-    // toggle header column
-    document.getElementById('toggleHeaderColumnButton').addEventListener('click', () => {
-        editor.chain().focus().toggleHeaderColumn().run();
-    });
-
-    // toggle header row
-    document.getElementById('toggleHeaderRowButton').addEventListener('click', () => {
-        editor.chain().focus().toggleHeaderRow().run();
-    });
-
-    // toggle header cell
-    document.getElementById('toggleHeaderCellButton').addEventListener('click', () => {
-        editor.chain().focus().toggleHeaderCell().run();
-    });
-
-    const cellAttributeModal = FlowbiteInstances.getInstance('Modal', 'cell-attribute-modal');
-    
-    document.getElementById('addCellAttributeForm').addEventListener('submit', (e) => {
-
-        e.preventDefault();
-        
-        const attributeName = document.getElementById('attribute-name').value;
-        const attributeValue = document.getElementById('attribute-value').value;
-
-        if (attributeName && attributeValue) {
-            const result = editor.commands.setCellAttribute(attributeName ? attributeName : '', attributeValue ? attributeValue : '');
-            document.getElementById('addCellAttributeForm').reset();
-            cellAttributeModal.hide();
+    document.getElementById('addVideoButton').addEventListener('click', () => {
+        const url = window.prompt('Enter YouTube URL:', 'https://www.youtube.com/watch?v=KaLxCiilHns');
+        if (url) {
+            editor.commands.setYoutubeVideo({
+                src: url,
+                width: 640,
+                height: 480,
+            })
         }
     });
 
-    // fix tables
-    document.getElementById('fixTablesButton').addEventListener('click', () => {
-       editor.commands.fixTables();
-    });
+    const advancedVideoModal = FlowbiteInstances.getInstance('Modal', 'advanced-video-modal');
+    
+    document.getElementById('advancedVideoForm').addEventListener('submit', (e) => {
 
-    // go to previous cell
-    document.getElementById('previousCellButton').addEventListener('click', () => {
-        editor.chain().focus().goToPreviousCell().run();
-    });
+        e.preventDefault();
+        
+        const videoUrl = document.getElementById('URL').value;
+        const videoWidth = document.getElementById('width').value;
+        const videoHeight = document.getElementById('height').value;
 
-    // go to the next cell
-    document.getElementById('nextCellButton').addEventListener('click', () => {
-        editor.chain().focus().goToNextCell().run();
+        if (videoUrl) {
+            editor.commands.setYoutubeVideo({ src: videoUrl, width: videoWidth ? videoWidth : 640, height: videoHeight ? videoHeight: 480 });
+            document.getElementById('advancedVideoForm').reset();
+            advancedVideoModal.hide();
+        }
     });
+    
 }
 })
-` >}}
+```
+
+## Editing tables
+
+Use this example to edit table data inside the WYSIWYG text editor by adding and removing table column, rows, and cells and use other features to navigate through the table data for a convenient editing process.
+
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
     <div class="flex items-center gap-2">
@@ -2092,26 +1937,56 @@ window.addEventListener('load', function() {
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
-## Undo and redo
-
-Use the history functionality from the WYSIWYG text editor component to integrate undo and redo actions.
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
+```javascript
 import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
+import Table from 'https://esm.sh/@tiptap/extension-table@2.6.6';
+import TableCell from 'https://esm.sh/@tiptap/extension-table-cell@2.6.6';
+import TableHeader from 'https://esm.sh/@tiptap/extension-table-header@2.6.6';
+import TableRow from 'https://esm.sh/@tiptap/extension-table-row@2.6.6';
+
+const TipTapExtensionTableCell = TableCell.extend({
+	addAttributes() {
+		return {
+			...this.parent?.(),
+			backgroundColor: {
+				default: null,
+				renderHTML: (attributes) => {
+					if (!attributes.backgroundColor) {
+						return {}
+					}
+
+					return {
+						style: 'background-color: ' + attributes.backgroundColor,
+					}
+				},
+				parseHTML: (element) => {
+					return element.style.backgroundColor.replace(/['"]+/g, '')
+				},
+			},
+		}
+	},
+});
 
 window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-history-example")) {
+    if (document.getElementById("wysiwyg-tables-example")) {
 
     // tip tap editor setup
     const editor = new Editor({
-        element: document.querySelector('#wysiwyg-history-example'),
+        element: document.querySelector('#wysiwyg-tables-example'),
         extensions: [
-            StarterKit
+            StarterKit,
+            Table.configure({
+                resizable: true,
+            }),
+            TableRow,
+            TableHeader,
+            TableCell,
+            TipTapExtensionTableCell
         ],
-        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
+        content: '<p>Understanding global <strong>population growth trends</strong> is essential for analyzing the development and future of nations. Population growth rates provide insights into economic prospects, resource allocation, and potential challenges for countries worldwide.</p><p>Here is an example of population data:</p><div class=tableWrapper><table style=min-width:75px><col><col><col><tr><th colspan=1 rowspan=1><p>Country<th colspan=1 rowspan=1><p>Population<th colspan=1 rowspan=1><p>Growth rate<tr><td colspan=1 rowspan=1><p>United States<td colspan=1 rowspan=1><p>333 million<td colspan=1 rowspan=1><p>0.4%<tr><td colspan=1 rowspan=1><p>China<td colspan=1 rowspan=1><p>1.41 billion<td colspan=1 rowspan=1><p>0%<tr><td colspan=1 rowspan=1><p>Germany<td colspan=1 rowspan=1><p>83.8 million<td colspan=1 rowspan=1><p>0.7%<tr><td colspan=1 rowspan=1><p>India<td colspan=1 rowspan=1><p>1.42 billion<td colspan=1 rowspan=1><p>1.0%<tr><td colspan=1 rowspan=1><p>Brazil<td colspan=1 rowspan=1><p>214 million<td colspan=1 rowspan=1><p>0.6%<tr><td colspan=1 rowspan=1><p>Indonesia<td colspan=1 rowspan=1><p>273 million<td colspan=1 rowspan=1><p>1.1%<tr><td colspan=1 rowspan=1><p>Pakistan<td colspan=1 rowspan=1><p>231 million<td colspan=1 rowspan=1><p>2.0%<tr><td colspan=1 rowspan=1><p>Nigeria<td colspan=1 rowspan=1><p>223 million<td colspan=1 rowspan=1><p>2.5%</table></div><p>Learn more about global population trends from reliable sources like the <a href=https://www.worldpopulationreview.com>World Population Review</a>.</p>',
         editorProps: {
             attributes: {
                 class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
@@ -2120,16 +1995,114 @@ window.addEventListener('load', function() {
     });
 
     // set up custom event listeners for the buttons
-    document.getElementById('toggleUndoButton').addEventListener('click', () => {
-        editor.chain().focus().undo().run();
-    });
-    document.getElementById('toggleRedoButton').addEventListener('click', () => {
-        editor.chain().focus().redo().run()
+    document.getElementById('addTableButton').addEventListener('click', () => {
+        editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
     });
 
+    // add column before
+    document.getElementById('addColumnBeforeButton').addEventListener('click', () => {
+        editor.chain().focus().addColumnBefore().run();
+    });
+
+    // add column after
+    document.getElementById('addColumnAfterButton').addEventListener('click', () => {
+        editor.chain().focus().addColumnAfter().run();
+    });
+
+    // remove column
+    document.getElementById('removeColumnButton').addEventListener('click', () => {
+        editor.chain().focus().deleteColumn().run();
+    });
+
+    // add row before
+    document.getElementById('addRowBeforeButton').addEventListener('click', () => {
+        editor.chain().focus().addRowBefore().run();
+    });
+
+    // add row after
+    document.getElementById('addRowAfterButton').addEventListener('click', () => {
+        editor.chain().focus().addRowAfter().run();
+    });
+
+    // remove row
+    document.getElementById('removeRowButton').addEventListener('click', () => {
+        editor.chain().focus().deleteRow().run();
+    });
+
+    // delete table
+    document.getElementById('deleteTableButton').addEventListener('click', () => {
+        editor.chain().focus().deleteTable().run();
+    });
+
+    // merge cells
+    document.getElementById('mergeCellsButton').addEventListener('click', () => {
+        editor.chain().focus().mergeCells().run();
+    });
+
+    // split cells
+    document.getElementById('splitCellsButton').addEventListener('click', () => {
+        editor.chain().focus().splitCell().run();
+    });
+
+    // merge or split
+    document.getElementById('mergeOrSplitButton').addEventListener('click', () => {
+        editor.chain().focus().mergeOrSplit().run();
+    });
+
+    // toggle header column
+    document.getElementById('toggleHeaderColumnButton').addEventListener('click', () => {
+        editor.chain().focus().toggleHeaderColumn().run();
+    });
+
+    // toggle header row
+    document.getElementById('toggleHeaderRowButton').addEventListener('click', () => {
+        editor.chain().focus().toggleHeaderRow().run();
+    });
+
+    // toggle header cell
+    document.getElementById('toggleHeaderCellButton').addEventListener('click', () => {
+        editor.chain().focus().toggleHeaderCell().run();
+    });
+
+    const cellAttributeModal = FlowbiteInstances.getInstance('Modal', 'cell-attribute-modal');
+    
+    document.getElementById('addCellAttributeForm').addEventListener('submit', (e) => {
+
+        e.preventDefault();
+        
+        const attributeName = document.getElementById('attribute-name').value;
+        const attributeValue = document.getElementById('attribute-value').value;
+
+        if (attributeName && attributeValue) {
+            const result = editor.commands.setCellAttribute(attributeName ? attributeName : '', attributeValue ? attributeValue : '');
+            document.getElementById('addCellAttributeForm').reset();
+            cellAttributeModal.hide();
+        }
+    });
+
+    // fix tables
+    document.getElementById('fixTablesButton').addEventListener('click', () => {
+       editor.commands.fixTables();
+    });
+
+    // go to previous cell
+    document.getElementById('previousCellButton').addEventListener('click', () => {
+        editor.chain().focus().goToPreviousCell().run();
+    });
+
+    // go to the next cell
+    document.getElementById('nextCellButton').addEventListener('click', () => {
+        editor.chain().focus().goToNextCell().run();
+    });
 }
 })
-` >}}
+```
+
+## Undo and redo
+
+Use the history functionality from the WYSIWYG text editor component to integrate undo and redo actions.
+
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
         <div class="flex flex-wrap items-center">
@@ -2162,22 +2135,18 @@ window.addEventListener('load', function() {
     <div id="wysiwyg-history-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0 focus:ring-0"></div>
 </div>
 </div>
-{{< /example >}}
+```
 
-## Exporting data
-
-Use the `editor.getJSON()` and the `editor.getHTML()` functions to export the text content inside of the WYSIWYG text editor in JSON or raw HTML format to persist into your database or API structure.
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/wysiwyg.md" show_dark=true wysiwyg=true script_module=true  disable_init_js=true javascript=`
+```javascript
 import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
 
 window.addEventListener('load', function() {
-    if (document.getElementById("wysiwyg-export-example")) {
+    if (document.getElementById("wysiwyg-history-example")) {
 
     // tip tap editor setup
     const editor = new Editor({
-        element: document.querySelector('#wysiwyg-export-example'),
+        element: document.querySelector('#wysiwyg-history-example'),
         extensions: [
             StarterKit
         ],
@@ -2189,34 +2158,23 @@ window.addEventListener('load', function() {
         }
     });
 
-    const sourceCodeModal = FlowbiteInstances.getInstance('Modal', 'source-code-modal');
-    const sourceCodeWrapper = document.getElementById('sourceCode');
-
     // set up custom event listeners for the buttons
-    document.getElementById('toggleHTMLButton').addEventListener('click', () => {
-
-        // basically just use editor.getHTML(); to get the raw html
-
-        sourceCodeWrapper.innerHTML = editor.getHTML()
-            .replace(/&/g, "&amp;") // Escape & character
-            .replace(/</g, "&lt;")  // Escape < character
-            .replace(/>/g, "&gt;")  // Escape > character
-            .replace(/"/g, "&quot;") // Escape " character
-            .replace(/'/g, "&#039;"); // Escape ' character
+    document.getElementById('toggleUndoButton').addEventListener('click', () => {
+        editor.chain().focus().undo().run();
+    });
+    document.getElementById('toggleRedoButton').addEventListener('click', () => {
+        editor.chain().focus().redo().run()
     });
 
-    document.getElementById('toggleJSONButton').addEventListener('click', () => {
-
-        // basically just use editor.getJSON(); to get the raw json
-
-        sourceCode.innerHTML = JSON.stringify(editor.getJSON(), null, 2)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;");
-    });
 }
 })
-` >}}
+```
+
+## Exporting data
+
+Use the `editor.getJSON()` and the `editor.getHTML()` functions to export the text content inside of the WYSIWYG text editor in JSON or raw HTML format to persist into your database or API structure.
+
+```html
 <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
     <div class="p-2 border-b border-default-medium">
         <div class="flex flex-wrap items-center">
@@ -2273,7 +2231,57 @@ window.addEventListener('load', function() {
         </div>
     </div>
 </div>
-{{< /example >}}
+```
+
+```javascript
+import { Editor } from 'https://esm.sh/@tiptap/core@2.6.6';
+import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.6.6';
+
+window.addEventListener('load', function() {
+    if (document.getElementById("wysiwyg-export-example")) {
+
+    // tip tap editor setup
+    const editor = new Editor({
+        element: document.querySelector('#wysiwyg-export-example'),
+        extensions: [
+            StarterKit
+        ],
+        content: '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
+        editorProps: {
+            attributes: {
+                class: 'format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none',
+            },
+        }
+    });
+
+    const sourceCodeModal = FlowbiteInstances.getInstance('Modal', 'source-code-modal');
+    const sourceCodeWrapper = document.getElementById('sourceCode');
+
+    // set up custom event listeners for the buttons
+    document.getElementById('toggleHTMLButton').addEventListener('click', () => {
+
+        // basically just use editor.getHTML(); to get the raw html
+
+        sourceCodeWrapper.innerHTML = editor.getHTML()
+            .replace(/&/g, "&amp;") // Escape & character
+            .replace(/</g, "&lt;")  // Escape < character
+            .replace(/>/g, "&gt;")  // Escape > character
+            .replace(/"/g, "&quot;") // Escape " character
+            .replace(/'/g, "&#039;"); // Escape ' character
+    });
+
+    document.getElementById('toggleJSONButton').addEventListener('click', () => {
+
+        // basically just use editor.getJSON(); to get the raw json
+
+        sourceCode.innerHTML = JSON.stringify(editor.getJSON(), null, 2)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+    });
+}
+})
+```
 
 ## Javascript behaviour
 
@@ -2281,7 +2289,7 @@ Learn more about how you can programmatically use the WYSIWYG editor using Javas
 
 After you have installed Tip Tap via NPM or CDN you can create a new `Editor` object:
 
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
+```javascript
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 
@@ -2290,13 +2298,13 @@ new Editor({
   extensions: [StarterKit],
   content: '<p>Welcome to Flowbite!</p>',
 })
-{{< /code >}}
+```
 
 Make sure that you also have an empty `div` element with the appropiate ID:
 
-{{< code lang="html" file="wysiwyg.html" icon="file" >}}
+```html
 <div id="wysiwyg"></div>
-{{< /code >}}
+```
 
 This code will automatically set up the markup needed inside of the WYSIWYG component. Please note the fact that the Tip Tap library is headless so you need to style the elements yourself, but you can copy-paste the examples from Flowbite on this page.
 
@@ -2304,7 +2312,7 @@ This code will automatically set up the markup needed inside of the WYSIWYG comp
 
 We also recommend adding custom typography classes from the [Flowbite Typography](https://flowbite.com/docs/components/typography/) package so that the content inside of the text editor will be correctly styled:
 
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
+```javascript
 new Editor({
   element: document.getElementById('wysiwyg'),
   extensions: [StarterKit],
@@ -2315,7 +2323,7 @@ new Editor({
         },
     }
 })
-{{< /code >}}
+```
 
 ### Extensions
 
@@ -2323,7 +2331,7 @@ Tip Tap is a modular library meaning that if you want to introduce images, video
 
 Here is one example where we add the link extension:
 
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
+```javascript
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
@@ -2345,7 +2353,7 @@ const editor = new Editor({
         },
     }
 });
-{{< /code >}}
+```
 
 Links will now be available inside the WYSIWYG component. Learn more about all of the <a href="https://tiptap.dev/docs/editor/extensions/overview" target="_blank" rel="nofollow">extensions API</a>.
 
@@ -2353,22 +2361,22 @@ Links will now be available inside the WYSIWYG component. Learn more about all o
 
 You can easily call the methods from the `Editor` object to set text styles, links, images, and more. Here is one example where based upon a click event on a button you will be prompted with the URL of the link and it will add it to the currently selected text:
 
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
+```javascript
 // set up custom event listeners for the buttons
 document.getElementById('toggleLinkButton').addEventListener('click', () => {
     const url = window.prompt('Enter image URL:', 'https://flowbite.com');
     editor.chain().focus().toggleLink({ href: url }).run();
 });
-{{< /code >}}
+```
 
 And here's another example where you can unset a link:
 
-{{< code lang="javascript" file="wysiwyg.js" icon="file" >}}
+```javascript
 // unset the links based on a button click
 document.getElementById('removeLinkButton').addEventListener('click', () => {
     editor.chain().focus().unsetLink().run()
 });
-{{< /code >}}
+```
 
 Examples from this page have functional elements so you can check the JavaScript tab for the source code.
 

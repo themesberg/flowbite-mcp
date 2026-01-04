@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Sticky Banner - Flowbite
-description: Use the banner component to show marketing messages and CTA buttons at the top or bottom side of your website based on the utility classes from Tailwind CSS
-group: components
-toc: true
-requires_js: true
-
-previous: Badge
-previousLink: components/badge/
-next: Bottom Navigation
-nextLink: components/bottom-navigation/
----
-
 Get started with the sticky banner component coded with Tailwind CSS and Flowbite to show marketing, informational and CTA messages to your website visitors fixed to the top or bottom part of the page as the user scroll down the main content area.
 
 Explore the following examples based on various styles, sizes, and positionings to leverage the sticky banner component and increase marketing conversions with a responsive element supporting dark mode.
@@ -20,8 +6,7 @@ Explore the following examples based on various styles, sizes, and positionings 
 
 Use this free example to show a text message for announcement with a CTA link, an icon element and a close button to dismiss the banner.
 
-{{< example class="p-0" github="components/banner.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
-
+```html
 <div id="sticky-banner" tabindex="-1" class="fixed top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-default bg-neutral-primary-soft">
     <div class="flex items-center mx-auto">
         <p class="flex items-center text-sm font-normal text-body">
@@ -40,14 +25,13 @@ Use this free example to show a text message for announcement with a CTA link, a
     </div>
 </div>
 
-{{< /example >}}
+```
 
 ## Bottom banner position
 
 This example can be used to position the sticky banner to the bottom side of the page instead of the top side.
 
-{{< example class="p-0" github="components/banner.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
-
+```html
 <div id="bottom-banner" tabindex="-1" class="fixed bottom-0 start-0 z-50 flex justify-between w-full p-4 border-t border-default bg-neutral-primary-soft">
     <div class="flex items-center mx-auto">
         <p class="flex items-center text-sm font-normal text-body">
@@ -68,14 +52,13 @@ This example can be used to position the sticky banner to the bottom side of the
         </button>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Marketing CTA banner
 
 Use this free example to show a text message for announcement with a CTA link, an icon element and a close button to dismiss the banner. Set a different width by using the `max-w-{*}` utility classes from Tailwind CSS.
 
-{{< example class="p-0" github="components/banner.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
-
+```html
 <div id="marketing-banner" tabindex="-1" class="fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-4 -translate-x-1/2 bg-neutral-primary-soft border border-default rounded-base shadow-xs lg:max-w-7xl left-1/2 top-6">
     <div class="flex flex-col items-start mb-3 me-4 md:items-center md:flex-row md:mb-0">
         <a href="https://flowbite.com/" class="flex items-center mb-2 border-default md:pe-4 md:me-4 md:border-e md:mb-0">
@@ -94,14 +77,13 @@ Use this free example to show a text message for announcement with a CTA link, a
     </div>
 </div>
 
-{{< /example >}}
+```
 
 ## Newsletter sign-up banner
 
 This example can be used to encourage your website visitors to sign up to your email newsletter by showing an inline form inside the sticky banner on the top side of your page.
 
-{{< example class="p-0" github="components/banner.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
-
+```html
 <div id="newsletter-banner" tabindex="-1" class="fixed top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-default bg-neutral-primary-soft">
     <div class="flex items-center shrink-0 w-full mx-auto sm:w-auto">
         <form class="flex flex-col items-center w-full md:flex-row md:space-x-4 space-y-4 md:space-y-0">
@@ -117,14 +99,13 @@ This example can be used to encourage your website visitors to sign up to your e
         </button>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Informational banner
 
 This example can be used to share important information with your website visitors by showing a heading and a paragraph inside the sticky banner and two CTA buttons with links.
 
-{{< example class="p-0" github="components/banner.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
-
+```html
 <div id="informational-banner" tabindex="-1" class="fixed top-0 start-0 z-50 flex flex-col justify-between w-full p-4 border-b border-default md:flex-row bg-neutral-secondary-soft">
     <div class="mb-4 md:mb-0 md:me-4">
         <h2 class="mb-1 text-base font-semibold text-heading">Integration is the key</h2>
@@ -138,7 +119,7 @@ This example can be used to share important information with your website visito
         </button>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## More examples
 

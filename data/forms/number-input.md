@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Number Input - Flowbite
-description: Use the number input component to set a numeric value inside a form field based on multiple styles, variants, and layouts that can be used in product pages, forms, and more
-group: forms
-requires_js: true
-toc: true
-
-previous: Search Input
-previousLink: forms/search-input/
-next: Phone Input
-nextLink: forms/phone-input/
----
-
 The number input component from Flowbite can be used to introduce numeric values inside a form such as for a quantity field, a ZIP code, a phone number, your credit card number, and more. All of the UI components are coded exclusively with Tailwind CSS.
 
 The examples on this page have basic functionality coded with JavaScript and the quantity input has a more advanced ability to increment and decrement the value with the help of the `data-input-counter` attribute from the Flowbite JS API.
@@ -20,18 +6,18 @@ The examples on this page have basic functionality coded with JavaScript and the
 
 Use this component to set a number value inside a form field by applying the `type="number"` attribute.
 
-{{< example github="components/number-input.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
     <label for="number-input" class="block mb-2.5 text-sm font-medium text-heading">Select a number:</label>
     <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="90210" required />
 </form>
-{{< /example >}}
+```
 
 ## ZIP code input
 
 Use this example with an icon and helper text to set a ZIP code value inside a form field by also applying the `pattern` attribute to validate the input using a regular expression for a 5 digit number.
 
-{{< example github="components/number-input.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
     <label for="zip-input" class="block mb-2.5 text-sm font-medium text-heading">ZIP code:</label>
     <div class="relative">
@@ -42,13 +28,13 @@ Use this example with an icon and helper text to set a ZIP code value inside a f
     </div>
     <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Please select a 5 digit number from 0 to 9.</p>
 </form>
-{{< /example >}}
+```
 
 ## Phone number
 
 Use this example to set a phone number inside a form field based on the `type="phone"` attribute and a dropdown menu to select the country code.
 
-{{< example github="components/number-input.md" show_dark=true iframeHeight="360" >}}
+```html
 <form class="max-w-sm mx-auto">
     <div class="flex items-center -space-x-px shadow-xs rounded-base">
         <button id="dropdown-phone-button" data-dropdown-toggle="dropdown-phone" type="button" class="inline-flex items-center shrink-0 z-10 text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-fg-brand focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-s-base text-sm px-4 py-2.5 focus:outline-none">
@@ -148,7 +134,7 @@ Use this example to set a phone number inside a form field based on the `type="p
         </div>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Control buttons
 
@@ -160,7 +146,7 @@ If you have the [Flowbite JS](https://flowbite.com/docs/getting-started/quicksta
 - `data-input-counter-increment` - increment the value of the input field
 - `data-input-counter-decrement` - decrement the value of the input field
 
-{{< example github="components/number-input.md" show_dark=true >}}
+```html
 <form class="max-w-xs mx-auto">
     <label for="quantity-input" class="block mb-2.5 text-sm font-medium text-heading">Choose quantity:</label>
     <div class="relative flex items-center max-w-[9rem] shadow-xs rounded-base">
@@ -174,13 +160,13 @@ If you have the [Flowbite JS](https://flowbite.com/docs/getting-started/quicksta
     </div>
     <p id="helper-text-explanation" class="mt-2.5 text-sm text-body shrink-0">Please select a 5 digit number from 0 to 9.</p>
 </form>
-{{< /example >}}
+```
 
 ## Control buttons with icon
 
 Use this example to also add an icon inside the input field to improve the user experience.
 
-{{< example github="components/number-input.md" show_dark=true >}}
+```html
 <form class="max-w-xs mx-auto">
     <label for="bedrooms-input" class="block mb-2.5 text-sm font-medium text-heading">Choose quantity:</label>
     <div class="relative flex items-center max-w-[11rem] shadow-xs rounded-base">
@@ -198,13 +184,13 @@ Use this example to also add an icon inside the input field to improve the user 
     </div>
     <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Please select the number of bedrooms.</p>
 </form>
-{{< /example >}}
+```
 
 ## Counter input
 
 Use this example as an alternative style to the control buttons example above.
 
-{{< example github="components/number-input.md" show_dark=true >}}
+```html
 <form class="max-w-xs mx-auto">
     <label for="counter-input" class="block mb-1.5 text-sm font-medium text-heading">Choose quantity:</label>
     <div class="relative flex items-center">
@@ -217,13 +203,13 @@ Use this example as an alternative style to the control buttons example above.
         </button>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Currency input
 
 This component can be used to set a currency value inside a form field when you need to set a price.
 
-{{< example github="components/number-input.md" show_dark=true iframeHeight="290" >}}
+```html
 <form class="max-w-[18rem] mx-auto flex shadow-xs rounded-base -space-x-px">
     <label for="currency-input" class="mb-2.5 text-sm font-medium text-heading sr-only">Your Email</label>
     <div class="relative w-full">
@@ -296,13 +282,13 @@ This component can be used to set a currency value inside a form field when you 
         </ul>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Credit card input
 
 Use this component to set the information needed when making an online transaction with a credit card by adding the card number, expiration date, and security code. The component uses the [Flowbite Datepicker](https://flowbite.com/docs/components/datepicker/).
 
-{{< example github="components/number-input.md" show_dark=true iframeHeight="340" >}}
+```html
 <form class="max-w-sm mx-auto">
     <label for="card-number-input" class="sr-only">Card number:</label>
     <div class="relative">
@@ -326,13 +312,45 @@ Use this component to set the information needed when making an online transacti
     </div>
     <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Pay now</button>
 </form>
-{{< /example >}}
+```
 
 ## Pin code input
 
 Use this example of a pin code input to set a 6 digit code. This can be used when setting up a new account or when making a payment and the code is sent via phone or email.
 
-{{< example github="components/number-input.md" show_dark=true javascript=`
+```html
+<form class="max-w-sm mx-auto">
+    <div class="flex mb-2 space-x-2 rtl:space-x-reverse">
+        <div>
+            <label for="code-1" class="sr-only">First code</label>
+            <input type="text" maxlength="1" data-focus-input-init data-focus-input-next="code-2" id="code-1" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
+        </div>
+        <div>
+            <label for="code-2" class="sr-only">Second code</label>
+            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-1" data-focus-input-next="code-3" id="code-2" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
+        </div>
+        <div>
+            <label for="code-3" class="sr-only">Third code</label>
+            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-2" data-focus-input-next="code-4" id="code-3" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
+        </div>
+        <div>
+            <label for="code-4" class="sr-only">Fourth code</label>
+            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-3" data-focus-input-next="code-5" id="code-4" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
+        </div>
+        <div>
+            <label for="code-5" class="sr-only">Fifth code</label>
+            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-4" data-focus-input-next="code-6" id="code-5" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
+        </div>
+        <div>
+            <label for="code-6" class="sr-only">Sixth code</label>
+            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-5" id="code-6" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
+        </div>
+    </div>
+    <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Please introduce the 6 digit code we sent via email.</p>
+</form>
+```
+
+```javascript
 // use this simple function to automatically focus on the next input
 function focusNextInput(el, prevId, nextId) {
     if (el.value.length === 0) {
@@ -375,55 +393,13 @@ document.querySelectorAll('[data-focus-input-init]').forEach(function(element) {
         });
     });
 });
-` >}}
-<form class="max-w-sm mx-auto">
-    <div class="flex mb-2 space-x-2 rtl:space-x-reverse">
-        <div>
-            <label for="code-1" class="sr-only">First code</label>
-            <input type="text" maxlength="1" data-focus-input-init data-focus-input-next="code-2" id="code-1" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
-        </div>
-        <div>
-            <label for="code-2" class="sr-only">Second code</label>
-            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-1" data-focus-input-next="code-3" id="code-2" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
-        </div>
-        <div>
-            <label for="code-3" class="sr-only">Third code</label>
-            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-2" data-focus-input-next="code-4" id="code-3" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
-        </div>
-        <div>
-            <label for="code-4" class="sr-only">Fourth code</label>
-            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-3" data-focus-input-next="code-5" id="code-4" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
-        </div>
-        <div>
-            <label for="code-5" class="sr-only">Fifth code</label>
-            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-4" data-focus-input-next="code-6" id="code-5" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
-        </div>
-        <div>
-            <label for="code-6" class="sr-only">Sixth code</label>
-            <input type="text" maxlength="1" data-focus-input-init data-focus-input-prev="code-5" id="code-6" class="block bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand h-10 w-10 shadow-xs placeholder:text-body" required />
-        </div>
-    </div>
-    <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Please introduce the 6 digit code we sent via email.</p>
-</form>
-{{< /example >}}
+```
 
 ## Number input with slider
 
 This example can be used to set the value of a number input field by sliding the range slider component or by typing the value in the input field. The component uses the [Flowbite Range Slider](https://flowbite.com/docs/components/range-slider/).
 
-{{< example github="components/number-input.md" show_dark=true iframeHeight="290" disable_init_js="true" javascript=`
-// Get the elements
-var rangeInput = document.getElementById('price-range-input');
-var currencyInput = document.getElementById('currency-input');
-
-// Function to update the currency input
-function updateCurrencyInput() {
-currencyInput.value = rangeInput.value;
-}
-
-// Add event listener to the range input
-rangeInput.addEventListener('input', updateCurrencyInput);
-` >}}
+```html
 <form class="max-w-[24rem] mx-auto">
     <div class="flex shadow-xs rounded-base -space-x-px mb-4">
         <label for="currency-input-2" class="mb-2.5 text-sm font-medium text-heading sr-only">Your Email</label>
@@ -506,13 +482,27 @@ rangeInput.addEventListener('input', updateCurrencyInput);
         <span class="text-sm text-body absolute end-0 -bottom-6">Max ($1500)</span>
     </div>
 </form>
-{{< /example >}}
+```
+
+```javascript
+// Get the elements
+var rangeInput = document.getElementById('price-range-input');
+var currencyInput = document.getElementById('currency-input');
+
+// Function to update the currency input
+function updateCurrencyInput() {
+currencyInput.value = rangeInput.value;
+}
+
+// Add event listener to the range input
+rangeInput.addEventListener('input', updateCurrencyInput);
+```
 
 ## Convert currency
 
 Use this example of two number input fields and dropdowns to convert currency and even from fiat to crypto.
 
-{{< example github="components/number-input.md" show_dark=true iframeHeight="290" disable_init_js="true" >}}
+```html
 <form class="max-w-xl mx-auto">
     <div class="space-x-0 space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse flex items-center flex-col sm:flex-row mb-4">
         <div class="flex -space-x-px">
@@ -642,13 +632,13 @@ Use this example of two number input fields and dropdowns to convert currency an
         </button>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Advanced control buttons
 
 This example can be used to add multiple number input fields with quantity selectors and control buttons to use for E-commerce UI similar to projects like AirBnb or Booking.
 
-{{< example github="components/number-input.md" show_dark=true >}}
+```html
 <form class="max-w-xs mx-auto">
     <label for="bedrooms-input" class="sr-only">Choose bedrooms number:</label>
     <div class="relative flex items-center mb-2">
@@ -699,7 +689,7 @@ This example can be used to add multiple number input fields with quantity selec
         </button>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Min and max values
 
@@ -710,7 +700,7 @@ By using the InputCounter object from the Flowbite JS API, you ca set the min an
 
 These values will be enforced and validated whenever the user clicks on one of the buttons or tries to introduce the value manually.
 
-{{< example github="components/number-input.md" show_dark=true >}}
+```html
 <form class="max-w-xs mx-auto">
     <label for="quantity-input" class="block mb-2.5 text-sm font-medium text-heading">Choose quantity:</label>
     <div class="relative flex items-center max-w-[8rem]">
@@ -724,7 +714,7 @@ These values will be enforced and validated whenever the user clicks on one of t
     </div>
     <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Please select a 5 digit number from 0 to 9.</p>
 </form>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -962,7 +952,7 @@ Check out the following examples to learn how to create a new InputCounter objec
 
 First of all, you need to set the object parameters where the target element is required and the other two are optional.
 
-{{< code lang="javascript" file="number-input.js" icon="file" >}}
+```javascript
 // set the target element of the input field
 const $targetEl = document.getElementById('counter-input-example');
 
@@ -987,11 +977,11 @@ const instanceOptions = {
   id: 'counter-input-example',
   override: true
 };
-{{< /code >}}
+```
 
 Next step is to create a new instance of a InputCounter object using the parameters we have set above.
 
-{{< code lang="javascript" file="number-input.js" icon="file" >}}
+```javascript
 import { InputCounter } from 'flowbite';
 
 /*
@@ -1001,11 +991,11 @@ import { InputCounter } from 'flowbite';
  * options: optional
  */
 const counterInput = new InputCounter($targetEl, $incrementEl, $decrementEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Now you can programmatically increment or decrement the input field using the methods of the InputCounter object.
 
-{{< code lang="javascript" >}}
+```javascript
 // get the current value of the input field
 counterInput.getCurrentValue();
 
@@ -1014,13 +1004,13 @@ counterInput.increment();
 
 // decrement the value of the input field
 counterInput.decrement();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Here is an example of the HTML markup that you can use for the JavaScript example above.
 
-{{< code lang="html" file="number-input.html" icon="file" >}}
+```html
 <form class="max-w-xs mx-auto">
     <label for="counter-input-example" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Choose quantity:</label>
     <div class="relative flex items-center">
@@ -1037,15 +1027,15 @@ Here is an example of the HTML markup that you can use for the JavaScript exampl
         </button>
     </div>
 </form>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the InputCounter object, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the InputCounter object, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="number-input.ts" icon="file" >}}
+```html
 import { InputCounter } from 'flowbite';
 import type { InputCounterOptions, InputCounterInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -1096,4 +1086,4 @@ counterInput.increment();
 
 // decrement the value of the input field
 counterInput.decrement();
-{{< /code >}}
+```

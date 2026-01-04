@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Input Field - Flowbite
-description: Get started with a collection of input fields built with Tailwind CSS to start accepting data from the user based on multiple sizes, variants, and input types
-group: forms
-toc: true
-
-previous: Video
-previousLink: components/video/
-next: File Input
-nextLink: forms/file-input/
----
-
 The input field is an important part of the form element that can be used to create interactive controls to accept data from the user based on multiple input types, such as text, email, number, password, URL, phone number, and more.
 
 On this page you will find all of the input types based on multiple variants, styles, colors, and sizes built with the utility classes from Tailwind CSS and components from Flowbite.
@@ -19,7 +6,7 @@ On this page you will find all of the input types based on multiple variants, st
 
 Use this example as a generic form element which includes multiple input fields types such as text, email, password, number, URL, and phone number and use the grid layout to add multiple columns and rows.
 
-{{< example github="forms/input-field.md" show_dark=true >}}
+```html
 <form>
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
@@ -67,13 +54,13 @@ Use this example as a generic form element which includes multiple input fields 
     </div>
     <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
 </form>
-{{< /example >}}
+```
 
 ## Input sizes
 
 Use the following examples to apply a small, default or large size for the input fields.
 
-{{< example class="space-y-6" github="forms/input-field.md" show_dark=true >}}
+```html
         <div>
             <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Small Input</label>
             <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="" required />
@@ -90,22 +77,22 @@ Use the following examples to apply a small, default or large size for the input
             <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Extra Large Input</label>
             <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required />
         </div>
-{{< /example >}}
+```
 
 ## Disabled state
 
 Get started with this example if you want to apply the disabled state to an input field.
 
-{{< example class="space-y-6" github="forms/input-field.md" show_dark=true >}}
+```html
 <input type="text" id="disabled-input" aria-label="disabled input" class="bg-neutral-secondary-medium border border-default-medium text-fg-disabled text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="Disabled input" disabled>
 <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="Disabled readonly input" disabled readonly>
-{{< /example >}}
+```
 
 ## Validation
 
 Use the following example to apply validation styles for success and error messages.
 
-{{< example github="forms/input-field.md" show_dark=true >}}
+```html
 <div class="mb-6">
   <label for="success" class="block mb-2.5 text-sm font-medium text-fg-success-strong">Your name</label>
   <input type="text" id="success" class="bg-success-soft border border-success-subtle text-fg-success-strong text-sm rounded-base focus:ring-success focus:border-success block w-full px-3 py-2.5 shadow-xs placeholder:text-fg-success-strong" placeholder="Success input">
@@ -116,13 +103,13 @@ Use the following example to apply validation styles for success and error messa
   <input type="text" id="danger" class="bg-danger-soft border border-danger-subtle text-fg-danger-strong text-sm rounded-base focus:ring-danger focus:border-danger block w-full px-3 py-2.5 shadow-xs placeholder:text-fg-danger-strong" placeholder="Error input">
   <p class="mt-2.5 text-sm text-fg-danger-strong"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
 </div>
-{{< /example >}}
+```
 
 ## Input group
 
 This example can be used to add a descriptive icon or additional text inside the input field.
 
-{{< example class="space-y-6" github="forms/input-field.md" show_dark=true >}}
+```html
 <label for="input-group-1" class="block mb-2.5 text-sm font-medium text-heading">Your Email</label>
 <div class="relative">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -145,13 +132,13 @@ https://
   </span>
   <input type="text" id="website" class="rounded-none rounded-e-base block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand placeholder:text-body" placeholder="flowbite.com">
 </div>
-{{< /example >}}
+```
 
 ## Helper text
 
 Use this example to show a helper text below the input field for additional explanation and links.
 
-{{< example github="forms/input-field.md" show_dark=true >}}
+```html
 <label for="input-group-1" class="block mb-2.5 text-sm font-medium text-heading">Your Email</label>
 <div class="relative">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -160,13 +147,13 @@ Use this example to show a helper text below the input field for additional expl
   <input type="text" id="input-group-1" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="name@flowbite.com">
 </div>
 <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">We’ll never share your details. Read our <a href="#" class="font-medium text-fg-brand hover:underline">Privacy Policy</a>.</p>
-{{< /example >}}
+```
 
 ## Search input
 
 Get started with this example where the submit button is positioned inside the input field.
 
-{{< example github="forms/input-field.md" show_dark=true >}}
+```html
 <form>   
     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">
@@ -177,17 +164,15 @@ Get started with this example where the submit button is positioned inside the i
         <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
     </div>
 </form>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Dropdown input
 
 Use this example to show a dropdown menu right next to the input field.
 
-{{< example github="forms/input-field.md" show_dark=true iframeHeight="290" >}}
+```html
 <form>
     <div class="flex shadow-xs rounded-base -space-x-0.5">
         <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
@@ -219,4 +204,4 @@ Use this example to show a dropdown menu right next to the input field.
         </button>
     </div>
 </form>
-{{< /example >}}
+```

@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Timeline - Flowbite
-description: Get started with the responsive timeline component to show data in a chronological order with support for multiple styles, sizes, and variants
-group: components
-toc: true
-
-previous: Tabs
-previousLink: components/tabs/
-next: Toast
-nextLink: components/toast/
----
-
 The timeline component can be used to show series of data in a chronological order for use cases such as activity feeds, user actions, application updates, and more. Get started with multiple vertical timeline styles built with the utility classes from Tailwind CSS and Flowbite.
 
 ## Default timeline
@@ -19,7 +6,7 @@ Use this responsive Tailwind CSS timeline component to show a series of data ent
 
 Optionally, you can also add a CTA button to any of the timeline elements.
 
-{{< example github="components/timeline.md" show_dark=true >}}
+```html
 <ol class="relative border-s border-default">                  
     <li class="mb-10 ms-4">
         <div class="absolute w-3 h-3 bg-neutral-quaternary rounded-full mt-1.5 -start-1.5 border border-buffer"></div>
@@ -45,13 +32,13 @@ Optionally, you can also add a CTA button to any of the timeline elements.
     </li>
 </ol>
 
-{{< /example >}}
+```
 
 ## Vertical timeline
 
 Use this vertical timeline component with icons and badges to show a more advanced set of data.
 
-{{< example github="components/timeline.md" show_dark=true >}}
+```html
 <ol class="relative border-s border-default">                  
     <li class="mb-10 ms-6">            
         <span class="absolute flex items-center justify-center w-6 h-6 bg-brand-softer rounded-full -start-3 ring-8 ring-buffer">
@@ -83,13 +70,13 @@ Use this vertical timeline component with icons and badges to show a more advanc
     </li>
 </ol>
 
-{{< /example >}}
+```
 
 ## Stepper timeline
 
 Use this horizontally aligned timeline component to show a series of data in a chronological order.
 
-{{< example github="components/timeline.md" show_dark=true >}}
+```html
 <ol class="items-center sm:flex">
     <li class="relative mb-6 sm:mb-0">
         <div class="flex items-center">
@@ -135,13 +122,13 @@ Use this horizontally aligned timeline component to show a series of data in a c
     </li>
 </ol>
 
-{{< /example >}}
+```
 
 ## Activity log
 
 This component can be used to show the timline of a user's activity history inside your application by using an avatar, datetime, description, and links to specific pages.
 
-{{< example github="components/timeline.md" show_dark=true >}}
+```html
 <ol class="relative border-s border-default">                  
     <li class="mb-10 ms-6">            
         <span class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-buffer">
@@ -182,13 +169,13 @@ This component can be used to show the timline of a user's activity history insi
     </li>
 </ol>
 
-{{< /example >}}
+```
 
 ## Grouped timeline
 
 Use this component to group multiple data entries inside a single date and show elements like the avatar, title, description, tag and link to a relevant page.
 
-{{< example github="components/timeline.md" show_dark=true >}}
+```html
 <div class="p-5 bg-neutral-secondary-soft border border-default rounded-base mb-4">
     <time class="text-lg font-semibold text-heading">January 15th, 2025</time>
     <ol class="mt-3 divide-y divide-default">
@@ -301,4 +288,4 @@ Use this component to group multiple data entries inside a single date and show 
         </li>
     </ol>
 </div>
-{{< /example >}}
+```

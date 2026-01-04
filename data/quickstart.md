@@ -8,13 +8,13 @@ Make sure that you have <a href="https://nodejs.org/en/" rel="nofollow" target="
 
 1. Install Flowbite as a dependency using NPM by running the following command:
 
-{{< code lang="bash" >}}
+```bash
 npm install flowbite
-{{< /code >}}
+```
 
 2. Import the default theme variables from Flowbite inside your main `input.css` CSS file:
 
-{{< code lang="css" icon="file" file="input.css" >}}
+```css
 /* choose one of the following */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -38,25 +38,25 @@ npm install flowbite
 /* MONO THEME
 @import "flowbite/src/themes/mono";
 */
-{{< /code >}}
+```
 
 3. Import the Flowbite plugin file in your CSS:
 
-{{< code lang="css" icon="file" file="input.css" >}}
+```css
 @plugin "flowbite/plugin";
-{{< /code >}}
+```
 
 4. Configure the source files of Flowbite in your CSS:
 
-{{< code lang="css" icon="file" file="input.css" >}}
+```css
 @source "../node_modules/flowbite";
-{{< /code >}}
+```
 
 5. Include the JavaScript code that powers the interactive elements before the end of your `<body>` tag:
 
-{{< code lang="html" icon="file" file="index.html" >}}
+```html
 <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-{{< /code >}}
+```
 
 Learn more about the Flowbite JavaScript API and functionalities in the [JavaScript section](https://flowbite.com/docs/getting-started/javascript/).
 
@@ -68,15 +68,15 @@ The quickest way to get started working with Flowbite is to include the CSS and 
 
 Require the following minified stylesheet inside the `head` tag:
 
-{{< code lang="html" icon="file" file="index.html" >}}
-<link href="https://cdn.jsdelivr.net/npm/flowbite@{{< current_version >}}/dist/flowbite.min.css" rel="stylesheet" />
-{{< /code >}}
+```html
+<link href="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.css" rel="stylesheet" />
+```
 
 And include the following JavaScript file before the end of the `body` element:
 
-{{< code lang="html" icon="file" file="index.html" >}}
-<script src="https://cdn.jsdelivr.net/npm/flowbite@{{< current_version >}}/dist/flowbite.min.js"></script>
-{{< /code >}}
+```html
+<script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+```
 
 Please remember that the best way to work with Tailwind CSS and Flowbite is by purging the CSS classes.
 
@@ -86,9 +86,9 @@ One of the most popular way of using Flowbite is to include the bundled Javascri
 
 You can directly import the main JavaScript file inside your bundled `app-bundle.js` file like this:
 
-{{< code lang="javascript" icon="file" file="app.js" >}}
+```javascript
 import 'flowbite';
-{{< /code >}}
+```
 
 This file has access to all of the components and it automatically applies event listeners to the data attributes.
 
@@ -102,7 +102,7 @@ For example, to set up a modal component all you need to do is use `data-modal-t
 
 You can also use the init functions to set up the event listeners yourself. Here's an example how you can do it with Vue or Nuxt:
 
-{{< code lang="javascript" icon="file" file="app.js" >}}
+```javascript
 <script setup>
 import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
@@ -116,7 +116,7 @@ onMounted(() => {
 <template>
     // Modal HTML markup with data attributes from Flowbite
 </template>
-{{< /code >}}
+```
 
 The `initFlowbite` function sets up all of the init functions for dropdowns, modals, navbars, tooltips and so on to hook onto the data attributes. Alternatively, you can also initialise each component category class separately with `initDropdowns` or `initModals`.
 
@@ -128,7 +128,7 @@ Flowbite also offers an API for using the components programmatically and it sup
 
 Here's an example how you can import and create a new Modal component inside JavaScript:
 
-{{< code lang="javascript" icon="file" file="app.js" >}}
+```javascript
 import { Modal } from 'flowbite'
 
 const $modalElement = document.querySelector('#modalEl');
@@ -151,7 +151,7 @@ const modalOptions = {
 const modal = new Modal($modalElement, modalOptions);
 
 modal.show();
-{{< /code >}}
+```
 
 Check out the JavaScript behaviour section of each component's page to learn how you can use this.
 
@@ -161,9 +161,9 @@ Flowbite supports type declarations for the interactive UI components including 
 
 Additionally to our code above, we will now import some relevant types from the Flowbite package, namely the `ModalOptions` and `ModalInterface`:
 
-{{< code lang="javascript" icon="file" file="app.ts" >}}
+```javascript
 import { Modal } from 'flowbite'
 import type { ModalOptions, ModalInterface } from 'flowbite'
 
 // other code
-{{< /code >}}
+```

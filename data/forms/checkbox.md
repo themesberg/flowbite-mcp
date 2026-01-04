@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Checkbox - Flowbite
-description: Get started with the checkbox component to allow the user to select one or more options in the form of a square box available in multiple sizes and colors
-group: forms
-toc: true
-requires_js: true
-
-previous: Textarea
-previousLink: forms/textarea/
-next: Radio
-nextLink: forms/radio/
----
-
 The checkbox component can be used to receive one or more selected options from the user in the form of a square box available in multiple styles, sizes, colors, and variants coded with the utility classes from Tailwind CSS and with support for dark mode.
 
 Make sure that you have included Flowbite as a plugin inside your Tailwind CSS project to apply all the necessary styles for the checkbox component.
@@ -20,7 +6,7 @@ Make sure that you have included Flowbite as a plugin inside your Tailwind CSS p
 
 Use this default example of a checkbox element in a checked and unchecked state.
 
-{{< example github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex items-center mb-4">
     <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="default-checkbox" class="select-none ms-2 text-sm font-medium text-heading">Default checkbox</label>
@@ -29,13 +15,13 @@ Use this default example of a checkbox element in a checked and unchecked state.
     <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="checked-checkbox" class="select-none ms-2 text-sm font-medium text-heading">Checked state</label>
 </div>
-{{< /example >}}
+```
 
 ## Disabled state
 
 This example can be used for the disabled state of the checkbox component by applying the `disabled` attribute to the input element.
 
-{{< example github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex items-center mb-4">
     <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-4 h-4 border border-light rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="disabled-checkbox" class="select-none ms-2 text-sm font-medium text-fg-disabled">Disabled checkbox</label>
@@ -44,24 +30,24 @@ This example can be used for the disabled state of the checkbox component by app
     <input disabled checked id="disabled-checked-checkbox" type="checkbox" value="" class="w-4 h-4 border border-light rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="disabled-checked-checkbox" class="select-none ms-2 text-sm font-medium text-fg-disabled">Disabled checked</label>
 </div>
-{{< /example >}}
+```
 
 ## Checkbox link
 
 Use this example if you want to add an anchor link inside the label of the checkbox component.
 
-{{< example github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex items-center">
     <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="link-checkbox" class="select-none ms-2 text-sm font-medium text-heading">I agree with the <a href="#" class="text-fg-brand hover:underline">terms and conditions</a>.</label>
 </div>
-{{< /example >}}
+```
 
 ## Helper text
 
 Get started with this example if you want to add a secondary helper text for the checkbox component.
 
-{{< example github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex">
     <div class="flex items-center h-5">
         <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
@@ -71,13 +57,13 @@ Get started with this example if you want to add a secondary helper text for the
         <p id="helper-checkbox-text" class="text-xs font-normal text-body">For orders shipped from $25 in books or $29 in other categories</p>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Bordered
 
 Use this example of a checkbox inside a card element to enable a larger area of clicking activation.
 
-{{< example class="grid gap-6 md:grid-cols-2" github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="bordered-checkbox-1" class="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Default checkbox</label>
@@ -86,13 +72,13 @@ Use this example of a checkbox inside a card element to enable a larger area of 
     <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="bordered-checkbox-2" class="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Checked state</label>
 </div>
-{{< /example >}}
+```
 
 ## Bordered with description
 
 Use this checkbox component with a bordered style and a description text.
 
-{{< example class="grid gap-6 md:grid-cols-2" github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex space-x-2.5 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 mt-4 ms-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
     <label for="bordered-checkbox-3" class="py-4 pe-4">
@@ -107,13 +93,13 @@ Use this checkbox component with a bordered style and a description text.
         <p id="helper-checkbox-bordered-2" class="select-none text-sm text-body">Get ultra-fast storage with 1TB of SSD space</p>
     </label>
 </div>
-{{< /example >}}
+```
 
 ## Bordered with icon
 
 This example can be used to create a checkbox component with a bordered style, a description text and an icon.
 
-{{< example class="grid gap-6 md:grid-cols-2" github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex justify-between space-x-2.5 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <label for="bordered-checkbox-5" class="p-4">
         <svg class="w-7 h-7 text-body mb-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1M5 12h14M5 12a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1m-2 3h.01M14 15h.01M17 9h.01M14 9h.01"/></svg>
@@ -130,14 +116,14 @@ This example can be used to create a checkbox component with a bordered style, a
     </label>
     <input id="bordered-checkbox-6" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 mt-4 me-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
 </div>
-{{< /example >}}
+```
 
 
 ## Checkbox list group
 
 Use this example to show a list of checkbox items grouped inside a card.
 
-{{< example github="components/radio.md" show_dark=true >}}
+```html
 <h3 class="mb-4 font-semibold text-heading">Technology</h3>
 <ul class="w-48 select-none text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base">
     <li class="w-full border-b border-default rounded-t-lg">
@@ -165,13 +151,13 @@ Use this example to show a list of checkbox items grouped inside a card.
         </div>
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Horizontal list group
 
 Use this example to show a list of checkbox items inside a card horizontally.
 
-{{< example github="components/radio.md" show_dark=true >}}
+```html
 <h3 class="mb-4 font-semibold text-heading">Identification</h3>
 <ul class="items-center select-none w-full text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base sm:flex">
     <li class="w-full border-b border-default sm:border-b-0 sm:border-r">
@@ -199,17 +185,15 @@ Use this example to show a list of checkbox items inside a card horizontally.
         </div>
     </li>
 </ul>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Checkbox dropdown
 
 Use this example to show a list of checkbox items inside a dropdown menu.
 
-{{< example class="flex justify-center" github="components/dropdowns.md" show_dark=true iframeHeight="430" >}}
+```html
 <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" type="button" class="inline-flex items-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     Dropdown search
     <svg class="w-4 h-4 ms-1.5 -me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
@@ -276,13 +260,13 @@ Use this example to show a list of checkbox items inside a dropdown menu.
         </button>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Inline layout
 
 You can align the checkbox elements horizontally by using a wrapper tag and applying the `flex` class.
 
-{{< example github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex">
     <div class="flex items-center me-4">
         <input id="inline-checkbox" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
@@ -301,13 +285,13 @@ You can align the checkbox elements horizontally by using a wrapper tag and appl
         <label for="inline-disabled-checkbox" class="select-none ms-2 text-sm font-medium text-fg-disabled">Inline disabled</label>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Colors
 
 Use the `text-{color}-{shade}` classes from Tailwind CSS to change the color of the checkbox component.
 
-{{< example class="flex flex-wrap" github="forms/checkbox.md" show_dark=true >}}
+```html
 <div class="flex items-center me-4">
     <input checked id="red-checkbox" type="checkbox" value="" class="w-4 h-4 text-red-600 bg-neutral-secondary-medium border-default-medium rounded-xs focus:ring-red-500 dark:focus:ring-red-600 ring-offset-neutral-primary focus:ring-2">
     <label for="red-checkbox" class="select-none ms-2 text-sm font-medium text-heading">Red</label>
@@ -332,13 +316,13 @@ Use the `text-{color}-{shade}` classes from Tailwind CSS to change the color of 
     <input checked id="orange-checkbox" type="checkbox" value="" class="w-4 h-4 text-orange-500 bg-neutral-secondary-medium border-default-medium rounded-xs focus:ring-orange-500 dark:focus:ring-orange-600 ring-offset-neutral-primary focus:ring-2">
     <label for="orange-checkbox" class="select-none ms-2 text-sm font-medium text-heading">Orange</label>
 </div>
-{{< /example >}}
+```
 
 ## Advanced layout
 
 Use this example of an advanced layout of checkbox elements where the label parent element can be styled when the checkbox is checked.
 
-{{< example class="flex flex-wrap" github="forms/checkbox.md" show_dark=true >}}
+```html
 <h3 class="mb-4 text-lg font-medium text-heading">Choose technology:</h3>
 <ul class="select-none grid w-full gap-4 md:grid-cols-3">
     <li>
@@ -372,4 +356,4 @@ Use this example of an advanced layout of checkbox elements where the label pare
         </label>
     </li>
 </ul>
-{{< /example >}}
+```

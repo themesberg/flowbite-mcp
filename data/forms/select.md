@@ -1,23 +1,10 @@
----
-layout: docs
-title: Tailwind CSS Select - Flowbite
-description: Get started with the select component to allow the user to choose from one or more options from a dropdown list based on multiple styles, sizes, and variants
-group: forms
-toc: true
-
-previous: Phone Input
-previousLink: forms/phone-input/
-next: Textarea
-nextLink: forms/textarea/
----
-
 The select input component can be used to gather information from users based on multiple options in the form of a dropdown list and by browsing this page you will find multiple options, styles, sizes, and variants built with the utility classes from Tailwind CSS also available in dark mode.
 
 ## Select input example
 
 Get started with the default example of a select input component to get a single option selection.
 
-{{< example github="forms/select.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="countries" class="block mb-2.5 text-sm font-medium text-heading">Select an option</label>
   <select id="countries" class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
@@ -28,13 +15,13 @@ Get started with the default example of a select input component to get a single
     <option value="DE">Germany</option>
   </select>
 </form>
-{{< /example >}}
+```
 
 ## Multiple options
 
 Apply the `multiple` attribute to the select component to allow users to select one or more options.
 
-{{< example github="forms/select.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="countries_multiple" class="block mb-2.5 text-sm font-medium text-heading">Select an option</label>
   <select multiple id="countries_multiple" class="block w-full bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body">
@@ -45,13 +32,13 @@ Apply the `multiple` attribute to the select component to allow users to select 
     <option value="DE">Germany</option>
   </select>
 </form>
-{{< /example >}}
+```
 
 ## Size attribute
 
 Use the size attribute for the select component to specify the number of visible options in the list.
 
-{{< example github="forms/select.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="years" class="block mb-2.5 text-sm font-medium text-heading">Select an option</label>
   <select id="years" size="5" class="block w-full bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body">
@@ -64,13 +51,13 @@ Use the size attribute for the select component to specify the number of visible
     <option>2022</option>
   </select>
 </form>
-{{< /example >}}
+```
 
 ## Disabled state
 
 Apply the `disable` state to the select component to disallow the selection of new options.
 
-{{< example github="forms/select.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="countries_disabled" class="block mb-2.5 text-sm font-medium text-heading">Select an option</label>
   <select disabled id="countries_disabled" class="block w-full bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs text-fg-disabled">
@@ -81,13 +68,13 @@ Apply the `disable` state to the select component to disallow the selection of n
     <option value="DE">Germany</option>
   </select>
 </form>
-{{< /example >}}
+```
 
 ## Underline select
 
 Use the underline style for the select component as an alternative appearance.
 
-{{< example github="forms/select.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="underline_select" class="sr-only">Underline select</label>
   <select id="underline_select" class="block py-2.5 ps-0 w-full text-sm text-body bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer">
@@ -98,17 +85,15 @@ Use the underline style for the select component as an alternative appearance.
       <option value="DE">Germany</option>
   </select>
 </form>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Select with dropdown
 
 Use this example if you want to create a multi-level dropdown and select component combination.
 
-{{< example github="forms/select.md" show_dark=true iframeHeight="340" >}}
+```html
 <form class="max-w-sm mx-auto">
   <div class="flex">
       <button id="dropdown-states-button" data-dropdown-toggle="dropdown-states" type="button" class="inline-flex items-center shrink-0 z-10 text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-fg-brand focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-s-base text-sm px-4 py-2.5 focus:outline-none">
@@ -215,13 +200,13 @@ Use this example if you want to create a multi-level dropdown and select compone
       </select>
   </div>
 </form>
-{{< /example >}}
+```
 
 ## Sizes
 
 Get started with the small, default, and large sizes for the select component from the example below.
 
-{{< example github="forms/select.md" show_dark=true >}}
+```html
 <form class="max-w-sm mx-auto">
   <label for="small" class="block mb-2.5 text-sm font-medium text-heading">Small select</label>
   <select id="small" class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body mb-4">
@@ -256,4 +241,4 @@ Get started with the small, default, and large sizes for the select component fr
     <option value="DE">Germany</option>
   </select>
 </form>
-{{< /example >}}
+```

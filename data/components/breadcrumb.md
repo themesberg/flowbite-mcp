@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Breadcrumbs - Flowbite
-description: Show the location of the current page in a hierarchical structure using the Tailwind CSS breadcrumb components
-group: components
-toc: true
-
-previous: Bottom Navigation
-previousLink: components/bottom-navigation/
-next: Buttons
-nextLink: components/buttons/
----
-
 The breadcrumb component is an important part of any website or application that can be used to show the current location of a page in a hierarchical structure of pages.
 
 Flowbite includes two styles of breadcrumb elements, one that has a transparent background and a few more that come with a background in different colors.
@@ -19,7 +6,7 @@ Flowbite includes two styles of breadcrumb elements, one that has a transparent 
 
 Use the following breadcrumb example to show the hierarchical structure of pages.
 
-{{< example class="flex justify-center" github="components/breadcrumb.md" show_dark=true >}}
+```html
 
 <nav class="flex" aria-label="Breadcrumb">
   <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -43,13 +30,13 @@ Use the following breadcrumb example to show the hierarchical structure of pages
     </li>
   </ol>
 </nav>
-{{< /example >}}
+```
 
 ## Solid background
 
 You can alternatively also use the breadcrumb components with a solid background.
 
-{{< example class="flex justify-center" github="components/breadcrumb.md" show_dark=true >}}
+```html
 
 <!-- Breadcrumb -->
 <nav class="flex p-3 bg-neutral-secondary-medium border border-default-medium rounded-base" aria-label="Breadcrumb">
@@ -74,13 +61,13 @@ You can alternatively also use the breadcrumb components with a solid background
     </li>
   </ol>
 </nav>
-{{< /example >}}
+```
 
 ## Header breadcrumb
 
 Use this example to show a list of items such as the branches from GitHub and a dropdown component.
 
-{{< example class="flex justify-center pb-48" github="components/breadcrumb.md" show_dark=true >}}
+```html
 
 <!-- Breadcrumb -->
 <nav class="flex-warp md:flex justify-between" aria-label="Breadcrumb">
@@ -124,13 +111,13 @@ Use this example to show a list of items such as the branches from GitHub and a 
     </div>  
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Breadcrumb with dropdown
 
 Use this example to show dropdown components inside the breadcrumbs.
 
-{{< example class="flex justify-center pb-48" github="components/breadcrumb.md" show_dark=true >}}
+```html
 
 <!-- Breadcrumb -->
 <nav class="flex justify-between" aria-label="Breadcrumb">
@@ -182,13 +169,13 @@ Use this example to show dropdown components inside the breadcrumbs.
     </li>
   </ol>
 </nav>
-{{< /example >}}
+```
 
 ## Breadcrumb with button
 
 Use a button with dropdown as the current page in a breadcrumb component.
 
-{{< example class="flex justify-center pb-48" github="components/breadcrumb.md" show_dark=true >}}
+```html
 
 <nav class="flex" aria-label="Breadcrumb">
   <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -230,14 +217,14 @@ Use a button with dropdown as the current page in a breadcrumb component.
       </ul>
     </div>
 </nav>
-{{< /example >}}
+```
 
 
 ## Breadcrumb with navigation
 
 Use this example to navigate between pages with a button group component next to the breadcrumbs.
 
-{{< example class="flex justify-center pb-48" github="components/breadcrumb.md" show_dark=true >}}
+```html
 
 <nav class="flex" aria-label="Breadcrumb">
   <div class="inline-flex shadow-xs -space-x-px me-2.5" role="group">
@@ -269,5 +256,5 @@ Use this example to navigate between pages with a button group component next to
     </li>
   </ol>
 </nav>
-{{< /example >}}
+```
 

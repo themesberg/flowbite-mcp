@@ -19,17 +19,17 @@ const args = process.argv.slice(2);
 if (args.includes('--version') || args.includes('-v')) {
   try {
     const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8'));
-    console.log(`Flowbite MCP Server v${packageJson.version}`);
+    console.error(`Flowbite MCP Server v${packageJson.version}`);
     process.exit(0);
   } catch (error) {
-    console.log('Flowbite MCP Server (version unknown)');
+    console.error('Flowbite MCP Server (version unknown)');
     process.exit(0);
   }
 }
 
 // Handle --help flag
 if (args.includes('--help') || args.includes('-h')) {
-  console.log(`
+  console.error(`
 Flowbite MCP Server - AI-powered Flowbite component and theme generation
 
 Usage:
@@ -948,35 +948,19 @@ Look at the rendered image below and the node structure data to understand:
 - Component patterns that match Flowbite components
 
 ### Step 2: Use Flowbite MCP Resources
-Before writing code, fetch the relevant Flowbite component documentation using the MCP resources. Based on the design, you may need:
-
-**Common Components to Check:**
-- \`flowbite://components/buttons\` - For button styles
-- \`flowbite://components/card\` - For card layouts
-- \`flowbite://components/navbar\` - For navigation bars
-- \`flowbite://components/modal\` - For modal dialogs
-- \`flowbite://components/forms\` - For form layouts
-- \`flowbite://forms/input-field\` - For input fields
-- \`flowbite://components/avatar\` - For user avatars
-- \`flowbite://components/badge\` - For badges/tags
-- \`flowbite://components/tables\` - For data tables
-- \`flowbite://components/tabs\` - For tab navigation
-- \`flowbite://components/dropdowns\` - For dropdown menus
-- \`flowbite://components/sidebar\` - For sidebar navigation
-- \`flowbite://components/footer\` - For footer sections
-- \`flowbite://typography/headings\` - For heading styles
-- \`flowbite://typography/text\` - For text styles
+Before writing code, fetch the relevant Flowbite component documentation using the MCP resources. 
 
 ### Step 3: Write the Code
 Generate clean, semantic HTML with Tailwind CSS classes following these guidelines:
 
 1. **Use Flowbite Components**: Match the Figma design to Flowbite components whenever possible
-2. **Tailwind CSS Classes**: Use Tailwind utility classes for styling
-3. **Responsive Design**: Include responsive breakpoints (sm:, md:, lg:, xl:)
-4. **Semantic HTML**: Use proper HTML5 semantic elements
-5. **Accessibility**: Include ARIA attributes and proper alt texts
-6. **Match Colors**: Use Flowbite variables and secondly Tailwind color classes that best match the Figma design colors
-7. **Match Spacing**: Use Tailwind spacing utilities (p-*, m-*, gap-*) to match the design
+2. **Flowbite variables** - Use Flowbite variable utility classes when possible (e.g. text-brand, rounded-base, etc.)
+3. **Tailwind CSS Classes**: Use Tailwind utility classes for styling
+4. **Responsive Design**: Include responsive breakpoints (sm:, md:, lg:, xl:)
+5. **Semantic HTML**: Use proper HTML5 semantic elements
+6. **Accessibility**: Include ARIA attributes and proper alt texts
+7. **Match Colors**: Use Flowbite variables and secondly Tailwind color classes that best match the Figma design colors
+8. **Match Spacing**: Use Tailwind spacing utilities (p-*, m-*, gap-*) to match the design
 
 ### Step 4: Output Format - IMPORTANT
 
@@ -1396,7 +1380,7 @@ if (TRANSPORT_MODE === 'stdio') {
   
 } else if (TRANSPORT_MODE === 'http') {
   // HTTP Streamable mode for server/production deployments
-  console.log(`Starting Flowbite MCP Server in HTTP mode on port ${PORT}...`);
+  console.error(`Starting Flowbite MCP Server in HTTP mode on port ${PORT}...`);
   
   ExpressHttpStreamableMcpServer(
     {
@@ -1405,10 +1389,10 @@ if (TRANSPORT_MODE === 'stdio') {
     setupServer
   );
   
-  console.log(`Flowbite MCP Server running in HTTP mode`);
-  console.log(`Server listening on http://localhost:${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/health`);
-  console.log(`MCP endpoint: http://localhost:${PORT}/mcp`);
+  console.error(`Flowbite MCP Server running in HTTP mode`);
+  console.error(`Server listening on http://localhost:${PORT}`);
+  console.error(`Health check: http://localhost:${PORT}/health`);
+  console.error(`MCP endpoint: http://localhost:${PORT}/mcp`);
   
 } else {
   console.error(`Invalid transport mode: ${TRANSPORT_MODE}`);

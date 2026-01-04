@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS File Input - Flowbite
-description: Get started with the file input component to let the user to upload one or more files from their device storage based on multiple styles and sizes
-group: forms
-toc: true
-requires_js: true
-
-previous: Input Field
-previousLink: forms/input-field/
-next: Search Input
-nextLink: forms/search-input/
----
-
 The file input component can be used to upload one or more files from the device storage of the user available in multiple sizes, styles, and variants and built with the utility-first classes from Tailwind CSS including support for dark mode.
 
 Make sure that you have included Flowbite as a plugin inside your Tailwind CSS project to apply all the necessary styles for the file input component.
@@ -20,48 +6,48 @@ Make sure that you have included Flowbite as a plugin inside your Tailwind CSS p
 
 Get started with a simple file input component to let users upload one single file.
 
-{{< example github="forms/file-input.md" show_dark=true >}}
+```html
 <label class="block mb-2.5 text-sm font-medium text-heading" for="file_input">Upload file</label>
 <input class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" id="file_input" type="file">
-{{< /example >}}
+```
 
 ## Helper text
 
 Add a descriptive helper text to inform users the allowed extensions and sizes of the files.
 
-{{< example github="forms/file-input.md" show_dark=true >}}
+```html
 <label class="block mb-2.5 text-sm font-medium text-heading" for="file_input">Upload file</label>
 <input class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" aria-describedby="file_input_help" id="file_input" type="file">
 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
-{{< /example >}}
+```
 
 ## Multiple files
 
 Apply the `multiple` attribute to the file input component to allow more files to be uploaded.
 
-{{< example github="forms/file-input.md" show_dark=true >}}
+```html
 <label class="block mb-2.5 text-sm font-medium text-heading" for="multiple_files">Upload multiple files</label>
 <input class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" id="multiple_files" type="file" multiple>
-{{< /example >}}
+```
 
 ## Sizes
 
 Choose from the small, default, and large file input sizing options.
 
-{{< example class="space-y-6" github="forms/file-input.md" show_dark=true >}}
+```html
 <label class="block mb-2.5 text-sm font-medium text-heading" for="small_size">Base file input</label>
 <input class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" id="small_size" type="file">
 
 
 <label class="block mb-2.5 text-sm font-medium text-heading" for="large_size">Large file input</label>
 <input class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-lg rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body" id="large_size" type="file">
-{{< /example >}}
+```
 
 ## Dropzone
 
 The dropzone file input component can be used to upload one or more files by clicking anywhere in the area.
 
-{{< example class="space-y-6" github="forms/file-input.md" show_dark=true >}}
+```html
 <div class="flex items-center justify-center w-full">
     <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 bg-neutral-secondary-medium border border-dashed border-default-strong rounded-base cursor-pointer hover:bg-neutral-tertiary-medium">
         <div class="flex flex-col items-center justify-center text-body pt-5 pb-6">
@@ -72,13 +58,13 @@ The dropzone file input component can be used to upload one or more files by cli
         <input id="dropzone-file" type="file" class="hidden" />
     </label>
 </div> 
-{{< /example >}}
+```
 
 ## Dropzone with button
 
 Use this dropzone component to upload files with a button element.
 
-{{< example class="space-y-6" github="forms/file-input.md" show_dark=true >}}
+```html
 <div class="flex items-center justify-center w-full">
   <div class="flex flex-col items-center justify-center w-full h-64 bg-neutral-secondary-medium border border-dashed border-default-strong rounded-base">
     <div class="flex flex-col items-center justify-center text-body pt-5 pb-6">
@@ -95,4 +81,4 @@ Use this dropzone component to upload files with a button element.
   <!-- Hidden File Input (Outside Label) -->
   <input id="dropzone-file-2" type="file" class="hidden" />
 </div>
-{{< /example >}}
+```

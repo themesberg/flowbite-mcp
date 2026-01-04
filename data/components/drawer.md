@@ -1,22 +1,8 @@
----
-layout: docs
-title: Tailwind CSS Drawer (offcanvas) - Flowbite
-description: The Drawer component can be used as a hidden off-canvas sidebar for navigation and to show other information based on multiple styles and placements
-group: components
-requires_js: true
-toc: true
-
-previous: Device mockups
-previousLink: components/device-mockups/
-next: Dropdowns
-nextLink: components/dropdowns/
----
-
 Use the Drawer component (or "off-canvas") to show a fixed element relative to the document page from any side for navigation, contact forms, informational purposes or other user actions.
 
 You can set multiple options such as the placement, activate body scrolling, show or hide the backdrop and even use the swipeable edge functionality to show a small part of the drawer when it is not shown completely.
 
-To enable interactivity via data attributes and the Drawer API you need to include [Flowbite's JavaScript file]({{< ref "getting-started/quickstart" >}}).
+To enable interactivity via data attributes and the Drawer API you need to include Flowbite's JavaScript file.
 
 ## Default drawer
 
@@ -32,7 +18,7 @@ For accessibility you should also apply the `aria-controls={id}` attribute to th
 
 You can also avoid the drawer flickering and hide it by default by applying the following classes to the Drawer element: `transition-transform left-0 top-0 -translate-x-full`. This will set the component off-canvas.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -63,13 +49,13 @@ You can also avoid the drawer flickering and hide it by default by applying the 
       </button>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Drawer navigation
 
 Use this example to show a navigational sidebar inside the drawer component.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and show -->
 <div class="text-center">
@@ -151,13 +137,13 @@ Use this example to show a navigational sidebar inside the drawer component.
       </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Contact form
 
 Use this example to show a contact form inside the drawer component.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="840" iframeMaxHeight="840" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and show -->
 <div class="text-center">
@@ -204,13 +190,13 @@ Use this example to show a contact form inside the drawer component.
       <a href="#" class="hover:underline">212-456-7890</a>
    </p>
 </div>
-{{< /example >}}
+```
 
 ## Form elements
 
 Use this example if you want to add form elements inside the drawer component including datepickers.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="840" iframeMaxHeight="840" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and show -->
 <div class="text-center">
@@ -267,7 +253,7 @@ Use this example if you want to add form elements inside the drawer component in
       </button>
    </form>
 </div>
-{{< /example >}}
+```
 
 ## Placement
 
@@ -279,7 +265,7 @@ Use this example where you can position the drawer component on the left side of
 
 To span the full height of the page you'll have to add the `h-screen` class to the drawer component.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -310,7 +296,7 @@ To span the full height of the page you'll have to add the `h-screen` class to t
       </button>
    </div>
 </div>
-{{< /example >}}
+```
 
 ### Right drawer
 
@@ -318,7 +304,7 @@ Use this example to show the drawer component on the right side of the page.
 
 To span the full height of the page you'll have to add the `h-screen` class to the drawer component.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -349,13 +335,13 @@ To span the full height of the page you'll have to add the `h-screen` class to t
       </button>
    </div>
 </div>
-{{< /example >}}
+```
 
 ### Top drawer
 
 Use this example to show the drawer on the top side of the page.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -386,13 +372,13 @@ Use this example to show the drawer on the top side of the page.
       </button>
    </div>
 </div>
-{{< /example >}}
+```
 
 ### Bottom drawer
 
 Use this example to show the drawer on the bottom side of the page.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 
 <div class="text-center">
    <button class="overflow-y-auto inline-flex items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button" data-drawer-target="drawer-bottom-example" data-drawer-show="drawer-bottom-example" data-drawer-placement="bottom" aria-controls="drawer-bottom-example">
@@ -422,7 +408,7 @@ Use this example to show the drawer on the bottom side of the page.
       </button>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Body scrolling
 
@@ -432,7 +418,7 @@ By default, body scrolling is disabled when the drawer is visible, however, you 
 
 This is an example where the body scrolling behaviour is disabled when the drawer is visible.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -514,13 +500,13 @@ This is an example where the body scrolling behaviour is disabled when the drawe
       </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ### Enabled
 
 Get started with this example in order to enable body scrolling even if the drawer component is visible by using the `data-drawer-body-scrolling="false"` data attribute.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -602,7 +588,7 @@ Get started with this example in order to enable body scrolling even if the draw
       </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Backdrop
 
@@ -614,7 +600,7 @@ Use the `data-drawer-backdrop="{true|false}"` data attribute where you can disab
 
 Use this example to enable the backdrop element by default.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -696,13 +682,13 @@ Use this example to enable the backdrop element by default.
       </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ### Disabled
 
 Use the `data-drawer-backdrop="false"` data attribute to disable the backdrop element when the drawer is shown.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="640" iframeMaxHeight="640" iframeMaxHeight="640" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -784,7 +770,7 @@ Use the `data-drawer-backdrop="false"` data attribute to disable the backdrop el
       </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Swipeable edge
 
@@ -794,7 +780,7 @@ In this example we also use the `data-drawer-toggle="id"` option to toggle the v
 
 Use the `data-drawer-edge-offset="bottom-[*px]"` data attribute where you can apply a class from Tailwind CSS to set the offset. Default value is `bottom-[60px]`.
 
-{{< example github="components/drawer.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 
 <!-- drawer init and toggle -->
 <div class="text-center">
@@ -863,7 +849,7 @@ Use the `data-drawer-edge-offset="bottom-[*px]"` data attribute where you can ap
       </div>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## More examples
 
@@ -1153,7 +1139,7 @@ Check out the following JavaScript example to learn how to initialize, set the o
 
 First of all, create a new JavaScript element object for the first parameter of the Drawer object and another options object to set the placement, backdrop settings, and callback functions.
 
-{{< code lang="javascript" file="drawer.js" icon="file" >}}
+```javascript
 // set the drawer menu element
 const $targetEl = document.getElementById('drawer-js-example');
 
@@ -1182,11 +1168,11 @@ const instanceOptions = {
   id: 'drawer-js-example',
   override: true
 };
-{{< /code >}}
+```
 
 Initialize the Drawer positioning by creating a new object:
 
-{{< code lang="javascript" file="drawer.js" icon="file" >}}
+```javascript
 import { Drawer } from 'flowbite';
 
 /*
@@ -1195,37 +1181,37 @@ import { Drawer } from 'flowbite';
  * instanceOptions (optional)
  */
 const drawer = new Drawer($targetEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Use the `show` and `hide` methods to show and hide the drawer component directly from JavaScript.
 
-{{< code lang="javascript" file="drawer.js" icon="file" >}}
+```javascript
 // show the drawer
 drawer.show();
 
 // hide the drawer
 drawer.hide();
-{{< /code >}}
+```
 
 Use the `toggle` method to toggle the visibility of the drawer.
 
-{{< code lang="javascript" file="drawer.js" icon="file" >}}
+```javascript
 // toggle the drawer
 drawer.toggle();
-{{< /code >}}
+```
 
 Use the `isVisible` method to check the visibility of the drawer:
 
-{{< code lang="javascript" file="drawer.js" icon="file" >}}
+```javascript
 // true or false
 drawer.isVisible();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Use the following HTML code for the JavaScript example above.
 
-{{< code lang="html" file="drawer.html" icon="file" >}}
+```html
 <!-- drawer component -->
 <div id="drawer-js-example" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-primary-soft border-e border-default w-80" tabindex="-1" aria-labelledby="drawer-js-example">
     <div class="border-b border-default pb-4 flex items-center">
@@ -1299,15 +1285,15 @@ Use the following HTML code for the JavaScript example above.
       </ul>
    </div>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Drawer (off-canvas) class, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Drawer (off-canvas) class, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="drawer.ts" icon="file" >}}
+```typescript
 import { Drawer } from 'flowbite';
 import type { DrawerOptions, DrawerInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -1350,4 +1336,4 @@ const drawer: DrawerInterface = new Drawer($targetEl, options, instanceOptions);
 
 // show the drawer
 drawer.show();
-{{< /code >}}
+```

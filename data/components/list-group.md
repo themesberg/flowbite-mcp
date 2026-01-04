@@ -1,23 +1,10 @@
----
-layout: docs
-title: Tailwind CSS List Group - Flowbite
-description: Use the list group component to display a series of items, buttons or links inside a single element
-group: components
-toc: true
-
-previous: KBD (Keyboard)
-previousLink: components/kbd/
-next: Mega menu
-nextLink: components/mega-menu/
----
-
 The list group component can be used to display a series of elements, buttons or links inside a single card component similar to a sidebar.
 
 ## Default list group
 
 Here's an example of a list group that you can use right away.
 
-{{< example class="flex justify-center" github="components/list-group.md" show_dark=true >}}
+```html
 
 <ul class="w-48 text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base">
     <li class="w-full px-4 py-2 border-b border-default rounded-t-lg">Profile</li>
@@ -25,13 +12,13 @@ Here's an example of a list group that you can use right away.
     <li class="w-full px-4 py-2 border-b border-default">Messages</li>
     <li class="w-full px-4 py-2 rounded-b-lg">Download</li>
 </ul>
-{{< /example >}}
+```
 
 ## List group with links
 
 You can also display a series of links inside the list group element.
 
-{{< example class="flex justify-center" github="components/list-group.md" show_dark=true >}}
+```html
 
 <div class="w-48 text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base">
     <a href="#" aria-current="true" class="block w-full px-4 py-2 text-fg-brand bg-neutral-secondary-medium border-b border-default rounded-t-base cursor-pointer">
@@ -47,13 +34,13 @@ You can also display a series of links inside the list group element.
         Download
     </a>
 </div>
-{{< /example >}}
+```
 
 ## List group with buttons
 
 It is also possible to display a list of button element inside the list group component. The following example includes an active and disabled item as well.
 
-{{< example class="flex justify-center" github="components/list-group.md" show_dark=true >}}
+```html
 
 <div class="w-48 text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base">
     <button aria-current="true" type="button" class="w-full px-4 py-2 font-medium text-left rtl:text-right text-fg-brand bg-neutral-secondary-medium border-b border-default rounded-t-base cursor-pointer focus:outline-none">
@@ -72,13 +59,13 @@ It is also possible to display a list of button element inside the list group co
         Download
     </button>
 </div>
-{{< /example >}}
+```
 
 ## List group with icons
 
 Use the following example to create a list of buttons as a menu together with [SVG icons](https://flowbite.com/icons/).
 
-{{< example class="flex justify-center" github="components/list-group.md" show_dark=true >}}
+```html
 
 <div class="w-48 text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-base">
     <a href="#" aria-current="true" class="flex items-center w-full px-4 py-2 text-fg-brand bg-neutral-secondary-medium border-b border-default rounded-t-base cursor-pointer">
@@ -98,14 +85,14 @@ Use the following example to create a list of buttons as a menu together with [S
         Download
     </a>
 </div>
-{{< /example >}}
+```
 
 
 ## Features list group
 
 Use this example to show a list of features with icons in a card component.
 
-{{< example class="flex justify-center" github="components/list-group.md" show_dark=true >}}
+```html
 
 <div class="w-72 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <ul role="list" class="space-y-4 p-6">
@@ -139,13 +126,13 @@ Use this example to show a list of features with icons in a card component.
         </li>
     </ul>
 </div>
-{{< /example >}}
+```
 
 ## Statistic list with divider
 
 This example can be used to show a list of statistical data in a card component.
 
-{{< example class="flex justify-center" github="components/list-group.md" show_dark=true >}}
+```html
 
 <div class="w-96 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <ul role="list" class="space-y-3 p-6 divide-y divide-default">
@@ -221,13 +208,13 @@ This example can be used to show a list of statistical data in a card component.
         </li>
     </ul>
 </div>
-{{< /example >}}
+```
 
 ## List with avatars and CTA
 
 Use this component to show a list of users with avatars and CTA buttons.
 
-{{< example class="flex justify-center" github="components/list-group.md" show_dark=true >}}
+```html
 
 <div class="w-full max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <h5 class="text-xl font-semibold text-heading mb-6">Latest users</h5>
@@ -362,4 +349,4 @@ Use this component to show a list of users with avatars and CTA buttons.
     </div>
 </div>
 
-{{< /example >}}
+```

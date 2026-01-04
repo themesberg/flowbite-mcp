@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Alerts - Flowbite
-description: Show contextual information to your users using alert elements based on Tailwind CSS
-group: components
-toc: true
-
-previous: Accordion
-previousLink: components/accordion/
-next: Avatar
-nextLink: components/avatar/
----
-
 The alert component can be used to provide information to your users such as success or error messages, but also highlighted information complementing the normal flow of paragraphs and headers on a page.
 
 Flowbite also includes dismissible alerts which can be hidden by the users by clicking on the close icon.
@@ -19,7 +6,7 @@ Flowbite also includes dismissible alerts which can be hidden by the users by cl
 
 Use the following examples of alert components to show messages as feedback to your users.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div class="p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer" role="alert">
   <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
 </div>
@@ -35,13 +22,13 @@ Use the following examples of alert components to show messages as feedback to y
 <div class="p-4 text-sm text-heading rounded-base bg-neutral-secondary-medium" role="alert">
   <span class="font-medium">Dark alert!</span> Change a few things up and try submitting again.
 </div>
-{{< /example >}}
+```
 
 ## Alerts with icon
 
 You can also include a descriptive icon to complement the message inside the alert component with the following example.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div class="flex items-start sm:items-center p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer" role="alert">
   <svg class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
   <p><span class="font-medium me-1">Info alert!</span> Change a few things up and try submitting again.</p>
@@ -62,13 +49,13 @@ You can also include a descriptive icon to complement the message inside the ale
   <svg class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
   <p><span class="font-medium me-1">Dark alert!</span> Change a few things up and try submitting again.</p>
 </div>
-{{< /example >}}
+```
 
 ## Bordered alerts 
 
 Use this example to add a border accent to the alert component instead of just a plain background.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div class="flex items-start sm:items-center p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer border border-brand-subtle" role="alert">
   <svg class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
   <p><span class="font-medium me-1">Info alert!</span> Change a few things up and try submitting again.</p>
@@ -89,13 +76,13 @@ Use this example to add a border accent to the alert component instead of just a
   <svg class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
   <p><span class="font-medium me-1">Dark alert!</span> Change a few things up and try submitting again.</p>
 </div>
-{{< /example >}}
+```
 
 ## Alerts with list
 
 Use this example to show a list and a description inside an alert component.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div class="flex p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer border border-brand-subtle" role="alert">
   <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
   <span class="sr-only">Info</span>
@@ -144,17 +131,13 @@ Use this example to show a list and a description inside an alert component.
     </ul>
   </div>
 </div>
-{{< /example >}}
-
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+```
 
 ## Dismissing
 
 Use the following alert elements that are also dismissible.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div id="alert-1" class="flex sm:items-center p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer" role="alert">
   <svg class="w-4 h-4 shrink-0 mt-0.5 md:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
   <span class="sr-only">Info</span>
@@ -210,13 +193,13 @@ Use the following alert elements that are also dismissible.
       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
   </button>
 </div>
-{{< /example >}}
+```
 
 ## Border accent
 
 Use this example to add a border accent on top of the alert component for further visual distinction.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div id="alert-border-1" class="flex sm:items-center p-4 mb-4 text-sm text-fg-brand-strong bg-brand-softer border-t-4 border-brand-subtle" role="alert">
   <svg class="w-4 h-4 shrink-0 mt-0.5 md:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
   <span class="sr-only">Info</span>
@@ -272,13 +255,13 @@ Use this example to add a border accent on top of the alert component for furthe
       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
   </button>
 </div>
-{{< /example >}}
+```
 
 ## Additional content
 
 The following alert components can be used if you wish to disclose more information inside the element.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div id="alert-additional-content-1" class="p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer border border-brand-subtle" role="alert">
   <div class="flex items-center justify-between">
     <div class="flex items-center">
@@ -384,13 +367,13 @@ The following alert components can be used if you wish to disclose more informat
   </button>
 </div>
 
-{{< /example >}}
+```
 
 ## Announcement alerts
 
 Use this alert component to make announcements with a CTA link.
 
-{{< example github="components/alerts.md" show_dark=true >}}
+```html
 <div id="alert-small-1" class="w-auto inline-flex items-center p-1 pe-2 mb-4 text-sm text-fg-brand-strong rounded-full bg-brand-softer border border-brand-subtle" role="alert">
   <span class="bg-brand-soft text-fg-brand-strong py-0.5 px-2 rounded-full">New</span>
   <div class="ms-2 text-sm">
@@ -430,7 +413,7 @@ Use this alert component to make announcements with a CTA link.
   </div>
   <svg class="w-4 h-4 ms-1 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
 </div>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -630,7 +613,7 @@ Check out the following JavaScript example to learn how to initialize, set the o
 
 First of all, you should set the required target element and optionally set a trigger element which will dismiss the target element when clicked and other options to customize the animation.
 
-{{< code lang="javascript" file="dismiss.js" icon="file" >}}
+```javascript
 // target element that will be dismissed
 const $targetEl = document.getElementById('targetElement');
 
@@ -655,11 +638,11 @@ const instanceOptions = {
   id: 'targetElement',
   override: true
 };
-{{< /code >}}
+```
 
 Create a new Dismiss object based on the options set above.
 
-{{< code lang="javascript" file="dismiss.js" icon="file" >}}
+```javascript
 import { Dismiss } from 'flowbite';
 
 /*
@@ -669,34 +652,34 @@ import { Dismiss } from 'flowbite';
 * instanceOptions (optional)
 */
 const dismiss = new Dismiss($targetEl, $triggerEl, options, instanceOptions);
-{{< /code >}}
+```
 
 You can now use the methods on the Dismiss object.
 
-{{< code lang="javascript" >}}
+```javascript
 // hide the target element
 dismiss.hide();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Use this HTML code for the JavaScript code example above.
 
-{{< code lang="html" file="dismiss.html" icon="file" >}}
+```html
 <button id="triggerElement" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Hide alert</button>
 
 <div id="targetElement" class="p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer" role="alert">
   <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Dismiss class, parameters and its options. 
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Dismiss class, parameters and its options. 
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="dismiss.ts" icon="file" >}}
+```javascript
 import { Dismiss } from "flowbite";
 import type { DismissOptions, DismissInterface } from "flowbite";
 import type { InstanceOptions } from 'flowbite';
@@ -736,4 +719,4 @@ const dismiss: DismissInterface = new Dismiss($targetEl, $triggerEl, options, in
 
 // programmatically hide it
 dismiss.hide();
-{{< /code >}}
+```

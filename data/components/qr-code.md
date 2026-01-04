@@ -1,96 +1,3 @@
----
-layout: docs
-title: Tailwind CSS QR Code Generator - Flowbite
-description: Use this component to generate and show QR codes based on text or URL that can be scanned with device phone cameras and other devices using the Flowbite library based on Tailwind CSS
-group: components
-toc: true
-
-previous: Typography
-previousLink: components/typography/
-next: Video
-nextLink: components/video/
----
-
-<div class="grid sm:grid-cols-2 gap-8 sm:bg-neutral-primary sm:border border-light-subtle sm:rounded-base sm:p-8 mb-8">
-  <div class="space-y-4">
-    <p class="text-body">Generate QR codes from text or URLs.</p>
-    <label for="qr_code_value" class="block mb-2.5 text-sm font-medium text-heading">Value:</label>
-    <input type="text" id="qr_code_value" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="https://flowbite.com" required />
-    <label for="qr_code_correction" class="block mb-2.5 text-sm font-medium text-heading">Correction level:</label>
-    
-  <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
-    <button data-popover-target="popover-qr-l" data-qr-code-level="L" data-qr-code-active="false" type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm w-9 h-9 focus:outline-none data-[qr-code-active=true]:text-fg-brand">
-      L
-    </button>
-    <div data-popover id="popover-qr-l" role="tooltip" class="absolute z-10 invisible inline-block w-72 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
-        <div class="px-3 py-2 bg-neutral-tertiary border-b border-default rounded-t-base">
-            <h3 class="font-medium text-heading">L (Low) – Recovers 7% of data</h3>
-        </div>
-        <div class="px-3 py-2">
-            <p>Best for simple, high-quality printing where space efficiency is important.</p>
-        </div>
-        <div data-popper-arrow></div>
-    </div>
-    <button data-popover-target="popover-qr-m" data-qr-code-level="M" data-qr-code-active="true" type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 text-sm w-9 h-9 focus:outline-none data-[qr-code-active=true]:text-fg-brand">
-      M
-    </button>
-    <div data-popover id="popover-qr-m" role="tooltip" class="absolute z-10 invisible inline-block w-72 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
-        <div class="px-3 py-2 bg-neutral-tertiary border-b border-default rounded-t-base">
-            <h3 class="font-medium text-heading">M (Medium) – Recovers 15% of data</h3>
-        </div>
-        <div class="px-3 py-2">
-            <p>Most commonly used; good balance of size and robustness.</p>
-        </div>
-        <div data-popper-arrow></div>
-    </div>
-    <button data-popover-target="popover-qr-q" data-qr-code-level="Q" data-qr-code-active="false" type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 text-sm w-9 h-9 focus:outline-none data-[qr-code-active=true]:text-fg-brand">
-      Q
-    </button>
-    <div data-popover id="popover-qr-q" role="tooltip" class="absolute z-10 invisible inline-block w-72 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
-        <div class="px-3 py-2 bg-neutral-tertiary border-b border-default rounded-t-base">
-            <h3 class="font-medium text-heading">Q (Quartile) – Recovers 25% of data</h3>
-        </div>
-        <div class="px-3 py-2">
-            <p>More resilient; useful when the code may get smudged or partially covered.</p>
-        </div>
-        <div data-popper-arrow></div>
-    </div>
-    <button data-popover-target="popover-qr-h" data-qr-code-level="H" data-qr-code-active="false" type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-e-base text-sm w-9 h-9 focus:outline-none data-[qr-code-active=true]:text-fg-brand">
-      H
-    </button>
-    <div data-popover id="popover-qr-h" role="tooltip" class="absolute z-10 invisible inline-block w-72 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
-        <div class="px-3 py-2 bg-neutral-tertiary border-b border-default rounded-t-base">
-            <h3 class="font-medium text-heading">H (High) – Recovers 30% of data</h3>
-        </div>
-        <div class="px-3 py-2">
-            <p>Highest durability; used when maximum protection is needed (e.g., logos in the center of the code or harsh conditions).</p>
-        </div>
-        <div data-popper-arrow></div>
-    </div>
-  </div>
-  </div>
-  <div class="flex justify-center flex-col">
-    <div class="flex justify-center p-2 bg-neutral-secondary-medium rounded-base mb-4">
-      <div id="qrcode" class="w-56 h-56"></div>
-    </div>
-    <div class="grid grid-cols-2 gap-4">
-      <button type="button" id="copy-qr-code-button" class="text-white inline-flex items-center justify-center gap-2 bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-        <svg id="default-copy-qr-code-icon" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M9 8v3a1 1 0 0 1-1 1H5m11 4h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v1m4 3v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7.13a1 1 0 0 1 .24-.65L7.7 8.35A1 1 0 0 1 8.46 8H13a1 1 0 0 1 1 1Z"/>
-        </svg>
-        <svg id="success-copy-qr-code-icon" class="w-4 h-4 hidden text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/>
-        </svg>
-        <span id="copy-qr-code-text">Copy as SVG</span>
-      </button>
-      <button id="save-qr-code-button" type="button" class="text-body inline-flex items-center justify-center gap-2 bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"><svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01"/>
-</svg>
-Save as file</button>
-    </div>
-  </div>
-</div>
-
 QR codes are a popular way to encode information such as website links, texts, and other data into a two-dimensional barcode that can be scanned with a phone camera or other devices. The Flowbite component allows you to couple them with other elements such as input fields, tooltips, tab selectors, and more.
 
 Use this free QR code generator and customize the parameters to see the live preview.
@@ -101,18 +8,45 @@ The component examples below are generated using the data you provided in the ge
 
 Use this example as a simple QR code with SVG embedded directly in the HTML.
 
-{{< example github="components/alerts.md" class="flex justify-center" show_dark=true >}}
+```html
 <div id="qrcode" class="w-48 h-48">
   <svg class="text-heading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="none" d="M0 0h29v29H0z"></path><path stroke="currentColor" d="M4 4.5h7m1 0h1m1 0h2m2 0h7M4 5.5h1m5 0h1m4 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m5 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h2M5 12.5h7m3 0h2m2 0h2m3 0h1M6 13.5h1m1 0h1m6 0h1m1 0h1m2 0h5M4 14.5h3m1 0h3m1 0h2m3 0h2m2 0h1m1 0h1M4 15.5h1m2 0h1m3 0h1m5 0h1m1 0h4m1 0h1M4 16.5h1m1 0h2m2 0h2m3 0h1m2 0h1m4 0h1M12 17.5h2m2 0h2m1 0h4m1 0h1M4 18.5h7m1 0h3m2 0h1m3 0h3M4 19.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1M4 20.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m5 0h1M4 21.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h4M4 22.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1M4 23.5h1m5 0h1m1 0h1m1 0h1m5 0h3M4 24.5h7m2 0h3m5 0h1m1 0h1"></path></svg>
 </div>
-{{< /example >}}
+```
 
 ## QR code with input
 
 Use this example to show a QR code with SVG and a copy to clipboard input element below.
 
-{{< example github="components/alerts.md" class="flex justify-center" show_dark=true javascript=`
+```html
+<div class="w-56 flex justify-center items-center flex-col">
+  <div id="qrcode" class="w-48 h-48">
+    <svg class="text-heading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="none" d="M0 0h29v29H0z"></path><path stroke="currentColor" d="M4 4.5h7m1 0h1m1 0h2m2 0h7M4 5.5h1m5 0h1m4 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m5 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h2M5 12.5h7m3 0h2m2 0h2m3 0h1M6 13.5h1m1 0h1m6 0h1m1 0h1m2 0h5M4 14.5h3m1 0h3m1 0h2m3 0h2m2 0h1m1 0h1M4 15.5h1m2 0h1m3 0h1m5 0h1m1 0h4m1 0h1M4 16.5h1m1 0h2m2 0h2m3 0h1m2 0h1m4 0h1M12 17.5h2m2 0h2m1 0h4m1 0h1M4 18.5h7m1 0h3m2 0h1m3 0h3M4 19.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1M4 20.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m5 0h1M4 21.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h4M4 22.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1M4 23.5h1m5 0h1m1 0h1m1 0h1m5 0h3M4 24.5h7m2 0h3m5 0h1m1 0h1"></path></svg>
+  </div>
 
+  <div class="w-full max-w-[18rem]">
+      <div class="relative">
+          <label for="npm-install-copy-button" class="sr-only">Label</label>
+          <input id="npm-install-copy-button" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="flowbite.com" disabled readonly>
+          <button data-copy-to-clipboard-target="npm-install-copy-button" data-tooltip-target="tooltip-copy-npm-install-copy-button" class="absolute end-2 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary rounded p-1.5 inline-flex items-center justify-center">
+              <span id="default-icon">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+              </span>
+              <span id="success-icon" class="hidden">
+                  <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+              </span>
+          </button>
+          <div id="tooltip-copy-npm-install-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+              <span id="default-tooltip-message">Copy to clipboard</span>
+              <span id="success-tooltip-message" class="hidden">Copied!</span>
+              <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+      </div>
+  </div>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function () {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'npm-install-copy-button');
     const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-copy-npm-install-copy-button');
@@ -148,39 +82,13 @@ window.addEventListener('load', function () {
         tooltip.hide();
     }
 })
-` >}}
-<div class="w-56 flex justify-center items-center flex-col">
-  <div id="qrcode" class="w-48 h-48">
-    <svg class="text-heading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="none" d="M0 0h29v29H0z"></path><path stroke="currentColor" d="M4 4.5h7m1 0h1m1 0h2m2 0h7M4 5.5h1m5 0h1m4 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m5 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h2M5 12.5h7m3 0h2m2 0h2m3 0h1M6 13.5h1m1 0h1m6 0h1m1 0h1m2 0h5M4 14.5h3m1 0h3m1 0h2m3 0h2m2 0h1m1 0h1M4 15.5h1m2 0h1m3 0h1m5 0h1m1 0h4m1 0h1M4 16.5h1m1 0h2m2 0h2m3 0h1m2 0h1m4 0h1M12 17.5h2m2 0h2m1 0h4m1 0h1M4 18.5h7m1 0h3m2 0h1m3 0h3M4 19.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1M4 20.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m5 0h1M4 21.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h4M4 22.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1M4 23.5h1m5 0h1m1 0h1m1 0h1m5 0h3M4 24.5h7m2 0h3m5 0h1m1 0h1"></path></svg>
-  </div>
-
-  <div class="w-full max-w-[18rem]">
-      <div class="relative">
-          <label for="npm-install-copy-button" class="sr-only">Label</label>
-          <input id="npm-install-copy-button" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="flowbite.com" disabled readonly>
-          <button data-copy-to-clipboard-target="npm-install-copy-button" data-tooltip-target="tooltip-copy-npm-install-copy-button" class="absolute end-2 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary rounded p-1.5 inline-flex items-center justify-center">
-              <span id="default-icon">
-                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-              </span>
-              <span id="success-icon" class="hidden">
-                  <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-              </span>
-          </button>
-          <div id="tooltip-copy-npm-install-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-              <span id="default-tooltip-message">Copy to clipboard</span>
-              <span id="success-tooltip-message" class="hidden">Copied!</span>
-              <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
-      </div>
-  </div>
-</div>
-{{< /example >}}
+```
 
 ## QR code with card
 
 This example can be used to show a QR code inside a card element with a title and description.
 
-{{< example github="components/alerts.md" class="flex justify-center" show_dark=true >}}
+```html
 <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
     <a href="#">
         <div class="rounded-base bg-brand flex justify-center items-center">
@@ -197,13 +105,13 @@ This example can be used to show a QR code inside a card element with a title an
         What's a QR code?
     </a>
 </div>
-{{< /example >}}
+```
 
 ## Share profile with QR
 
 Use this example to share profile information using a QR code with profile details.
 
-{{< example github="components/alerts.md" class="flex justify-center" show_dark=true >}}
+```html
 <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
     <div class="flex flex-col items-center justify-center gap-2">
       <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar">
@@ -216,13 +124,13 @@ Use this example to share profile information using a QR code with profile detai
     </a>
     <p class="text-body text-center">Share your QR code and make it easy for others to follow you.</p>
 </div>
-{{< /example >}}
+```
 
 ## Loading state
 
 This example can be used to show a loading state right after the QR code was scanned with the camera.
 
-{{< example github="components/alerts.md" class="flex justify-center" show_dark=true >}}
+```html
 <div class="relative">
   <div class="absolute top-0 start-0 w-full h-full bg-neutral-primary/95 z-10 gap-2 flex items-center justify-center flex-col">
     <div role="status">
@@ -237,13 +145,13 @@ This example can be used to show a loading state right after the QR code was sca
     <svg class="text-heading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="none" d="M0 0h29v29H0z"></path><path stroke="currentColor" d="M4 4.5h7m1 0h1m1 0h2m2 0h7M4 5.5h1m5 0h1m4 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m5 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h2M5 12.5h7m3 0h2m2 0h2m3 0h1M6 13.5h1m1 0h1m6 0h1m1 0h1m2 0h5M4 14.5h3m1 0h3m1 0h2m3 0h2m2 0h1m1 0h1M4 15.5h1m2 0h1m3 0h1m5 0h1m1 0h4m1 0h1M4 16.5h1m1 0h2m2 0h2m3 0h1m2 0h1m4 0h1M12 17.5h2m2 0h2m1 0h4m1 0h1M4 18.5h7m1 0h3m2 0h1m3 0h3M4 19.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1M4 20.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m5 0h1M4 21.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h4M4 22.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1M4 23.5h1m5 0h1m1 0h1m1 0h1m5 0h3M4 24.5h7m2 0h3m5 0h1m1 0h1"></path></svg>
   </div>
 </div>
-{{< /example >}}
+```
 
 ## Success state
 
 Use this component to show a success state after the QR code was scanned and the data was processed.
 
-{{< example github="components/alerts.md" class="flex justify-center" show_dark=true >}}
+```html
 <div class="relative">
   <div class="absolute top-0 start-0 w-full h-full bg-neutral-primary/95 z-10 gap-2 flex items-center justify-center flex-col">
     <svg class="w-6 h-6 text-fg-success" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -255,13 +163,13 @@ Use this component to show a success state after the QR code was scanned and the
     <svg class="text-heading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="none" d="M0 0h29v29H0z"></path><path stroke="currentColor" d="M4 4.5h7m1 0h1m1 0h2m2 0h7M4 5.5h1m5 0h1m4 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m5 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h2M5 12.5h7m3 0h2m2 0h2m3 0h1M6 13.5h1m1 0h1m6 0h1m1 0h1m2 0h5M4 14.5h3m1 0h3m1 0h2m3 0h2m2 0h1m1 0h1M4 15.5h1m2 0h1m3 0h1m5 0h1m1 0h4m1 0h1M4 16.5h1m1 0h2m2 0h2m3 0h1m2 0h1m4 0h1M12 17.5h2m2 0h2m1 0h4m1 0h1M4 18.5h7m1 0h3m2 0h1m3 0h3M4 19.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1M4 20.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m5 0h1M4 21.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h4M4 22.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1M4 23.5h1m5 0h1m1 0h1m1 0h1m5 0h3M4 24.5h7m2 0h3m5 0h1m1 0h1"></path></svg>
   </div>
 </div>
-{{< /example >}}
+```
 
 ## Expired state
 
 You can use this component to show that the QR code has expired and allow the user to refresh the code.
 
-{{< example github="components/alerts.md" class="flex justify-center" show_dark=true >}}
+```html
 <div class="relative">
   <div class="absolute top-0 start-0 w-full h-full bg-neutral-primary/95 z-10 gap-2 flex items-center justify-center flex-col">
     <svg class="w-6 h-6 text-fg-danger" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -277,4 +185,4 @@ Refresh</button>
     <svg class="text-heading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="none" d="M0 0h29v29H0z"></path><path stroke="currentColor" d="M4 4.5h7m1 0h1m1 0h2m2 0h7M4 5.5h1m5 0h1m4 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m5 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h2M5 12.5h7m3 0h2m2 0h2m3 0h1M6 13.5h1m1 0h1m6 0h1m1 0h1m2 0h5M4 14.5h3m1 0h3m1 0h2m3 0h2m2 0h1m1 0h1M4 15.5h1m2 0h1m3 0h1m5 0h1m1 0h4m1 0h1M4 16.5h1m1 0h2m2 0h2m3 0h1m2 0h1m4 0h1M12 17.5h2m2 0h2m1 0h4m1 0h1M4 18.5h7m1 0h3m2 0h1m3 0h3M4 19.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1M4 20.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m5 0h1M4 21.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h4M4 22.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1M4 23.5h1m5 0h1m1 0h1m1 0h1m5 0h3M4 24.5h7m2 0h3m5 0h1m1 0h1"></path></svg>
   </div>
 </div>
-{{< /example >}}
+```

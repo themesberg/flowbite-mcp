@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Radio - Flowbite
-description: Get started with the radio component to let the user choose a single option from multiple options in the form of a circle based on multiple styles and colors
-group: forms
-toc: true
-requires_js: true
-
-previous: Checkbox
-previousLink: forms/checkbox/
-next: Toggle
-nextLink: forms/toggle/
----
-
 The radio component can be used to allow the user to choose a single option from one or more available options coded with the utility classes from Tailwind CSS and available in multiple styles, variants, and colors and support dark mode.
 
 Make sure that you have included Flowbite as a plugin inside your Tailwind CSS project to apply all the necessary styles for the radio component.
@@ -20,7 +6,7 @@ Make sure that you have included Flowbite as a plugin inside your Tailwind CSS p
 
 Use the default example of a radio component with the checked and unchecked state.
 
-{{< example github="forms/radio.md" show_dark=true >}}
+```html
 <div class="flex items-center mb-4">
     <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
     <label for="default-radio-1" class="select-none ms-2 text-sm font-medium text-heading">Default radio</label>
@@ -29,13 +15,13 @@ Use the default example of a radio component with the checked and unchecked stat
     <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
     <label for="default-radio-2" class="select-none ms-2 text-sm font-medium text-heading">Checked state</label>
 </div>
-{{< /example >}}
+```
 
 ## Disabled state
 
 Apply the `disabled` attribute to the radio component to disallow the selection for the user.
 
-{{< example github="forms/radio.md" show_dark=true >}}
+```html
 <div class="flex items-center mb-4">
     <input disabled id="disabled-radio-1" type="radio" value="" name="disabled-radio" class="w-4 h-4 text-neutral-primary border-light-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
     <label for="disabled-radio-1" class="select-none ms-2 text-sm font-medium text-fg-disabled">Disabled radio</label>
@@ -44,24 +30,24 @@ Apply the `disabled` attribute to the radio component to disallow the selection 
     <input disabled checked id="disabled-radio-2" type="radio" value="" name="disabled-radio" class="w-4 h-4 text-neutral-primary border-light bg-neutral-secondary-medium rounded-full checked:border-default-medium focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
     <label for="disabled-radio-2" class="select-none ms-2 text-sm font-medium text-fg-disabled">Disabled checked</label>
 </div>
-{{< /example >}}
+```
 
 ## Radio link
 
 Use this example if you want to include an anchor tag inside the label of the radio component.
 
-{{< example github="forms/radio.md" show_dark=true >}}
+```html
 <div class="flex items-center">
     <input id="link-radio" type="radio" value="" class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
     <label for="link-radio" class="select-none ms-2 text-sm font-medium text-heading">Radio button with a <a href="#" class="text-fg-brand hover:underline font-medium">link inside</a>.</label>
 </div>
-{{< /example >}}
+```
 
 ## Helper text
 
 Get started with this example if you want to add a secondary text to the label for the radio component.
 
-{{< example github="forms/radio.md" show_dark=true >}}
+```html
 <div class="flex">
     <div class="flex items-center h-5">
         <input id="helper-radio" aria-describedby="helper-radio-text" type="radio" value="" class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
@@ -71,13 +57,13 @@ Get started with this example if you want to add a secondary text to the label f
         <p id="helper-radio-text" class="text-xs font-normal text-body">For orders shipped from $25 in books or $29 in other categories</p>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Bordered
 
 Use this example to show a radio input elements inside a card with border.
 
-{{< example class="grid gap-6 md:grid-cols-2" github="forms/radio.md" show_dark=true >}}
+```html
 <div class="flex items-center ps-4 border border-default bg-neutral-primary-soft rounded-base">
     <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
     <label for="bordered-radio-1" class="w-full py-4 select-none ms-2 text-sm font-medium text-heading">Default radio</label>
@@ -86,13 +72,13 @@ Use this example to show a radio input elements inside a card with border.
     <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
     <label for="bordered-radio-2" class="w-full py-4 select-none ms-2 text-sm font-medium text-heading">Checked state</label>
 </div>
-{{< /example >}}
+```
 
 ## Radio list group
 
 This example can be used to show a list of radio buttons inside a grouped list.
 
-{{< example github="components/radio.md" show_dark=true >}}
+```html
 <h3 class="mb-4 font-semibold text-heading">Identification</h3>
 <ul class="w-48 bg-neutral-primary-soft border border-default rounded-base">
     <li class="w-full border-b border-default">
@@ -120,13 +106,13 @@ This example can be used to show a list of radio buttons inside a grouped list.
         </div>
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Horizontal list group
 
 Use this example to group up radio button components inside a list.
 
-{{< example github="components/radio.md" show_dark=true >}}
+```html
 <h3 class="mb-4 font-semibold text-heading">Identification</h3>
 <ul class="items-center w-full text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-lg sm:flex">
     <li class="w-full border-b border-default sm:border-b-0 sm:border-r">
@@ -154,17 +140,15 @@ Use this example to group up radio button components inside a list.
         </div>
     </li>
 </ul>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Radio in dropdown
 
 Here's an example of a list group that you can use right away.
 
-{{< example class="flex justify-center" github="components/radio.md" show_dark=true iframeHeight="370" >}}
+```html
 <button id="dropdownHelperRadioButton" data-dropdown-toggle="dropdownHelperRadio" class="inline-flex items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
   Dropdown button 
   <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
@@ -214,13 +198,13 @@ Here's an example of a list group that you can use right away.
       </li>
     </ul>
 </div>
-{{< /example >}}
+```
 
 ## Inline layout
 
 Use the `flex` class for a wrapper element to horizontally align the radio elements.
 
-{{< example github="forms/radio.md" show_dark=true >}}
+```html
 <div class="flex">
     <div class="flex items-center me-4">
         <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
@@ -239,13 +223,13 @@ Use the `flex` class for a wrapper element to horizontally align the radio eleme
         <label for="inline-disabled-radio" class="select-none ms-2 text-sm font-medium text-fg-disabled">Inline disabled</label>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Advanced layout
 
 Use this example of a more advanced radio component to add more information and update the style of the whole card instead of just the circled dot.
 
-{{< example class="flex flex-wrap" github="forms/checkbox.md" show_dark=true >}}
+```html
 <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">How much do you expect to use each month?</h3>
 <ul class="grid w-full gap-6 md:grid-cols-2">
     <li>
@@ -270,13 +254,13 @@ Use this example of a more advanced radio component to add more information and 
     </li>
 </ul>
 
-{{< /example >}}
+```
 
 ## Advanced layout with icons
 
 Use this example to show an advanced layout of radio button elements with icons.
 
-{{< example class="flex flex-wrap" github="forms/checkbox.md" show_dark=true >}}
+```html
 <h3 class="mb-4 text-lg font-medium text-heading">Choose technology:</h3>
 <ul class="select-none grid w-full gap-4 md:grid-cols-3">
     <li>
@@ -311,5 +295,5 @@ Use this example to show an advanced layout of radio button elements with icons.
     </li>
 </ul>
 
-{{< /example >}}
+```
 

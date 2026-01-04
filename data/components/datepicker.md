@@ -1,42 +1,28 @@
----
-layout: docs
-title: Tailwind CSS Datepicker - Flowbite
-description: Start receiving date and time data from your users using this free datepicker element based on Tailwind utility-classes and vanilla JavaScript
-group: components
-toc: true
-requires_js: true
-
-previous: Clipboard
-previousLink: components/clipboard/
-next: Device mockups
-nextLink: components/device-mockups/
----
-
 The Tailwind CSS datepicker component developed by Flowbite is built with vanilla JavaScript and using the utility-first classes from Tailwind. The datepicker features both inline and a date range picker functionality and some extra options such as autohide, custom format, positioning, and more. Check out the [timepicker component](https://flowbite.com/docs/forms/timepicker/) to select time alongside dates.
 
 ## Getting started
 
 If you want to use the datepicker component from Flowbite you have to include the Flowbite JavaScript file either via NPM or CDN. For versions before `2.4.0` please continue using the dedicated CDN and component.
 
-Follow the [quickstart guide]({{< ref "getting-started/quickstart" >}}) and then include the following JavaScript file:
+Follow the quickstart and then include the following JavaScript file:
 
-{{< code lang="html" file="index.html" icon="file" >}}
+```html
 <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-{{< /code >}}
+```
 
 Alternatively you can also use CDN to include the datepicker JavaScript.
 
-{{< code lang="html" file="index.html" icon="file" >}}
-<script src="https://cdn.jsdelivr.net/npm/flowbite@{{< current_version >}}/dist/flowbite.min.js"></script>
-{{< /code >}}
+```html
+<script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+```
 
 Also make sure that you add the source files for Tailwind in your main CSS file:
 
-{{< code lang="css" file="style.css" icon="file" >}}
+```css
 @import "tailwindcss";
 
 @source "../node_modules/flowbite-datepicker";
-{{< /code >}}
+```
 
 If you'd like to manually be able to manipulate the datepicker component using JavaScript then you should <a href="#javascript">install the component using NPM</a> and include it into your JavaScript code.
 
@@ -44,28 +30,28 @@ If you'd like to manually be able to manipulate the datepicker component using J
 
 Use the following example of an input element to create a datepicker component. All you need to do is to add the `datepicker` data attribute to any `input` element.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true iframeHeight="500" initDatepicker=true >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
     <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
   </div>
   <input datepicker id="default-datepicker" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
 </div>
-{{< /example >}}
+```
 
 ## Inline datepicker
 
 Use the `inline-datepicker` and `data-date` data attributes to initialize and set the default date for an inline datepicker inside a block element such as a `div`.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true initDatepicker=true >}}
+```html
 <div id="datepicker-inline" inline-datepicker data-date="02/25/2024"></div>
-{{< /example >}}
+```
 
 ## Date range picker
 
 Use the `date-rangepicker` data attribute and the following markup to initialize two datepickers as a range.
 
-{{< example class="flex justify-center " github="components/datepicker.md" show_dark=true iframeHeight="480" initDatepicker=true >}}
+```html
 <div id="date-range-picker" date-rangepicker class="flex items-center">
   <div class="relative">
     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -81,7 +67,7 @@ Use the `date-rangepicker` data attribute and the following markup to initialize
     <input id="datepicker-range-end" name="end" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date end">
 </div>
 </div>
-{{< /example >}}
+```
 
 ## Options
 
@@ -91,14 +77,14 @@ Learn more about the options that you can use with the Tailwind datepicker to en
 
 Use the `datepicker-autohide` data attribute to make the datepicker disappear right after selecting a date.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true iframeHeight="480" initDatepicker=true >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
   </div>
   <input id="datepicker-autohide" datepicker datepicker-autohide type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
 </div>
-{{< /example >}}
+```
 
 ### Action buttons
 
@@ -109,66 +95,66 @@ By adding the `datepicker-buttons` data attribute you will enable the `today` an
 
 If you want the button to additionally select today's date, add `datepicker-autoselect-today` data attribute.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true iframeHeight="530" initDatepicker=true >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
   </div>
   <input id="datepicker-actions" datepicker datepicker-buttons datepicker-autoselect-today type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
 </div>
-{{< /example >}}
+```
 
 ### Date format
 
 If you want to use a custom format such as `mm-dd-yyyy`then you can use the `datepicker-format="{format}"` data attribute to change it.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true iframeHeight="480" initDatepicker=true >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
   </div>
   <input id="datepicker-format" datepicker datepicker-format="mm-dd-yyyy" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
 </div>
-{{< /example >}}
+```
 
 ### Max and min dates
 
 Use the `datepicker-min-date={format}` and `datepicker-max-date={format}` to set the minimum and maximum dates that can be selected inside the datepicker.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true iframeHeight="480" initDatepicker=true >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
   </div>
   <input id="datepicker-format" datepicker datepicker-min-date="06/04/2024" datepicker-max-date="05/05/2025" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
 </div>
-{{< /example >}}
+```
 
 ### Orientation
 
 You can override the default positioning algorithm by using the `datepicker-orientation="{top|right|bottom|left}"` data attributes. You can even combine right with bottom or left with top.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true iframeHeight="480" initDatepicker=true >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
   </div>
   <input id="datepicker-orientation" datepicker datepicker-orientation="bottom right" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
 </div>
-{{< /example >}}
+```
 
 ### Title
 
 You can also add a title to the datepicker by using the `datepicker-title="{title}"` data attribute.
 
-{{< example class="flex justify-center bg-neutral-primary" github="components/datepicker.md" show_dark=true iframeHeight="530" initDatepicker=true >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
   </div>
   <input id="datepicker-title" datepicker datepicker-title="Flowbite datepicker" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
 </div>
-{{< /example >}}
+```
 
 ### Custom colors
 
@@ -184,7 +170,7 @@ Until then, please refer to this [solution from GitHub](https://github.com/theme
 
 Use the native browser timepicker input field to select a time alongside the datepicker. Check out more examples on the [timepicker](https://flowbite.com/docs/forms/timepicker/) component page from Flowbite.
 
-{{< example github="components/timepicker.md" show_dark=true >}}
+```html
 <form class="max-w-[8rem] mx-auto">
     <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select time:</label>
     <div class="relative">
@@ -194,11 +180,11 @@ Use the native browser timepicker input field to select a time alongside the dat
         <input type="time" id="time" class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" min="09:00" max="18:00" value="00:00" required />
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Dark mode
 
-If you would like to enable dark mode for the datepicker please follow the [dark mode]({{< ref "customize/dark-mode" >}}) guide on Flowbite and enable it either manually or by using a dark mode switcher.
+If you would like to enable dark mode for the datepicker please follow the dark mode guide on Flowbite and enable it either manually or by using a dark mode switcher.
 
 ## JavaScript Behaviour
 
@@ -479,7 +465,7 @@ Check out the following examples to learn how to use a basic HTML markup togethe
 
 First of all, you need to select the datepicker element (it can be an input field or div for inline datepickers) and set up the options object.
 
-{{< code lang="javascript" file="datepicker.js" icon="file" >}}
+```javascript
 // set the target element of the input field
 const $datepickerEl = document.getElementById('datepicker-custom');
 
@@ -503,11 +489,11 @@ const instanceOptions = {
   id: 'datepicker-custom-example',
   override: true
 };
-{{< /code >}}
+```
 
 Next step is to create a new instance of a Datepicker object using the parameters we have set above.
 
-{{< code lang="javascript" file="datepicker.js" icon="file" >}}
+```javascript
 import { Datepicker } from 'flowbite';
 
 /*
@@ -515,11 +501,11 @@ import { Datepicker } from 'flowbite';
  * options: optional
  */
 const datepicker = new Datepicker($datepickerEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Use the following methods to show and hide the datepicker, set or get the currently selected date and get access to the instance.
 
-{{< code lang="javascript" file="datepicker.js" icon="file" >}}
+```javascript
 // get the currently selected date (undefined if not selected)
 datepicker.getDate();
 
@@ -534,13 +520,13 @@ datepicker.hide();
 
 // use this method to get the parent datepicker instance from https://mymth.github.io/vanillajs-datepicker/#/
 datepicker.getDatepickerInstance();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Here is an example of the HTML markup that you can use for the JavaScript example above.
 
-{{< code lang="html" file="datepicker.html" icon="file" >}}
+```html
 <div class="relative max-w-sm">
   <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -549,15 +535,15 @@ Here is an example of the HTML markup that you can use for the JavaScript exampl
   </div>
   <input id="datepicker-custom" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Datepicker object, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Datepicker object, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="datepicker.ts" icon="file" >}}
+```typescript
 import { Datepicker } from 'flowbite';
 import type { DatepickerOptions, DatepickerInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -612,45 +598,45 @@ datepicker.hide();
 
 // use this method to get the parent datepicker instance from https://mymth.github.io/vanillajs-datepicker/#/
 datepicker.getDatepickerInstance();
-{{< /code >}}
+```
 
 ### Parent library
 
 If you want to directly use the main Datepicker component instance you can either install it via NPM and import it or use the `getDatepickerInstance()` method using our Instance Manager to call all of the extra options and methods from the [parent plugin library](https://github.com/themesberg/flowbite-datepicker):
 
-{{< code lang="bash" >}}
+```bash
 npm install flowbite-datepicker --save
-{{< /code >}}
+```
 
 After you've installed the NPM library, you will need to import the `Datepicker` module:
 
-{{< code lang="javascript" file="datepicker.js" icon="file" >}}
+```javascript
 import Datepicker from 'flowbite-datepicker';
-{{< /code >}}
+```
 
 Initialize a new element using the `Datepicker` constructor and optionally add your own options based on your needs:
 
-{{< code lang="javascript" file="datepicker.js" icon="file" >}}
+```javascript
 const datepickerEl = document.getElementById('datepickerId');
 new Datepicker(datepickerEl, {
     // options
 }); 
-{{< /code >}}
+```
 
 If you want to use the **Tailwind Date Range Picker** you have to import the `DateRangePicker` module:
 
-{{< code lang="javascript" file="datepicker.js" icon="file" >}}
+```javascript
 import DateRangePicker from 'flowbite-datepicker';
-{{< /code >}}
+```
 
 Then in the same fashion you can initialize a date range picker component by using the `DateRangePicker` constructor:
 
-{{< code lang="javascript" file="datepicker.js" icon="file" >}}
+```javascript
 const dateRangePickerEl = document.getElementById('dateRangePickerId');
 new DateRangePicker(dateRangePickerEl, {
     // options
 }); 
-{{< /code >}}
+```
 
 ### React support
 
@@ -660,14 +646,14 @@ One of our community members built the React version of the Flowbite Datepicker 
 
 In order to support turbo load from Ruby on Rails 7, you have to include the `flowbite.turbo.js` file either from NPM or CDN into your project.
 
-Follow the [quickstart guide]({{< ref "getting-started/rails" >}}) and then include the following JavaScript file:
+Follow the quickstart guide and then include the following JavaScript file:
 
-{{< code lang="ruby" file="Gemfile" icon="file" >}}
-pin "flowbite", to: "https://cdn.jsdelivr.net/npm/flowbite@{{< current_version >}}/dist/flowbite.turbo.min.js"
-{{< /code >}}
+```ruby
+pin "flowbite", to: "https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.turbo.min.js"
+```
 
 Don't forget to also import it inside your `application.js` file:
 
-{{< code lang="javascript" file="application.js" icon="file" >}}
+```javascript
 import "flowbite/dist/flowbite.turbo.js";
-{{< /code >}}
+```

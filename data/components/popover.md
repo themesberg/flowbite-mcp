@@ -1,27 +1,12 @@
----
-layout: docs
-title: Tailwind CSS Popover - Flowbite
-description: Use the popover component to show detailed information inside a pop-up box relative to the element that is being clicked or hovered based on multiple styles
-group: components
-toc: true
-requires_js: true
-
-previous: Pagination
-previousLink: components/pagination/
-
-next: Progress bar
-nextLink: components/progress/
----
-
 Get started with the popover component to show any type of content inside a pop-up box when hovering or clicking over a trigger element. There are multiple examples that you can choose from, such as showing more information about a user profile, company profile, password strength, and more.
 
-Make sure that you have the Flowbite JavaScript included in your project to enable the popover interactivity by following the <a href="{{< ref "getting-started/quickstart" >}}">quickstart guide</a>.
+Make sure that you have the Flowbite JavaScript included in your project to enable the popover interactivity by following the quickstart guide.
 
 ## Default popover
 
 Initialize a new popover by adding the `data-popover-target="{elementId}"` data attribute to the trigger element where `elementId` is the id of the popover component.
 
-{{< example class="flex justify-center pt-32" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-default" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Default popover</button>
 
 <div data-popover id="popover-default" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -33,13 +18,13 @@ Initialize a new popover by adding the `data-popover-target="{elementId}"` data 
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## User profile
 
 Use this example to show more information about a user profile when hovering over the trigger component.
 
-{{< example class="flex justify-center pt-60" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-user-profile" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">User profile</button>
 
 <div data-popover id="popover-user-profile" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -76,13 +61,13 @@ Use this example to show more information about a user profile when hovering ove
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Company profile
 
 This example can be used to show more information about a company profile.
 
-{{< example class="flex justify-center pt-80" github="components/popover.md" disable_init_js=true show_dark=true >}}
+```html
 <button data-popover-target="popover-company-profile" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Company profile</button>
 
 <div data-popover id="popover-company-profile" role="tooltip" class="absolute z-10 invisible inline-block w-80 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -151,13 +136,13 @@ This example can be used to show more information about a company profile.
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Image popover
 
 Use this example to trigger a popover component with detailed information and an image when hovering over a portion of highlighted text inspired by Wikipedia and other large news outlets.
 
-{{< example class="flex justify-center pt-72" github="components/popover.md" show_dark=true >}}
+```html
 
 <p class="text-body">Due to its central geographic location in Southern Europe, <a href="#" class="text-fg-brand font-medium underline hover:no-underline" data-popover-target="popover-image">Italy</a> has historically been home to myriad peoples and cultures. In addition to the various ancient peoples dispersed throughout what is now modern-day Italy, the most predominant being the Indo-European Italic peoples who gave the peninsula its name, beginning from the classical era, Phoenicians and Carthaginians founded colonies mostly in insular Italy</p>
 <div data-popover id="popover-image" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-lg shadow-xs opacity-0 w-96">
@@ -177,13 +162,13 @@ Use this example to trigger a popover component with detailed information and an
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Description popover
 
 Show helpful information inside a popover when hovering over a question mark button.
 
-{{< example class="pb-96" github="components/popover.md" show_dark=true >}}
+```html
 
 <p class="flex items-center text-sm text-body">This is just some informational text <button data-popover-target="popover-description" data-popover-placement="bottom-end" type="button"><svg class="w-4 h-4 text-body hover:text-heading ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg><span class="sr-only">Show information</span></button></p>
 <div data-popover id="popover-description" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
@@ -199,13 +184,13 @@ Show helpful information inside a popover when hovering over a question mark but
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Progress popover
 
 Show a progress bar with details inside a popover when hovering over a settings button.
 
-{{< example class="flex justify-center pt-52" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-description" type="button" class="inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 6c0 1.657-3.134 3-7 3S5 7.657 5 6m14 0c0-1.657-3.134-3-7-3S5 4.343 5 6m14 0v6M5 6v6m0 0c0 1.657 3.134 3 7 3s7-1.343 7-3M5 12v6c0 1.657 3.134 3 7 3s7-1.343 7-3v-6"/></svg>
     Storage status
@@ -225,13 +210,13 @@ Show a progress bar with details inside a popover when hovering over a settings 
     </a>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Password strength
 
 Dynamically show the password strength progress when creating a new password positioned relative to the input element.
 
-{{< example github="components/popover.md" iframeHeight="480" show_dark=true >}}
+```html
 
 <form>
     <div class="mb-6">
@@ -277,13 +262,13 @@ Dynamically show the password strength progress when creating a new password pos
     </div>
     <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
 </form>
-{{< /example >}}
+```
 
 ## Placement
 
 Set the position of the popover component relative to the trigger element by using the `data-popover-placement="{top|right|bottom|left}"` data attribute and its values.
 
-{{< example class="flex flex-wrap justify-center py-24 space-x-4" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-top" data-popover-placement="top" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Top popover</button>
 
 <div data-popover id="popover-top" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -325,13 +310,13 @@ Set the position of the popover component relative to the trigger element by usi
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Triggering
 
 Manually set the trigger event by adding the `data-popover-trigger="{hover|click}"` data attribute to the trigger element choosing between a hover or click event. By default it is set to `hover`.
 
-{{< example class="flex justify-center space-x-4 pt-32" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-hover" data-popover-trigger="hover" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Hover popover</button>
 
 <div data-popover id="popover-hover" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -355,13 +340,13 @@ Manually set the trigger event by adding the `data-popover-trigger="{hover|click
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Offset
 
 Increase or decrease the default offset by adding the `data-popover-offset="{offset}"` data attribute where the value is an integer.
 
-{{< example class="flex justify-center pt-32" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-offset" data-popover-offset="30" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Offset popover</button>
 
 <div data-popover id="popover-offset" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -373,13 +358,13 @@ Increase or decrease the default offset by adding the `data-popover-offset="{off
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Animation
 
 Customize the animation of the popover component by using the utility classes from Tailwind CSS such as `transition-opacity` and `duration-{x}`.
 
-{{< example class="flex justify-center pt-32" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-animation" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Animated popover</button>
 
 <div data-popover id="popover-animation" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -391,13 +376,13 @@ Customize the animation of the popover component by using the utility classes fr
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Disable arrow
 
 You can also disable the popover arrow by not including the `data-popper-arrow` element.
 
-{{< example class="flex justify-center pt-32" github="components/popover.md" show_dark=true >}}
+```html
 <button data-popover-target="popover-no-arrow" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Default popover</button>
 
 <div data-popover id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0">
@@ -408,7 +393,7 @@ You can also disable the popover arrow by not including the `data-popper-arrow` 
         <p>And here's some amazing content. It's very engaging. Right?</p>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -672,7 +657,7 @@ First of all, set the target element as the popover itself and the trigger eleme
 
 After that you can also set the options object to change the placement and trigger type of the popover, alongside with the callback functions.
 
-{{< code lang="javascript" file="popover.js" icon="file" >}}
+```javascript
 // set the popover content element
 const $targetEl = document.getElementById('popoverContent');
 
@@ -700,11 +685,11 @@ const instanceOptions = {
   id: 'popoverContent',
   override: true
 };
-{{< /code >}}
+```
 
 Create a new Popover object based on the options above.
 
-{{< code lang="javascript" file="popover.js" icon="file" >}}
+```javascript
 import { Popover } from 'flowbite';
 
 /*
@@ -713,11 +698,11 @@ import { Popover } from 'flowbite';
  * options: optional
  */
 const popover = new Popover($targetEl, $triggerEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Use the `show` and `hide` methods on the Popover object to programmatically show and hide the popover element using JavaScript.
 
-{{< code lang="javascript" file="popover.js" icon="file" >}}
+```javascript
 // show the popover
 popover.show();
 
@@ -735,13 +720,13 @@ tooltip.destroy();
 
 // re-initialize popover object
 tooltip.init();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Use the following HTML code for the JavaScript example above.
 
-{{< code lang="html" file="popover.html" icon="file" >}}
+```html
 <button
     id="popoverButton"
     type="button"
@@ -766,15 +751,15 @@ Use the following HTML code for the JavaScript example above.
     </div>
     <div data-popper-arrow></div>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Popover class, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Popover class, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="popover.ts" icon="file" >}}
+```typescript
 import { Popover } from 'flowbite';
 import type { PopoverOptions, PopoverInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -823,4 +808,4 @@ if ($targetEl) {
 
     popover.show();
 }
-{{< /code >}}
+```

@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Copy to Clipboard - Flowbite
-description: Use the clipboard component to copy text, data or lines of code to the clipboard with a single click based on various styles and examples coded with Tailwind CSS and Flowbite
-group: components
-toc: true
-requires_js: true
-
-previous: Chat Bubble
-previousLink: components/chat-bubble/
-next: Datepicker
-nextLink: components/datepicker/
----
-
 The copy to clipboard component allows you to copy text, lines of code, contact details or any other data to the clipboard with a single click on a trigger element such as a button. This component can be used to copy text from an input field, textarea, code block or even address fields in a form element.
 
 Use cases for websites can be found in the examples below and they include copying code installation commands, API keys, URLs, addresses, contact details, sharing course URLs inside a modal and more. 
@@ -24,7 +10,23 @@ Make sure that you add the `data-copy-to-clipboard-target="elementID"` data attr
 
 Use this example to copy the content of an input text field by clicking on a button and update the button text by applying the JavaScript code from the tab below based on the `updateOnCopyCallback()` function callback from the Flowbite JS API.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="280" javascript=`
+```html
+<div class="grid grid-cols-8 gap-2 w-full max-w-[23rem]">
+    <label for="npm-install" class="sr-only">Label</label>
+    <input id="npm-install" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="npm install flowbite" disabled readonly>
+    <button data-copy-to-clipboard-target="npm-install" class="col-span-2 col-span-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm py-2.5 focus:outline-none sm:w-auto">
+        <span id="default-message">Copy</span>
+        <span id="success-message" class="hidden">
+            <div class="inline-flex items-center">
+                <svg class="w-3 h-3 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/></svg>
+                Copied!
+            </div>
+        </span>
+    </button>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function() {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'npm-install');
     const $defaultMessage = document.getElementById('default-message');
@@ -41,21 +43,7 @@ window.addEventListener('load', function() {
         }, 2000);
     });
 })
-` >}}
-<div class="grid grid-cols-8 gap-2 w-full max-w-[23rem]">
-    <label for="npm-install" class="sr-only">Label</label>
-    <input id="npm-install" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="npm install flowbite" disabled readonly>
-    <button data-copy-to-clipboard-target="npm-install" class="col-span-2 col-span-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm py-2.5 focus:outline-none sm:w-auto">
-        <span id="default-message">Copy</span>
-        <span id="success-message" class="hidden">
-            <div class="inline-flex items-center">
-                <svg class="w-3 h-3 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/></svg>
-                Copied!
-            </div>
-        </span>
-    </button>
-</div>
-{{< /example >}}
+```
 
 ## Input with copy button
 
@@ -63,7 +51,29 @@ This example can be used to copy the content of an input field by clicking on a 
 
 If you also want to update the text inside the tooltip and the icon, then you need to apply the JavaScript code based on the `updateOnCopyCallback()` function callback from the Flowbite JS API.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="280" javascript=`
+```html
+<div class="w-full max-w-[16rem]">
+    <div class="relative">
+        <label for="npm-install-copy-button" class="sr-only">Label</label>
+        <input id="npm-install-copy-button" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="npm install flowbite" disabled readonly>
+        <button data-copy-to-clipboard-target="npm-install-copy-button" data-tooltip-target="tooltip-copy-npm-install-copy-button" class="absolute end-2 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary rounded p-1.5 inline-flex items-center justify-center">
+            <span id="default-icon">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+            </span>
+            <span id="success-icon" class="hidden">
+                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+            </span>
+        </button>
+        <div id="tooltip-copy-npm-install-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+            <span id="default-tooltip-message">Copy to clipboard</span>
+            <span id="success-tooltip-message" class="hidden">Copied!</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </div>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function () {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'npm-install-copy-button');
     const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-copy-npm-install-copy-button');
@@ -99,33 +109,36 @@ window.addEventListener('load', function () {
         tooltip.hide();
     }
 })
-` >}}
-<div class="w-full max-w-[16rem]">
-    <div class="relative">
-        <label for="npm-install-copy-button" class="sr-only">Label</label>
-        <input id="npm-install-copy-button" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="npm install flowbite" disabled readonly>
-        <button data-copy-to-clipboard-target="npm-install-copy-button" data-tooltip-target="tooltip-copy-npm-install-copy-button" class="absolute end-2 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary rounded p-1.5 inline-flex items-center justify-center">
-            <span id="default-icon">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-            </span>
-            <span id="success-icon" class="hidden">
-                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-            </span>
-        </button>
-        <div id="tooltip-copy-npm-install-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-            <span id="default-tooltip-message">Copy to clipboard</span>
-            <span id="success-tooltip-message" class="hidden">Copied!</span>
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
-    </div>
-</div>
-{{< /example >}}
+```
 
 ## Copy button with text
 
 Use this example to show a copy button inside the input field with a text label and icon that updates to a success state when the text has been copied. Make sure that you also apply the custom JavaScript code below to enable the success and default message states.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="280" javascript=`
+```html
+<div class="w-full max-w-[18rem]">
+    <div class="relative">
+        <label for="npm-install-copy-text" class="sr-only">Label</label>
+        <input id="npm-install-copy-text" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="npm install flowbite" disabled readonly>
+        <button data-copy-to-clipboard-target="npm-install-copy-text" class="absolute flex items-center end-1.5 top-1/2 -translate-y-1/2 text-body bg-neutral-primary-strong border border-default-strong hover:bg-neutral-secondary-strong/70 hover:text-heading focus:ring-4 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">
+            <span id="default-message">
+                <span class="flex items-center">
+                    <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+                    <span class="text-xs font-semibold">Copy</span>
+                </span>
+            </span>
+            <span id="success-message" class="hidden">
+                <span class="flex items-center">
+                    <svg class="w-4 h-4 text-fg-brand me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+                    <span class="text-xs font-semibold text-fg-brand">Copied</span>
+                </span>
+            </span>
+        </button>
+    </div>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function () {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'npm-install-copy-text');
 
@@ -151,34 +164,44 @@ window.addEventListener('load', function () {
         $successMessage.classList.add('hidden');
     }
 })
-` >}}
-<div class="w-full max-w-[18rem]">
-    <div class="relative">
-        <label for="npm-install-copy-text" class="sr-only">Label</label>
-        <input id="npm-install-copy-text" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="npm install flowbite" disabled readonly>
-        <button data-copy-to-clipboard-target="npm-install-copy-text" class="absolute flex items-center end-1.5 top-1/2 -translate-y-1/2 text-body bg-neutral-primary-strong border border-default-strong hover:bg-neutral-secondary-strong/70 hover:text-heading focus:ring-4 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">
-            <span id="default-message">
-                <span class="flex items-center">
-                    <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-                    <span class="text-xs font-semibold">Copy</span>
-                </span>
-            </span>
-            <span id="success-message" class="hidden">
-                <span class="flex items-center">
-                    <svg class="w-4 h-4 text-fg-brand me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-                    <span class="text-xs font-semibold text-fg-brand">Copied</span>
-                </span>
-            </span>
-        </button>
-    </div>
-</div>
-{{< /example >}}
+```
 
 ## Input group with copy
 
 This example can be used to show a copy to clipboard button inside an input group which has a label positioned inside the input field. The icon inside the button will switch to a success state if you also apply the custom JavaScript code below.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="280" javascript=`
+```html
+<div class="w-full max-w-sm">
+  <label for="website-url" class="block mb-2.5 text-sm font-medium text-heading">Verify your website:</label>
+  <div class="flex items-stretch rounded-base shadow-xs">
+    <!-- Prefix -->
+    <span class="shrink-0 z-10 inline-flex items-center px-3 py-2.5 text-sm text-body bg-neutral-tertiary border border-default-medium border-e-0 rounded-s-base">URL</span>
+    <!-- Input -->
+    <div class="relative w-full">
+      <input id="website-url" type="text" aria-describedby="helper-text-explanation" class="bg-neutral-secondary-medium border border-default-medium border-e-0 text-body text-sm focus:ring-brand focus:border-brand block w-full px-3 py-2.5 placeholder:text-body" value="https://flowbite.com" readonly disabled />
+    </div>
+    <!-- Button -->
+    <button data-tooltip-target="tooltip-website-url" data-copy-to-clipboard-target="website-url" type="button" class="shrink-0 z-10 inline-flex items-center justify-center text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium rounded-e-base text-sm px-4 py-2.5 focus:outline-none border border-brand border-s-0">
+      <span id="default-icon">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" /></svg>
+      </span>
+      <span id="success-icon" class="hidden">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>
+      </span>
+    </button>
+    <!-- Tooltip -->
+    <div id="tooltip-website-url" role="tooltip"
+      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+      <span id="default-tooltip-message">Copy link</span>
+      <span id="success-tooltip-message" class="hidden">Copied!</span>
+      <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+  </div>
+  <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Security certificate is required for approval</p>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function () {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'website-url');
     const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-website-url');
@@ -214,42 +237,45 @@ window.addEventListener('load', function () {
         tooltip.hide();
     }
 })
-` >}}
-<div class="w-full max-w-sm">
-  <label for="website-url" class="block mb-2.5 text-sm font-medium text-heading">Verify your website:</label>
-  <div class="flex items-stretch rounded-base shadow-xs">
-    <!-- Prefix -->
-    <span class="shrink-0 z-10 inline-flex items-center px-3 py-2.5 text-sm text-body bg-neutral-tertiary border border-default-medium border-e-0 rounded-s-base">URL</span>
-    <!-- Input -->
-    <div class="relative w-full">
-      <input id="website-url" type="text" aria-describedby="helper-text-explanation" class="bg-neutral-secondary-medium border border-default-medium border-e-0 text-body text-sm focus:ring-brand focus:border-brand block w-full px-3 py-2.5 placeholder:text-body" value="https://flowbite.com" readonly disabled />
-    </div>
-    <!-- Button -->
-    <button data-tooltip-target="tooltip-website-url" data-copy-to-clipboard-target="website-url" type="button" class="shrink-0 z-10 inline-flex items-center justify-center text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium rounded-e-base text-sm px-4 py-2.5 focus:outline-none border border-brand border-s-0">
-      <span id="default-icon">
-        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" /></svg>
-      </span>
-      <span id="success-icon" class="hidden">
-        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>
-      </span>
-    </button>
-    <!-- Tooltip -->
-    <div id="tooltip-website-url" role="tooltip"
-      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-      <span id="default-tooltip-message">Copy link</span>
-      <span id="success-tooltip-message" class="hidden">Copied!</span>
-      <div class="tooltip-arrow" data-popper-arrow></div>
-    </div>
-  </div>
-  <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Security certificate is required for approval</p>
-</div>
-{{< /example >}}
+```
 
 ## URL shortener input group
 
 Use this example to copy a shortened URL to the clipboard by clicking on a button with an icon positioned inside the input field and also show a tooltip with a message when the text has been copied.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="280" javascript=`
+```html
+<div class="w-full max-w-sm">
+    <label for="url-shortener" class="block mb-2.5 text-sm font-medium text-heading">Shorten URL:</label>
+  <div class="flex items-stretch shadow-xs rounded-base">
+    <!-- Generate Button -->
+    <button class="shrink-0 z-10 inline-flex items-center justify-center text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium rounded-s-base text-sm px-4 py-2.5 focus:outline-none border border-brand" type="button">
+      Generate
+    </button>
+    <!-- Input -->
+    <div class="relative w-full">
+      <input id="url-shortener" type="text" aria-describedby="helper-text-explanation" class="bg-neutral-secondary-medium border border-default-medium border-s-0 border-e-0 text-body text-sm focus:ring-brand focus:border-brand block w-full px-3 py-2.5 placeholder:text-body" value="https://bit.ly/3U2SXcF" readonly disabled/>
+    </div>
+    <!-- Button -->
+    <button data-tooltip-target="tooltip-url-shortener" data-copy-to-clipboard-target="url-shortener" class="shrink-0 z-10 inline-flex items-center justify-center text-body bg-neutral-secondary-medium box-border border border-default-medium border-s-0 hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-e-base text-sm px-4 py-2.5 focus:outline-none" type="button">
+      <span id="default-icon">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" /></svg>
+      </span>
+      <span id="success-icon" class="hidden text-fg-brands">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>
+      </span>
+    </button>
+    <!-- Tooltip -->
+    <div id="tooltip-url-shortener" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+      <span id="default-tooltip-message">Copy link</span>
+      <span id="success-tooltip-message" class="hidden">Copied!</span>
+      <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+  </div>
+  <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Make sure that your URL is valid</p>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function() {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'url-shortener');
     const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-url-shortener');
@@ -285,37 +311,7 @@ window.addEventListener('load', function() {
         tooltip.hide();
     }
 })
-` >}}
-<div class="w-full max-w-sm">
-    <label for="url-shortener" class="block mb-2.5 text-sm font-medium text-heading">Shorten URL:</label>
-  <div class="flex items-stretch shadow-xs rounded-base">
-    <!-- Generate Button -->
-    <button class="shrink-0 z-10 inline-flex items-center justify-center text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium rounded-s-base text-sm px-4 py-2.5 focus:outline-none border border-brand" type="button">
-      Generate
-    </button>
-    <!-- Input -->
-    <div class="relative w-full">
-      <input id="url-shortener" type="text" aria-describedby="helper-text-explanation" class="bg-neutral-secondary-medium border border-default-medium border-s-0 border-e-0 text-body text-sm focus:ring-brand focus:border-brand block w-full px-3 py-2.5 placeholder:text-body" value="https://bit.ly/3U2SXcF" readonly disabled/>
-    </div>
-    <!-- Button -->
-    <button data-tooltip-target="tooltip-url-shortener" data-copy-to-clipboard-target="url-shortener" class="shrink-0 z-10 inline-flex items-center justify-center text-body bg-neutral-secondary-medium box-border border border-default-medium border-s-0 hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-e-base text-sm px-4 py-2.5 focus:outline-none" type="button">
-      <span id="default-icon">
-        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" /></svg>
-      </span>
-      <span id="success-icon" class="hidden text-fg-brands">
-        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>
-      </span>
-    </button>
-    <!-- Tooltip -->
-    <div id="tooltip-url-shortener" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-      <span id="default-tooltip-message">Copy link</span>
-      <span id="success-tooltip-message" class="hidden">Copied!</span>
-      <div class="tooltip-arrow" data-popper-arrow></div>
-    </div>
-  </div>
-  <p id="helper-text-explanation" class="mt-2.5 text-sm text-body">Make sure that your URL is valid</p>
-</div>
-{{< /example >}}
+```
 
 ## Copy source code block
 
@@ -325,33 +321,7 @@ You need to add an extra `data-copy-to-clipboard-content-type="innerHTML"` data 
 
 You also need to add the `data-copy-to-clipboard-html-entities="true"` option to the trigger element so that the copied text will be decoded from HTML entities to plain text that will work inside your code editor.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="480" javascript=`
-window.addEventListener('load', function () {
-    const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'code-block');
-
-    const $defaultMessage = document.getElementById('default-message');
-    const $successMessage = document.getElementById('success-message');
-
-    clipboard.updateOnCopyCallback((clipboard) => {
-        showSuccess();
-
-        // reset to default state
-        setTimeout(() => {
-            resetToDefault();
-        }, 2000);
-    })
-
-    const showSuccess = () => {
-        $defaultMessage.classList.add('hidden');
-        $successMessage.classList.remove('hidden');
-    }
-
-    const resetToDefault = () => {
-        $defaultMessage.classList.remove('hidden');
-        $successMessage.classList.add('hidden');
-    }
-})
-` >}}
+```html
 <div class="w-full max-w-lg">
     <div class="mb-2 flex justify-between items-center">
         <p class="block mb-2.5 text-sm font-medium text-heading">Card example with CTA button:</p>
@@ -406,7 +376,35 @@ function Component() {
     </div>
     <p class="mt-2.5 text-sm text-body">Configure Tailwind CSS and Flowbite before copying the code</p>
 </div>
-{{< /example >}}
+```
+
+```javascript
+window.addEventListener('load', function () {
+    const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'code-block');
+
+    const $defaultMessage = document.getElementById('default-message');
+    const $successMessage = document.getElementById('success-message');
+
+    clipboard.updateOnCopyCallback((clipboard) => {
+        showSuccess();
+
+        // reset to default state
+        setTimeout(() => {
+            resetToDefault();
+        }, 2000);
+    })
+
+    const showSuccess = () => {
+        $defaultMessage.classList.add('hidden');
+        $successMessage.classList.remove('hidden');
+    }
+
+    const resetToDefault = () => {
+        $defaultMessage.classList.remove('hidden');
+        $successMessage.classList.add('hidden');
+    }
+})
+```
 
 ## Card with API keys
 
@@ -414,7 +412,69 @@ Use this example to show multiple input field elements that have the copy to cli
 
 Make sure that you also apply the custom JavaScript code with the function callback to enable the success and default message states for each input field and copy button.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="580" javascript=`
+```html
+<div class="w-full max-w-lg bg-neutral-primary-soft border border-default shadow-xs rounded-base p-4 sm:p-6">
+    <h2 class="text-lg font-semibold text-heading mb-2">Create a role with read only in-line policies</h2>
+    <p class="text-body mb-6">To give Flowbite read access, please create an IAM Role following <a href="#" class="text-fg-brand underline hover:no-underline font-medium">trust relationship</a> and <a href="#" class="text-fg-brand underline hover:no-underline font-medium">inline policy</a>.</p>
+    <label for="account-id" class="block mb-2.5 text-sm font-medium text-heading mb-2 block">Flowbite account ID:</label>
+    <div class="relative mb-4">
+        <input id="account-id" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="756593826" disabled readonly>
+        <button data-copy-to-clipboard-target="account-id" data-tooltip-target="tooltip-account-id" class="absolute end-1.5 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary hover:text-heading rounded p-2 inline-flex items-center justify-center">
+            <span id="default-icon-account-id">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+            </span>
+            <span id="success-icon-account-id" class="hidden">
+                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+            </span>
+        </button>
+        <div id="tooltip-account-id" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+            <span id="default-tooltip-message-account-id">Copy to clipboard</span>
+            <span id="success-tooltip-message-account-id" class="hidden">Copied!</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </div>
+    <label for="api-key" class="block mb-2.5 text-sm font-medium text-heading mb-2 block">API key:</label>
+    <div class="relative mb-4">
+        <input id="api-key" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="f4h6sd3t-jsy63ind-hsgdt7rs-jdhf76st" disabled readonly>
+        <button data-copy-to-clipboard-target="api-key" data-tooltip-target="tooltip-api-key" class="absolute end-1.5 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary hover:text-heading rounded p-2 inline-flex items-center justify-center">
+            <span id="default-icon-api-key">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+            </span>
+            <span id="success-icon-api-key" class="hidden">
+                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+            </span>
+        </button>
+        <div id="tooltip-api-key" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+            <span id="default-tooltip-message-api-key">Copy to clipboard</span>
+            <span id="success-tooltip-message-api-key" class="hidden">Copied!</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </div>
+    <label for="role-arn" class="block mb-2.5 text-sm font-medium text-heading mb-2 block">Role ARN:</label>
+    <div class="relative mb-6">
+        <input id="role-arn" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="123456789012:user/Flowbite" disabled readonly>
+        <button data-copy-to-clipboard-target="role-arn" data-tooltip-target="tooltip-role-arn" class="absolute end-1.5 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary hover:text-heading rounded p-2 inline-flex items-center justify-center">
+            <span id="default-icon-role-arn">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+            </span>
+            <span id="success-icon-role-arn" class="hidden">
+                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+            </span>
+        </button>
+        <div id="tooltip-role-arn" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+            <span id="default-tooltip-message-role-arn">Copy to clipboard</span>
+            <span id="success-tooltip-message-role-arn" class="hidden">Copied!</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </div>
+    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+        <button type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
+        <button type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Next step</button>
+    </div>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function() {
     const clipboardAccountID = FlowbiteInstances.getInstance('CopyClipboard', 'account-id');
     const clipboardExternalID = FlowbiteInstances.getInstance('CopyClipboard', 'api-key');
@@ -476,67 +536,7 @@ window.addEventListener('load', function() {
         $successEl.classList.add('hidden');
     }
 })
-` >}}
-<div class="w-full max-w-lg bg-neutral-primary-soft border border-default shadow-xs rounded-base p-4 sm:p-6">
-    <h2 class="text-lg font-semibold text-heading mb-2">Create a role with read only in-line policies</h2>
-    <p class="text-body mb-6">To give Flowbite read access, please create an IAM Role following <a href="#" class="text-fg-brand underline hover:no-underline font-medium">trust relationship</a> and <a href="#" class="text-fg-brand underline hover:no-underline font-medium">inline policy</a>.</p>
-    <label for="account-id" class="block mb-2.5 text-sm font-medium text-heading mb-2 block">Flowbite account ID:</label>
-    <div class="relative mb-4">
-        <input id="account-id" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="756593826" disabled readonly>
-        <button data-copy-to-clipboard-target="account-id" data-tooltip-target="tooltip-account-id" class="absolute end-1.5 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary hover:text-heading rounded p-2 inline-flex items-center justify-center">
-            <span id="default-icon-account-id">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-            </span>
-            <span id="success-icon-account-id" class="hidden">
-                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-            </span>
-        </button>
-        <div id="tooltip-account-id" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-            <span id="default-tooltip-message-account-id">Copy to clipboard</span>
-            <span id="success-tooltip-message-account-id" class="hidden">Copied!</span>
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
-    </div>
-    <label for="api-key" class="block mb-2.5 text-sm font-medium text-heading mb-2 block">API key:</label>
-    <div class="relative mb-4">
-        <input id="api-key" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="f4h6sd3t-jsy63ind-hsgdt7rs-jdhf76st" disabled readonly>
-        <button data-copy-to-clipboard-target="api-key" data-tooltip-target="tooltip-api-key" class="absolute end-1.5 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary hover:text-heading rounded p-2 inline-flex items-center justify-center">
-            <span id="default-icon-api-key">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-            </span>
-            <span id="success-icon-api-key" class="hidden">
-                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-            </span>
-        </button>
-        <div id="tooltip-api-key" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-            <span id="default-tooltip-message-api-key">Copy to clipboard</span>
-            <span id="success-tooltip-message-api-key" class="hidden">Copied!</span>
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
-    </div>
-    <label for="role-arn" class="block mb-2.5 text-sm font-medium text-heading mb-2 block">Role ARN:</label>
-    <div class="relative mb-6">
-        <input id="role-arn" type="text" class="col-span-6 bg-neutral-secondary-medium border border-default-medium text-body text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" value="123456789012:user/Flowbite" disabled readonly>
-        <button data-copy-to-clipboard-target="role-arn" data-tooltip-target="tooltip-role-arn" class="absolute end-1.5 top-1/2 -translate-y-1/2 text-body hover:bg-neutral-quaternary hover:text-heading rounded p-2 inline-flex items-center justify-center">
-            <span id="default-icon-role-arn">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-            </span>
-            <span id="success-icon-role-arn" class="hidden">
-                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-            </span>
-        </button>
-        <div id="tooltip-role-arn" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-            <span id="default-tooltip-message-role-arn">Copy to clipboard</span>
-            <span id="success-tooltip-message-role-arn" class="hidden">Copied!</span>
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
-    </div>
-    <div class="flex items-center space-x-4 rtl:space-x-reverse">
-        <button type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
-        <button type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Next step</button>
-    </div>
-</div>
-{{< /example >}}
+```
 
 ## Copy contact details
 
@@ -544,7 +544,38 @@ This example can be used to copy the text content (ie. contact details) inside o
 
 Make sure that you set the `data-copy-to-clipboard-content-type="textContent"` data attribute to the trigger element (ie. the button) to specify the source of the content that is to be copied.
 
-{{< example class="flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="380" javascript=`
+```html
+<div class="w-full max-w-md bg-neutral-primary-soft border border-default shadow-xs rounded-base p-4 sm:p-6">
+    <h2 class="text-lg font-semibold text-heading mb-4">Contact details</h2>
+    <address class="relative bg-neutral-secondary-medium p-4 rounded-base border border-default-medium font-italic grid grid-cols-2">
+        <div class="space-y-2 text-body leading-loose hidden sm:block">
+            Name <br />
+            Email <br />
+            Phone Number
+        </div>
+        <div id="contact-details" class="space-y-2 text-heading font-medium leading-loose">
+            Bonnie Green <br />
+            name@flowbite.com <br />
+            + 12 345 67890
+        </div>
+        <button data-copy-to-clipboard-target="contact-details" data-copy-to-clipboard-content-type="textContent" data-tooltip-target="tooltip-contact-details" class="absolute end-2 top-2 text-body hover:bg-neutral-quaternary hover:text-heading rounded-base p-2 inline-flex items-center justify-center">
+            <span id="default-icon-contact-details">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
+            </span>
+            <span id="success-icon-contact-details" class="hidden">
+                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
+            </span>
+        </button>
+        <div id="tooltip-contact-details" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+            <span id="default-tooltip-message-contact-details">Copy to clipboard</span>
+            <span id="success-tooltip-message-contact-details" class="hidden">Copied!</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </address>
+</div>
+```
+
+```javascript
 window.addEventListener('load', function() {
     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'contact-details');
     const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-contact-details');
@@ -580,78 +611,13 @@ window.addEventListener('load', function() {
         tooltip.hide();
     }
 })
-` >}}
-<div class="w-full max-w-md bg-neutral-primary-soft border border-default shadow-xs rounded-base p-4 sm:p-6">
-    <h2 class="text-lg font-semibold text-heading mb-4">Contact details</h2>
-    <address class="relative bg-neutral-secondary-medium p-4 rounded-base border border-default-medium font-italic grid grid-cols-2">
-        <div class="space-y-2 text-body leading-loose hidden sm:block">
-            Name <br />
-            Email <br />
-            Phone Number
-        </div>
-        <div id="contact-details" class="space-y-2 text-heading font-medium leading-loose">
-            Bonnie Green <br />
-            name@flowbite.com <br />
-            + 12 345 67890
-        </div>
-        <button data-copy-to-clipboard-target="contact-details" data-copy-to-clipboard-content-type="textContent" data-tooltip-target="tooltip-contact-details" class="absolute end-2 top-2 text-body hover:bg-neutral-quaternary hover:text-heading rounded-base p-2 inline-flex items-center justify-center">
-            <span id="default-icon-contact-details">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/></svg>
-            </span>
-            <span id="success-icon-contact-details" class="hidden">
-                <svg class="w-4 h-4 text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"/></svg>
-            </span>
-        </button>
-        <div id="tooltip-contact-details" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-            <span id="default-tooltip-message-contact-details">Copy to clipboard</span>
-            <span id="success-tooltip-message-contact-details" class="hidden">Copied!</span>
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
-    </address>
-</div>
-{{< /example >}}
+```
 
 ## Copy button with modal
 
 Use this example to show an input field where you can copy the URL of the current page and also show a modal with the copied URL when the copy button is clicked.
 
-{{< example class="bg-neutral-primary flex justify-center items-center h-full" github="components/clipboard.md" show_dark=true iframeHeight="580" javascript=`
-window.addEventListener('load', function() {
-    const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'course-url');
-    const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-course-url');
-
-    const $defaultIcon = document.getElementById('default-icon-course-url');
-    const $successIcon = document.getElementById('success-icon-course-url');
-
-    const $defaultTooltipMessage = document.getElementById('default-tooltip-message-course-url');
-    const $successTooltipMessage = document.getElementById('success-tooltip-message-course-url');
-
-    clipboard.updateOnCopyCallback((clipboard) => {
-        showSuccess();
-
-        // reset to default state
-        setTimeout(() => {
-            resetToDefault();
-        }, 2000);
-    })
-
-    const showSuccess = () => {
-        $defaultIcon.classList.add('hidden');
-        $successIcon.classList.remove('hidden');
-        $defaultTooltipMessage.classList.add('hidden');
-        $successTooltipMessage.classList.remove('hidden');    
-        tooltip.show();
-    }
-
-    const resetToDefault = () => {
-        $defaultIcon.classList.remove('hidden');
-        $successIcon.classList.add('hidden');
-        $defaultTooltipMessage.classList.remove('hidden');
-        $successTooltipMessage.classList.add('hidden');
-        tooltip.hide();
-    }
-})
-` >}}
+```html
 <button type="button" data-modal-target="course-modal" data-modal-toggle="course-modal" class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7.926 10.898 15 7.727m-7.074 5.39L15 16.29M8 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm12 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm0-11a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/></svg>
     Share course
@@ -696,7 +662,45 @@ window.addEventListener('load', function() {
         </div>
     </div>
 </div>
-{{< /example >}}
+```
+
+```javascript
+window.addEventListener('load', function() {
+    const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'course-url');
+    const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-course-url');
+
+    const $defaultIcon = document.getElementById('default-icon-course-url');
+    const $successIcon = document.getElementById('success-icon-course-url');
+
+    const $defaultTooltipMessage = document.getElementById('default-tooltip-message-course-url');
+    const $successTooltipMessage = document.getElementById('success-tooltip-message-course-url');
+
+    clipboard.updateOnCopyCallback((clipboard) => {
+        showSuccess();
+
+        // reset to default state
+        setTimeout(() => {
+            resetToDefault();
+        }, 2000);
+    })
+
+    const showSuccess = () => {
+        $defaultIcon.classList.add('hidden');
+        $successIcon.classList.remove('hidden');
+        $defaultTooltipMessage.classList.add('hidden');
+        $successTooltipMessage.classList.remove('hidden');    
+        tooltip.show();
+    }
+
+    const resetToDefault = () => {
+        $defaultIcon.classList.remove('hidden');
+        $successIcon.classList.add('hidden');
+        $defaultTooltipMessage.classList.remove('hidden');
+        $successTooltipMessage.classList.add('hidden');
+        tooltip.hide();
+    }
+})
+```
 
 ## JavaScript behaviour
 
@@ -899,7 +903,7 @@ Use the following methods from the CopyClipboard component to programmatically w
 
 Check out the following example to learn how to create a new CopyClipboard component via the Flowbite JavaScript API and set up the class, options, and methods to programmatically work with the component.
 
-{{< code lang="javascript" file="clipboard.js" icon="file" >}}
+```javascript
 // set the trigger element such as a button or text field
 const $triggerEl = document.getElementById('copy-clipboard-button');
 
@@ -919,11 +923,11 @@ const instanceOptions = {
   id: 'copy-clipboard-example',
   override: true
 };
-{{< /code >}}
+```
 
 Next step is to create a new instance of a CopyClipboard object using the parameters we have set above.
 
-{{< code lang="javascript" file="clipboard.js" icon="file" >}}
+```javascript
 import { CopyClipboard } from 'flowbite';
 
 /*
@@ -933,19 +937,19 @@ import { CopyClipboard } from 'flowbite';
  * instanceOptions: optional
  */
 const clipboard = new CopyClipboard($triggerEl, $targetEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Set the event listeners on the button to copy the text from the input field:
 
-{{< code lang="javascript" file="clipboard.js" icon="file" >}}
+```javascript
 $triggerEl.addEventListener('click', () => {
     clipboard.copy();
 });
-{{< /code >}}
+```
 
 Now you can programmatically call the methods of the CopyClipboard component:
 
-{{< code lang="javascript" file="clipboard.js" icon="file" >}}
+```javascript
 // get the value, inner HTML or text content of the target element
 clipboard.getTargetValue();
 
@@ -957,13 +961,13 @@ clipboard.updateOnCopyCallback(() => {
     // do something when the text has been copied to the clipboard
     console.log('updated on copy callback success message');
 });
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Here is an example of the HTML markup that you can use for the JavaScript example above.
 
-{{< code lang="html" file="clipboard.html" icon="file" >}}
+```html
 <div class="grid grid-cols-8 gap-2 w-full max-w-[23rem]">
     <label for="copy-text" class="sr-only">Label</label>
     <input id="copy-text" type="text" class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-base focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="npm install flowbite" disabled readonly>
@@ -977,15 +981,15 @@ Here is an example of the HTML markup that you can use for the JavaScript exampl
         </span>
     </button>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the CopyClipboard object, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the CopyClipboard object, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="clipboard.ts" icon="file" >}}
+```typescript
 import { CopyClipboard } from 'flowbite';
 import type { CopyClipboardOptions, CopyClipboardInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -1026,4 +1030,4 @@ const clipboard: CopyClipboardInterface = new CopyClipboard(
 
 // copy the value of the target element
 clipboard.copy();
-{{< /code >}}
+```

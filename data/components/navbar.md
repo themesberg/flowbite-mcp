@@ -1,27 +1,13 @@
----
-layout: docs
-title: Tailwind CSS Navbar - Flowbite
-description: The navbar component can be used to show a list of navigation links positioned on the top side of your page based on multiple layouts, sizes, and dropdowns
-group: components
-toc: true
-requires_js: true
-
-previous: Modal
-previousLink: components/modal/
-next: Pagination
-nextLink: components/pagination/
----
-
 Get started with the responsive navbar component from Flowbite to quickly set up a navigation menu for your website and set up the logo, list of pages, CTA button, search input, user profile options with a dropdown, and more.
 
 ## Default navbar
 
 Use this example of a navigation bar built with the utility classes from Tailwind CSS to enable users to navigate across the pages of your website.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="{{< param homepage >}}/" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
         <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
     </a>
@@ -50,13 +36,13 @@ Use this example of a navigation bar built with the utility classes from Tailwin
     </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Navbar with dropdown
 
 This example can be used to show a secondary dropdown menu when clicking on one of the navigation links.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -108,13 +94,13 @@ This example can be used to show a secondary dropdown menu when clicking on one 
     </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Multi-level dropdown
 
 Use this example to show multiple layers of dropdown menu by stacking them inside of each other.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -185,13 +171,13 @@ Use this example to show multiple layers of dropdown menu by stacking them insid
     </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Sticky navbar
 
 Use this example to keep the navbar positioned fixed to the top side as you scroll down the document page.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -224,13 +210,13 @@ Use this example to keep the navbar positioned fixed to the top side as you scro
     </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Navbar with submenu
 
 Use this example to show another subnav below the main navbar element.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 <header class="fixed w-full z-20 top-0 start-0">
   <nav class="bg-neutral-primary">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
@@ -265,17 +251,17 @@ Use this example to show another subnav below the main navbar element.
       </div>
   </nav>
 </header>
-{{< /example >}}
+```
 
 ## Navbar with search
 
 Use this example of a navbar element to also show a search input element that you can integrate for a site-wide search.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="{{< param homepage >}}/" class="flex items-center space-x-3 rtl:space-x-reverse">
+  <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
       <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
   </a>
@@ -317,17 +303,17 @@ Use this example of a navbar element to also show a search input element that yo
     </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Navbar with CTA button
 
 Use the following navbar element to show a call to action button alongside the logo and page links.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="300" skeletonPlaceholders=true >}}
+```html
 
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="{{< param homepage >}}/" class="flex items-center space-x-3 rtl:space-x-reverse">
+  <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
       <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
   </a>
@@ -356,17 +342,17 @@ Use the following navbar element to show a call to action button alongside the l
   </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Language dropdown
 
 Get started with this example to show a language dropdown selector in the navbar component.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="320" skeletonPlaceholders=true >}}
+```html
 
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="{{< param homepage >}}/" class="flex items-center space-x-3 rtl:space-x-reverse">
+  <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
       <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
   </a>
@@ -438,17 +424,17 @@ Get started with this example to show a language dropdown selector in the navbar
   </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## User menu dropdown
 
 Use this example to create a navigation bar with a user profile or button to toggle a dropdown menu.
 
-{{< example github="components/navbar.md" show_dark=true skeletonPlaceholders=true iframeHeight="380" >}}
+```html
 
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="{{< param homepage >}}/" class="flex items-center space-x-3 rtl:space-x-reverse">
+  <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
       <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
   </a>
@@ -504,13 +490,13 @@ Use this example to create a navigation bar with a user profile or button to tog
   </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Mega menu navbar
 
 You can also use the dropdown element inside a navigation bar and add a second level of navigation hierarchy, but make sure to use a `button` element.
 
-{{< example github="components/navbar.md" show_dark=true skeletonPlaceholders=true iframeHeight="340" >}}
+```html
 <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -609,16 +595,16 @@ You can also use the dropdown element inside a navigation bar and add a second l
         </div>
     </div>
 </nav>
-{{< /example >}}
+```
 
 ## Solid background
 
 Use this example to show a solid background for the navbar component instead of being transparent.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="320" skeletonPlaceholders=true >}}
+```html
 <nav class="bg-neutral-secondary-soft fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="{{< param homepage >}}/" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
         <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
     </a>
@@ -647,7 +633,7 @@ Use this example to show a solid background for the navbar component instead of 
     </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## Hamburger menu
 
@@ -655,7 +641,7 @@ All of the navbar components from this page have a responsive hamburger menu inc
 
 Here's an example where you can show the hamburger icon and the menu on all screen sizes.
 
-{{< example github="components/navbar.md" show_dark=true iframeHeight="320" skeletonPlaceholders=true >}}
+```html
 
 <nav class="bg-neutral-secondary-soft fixed w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -685,7 +671,7 @@ Here's an example where you can show the hamburger icon and the menu on all scre
     </div>
   </div>
 </nav>
-{{< /example >}}
+```
 
 ## More examples
 
@@ -914,7 +900,7 @@ Check out the following example to learn how to initialize and use the methods o
 
 First of all, you need to set the object parameters where the target element is required and the other two are optional.
 
-{{< code lang="javascript" file="navbar.js" icon="file" >}}
+```javascript
 // set the target element that will be collapsed or expanded (eg. navbar menu)
 const $targetEl = document.getElementById('targetEl');
 
@@ -939,11 +925,11 @@ const instanceOptions = {
   override: true
 };
 
-{{< /code >}}
+```
 
 Next step is to create a new instance of a Collapse object using the parameters we have set above.
 
-{{< code lang="javascript" file="navbar.js" icon="file" >}}
+```javascript
 import { Collapse } from 'flowbite';
 
 /*
@@ -952,11 +938,11 @@ import { Collapse } from 'flowbite';
  * options: optional
  */
 const collapse = new Collapse($targetEl, $triggerEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Now you can programmatically expand or collapse the target element using the methods of the Collapse object.
 
-{{< code lang="javascript" file="navbar.js" icon="file" >}}
+```javascript
 // show the target element
 collapse.expand();
 
@@ -965,13 +951,13 @@ collapse.collapse();
 
 // toggle the visibility of the target element
 collapse.toggle();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Here is an example of the HTML markup that you can use for the JavaScript example above. Please note that you should use the `hidden` class from Tailwind CSS to hide the target element by default.
 
-{{< code lang="html" file="navbar.html" icon="file" >}}
+```html
 <button type="button" id="triggerEl" aria-expanded="false" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-base text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Trigger collapse</button>
 
 <!-- Target element -->
@@ -997,15 +983,15 @@ Here is an example of the HTML markup that you can use for the JavaScript exampl
         <li class="w-full rounded-b-lg px-4 py-2">Download</li>
     </ul>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Collapse object, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Collapse object, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="navbar.ts" icon="file" >}}
+```typescript
 import { Collapse } from 'flowbite';
 import type { CollapseOptions, CollapseInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -1050,4 +1036,4 @@ const collapse: CollapseInterface = new Collapse(
 
 // show the target element
 collapse.expand();
-{{< /code >}}
+```

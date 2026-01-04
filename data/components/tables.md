@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Table - Flowbite
-description: Use the table component to show text, images, links, and other elements inside a structured set of data made up of rows and columns of table cells
-group: components
-toc: true
-
-previous: Stepper
-previousLink: components/stepper/
-next: Tabs
-nextLink: components/tabs/
----
-
 The table component represents a set of structured elements made up of rows and columns as table cells that can be used to show data sets to your website users.
 
 Get started with multiple variants and styles of these table components built with the utility classes from Tailwind CSS and components from Flowbite.
@@ -19,7 +6,7 @@ Get started with multiple variants and styles of these table components built wi
 
 Use the following example of a responsive table component to show multiple rows and columns of text data.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -97,7 +84,7 @@ Use the following example of a responsive table component to show multiple rows 
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Highlight
 
@@ -107,7 +94,7 @@ Accentuate certain elements inside the table such as the rows, columns or data c
 
 Use this example to increase the readability of the data sets by alternating the background color of every second table row.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -219,13 +206,13 @@ Use this example to increase the readability of the data sets by alternating the
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Striped columns
 
 Use this example to increase the readability of the table cells by alternating the background color of every second table column.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -319,13 +306,13 @@ Use this example to increase the readability of the table cells by alternating t
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Hover state
 
 Use the `hover:{bg-*}` utility class from Tailwind CSS to change the background color of a data row when hovering over the element with the cursor.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -403,7 +390,7 @@ Use the `hover:{bg-*}` utility class from Tailwind CSS to change the background 
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Table layout
 
@@ -413,7 +400,7 @@ Use the following examples of table layouts to show the head, foot or caption of
 
 This example can be used to show the head of the table component with sortable icons.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -506,13 +493,13 @@ This example can be used to show the head of the table component with sortable i
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Table foot
 
 Use this example where the `<tfoot>` HTML element can be used in conjunction with the head and caption of the table component.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -573,13 +560,13 @@ Use this example where the `<tfoot>` HTML element can be used in conjunction wit
         </tfoot>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Table caption
 
 Improve accessibility by using a caption inside the table as a heading to better describe what the table is about for screen readers.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -661,7 +648,7 @@ Improve accessibility by using a caption inside the table as a heading to better
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Table styles
 
@@ -671,7 +658,7 @@ Get started with the following table styles and choose the one that best fits yo
 
 Use this example of a table component without any border between the table cells.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -737,13 +724,13 @@ Use this example of a table component without any border between the table cells
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Table with shadow
 
 Use this example to apply a shadow-sm border to the table component.
 
-{{< example github="components/tables.md" class="pb-4 overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -821,13 +808,13 @@ Use this example to apply a shadow-sm border to the table component.
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Overflow scrolling
 
 Use this example where we apply `overflow-x-auto` to enable horizontal scrolling if the content inside the table overflows that maximum width.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -1199,13 +1186,13 @@ Use this example where we apply `overflow-x-auto` to enable horizontal scrolling
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Table search
 
 Use this example to show a search bar that can be used to query through data inside the table component.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <div class="p-4">
@@ -1385,17 +1372,15 @@ Use this example to show a search bar that can be used to query through data ins
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Table filter
 
 Use this example with a filter bar to select certain data sets inside the table based on the options that you've selected.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <div class="p-4 flex items-center justify-between space-x-4">
@@ -1597,13 +1582,13 @@ Use this example with a filter bar to select certain data sets inside the table 
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Table pagination
 
 Paginate the table data when using larger data sets based on any given amount of results per page.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -1892,13 +1877,13 @@ Paginate the table data when using larger data sets based on any given amount of
         </ul>
     </nav>
 </div>
-{{< /example >}}
+```
 
 ## Checkbox selection
 
 Checkboxes can be used inside table data rows to select multiple data sets and apply a bulk action.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -2069,17 +2054,15 @@ Checkboxes can be used inside table data rows to select multiple data sets and a
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Table with users
 
 Use this example of a table where we show a data set of users and showing a profile picture, name, email, online status, and more.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4">
@@ -2271,13 +2254,13 @@ Use this example of a table where we show a data set of users and showing a prof
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Table with products
 
 Get started with this example to show a list of products inside the table and show a preview image, product name, quantity selector, price and actions tab.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -2388,17 +2371,15 @@ Get started with this example to show a list of products inside the table and sh
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Table with modal
 
 Use this example to show a modal with a form where you can edit table data by clicking on one of the rows.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true iframeHeight="640" >}}
+```html
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <div class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 p-4">
         <div>
@@ -2643,13 +2624,13 @@ Use this example to show a modal with a form where you can edit table data by cl
     </div>
 </div> 
 </div>
-{{< /example >}}
+```
 
 ## Table colors
 
 Apply any color to the table element by using the `bg-{color}` and `text-{color}` color class variants from Tailwind CSS.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-fg-brand-subtle">
@@ -2761,13 +2742,13 @@ Apply any color to the table element by using the `bg-{color}` and `text-{color}
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Striped rows color
 
 Use this example to apply a different color to every second row inside the table.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-fg-brand-subtle">
@@ -2879,13 +2860,13 @@ Use this example to apply a different color to every second row inside the table
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Striped columns color
 
 Use this example to apply a different color to every second column inside a colored table.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-fg-brand-subtle">
@@ -2997,13 +2978,13 @@ Use this example to apply a different color to every second column inside a colo
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ### Hover state
 
 Use this example to apply a different color to every second row inside the table with a colored background.
 
-{{< example github="components/tables.md" class="overflow-hidden" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
     <table class="w-full text-sm text-left rtl:text-right text-fg-brand-subtle">
@@ -3115,7 +3096,7 @@ Use this example to apply a different color to every second row inside the table
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## More examples
 

@@ -1,23 +1,8 @@
----
-layout: docs
-title: Tailwind CSS Speed Dial - Flowbite
-description: The speed dial component can be used as a quick way to show a list of action buttons to a user when hovering or clicking on the main trigger element.
-group: components
-toc: true
-requires_js: true
-
-previous: Skeleton
-previousLink: components/skeleton/
-
-next: Spinner
-nextLink: components/spinner/
----
-
 Get started with the speed dial component to show a list of buttons or menu items positioned relative to the body in either corner as a quick way to allow certains actions to be made by your users.
 
 This component can be easily customized by changing the colors, text, icons, sizes, alignment, and even positioning using our examples built with Tailwind CSS and making use of Flowbite's JavaScript API.
 
-Make sure that you have the Flowbite JS file included in your application by following our <a href="{{< ref "getting-started/quickstart" >}}">quickstart guide</a>.
+Make sure that you have the Flowbite JS file included in your application by following our quickstart guide.
 
 ## Default speed dial
 
@@ -25,7 +10,7 @@ To initialize a speed dial component you need to wrap the trigger element and th
 
 Furthermore, make sure that the trigger button element has the `data-dial-toggle="{targetElementId}"` where the value is the ID of the target element.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed end-6 bottom-6 group">
     <div id="speed-dial-menu-default" class="flex flex-col items-center hidden mb-4 space-y-2">
@@ -67,13 +52,13 @@ Furthermore, make sure that the trigger button element has the `data-dial-toggle
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Square speed dial
 
 Use this example to make the trigger button's style square instead of a full circle using the `rounded-lg` utility class.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed end-6 bottom-6 group">
     <div id="speed-dial-menu-square" class="flex flex-col items-center hidden mb-4 space-y-2">
@@ -115,13 +100,13 @@ Use this example to make the trigger button's style square instead of a full cir
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Text inside button
 
 This example can be used to show the descriptive text inside the button instead of a tooltip.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed bottom-6 end-24 group">
     <div id="speed-dial-menu-text-inside-button" class="flex flex-col items-center hidden mb-4 space-y-2">
@@ -172,13 +157,13 @@ This example can be used to show the descriptive text inside the button instead 
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Text outside button
 
 Use this example to show the text of each button outside of the speed dial as an alternative style.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed end-6 bottom-6 group">
     <div id="speed-dial-menu-text-outside-button" class="flex flex-col items-center hidden mb-4 space-y-2">
@@ -229,13 +214,13 @@ Use this example to show the text of each button outside of the speed dial as an
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Dropdown menu
 
 This example can be used to show a list of menu items instead of buttons when activating the speed dial.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed bottom-6 right-24 group">
     <div id="speed-dial-menu-dropdown" class="flex flex-col w-32 justify-end hidden mb-4 space-y-2 bg-neutral-primary-medium border border-default-medium rounded-base shadow-xs">
@@ -306,13 +291,13 @@ This example can be used to show a list of menu items instead of buttons when ac
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Alternative menu
 
 This example can be used to show an alternative style when showing a list of menu items.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed bottom-6 right-24 group">
     <div id="speed-dial-menu-dropdown-alternative" class="flex flex-col w-44 justify-end hidden mb-4 space-y-2 bg-neutral-primary-medium border border-default-medium rounded-base shadow-xs">
@@ -371,7 +356,7 @@ This example can be used to show an alternative style when showing a list of men
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Positioning
 
@@ -381,7 +366,7 @@ The positioning of the speed dial component relative to the body element can be 
 
 Use the `top-{*}` and `right-{*}` utility classes to set the position of the speed dial component to the top right side of the document body.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed top-6 end-6 group">
     <button type="button" data-dial-toggle="speed-dial-menu-top-right" aria-controls="speed-dial-menu-top-right" aria-expanded="false" class="flex items-center justify-center text-white bg-brand rounded-full w-14 h-14 hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium focus:outline-none">
@@ -423,13 +408,13 @@ Use the `top-{*}` and `right-{*}` utility classes to set the position of the spe
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ### Bottom right
 
 Use the `bottom-{*}` and `right-{*}` utility classes to set the position of the speed dial component to the bottom right side of the document body.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 <div data-dial-init class="fixed end-6 bottom-6 group">
     <div id="speed-dial-menu-bottom-right" class="flex flex-col items-center hidden mt-4 space-y-2">
         <button type="button" data-tooltip-target="tooltip-share" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-body hover:text-heading bg-neutral-primary-soft rounded-full border border-default shadow-xs hover:bg-neutral-secondary-medium hover:border-default-medium focus:ring-4 focus:ring-neutral-secondary-soft focus:outline-none">
@@ -470,13 +455,13 @@ Use the `bottom-{*}` and `right-{*}` utility classes to set the position of the 
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ### Bottom left
 
 Use the `bottom-{*}` and `left-{*}` utility classes to set the position of the speed dial component to the bottom left side of the document body.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 <div data-dial-init class="fixed bottom-6 start-6 group">
     <div id="speed-dial-menu-bottom-left" class="flex flex-col items-center hidden mt-4 space-y-2">
         <button type="button" data-tooltip-target="tooltip-share" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-body hover:text-heading bg-neutral-primary-soft rounded-full border border-default shadow-xs hover:bg-neutral-secondary-medium hover:border-default-medium focus:ring-4 focus:ring-neutral-secondary-soft focus:outline-none">
@@ -517,13 +502,13 @@ Use the `bottom-{*}` and `left-{*}` utility classes to set the position of the s
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ### Top left
 
 Use the `top-{*}` and `left-{*}` utility classes to set the position of the speed dial component to the top left side of the document body.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 <div data-dial-init class="fixed top-6 start-6 group">
     <button type="button" data-dial-toggle="speed-dial-menu-top-left" aria-controls="speed-dial-menu-top-left" aria-expanded="false" class="flex items-center justify-center text-white bg-brand rounded-full w-14 h-14 hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium focus:outline-none">
         <svg class="w-5 h-5 transition-transform group-hover:rotate-45" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/></svg>
@@ -564,7 +549,7 @@ Use the `top-{*}` and `left-{*}` utility classes to set the position of the spee
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Alignment
 
@@ -574,7 +559,7 @@ The alignment of the speed dial menu items and buttons can be set using the flex
 
 The default alignment of the menu items of the speed dial is vertical using the `flex-col` utility class.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 <div data-dial-init class="fixed end-6 bottom-6 group">
     <div id="speed-dial-menu-vertical" class="flex flex-col items-center hidden mt-4 space-y-2">
         <button type="button" data-tooltip-target="tooltip-share" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-body hover:text-heading bg-neutral-primary-soft rounded-full border border-default shadow-xs hover:bg-neutral-secondary-medium hover:border-default-medium focus:ring-4 focus:ring-neutral-secondary-soft focus:outline-none">
@@ -615,13 +600,13 @@ The default alignment of the menu items of the speed dial is vertical using the 
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ### Horizontal
 
 Horizontally align the speed dial menu items by using the flexbox utility classes from Tailwind CSS.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed flex end-6 bottom-6 group">
     <div id="speed-dial-menu-horizontal" class="flex items-center hidden me-4 space-x-2 rtl:space-x-reverse">
@@ -663,7 +648,7 @@ Horizontally align the speed dial menu items by using the flexbox utility classe
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## Triggering
 
@@ -673,7 +658,7 @@ Use the `data-dial-trigger="{click|hover}"` data attributes on the trigger eleme
 
 The default trigger type is hover for each speed dial component.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 <div data-dial-init class="fixed end-6 bottom-6 group">
     <div id="speed-dial-menu-hover" class="flex flex-col items-center hidden mt-4 space-y-2">
         <button type="button" data-tooltip-target="tooltip-share" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-body hover:text-heading bg-neutral-primary-soft rounded-full border border-default shadow-xs hover:bg-neutral-secondary-medium hover:border-default-medium focus:ring-4 focus:ring-neutral-secondary-soft focus:outline-none">
@@ -714,13 +699,13 @@ The default trigger type is hover for each speed dial component.
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ### Click
 
 If you want the speed dial component to activate when clicking instead of hovering over the trigger element then you need to set the `click` value inside of the `data-dial-toggle="click"` data attribute on the trigger element.
 
-{{< example class="flex justify-center pt-24 h-80" github="components/speed-dial.md" show_dark=true >}}
+```html
 
 <div data-dial-init class="fixed end-6 bottom-6 group">
     <div id="speed-dial-menu-click" class="flex flex-col items-center hidden mb-4 space-y-2">
@@ -762,7 +747,7 @@ If you want the speed dial component to activate when clicking instead of hoveri
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -1010,7 +995,7 @@ Three arguments are required for the Speed Dial component, namely the parent ele
 
 Furthermore, you can also pass an object of options to set the trigger type and set the callback functions.
 
-{{< code lang="javascript" file="speed-dial.js" icon="file" >}}
+```javascript
 // parent element wrapping the speed dial
 const $parentEl = document.getElementById('dialParent');
 
@@ -1039,11 +1024,11 @@ const instanceOptions = {
   id: 'dialContent',
   override: true
 };
-{{< /code >}}
+```
 
 Create a new Speed Dial object based on the options above.
 
-{{< code lang="javascript" file="speed-dial.js" icon="file" >}}
+```javascript
 import { Dial } from 'flowbite';
 
 /*
@@ -1054,11 +1039,11 @@ import { Dial } from 'flowbite';
  * instanceOptions: optional
  */
 const dial = new Dial($parentEl, $triggerEl, $targetEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Use the `show`, `hide`, or `toggle` methods on the Speed Dial object to programmatically show and hide the speed dial component using JavaScript.
 
-{{< code lang="javascript" file="speed-dial.js" icon="file" >}}
+```javascript
 // show the speed dial
 dial.show();
 
@@ -1067,13 +1052,13 @@ dial.hide();
 
 // toggle the visibility of the speed dial
 dial.toggle();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Use the following HTML code for the JavaScript example above.
 
-{{< code lang="html" file="speed-dial.html" icon="file" >}}
+```html
 <div id="dialParent" class="group fixed bottom-6 end-6">
     <div
         id="dialContent"
@@ -1215,15 +1200,15 @@ Use the following HTML code for the JavaScript example above.
         <span class="sr-only">Open actions menu</span>
     </button>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Speed Dial class, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Speed Dial class, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="speed-dial.ts" icon="file" >}}
+```typescript
 import { Dial } from 'flowbite';
 import type { DialOptions, DialInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -1267,4 +1252,4 @@ const dial: DialInterface = new Dial($parentEl, $triggerEl, $targetEl, options);
 
 // show the speed dial
 dial.show();
-{{< /code >}}
+```

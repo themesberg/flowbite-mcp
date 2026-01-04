@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Timepicker - Flowbite
-description: Use the timepicker component from Flowbite to select the time of the day in terms of hours, minutes and even seconds using an input selector based on Tailwind CSS
-group: forms
-toc: true
-requires_js: true
-
-previous: Textarea
-previousLink: forms/textarea/
-next: Toggle
-nextLink: forms/toggle/
----
-
 The timepicker component from Flowbite can be used to choose the hours and minutes of a given day through the usage of input fields such as the native HTML time field or even checkbox fields with predefined time interval which are popularly used for calendar event creation.
 
 The examples on this page are all built with Tailwind CSS and some of the examples require you to install the Flowbite JavaScript dependency to make the interactive UI components functional such as the datepicker, dropdowns, modals and the drawers.
@@ -22,7 +8,7 @@ The timepicker component is often used together with a datepicker so the more ad
 
 Use this example to show a simple input field with the native browser timepicker.
 
-{{< example github="components/timepicker.md" show_dark=true >}}
+```html
 <form class="max-w-[8rem] mx-auto">
     <label for="time" class="block mb-2 text-sm font-medium text-heading">Select time:</label>
     <div class="relative">
@@ -32,13 +18,13 @@ Use this example to show a simple input field with the native browser timepicker
         <input type="time" id="time" class="block w-full p-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" min="09:00" max="18:00" value="00:00" required />
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Timepicker with icon
 
 This example can be used to select a time via an input field where you can add an icon to the input group.
 
-{{< example github="components/timepicker.md" show_dark=true >}}
+```html
 <form class="max-w-[8.5rem] mx-auto">
     <label for="time" class="block mb-2 text-sm font-medium text-heading">Select time:</label>
     <div class="flex">
@@ -48,13 +34,13 @@ This example can be used to select a time via an input field where you can add a
         </span>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Timepicker with dropdown
 
 Use this example to show a timepicker together with a dropdown menu where you can add options such as selecting the timezone or the duration of an event in minutes or hours.
 
-{{< example github="components/timepicker.md" iframeHeight="300" show_dark=true >}}
+```html
 <form class="max-w-[13rem] mx-auto">
     <label for="time" class="block mb-2 text-sm font-medium text-heading">Select time:</label>
     <div class="flex">
@@ -84,13 +70,13 @@ Use this example to show a timepicker together with a dropdown menu where you ca
         </div>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Timepicker with select
 
 Use this example to show a select input next to the timepicker to select an option like a timezone.
 
-{{< example class="flex justify-center" github="components/timepicker.md" show_dark=true >}}
+```html
 <form>
     <label for="time" class="block mb-2 text-sm font-medium text-heading">Select time:</label>
     <div class="flex">
@@ -111,13 +97,13 @@ Use this example to show a select input next to the timepicker to select an opti
          </select>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Timepicker range selector
 
 Use this example to select a time interval using two input field often used for the duration of an event.
 
-{{< example github="components/timepicker.md" show_dark=true >}}
+```html
 <form class="max-w-[16rem] mx-auto grid grid-cols-2 gap-4">
     <div>
         <label for="start-time" class="block mb-2 text-sm font-medium text-heading">Start time:</label>
@@ -138,21 +124,13 @@ Use this example to select a time interval using two input field often used for 
         </div>
     </div>
 </form>
-{{< /example >}}
+```
 
 ## Timerange with dropdown
 
 This example can be used to show the timerange picker inside a dropdown only when clicking on a button.
 
-{{< example class="flex justify-center items-center" github="components/timepicker.md" show_dark=true iframeHeight="260" javascript=`
-const dropdown = FlowbiteInstances.getInstance('Dropdown', 'dropdownTimepicker');
-const $saveTimeButton = document.getElementById('saveTimeButton');
-
-$saveTimeButton.addEventListener('click', function() {
-    // save time code and then hide the dropdown
-    dropdown.hide();
-});
-` >}}
+```html
 <button id="dropdownTimepickerButton" data-dropdown-toggle="dropdownTimepicker" class="inline-flex items-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
 Choose time 
 <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -185,13 +163,23 @@ Choose time
     </div>
     <button id="saveTimeButton" type="button" class="text-fg-brand text-sm hover:underline p-0">Save time</button>
 </div>
-{{< /example >}}
+```
+
+```javascript
+const dropdown = FlowbiteInstances.getInstance('Dropdown', 'dropdownTimepicker');
+const $saveTimeButton = document.getElementById('saveTimeButton');
+
+$saveTimeButton.addEventListener('click', function() {
+    // save time code and then hide the dropdown
+    dropdown.hide();
+});
+```
 
 ## Timerange picker with toggle
 
 Use this example to show or hide the timepicker when clicking on an trigger element.
 
-{{< example class="flex items-center justify-center" github="components/timepicker.md" show_dark=true iframeHeight="190" >}}
+```html
 <div class="w-[16rem]">
     <button id="selectTimeToggle" data-collapse-toggle="time-range-container" type="button" class="text-fg-brand text-base font-medium hover:underline p-0 inline-flex items-center mb-2">Select time 
       <svg class="w-5 h-5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -219,13 +207,13 @@ Use this example to show or hide the timepicker when clicking on an trigger elem
     </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Inline timepicker buttons
 
 This is an advanced example that you can use to show the details of an event and select a date of the event based on the [Flowbite Datepicker](https://flowbite.com/docs/components/datepicker/) and select the time using a predefined set of time intervals based on checkbox elements.
 
-{{< example github="components/timepicker.md" show_dark=true >}}
+```html
 <h2 class="text-xl text-heading font-semibold mb-2">Digital Transformation</h2>
 <div class="flex items-center space-x-4 rtl:space-x-reverse mb-3">
    <div class="flex items-center">
@@ -357,13 +345,13 @@ This is an advanced example that you can use to show the details of an event and
       </ul>
    </div>
 </div>
-{{< /example >}}
+```
 
 ## Modal with timepicker
 
 Use this example to select a date and time inside of a modal component based on the [Flowbite Datepicker](https://flowbite.com/docs/components/datepicker/) and select a time interval using checkbox elements with predefined time values for event time scheduling.
 
-{{< example github="components/timepicker.md" class="flex justify-center" show_dark=true iframeHeight="880" >}}
+```html
 <button type="button" data-modal-target="timepicker-modal" data-modal-toggle="timepicker-modal" class="inline-flex items-center justify-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
    <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
    Schedule appointment
@@ -484,13 +472,13 @@ Use this example to select a date and time inside of a modal component based on 
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Drawer with timepicker
 
 Use this example to show multiple time interval selections inside of a drawer component to schedule time based on multiple entries (ie. days of the week) using the native browser time selection input element.
 
-{{< example github="components/timepicker.md" class="flex justify-center" show_dark=true iframeHeight="880" >}}
+```html
 <!-- drawer init and show -->
 <div class="text-center">
    <button class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button" data-drawer-target="drawer-timepicker" data-drawer-show="drawer-timepicker" aria-controls="drawer-timepicker">
@@ -729,4 +717,4 @@ Use this example to show multiple time interval selections inside of a drawer co
       </div>
    </form>
 </div>
-{{< /example >}}
+```

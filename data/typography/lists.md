@@ -1,23 +1,10 @@
----
-layout: docs
-title: Tailwind CSS Lists - Flowbite
-description: Use the list component to show an unordered or ordered list of items based on multiple styles, layouts, and variants built with Tailwind CSS and Flowbite
-group: typography
-toc: true
-
-previous: Images
-previousLink: typography/images/
-next: Links
-nextLink: typography/links/
----
-
 Get started with a collection of list components built with Tailwind CSS for ordered and unordered lists with bullets, numbers, or icons and other styles and layouts to show a list of items inside an article or throughout your web page.
 
 ## Unordered list
 
 Use this example to create a default unordered list of items using the `list-disc` class.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <h2 class="mb-2 text-lg font-medium text-heading">Password requirements:</h2>
 <ul class="max-w-md space-y-1 text-body list-disc list-inside">
     <li>
@@ -30,13 +17,13 @@ Use this example to create a default unordered list of items using the `list-dis
         Inclusion of at least one special character, e.g., ! @ # ?
     </li>
 </ul>
-{{< /example >}}
+```
 
 ### Icons
 
 This example can be used to apply custom icons instead of the default bullets for the list items.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <h2 class="mb-2 text-lg font-medium text-heading">Password requirements:</h2>
 <ul class="max-w-md space-y-1 text-body list-inside">
     <li class="flex items-center">
@@ -52,13 +39,13 @@ This example can be used to apply custom icons instead of the default bullets fo
         At least one special character, e.g., ! @ # ?
     </li>
 </ul>
-{{< /example >}}
+```
 
 ### Nested
 
 Use this example to nested another list of items inside the parent list element.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <ul class="space-y-4 text-body list-disc list-inside">
     <li>
         List item one
@@ -85,13 +72,13 @@ Use this example to nested another list of items inside the parent list element.
         </ul>
     </li>
 </ul>
-{{< /example >}}
+```
 
 ### Unstyled
 
 Use the `list-none` class to disable the list style bullets or numbers.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <h2 class="mb-3 text-lg font-medium text-heading">Password requirements:</h2>
 <ul class="max-w-md space-y-2 text-body list-none list-inside">
     <li>
@@ -104,13 +91,13 @@ Use the `list-none` class to disable the list style bullets or numbers.
         Inclusion of at least one special character, e.g., ! @ # ?
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Ordered list
 
 Use the `<ol>` tag to create an ordered list of items with numbers.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <h2 class="mb-3 text-lg font-medium text-heading">Top students:</h2>
 <ol class="max-w-md space-y-2 text-body list-decimal list-inside">
     <li>
@@ -123,13 +110,13 @@ Use the `<ol>` tag to create an ordered list of items with numbers.
         <span class="font-medium text-heading">Leslie Livingston</span> with <span class="font-medium text-heading">57</span> points
     </li>
 </ol>
-{{< /example >}}
+```
 
 ### Nested
 
 This example can be used to nest multiple lists into each other.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <ol class="space-y-4 text-body list-decimal list-inside">
    <li>
       List item one
@@ -156,13 +143,13 @@ This example can be used to nest multiple lists into each other.
       </ul>
    </li>
 </ol>
-{{< /example >}}
+```
 
 ## Description list
 
 Create a description list by using the `<dl>` tag and set the term and name with the following example.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <dl class="max-w-md text-heading divide-y divide-default">
     <div class="flex flex-col pb-3">
         <dt class="mb-1 text-body">Email address</dt>
@@ -177,13 +164,13 @@ Create a description list by using the `<dl>` tag and set the term and name with
         <dd class="text-lg font-medium">+00 123 456 789 / +12 345 678</dd>
     </div>
 </dl>
-{{< /example >}}
+```
 
 ## List with icons
 
 Use this example to create a list of items with [custom SVG icons](https://flowbite.com/icons/) instead of the default bullets.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <ul class="space-y-4 text-left text-body">
     <li class="flex items-center space-x-3 rtl:space-x-reverse">
          <svg class="w-4 h-4 text-fg-success shrink-0 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
@@ -206,13 +193,13 @@ Use this example to create a list of items with [custom SVG icons](https://flowb
         <span>Free updates: <span class="font-medium text-heading">6 months</span></span>
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Advanced layout
 
 This example can be used to show more details for each list item such as the user's name, email and profile picture.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <ul class="max-w-md divide-y divide-default">
    <li class="pb-3 sm:pb-4">
       <div class="flex items-center space-x-4 rtl:space-x-reverse">
@@ -305,13 +292,13 @@ This example can be used to show more details for each list item such as the use
       </div>
    </li>
 </ul>
-{{< /example >}}
+```
 
 ## Features list card
 
 Use this example to show a list of features inside a card component.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 
 <div class="w-full max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs mx-auto">
     <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
@@ -352,13 +339,13 @@ Use this example to show a list of features inside a card component.
     <button type="button" class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose plan</button>
 </div>
 
-{{< /example >}}
+```
 
 ## Horizontal list
 
 Use this example to create a horizontally aligned list of items.
 
-{{< example github="typography/lists.md" show_dark=true >}}
+```html
 <ul class="flex flex-wrap items-center justify-center text-heading">
     <li>
         <a href="#" class="me-4 hover:underline md:me-6 ">About</a>
@@ -382,6 +369,6 @@ Use this example to create a horizontally aligned list of items.
         <a href="#" class="me-4 hover:underline md:me-6">Contact</a>
     </li>
 </ul>
-{{< /example >}}
+```
 
 

@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Modal - Flowbite
-description: Use the modal component to show interactive dialogs and notifications to your website users available in multiple sizes, colors, and styles
-group: components
-toc: true
-requires_js: true
-
-previous: Mega menu
-previousLink: components/mega-menu/
-next: Navbar
-nextLink: components/navbar/
----
-
 The modal component can be used as an interactive dialog on top of the main content area of the website to show notifications and gather information using form elements from your website users.
 
 Get started with multiple sizes, colors, and styles built with the utility classes from Tailwind CSS and the components from Flowbite.
@@ -26,7 +12,7 @@ If you want to toggle the visibility, show, or hide the modal you can use the fo
 -   `data-modal-show="modalID"` - show the modal
 -   `data-modal-hide="modalID"` - close the modal
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="600" >}}
+```html
 
 <!-- Modal toggle -->
 <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -65,13 +51,13 @@ If you want to toggle the visibility, show, or hide the modal you can use the fo
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Static modal
 
 Use the `data-modal-backdrop="static"` data attribute to prevent the modal from closing when clicking outside of it. This can be used with situations where you want to force the user to choose an option such as a cookie notice or when taking a survey.
 
-{{< example class="dark:bg-gray-900" github="components/modal.md" class="flex justify-center" iframeHeight="600" show_dark=true >}}
+```html
 
 <!-- Modal toggle -->
 <button data-modal-target="static-modal" data-modal-toggle="static-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -110,13 +96,13 @@ Use the `data-modal-backdrop="static"` data attribute to prevent the modal from 
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Pop-up modal
 
 You can use this modal example to show a pop-up decision dialog to your users especially when deleting an item and making sure if the user really wants to do that by double confirming.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="500" >}}
+```html
 <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
 Toggle modal
 </button>
@@ -141,13 +127,13 @@ Toggle modal
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Form element
 
 Use this modal example with form input element to receive information from your users with the advantage of not having to link to another page but keeping the user on the currently active page. A great example would be a login or a register form.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="600" >}}
+```html
 
 <!-- Modal toggle -->
 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -192,13 +178,13 @@ Use this modal example with form input element to receive information from your 
         </div>
     </div>
 </div> 
-{{< /example >}}
+```
 
 ## Modal with CRUD
 
 Use this example of a modal to use within CRUD (Create, Read, Update, Delete) operations to create new items, update existing ones, or delete them with a form inside of the modal.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="620" >}}
+```html
 
 <!-- Modal toggle -->
 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -257,13 +243,13 @@ Use this example of a modal to use within CRUD (Create, Read, Update, Delete) op
         </div>
     </div>
 </div> 
-{{< /example >}}
+```
 
 ## Modal with radio inputs
 
 This example can be used to show a list of options to your users by using advanced radio inputs with a custom design.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="600" >}}
+```html
 
 <!-- Modal toggle -->
 <button data-modal-target="select-modal" data-modal-toggle="select-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -337,13 +323,13 @@ This example can be used to show a list of options to your users by using advanc
         </div>
     </div>
 </div> 
-{{< /example >}}
+```
 
 ## Modal with timeline
 
 Use this example to show a timeline of events to your users with a modal. This can be used to show a changelog of your product or a timeline of events.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="760" >}}
+```html
 
 <!-- Modal toggle -->
 <button data-modal-target="timeline-modal" data-modal-toggle="timeline-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -407,13 +393,13 @@ Use this example to show a timeline of events to your users with a modal. This c
         </div>
     </div>
 </div> 
-{{< /example >}}
+```
 
 ## Modal with progress bar
 
 This modal can be used to show the progress of a task to your users. It can be used to show the progress of a file upload or a task that is being processed.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="600" >}}
+```html
 
 <!-- Modal toggle -->
 <button data-modal-target="progress-modal" data-modal-toggle="progress-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
@@ -449,14 +435,14 @@ This modal can be used to show the progress of a task to your users. It can be u
         </div>
     </div>
 </div> 
-{{< /example >}}
+```
 
 
 ## Crypto wallet
 
 Use this web3 modal component to show crypto wallet connection options like MetaMask or WalletConnect when building a website based on NFT authentication and collectibles.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="700" >}}
+```html
 <button type="button" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8H5m12 0a1 1 0 0 1 1 1v2.6M17 8l-4-4M5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.6M5 8l4-4 4 4m6 4h-4a2 2 0 1 0 0 4h4a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1Z"/></svg>
     Connect wallet
@@ -523,13 +509,13 @@ Use this web3 modal component to show crypto wallet connection options like Meta
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Sizes
 
 You can use four different modal sizing options starting from small to extra large, but keep in mind that the width of these modals will remain the same when browsing on smaller devices.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="900" >}}
+```html
 
 <div class="block space-y-4 md:flex md:space-y-0 md:space-x-4 rtl:space-x-reverse">
     <!-- Modal toggle -->
@@ -678,7 +664,7 @@ You can use four different modal sizing options starting from small to extra lar
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Placement
 
@@ -686,7 +672,7 @@ Use the `data-modal-placement` data attribute on the modal element to set the po
 
 The default position is the center of the page.
 
-{{< example github="components/modal.md" class="flex justify-center" show_dark=true iframeHeight="800">}}
+```html
 
 <div class="block space-y-4 md:flex md:space-y-0 md:space-x-4 md:rtl:space-x-reverse">
     <!-- Modal toggle -->
@@ -835,7 +821,7 @@ The default position is the center of the page.
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## More examples
 
@@ -1111,7 +1097,7 @@ Check out the following JavaScript example to learn how to initialize, set the o
 
 First of all, create a new JavaScript element object for the first parameter of the Modal object and another options object to set the placement, backdrop styles, and callback functions.
 
-{{< code lang="javascript" file="modal.js" icon="file" >}}
+```javascript
 // set the modal menu element
 const $targetEl = document.getElementById('modalEl');
 
@@ -1138,11 +1124,11 @@ const instanceOptions = {
   id: 'modalEl',
   override: true
 };
-{{< /code >}}
+```
 
 Create a new Modal object based on the options above.
 
-{{< code lang="javascript" file="modal.js" icon="file" >}}
+```javascript
 import { Modal } from 'flowbite';
 
 /*
@@ -1150,40 +1136,40 @@ import { Modal } from 'flowbite';
  * options: optional
  */
 const modal = new Modal($targetEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Use the `show` and `hide` methods to show and hide the modal component directly from JavaScript.
 
-{{< code lang="javascript" file="modal.js" icon="file" >}}
+```javascript
 // show the modal
 modal.show();
 
 // hide the modal
 modal.hide();
-{{< /code >}}
+```
 
 Use the `toggle` method to toggle the visibility of the modal.
 
-{{< code lang="javascript" file="modal.js" icon="file" >}}
+```javascript
 // toggle the modal
 modal.toggle();
-{{< /code >}}
+```
 
 Use the `isHidden` or `isVisible` method to check if the modal is visible or not.
 
-{{< code lang="javascript" file="modal.js" icon="file" >}}
+```javascript
 // true if hidden
 modal.isHidden();
 
 // true if visible
 modal.isVisible();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Use the following HTML code for the JavaScript example above.
 
-{{< code lang="html" file="modal.html" icon="file" >}}
+```html
 <div
     id="modalEl"
     tabindex="-1"
@@ -1265,15 +1251,15 @@ Use the following HTML code for the JavaScript example above.
         </div>
     </div>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Modal class, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Modal class, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="modal.ts" icon="file" >}}
+```typescript
 import { Modal } from 'flowbite';
 import type { ModalOptions, ModalInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -1306,4 +1292,4 @@ const instanceOptions: InstanceOptions = {
 const modal: ModalInterface = new Modal($modalElement, modalOptions, instanceOptions);
 
 modal.show();
-{{< /code >}}
+```

@@ -1,23 +1,10 @@
----
-layout: docs
-title: Tailwind CSS Button Group - Flowbite
-description: Button groups are a Tailwind CSS powered set of buttons sticked together in a horizontal line
-group: components
-toc: true
-
-previous: Buttons
-previousLink: components/buttons/
-next: Cards
-nextLink: components/card/
----
-
 The button group component from Flowbite can be used to stack together multiple buttons and links inside a single element.
 
 ## Default example
 
 Use the following code to stack together buttons into a single group.
 
-{{< example class="flex justify-center" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
   <button type="button" class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
@@ -30,13 +17,13 @@ Use the following code to stack together buttons into a single group.
     Messages
   </button>
 </div>
-{{< /example >}}
+```
 
 ## Button group info
 
 Use this example to stack a button with an icon with another informational button.
 
-{{< example class="flex justify-center" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
   <button type="button" class="inline-flex items-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
@@ -47,14 +34,14 @@ Use this example to stack a button with an icon with another informational butto
     456k
   </button>
 </div>
-{{< /example >}}
+```
 
 
 ## Button group icon action
 
 Use this component to show a button with text and another button with an icon.
 
-{{< example class="flex justify-center" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
   <button type="button" class="inline-flex items-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none" disabled>
@@ -64,13 +51,13 @@ Use this component to show a button with text and another button with an icon.
     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 21-5-4-5 4V3.889a.92.92 0 0 1 .244-.629.808.808 0 0 1 .59-.26h8.333a.81.81 0 0 1 .589.26.92.92 0 0 1 .244.63V21Z"/></svg>
   </button>
 </div>
-{{< /example >}}
+```
 
 ## Button group icons
 
 Use this example to stack together multiple option buttons into one group.
 
-{{< example class="flex justify-center items-center h-full" iframeHeight="240" github="components/button-group.md" show_dark=true >}}
+```html
   <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
     <button data-tooltip-target="tooltip-option-1" type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm w-9 h-9 focus:outline-none">
       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6h8m-8 4h12M6 14h8m-8 4h12"/></svg>
@@ -101,13 +88,13 @@ Use this example to stack together multiple option buttons into one group.
       <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
   </div>
-{{< /example >}}
+```
 
 ## Button group dropdown
 
 Use this example to show three buttons stacked together where the third one opens a dropdown menu.
 
-{{< example class="flex justify-center" iframeHeight="260" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
   <button type="button" class="inline-flex items-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none" disabled>
@@ -135,13 +122,13 @@ Use this example to show three buttons stacked together where the third one open
     </ul>
   </div>
 </div>
-{{< /example >}}
+```
 
 ## Button group badge
 
 Use this component to add a badge inside of the button group and a dropdown menu.
 
-{{< example class="flex justify-center" iframeHeight="260" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
   <button type="button" class="inline-flex items-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none" disabled>
@@ -165,13 +152,13 @@ Use this component to add a badge inside of the button group and a dropdown menu
     </ul>
   </div>
 </div>
-{{< /example >}}
+```
 
 ## QR code button group
 
 Use this component to show a QR code button group for authentication or other purposes.
 
-{{< example class="flex justify-center" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
   <button type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm w-9 h-full focus:outline-none" disabled>
@@ -181,13 +168,13 @@ Use this component to show a QR code button group for authentication or other pu
    Sign In
   </button>
 </div>
-{{< /example >}}
+```
 
 ## Pagination button group
 
 This example can be used to create pagination components using button groups.
 
-{{< example class="flex justify-center items-center h-full flex-col gap-8" iframeHeight="240" github="components/button-group.md" show_dark=true >}}
+```html
   <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
     <button type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm w-9 h-9 focus:outline-none">
       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
@@ -234,13 +221,13 @@ This example can be used to create pagination components using button groups.
       <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
   </div>
-{{< /example >}}
+```
 
 ## Vertical button groups
 
 Use these examples to stack button groups vertically.
 
-{{< example class="flex justify-center space-x-4" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="rounded-base shadow-xs w-56 -space-y-px" role="group">
   <button type="button" class="block w-full text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft rounded-t-base font-medium leading-5 text-sm px-3 py-2 focus:outline-none">
@@ -285,13 +272,13 @@ Use these examples to stack button groups vertically.
       <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
   </div>
-{{< /example >}}
+```
 
 ## Button group with colors
 
 Choose from any colors to style the button group components.
 
-{{< example class="flex justify-center space-x-4" github="components/button-group.md" show_dark=true >}}
+```html
   <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
     <button type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft rounded-s-base box-border border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary leading-5 w-9 h-9 focus:outline-none">
       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
@@ -332,13 +319,13 @@ Choose from any colors to style the button group components.
       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
     </button>
   </div>
-{{< /example >}}
+```
 
 ## Button group as links
 
 You can also use the button group component as links.
 
-{{< example class="flex justify-center" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px">
   <a href="#" aria-current="page" class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:bg-neutral-secondary-medium focus:text-heading focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
@@ -351,13 +338,13 @@ You can also use the button group component as links.
     Messages
   </a>
 </div>
-{{< /example >}}
+```
 
 ## Group buttons with icons
 
 You can also use [SVG icons](https://flowbite.com/icons/) inside the grouped buttons.
 
-{{< example class="flex justify-center" github="components/button-group.md" show_dark=true >}}
+```html
 
 <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
   <button type="button" class="inline-flex items-center text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
@@ -374,13 +361,13 @@ You can also use [SVG icons](https://flowbite.com/icons/) inside the grouped but
   </button>
 </div>
 
-{{< /example >}}
+```
 
 ## Button group outline
 
 Use these examples as an alternative style with an outline.
 
-{{< example class="flex justify-center items-center flex-col gap-8 h-full" iframeHeight="240" github="components/button-group.md" show_dark=true >}}
+```html
 <div class="inline-flex rounded-base -space-x-px" role="group">
   <button type="button" class="text-heading bg-neutral-primary border border-dark-strong hover:bg-dark hover:text-white focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
     Profile
@@ -407,4 +394,4 @@ Use these examples as an alternative style with an outline.
     Messages
   </button>
 </div>
-{{< /example >}}
+```

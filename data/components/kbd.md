@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS KBD (Keyboard) - Flowbite
-description: Use the KBD component as an inline element to denote textual user input from the keyboard inside paragraphs, tables, and other components
-group: components
-toc: true
-
-previous: Jumbotron
-previousLink: components/jumbotron/
-next: List group
-nextLink: components/list-group/
----
-
 The KBD (Keyboard) component can be used to indicate a textual user input from the keyboard inside other elements such as in text, tables, cards, and more.
 
 Use the semantic `<kbd>` keyboard input tag to use the default monospace font which is best suited for representing input keys.
@@ -19,7 +6,7 @@ Use the semantic `<kbd>` keyboard input tag to use the default monospace font wh
 
 Here's a list of KBD components that you can use inside any other element.
 
-{{< example github="components/kbd.md" show_dark=true >}}
+```html
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Shift</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Ctrl</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Tab</kbd>
@@ -27,24 +14,24 @@ Here's a list of KBD components that you can use inside any other element.
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Esc</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Spacebar</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Enter</kbd>
-{{< /example >}}
+```
 
 ## KBD inside text
 
 Use this example by nesting an inline KBD component inside a paragraph.
 
-{{< example github="components/kbd.md" show_dark=true >}}
+```html
 
 <p class="text-body">
     Please press <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Ctrl</kbd> + <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Shift</kbd> + <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">R</kbd> to re-render an MDN page.
 </p>
-{{< /example >}}
+```
 
 ## KBD inside table
 
 The KBD component can also be used inside table components to denote what type of key can be pressed for certain descriptions.
 
-{{< example github="components/kbd.md" show_dark=true >}}
+```html
 
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -114,13 +101,13 @@ The KBD component can also be used inside table components to denote what type o
         </tbody>
     </table>
 </div>
-{{< /example >}}
+```
 
 ## Arrow keys
 
 Use this example to show arrow keys inside the KBD styled element.
 
-{{< example github="components/list-group.md" show_dark=true >}}
+```html
 <kbd class="inline-flex items-center px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">
 <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 10">
 <path d="M9.207 1A2 2 0 0 0 6.38 1L.793 6.586A2 2 0 0 0 2.207 10H13.38a2 2 0 0 0 1.414-3.414L9.207 1Z"/>
@@ -145,13 +132,13 @@ Use this example to show arrow keys inside the KBD styled element.
 </svg>
 <span class="sr-only">Arrow key right</span>
 </kbd>
-{{< /example >}}
+```
 
 ## Letter keys
 
 Use this example if you need to show a key from the latin alphabet
 
-{{< example github="components/kbd.md" show_dark=true >}}
+```html
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">Q</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">W</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">E</kbd>
@@ -178,13 +165,13 @@ Use this example if you need to show a key from the latin alphabet
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">B</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">N</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">M</kbd>
-{{< /example >}}
+```
 
 ## Number keys
 
 Use this example to show a key inside a KBD component from the english numeral system.
 
-{{< example github="components/kbd.md" show_dark=true >}}
+```html
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">1</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">2</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">3</kbd>
@@ -195,13 +182,13 @@ Use this example to show a key inside a KBD component from the english numeral s
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">8</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">9</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">0</kbd>
-{{< /example >}}
+```
 
 ## Function keys
 
 This example can be used to denote function keys inside the KBD component.
 
-{{< example github="components/kbd.md" show_dark=true >}}
+```html
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">F1</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">F2</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">F3</kbd>
@@ -214,4 +201,4 @@ This example can be used to denote function keys inside the KBD component.
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">F10</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">F11</kbd>
 <kbd class="px-2 py-1.5 text-xs font-semibold text-heading bg-neutral-tertiary border border-default-medium rounded-base">F12</kbd>
-{{< /example >}}
+```

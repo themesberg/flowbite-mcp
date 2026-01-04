@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Rating - Flowbite
-description: Use the rating component to show reviews and testimonials from your users using stars and scores based on multiple styles and sizes
-group: components
-toc: true
-
-previous: Progress bar
-previousLink: components/progress/
-next: Sidebar
-nextLink: components/sidebar/
----
-
 Get started with the rating component to show an aggregate of reviews and scores in the forms of stars or numbers using the utility classes from Tailwind CSS and components from Flowbite.
 
 You can find multiple examples on this page including different styles, sizes, and variants of the rating component and other associated elements such as a comment or card.
@@ -19,7 +6,7 @@ You can find multiple examples on this page including different styles, sizes, a
 
 Use this simple example of a star rating component for showing review results.
 
-{{< example class="flex justify-center" github="components/rating.md" show_dark=true >}}
+```html
 
 <div class="flex items-center space-x-1">
     <svg class="w-5 h-5 text-fg-yellow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
@@ -28,13 +15,13 @@ Use this simple example of a star rating component for showing review results.
     <svg class="w-5 h-5 text-fg-yellow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
     <svg class="w-5 h-5 text-fg-disabled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
 </div>
-{{< /example >}}
+```
 
 ## Rating with text
 
 If you also want to show a text near the stars you can use this example as a reference.
 
-{{< example class="flex justify-center" github="components/rating.md" show_dark=true >}}
+```html
 
 <div class="flex items-center">
     <div class="flex items-center space-x-1">
@@ -46,13 +33,13 @@ If you also want to show a text near the stars you can use this example as a ref
     </div>
     <p class="ms-2 text-sm font-medium text-body">4.95 out of 5</p>
 </div>
-{{< /example >}}
+```
 
 ## Rating count
 
 Aggregate more results by using this example to show the amount of reviews and the average score.
 
-{{< example class="flex justify-center" github="components/rating.md" show_dark=true >}}
+```html
 
 <div class="flex items-center">
     <svg class="w-5 h-5 text-fg-yellow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
@@ -60,13 +47,13 @@ Aggregate more results by using this example to show the amount of reviews and t
     <span class="w-1 h-1 mx-1.5 bg-neutral-quaternary rounded-full"></span>
     <a href="#" class="text-sm font-medium text-heading underline hover:no-underline">73 reviews</a>
 </div>
-{{< /example >}}
+```
 
 ## Star sizes
 
 Check out the different sizing options for the star review component from small, medium, and large.
 
-{{< example class="flex flex-col items-center space-y-4" github="components/rating.md" show_dark=true >}}
+```html
 <div class="flex items-center space-x-1">
     <svg class="w-5 h-5 text-fg-yellow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
     <svg class="w-5 h-5 text-fg-yellow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
@@ -88,13 +75,13 @@ Check out the different sizing options for the star review component from small,
     <svg class="w-7 h-7 text-fg-yellow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
     <svg class="w-7 h-7 text-fg-disabled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/></svg>
 </div>
-{{< /example >}}
+```
 
 ## Advanced rating
 
 This advanced rating component can be used to also show how many reviews have been posted for each star rating (eg. 4% for the 2 star ratings, 17% for 4 star rating etc).
 
-{{< example github="components/rating.md" show_dark=true >}}
+```html
 
 <div class="flex items-center mb-3">
     <div class="flex items-center space-x-1">
@@ -142,13 +129,13 @@ This advanced rating component can be used to also show how many reviews have be
     </div>
     <span class="text-sm font-medium text-body">1%</span>
 </div>
-{{< /example >}}
+```
 
 ## Score rating
 
 This component can be used to break up a general rating score into multiple categories using progress bars.
 
-{{< example github="components/rating.md" show_dark=true >}}
+```html
 
 <div class="flex items-center mb-5">
     <p class="bg-brand-softer text-fg-brand-strong text-sm font-semibold inline-flex items-center p-1.5 rounded-base">8.7</p>
@@ -226,13 +213,13 @@ This component can be used to break up a general rating score into multiple cate
         </dl>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Rating comment
 
 Use this component to show a single rating comment and its score alongside other components such as the user profile avatar, name, post date, and more.
 
-{{< example github="components/rating.md" show_dark=true >}}
+```html
 
 <article>
     <div class="flex items-center mb-4">
@@ -261,13 +248,13 @@ Use this component to show a single rating comment and its score alongside other
         </div>
     </aside>
 </article>
-{{< /example >}}
+```
 
 ## Review content
 
 Use this component to show the review content from a user alongside the avatar, location, details, and the score inside a card element.
 
-{{< example github="components/rating.md" show_dark=true >}}
+```html
 
 <article class="md:gap-8 md:grid md:grid-cols-3">
     <div>
@@ -320,4 +307,4 @@ Use this component to show the review content from a user alongside the avatar, 
         </aside>
     </div>
 </article>
-{{< /example >}}
+```

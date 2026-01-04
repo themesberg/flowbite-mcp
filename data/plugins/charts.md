@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Charts - Flowbite
-description: Use the chart and graph components from Flowbite built with Tailwind CSS and ApexCharts to choose from line, area, bar, column, pie, and radial charts and customize them using JavaScript
-group: plugins
-toc: true
-requires_js: true
-
-previous: Horizontal line (HR)
-previousLink: typography/hr/
-next: DataTables
-nextLink: plugins/datatables/
----
-
 The chart components from the Flowbite Library are open-source under the MIT license and they are styled with the utility classes from Tailwind CSS and based on the open-source [ApexCharts](https://apexcharts.com/) library.
 
 We provide an extensive collection of responsive chart types such as area, bar, column, pie, and radial that can help you visualize complex data inside graphs in admin dashboard layouts, analytics, diagrams, and more.
@@ -22,21 +8,21 @@ You can also easily customize the colors, sizes, and options of these charts eit
 
 Before continuing make sure that you have Tailwind CSS, Flowbite and ApexCharts installed in your project.
 
-1. Follow the <a href="{{< ref "getting-started/quickstart" >}}">quickstart guide</a> from Flowbite to install the plugin styles and functionality
+1. Follow the quickstart guide from Flowbite to install the plugin styles and functionality
 
 2. Make sure that you have ApexCharts installed and configured in your project:
 
 Install ApexChart via NPM and save it in your `package.json` file:
 
-{{< code lang="bash" >}}
+```bash
 npm install apexcharts@3.46.0 --save
-{{< /code >}} 
+``` 
 
 Alternatively, you can also just include the CDN link:
 
-{{< code lang="html" file="charts.html" icon="file" >}}
+```html
 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
-{{< /code >}}
+```
 
 Now that you have all the libraries installed you can copy-paste the chart examples below in your code.
 
@@ -44,7 +30,56 @@ Now that you have all the libraries installed you can copy-paste the chart examp
 
 Use this example to show a basic area chart by setting the `type: "area"` option in JavaScript:
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
+```html
+<div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
+  <div class="flex justify-between items-start">
+    <div>
+      <h5 class="text-2xl font-semibold text-heading">32.4k</h5>
+      <p class="text-body">Users this week</p>
+    </div>
+    <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
+      12%
+    </div>
+  </div>
+  <div id="area-chart"></div>
+  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
+    <div class="flex justify-between items-center pt-4 md:pt-6">
+      <!-- Button -->
+      <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+          Last 7 days
+          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="lastDaysdropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
+            </li>
+          </ul>
+      </div>
+      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+        Users Report
+        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+```
+
+```javascript
 // Get the CSS variable --color-brand and convert it to hex for ApexCharts
 const getBrandColor = () => {
   // Get the computed style of the document's root element
@@ -127,28 +162,61 @@ if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') 
   const chart = new ApexCharts(document.getElementById("area-chart"), options);
   chart.render();
 }
-` >}}
+```
+
+## Line chart
+
+To create a double line chart check the example below by setting the chart type to `type: "line"` and copy the HTML markup and JS options to automatically style and populate the chart with data:
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
-  <div class="flex justify-between items-start">
+  <div class="flex justify-between mb-4 md:mb-6">
+    <div class="grid gap-4 grid-cols-2">
+      <div>
+        <h5 class="inline-flex items-center text-body">Clicks
+          <svg data-popover-target="clicks-info" data-popover-placement="bottom" class="w-4 h-4 text-body hover:text-heading cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <div data-popover id="clicks-info" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
+              <div>
+                  <h3 class="font-semibold text-heading mb-2">Activity growth - Incremental</h3>
+                  <p class="mb-4">Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
+                  <h3 class="font-semibold text-heading mb-2">Calculation</h3>
+                  <p class="mb-4">For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
+                  <a href="#" class="flex items-center font-medium text-fg-brand hover:underline">
+                      Read more 
+                      <svg class="w-4 h-4 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+                  </a>
+              </div>
+              <div data-popper-arrow></div>
+          </div>
+        </h5>
+        <p class="text-heading text-2xl font-semibold">42,3k</p>
+      </div>
+      <div>
+        <h5 class="inline-flex items-center text-body">CPC
+          <svg data-popover-target="cpc-info" data-popover-placement="bottom" class="w-4 h-4 text-body hover:text-heading cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <div data-popover id="cpc-info" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
+              <div>
+                  <h3 class="font-semibold text-heading mb-2">CPC Info</h3>
+                  <p class="mb-4">Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
+                  <h3 class="font-semibold text-heading mb-2">Calculation</h3>
+                  <p class="mb-4">For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
+                  <a href="#" class="flex items-center font-medium text-fg-brand hover:underline">
+                      Read more 
+                      <svg class="w-4 h-4 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+                  </a>
+              </div>
+              <div data-popper-arrow></div>
+          </div>
+        </h5>
+        <p class="text-heading text-2xl font-semibold">$5.40</p>
+      </div>
+    </div>
     <div>
-      <h5 class="text-2xl font-semibold text-heading">32.4k</h5>
-      <p class="text-body">Users this week</p>
-    </div>
-    <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
-      12%
-    </div>
-  </div>
-  <div id="area-chart"></div>
-  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
-    <div class="flex justify-between items-center pt-4 md:pt-6">
-      <!-- Button -->
-      <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
-          Last 7 days
-          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
-      </button>
-      <!-- Dropdown menu -->
-      <div id="lastDaysdropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+    <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown" data-dropdown-placement="bottom" type="button" class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+      Last week
+      <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+    </button>
+    <div id="lastDaysdropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
           <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
@@ -167,20 +235,19 @@ if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') 
             </li>
           </ul>
       </div>
-      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
-        Users Report
-        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-      </a>
     </div>
   </div>
+  <div id="line-chart"></div>
+  <div class="items-center border-light border-t justify-between mt-4 md:mt-6 pt-4 md:pt-6">
+    <button type="button" class="inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+      <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z"/></svg>
+      View full report
+    </button>
+  </div>
 </div>
-{{< /example >}}
+```
 
-## Line chart
-
-To create a double line chart check the example below by setting the chart type to `type: "line"` and copy the HTML markup and JS options to automatically style and populate the chart with data:
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
+```javascript
 // Get the CSS variable --color-brand and convert it to hex for ApexCharts
 const getBrandColor = () => {
   // Get the computed style of the document's root element
@@ -275,56 +342,53 @@ if (document.getElementById("line-chart") && typeof ApexCharts !== 'undefined') 
   const chart = new ApexCharts(document.getElementById("line-chart"), options);
   chart.render();
 }
-` >}}
+```
+
+## Column chart
+
+You can represent multiple data entries using columns by setting the `type: "bar"` option and also by updating the `horizontal` key value to `false` in JavaScript to adjust them vertically as columns:
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
-  <div class="flex justify-between mb-4 md:mb-6">
-    <div class="grid gap-4 grid-cols-2">
-      <div>
-        <h5 class="inline-flex items-center text-body">Clicks
-          <svg data-popover-target="clicks-info" data-popover-placement="bottom" class="w-4 h-4 text-body hover:text-heading cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-          <div data-popover id="clicks-info" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
-              <div>
-                  <h3 class="font-semibold text-heading mb-2">Activity growth - Incremental</h3>
-                  <p class="mb-4">Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
-                  <h3 class="font-semibold text-heading mb-2">Calculation</h3>
-                  <p class="mb-4">For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
-                  <a href="#" class="flex items-center font-medium text-fg-brand hover:underline">
-                      Read more 
-                      <svg class="w-4 h-4 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-                  </a>
-              </div>
-              <div data-popper-arrow></div>
-          </div>
-        </h5>
-        <p class="text-heading text-2xl font-semibold">42,3k</p>
+  <div class="flex justify-between pb-4 mb-4 border-b border-light">
+    <div class="flex items-center">
+      <div class="w-12 h-12 bg-neutral-primary-medium border border-default-medium flex items-center justify-center rounded-full me-3">
+        <svg class="w-7 h-7 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/></svg>
       </div>
       <div>
-        <h5 class="inline-flex items-center text-body">CPC
-          <svg data-popover-target="cpc-info" data-popover-placement="bottom" class="w-4 h-4 text-body hover:text-heading cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-          <div data-popover id="cpc-info" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
-              <div>
-                  <h3 class="font-semibold text-heading mb-2">CPC Info</h3>
-                  <p class="mb-4">Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
-                  <h3 class="font-semibold text-heading mb-2">Calculation</h3>
-                  <p class="mb-4">For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
-                  <a href="#" class="flex items-center font-medium text-fg-brand hover:underline">
-                      Read more 
-                      <svg class="w-4 h-4 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-                  </a>
-              </div>
-              <div data-popper-arrow></div>
-          </div>
-        </h5>
-        <p class="text-heading text-2xl font-semibold">$5.40</p>
+        <h5 class="text-2xl font-semibold text-heading">3.4k</h5>
+        <p class="text-sm text-body">Leads generated per week</p>
       </div>
     </div>
     <div>
-    <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown" data-dropdown-placement="bottom" type="button" class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
-      Last week
-      <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
-    </button>
-    <div id="lastDaysdropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
+      <span class="inline-flex items-center bg-success-soft border border-success-subtle text-fg-success-strong text-xs font-medium px-1.5 py-0.5 rounded">
+        <svg class="w-4 h-4 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
+        42.5%
+      </span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2">
+    <dl class="flex items-center">
+        <dt class="text-body text-sm font-normal me-1">Money spent:</dt>
+        <dd class="text-heading text-sm font-semibold">$3,232</dd>
+    </dl>
+    <dl class="flex items-center justify-end">
+        <dt class="text-body text-sm font-normal me-1">Conversion:</dt>
+        <dd class="text-heading text-sm font-semibold">1.2%</dd>
+    </dl>
+  </div>
+  <div id="column-chart"></div>
+  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
+    <div class="flex justify-between items-center pt-4 md:pt-6">
+      <!-- Button -->
+      <button id="dropdownLastDaysButton" data-dropdown-toggle="LastDaysdropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+          Last 7 days
+          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="LastDaysdropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDaysButton">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -342,24 +406,17 @@ if (document.getElementById("line-chart") && typeof ApexCharts !== 'undefined') 
             </li>
           </ul>
       </div>
+      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+        Leads Report
+        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+      </a>
     </div>
   </div>
-  <div id="line-chart"></div>
-  <div class="items-center border-light border-t justify-between mt-4 md:mt-6 pt-4 md:pt-6">
-    <button type="button" class="inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
-      <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z"/></svg>
-      View full report
-    </button>
-  </div>
 </div>
-{{< /example >}}
+```
 
-## Column chart
-
-You can represent multiple data entries using columns by setting the `type: "bar"` option and also by updating the `horizontal` key value to `false` in JavaScript to adjust them vertically as columns:
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -485,47 +542,50 @@ You can represent multiple data entries using columns by setting the `type: "bar
     const chart = new ApexCharts(document.getElementById("column-chart"), options);
     chart.render();
   }
-` >}}
+```
+
+## Bar chart
+
+Create a horizontal bar chart with as many data series as you like by setting the `type: "bar"` chart type via JavaScript and copy the example below into your project. You can enable or disable the labels on the X or Y axis by setting `show` to `false` for the `xaxis` and `yaxis` objects of the chart options.
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
-  <div class="flex justify-between pb-4 mb-4 border-b border-light">
-    <div class="flex items-center">
-      <div class="w-12 h-12 bg-neutral-primary-medium border border-default-medium flex items-center justify-center rounded-full me-3">
-        <svg class="w-7 h-7 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/></svg>
-      </div>
-      <div>
-        <h5 class="text-2xl font-semibold text-heading">3.4k</h5>
-        <p class="text-sm text-body">Leads generated per week</p>
-      </div>
-    </div>
+  <div class="flex justify-between border-light border-b pb-3">
+    <dl>
+      <dt class="text-body">Profit</dt>
+      <dd class="text-2xl font-semibold text-heading">$5,405</dd>
+    </dl>
     <div>
       <span class="inline-flex items-center bg-success-soft border border-success-subtle text-fg-success-strong text-xs font-medium px-1.5 py-0.5 rounded">
         <svg class="w-4 h-4 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
-        42.5%
+        Profit rate 23.5%
       </span>
     </div>
   </div>
 
-  <div class="grid grid-cols-2">
-    <dl class="flex items-center">
-        <dt class="text-body text-sm font-normal me-1">Money spent:</dt>
-        <dd class="text-heading text-sm font-semibold">$3,232</dd>
+  <div class="grid grid-cols-2 py-3">
+    <dl>
+      <dt class="text-body">Income</dt>
+      <dd class="text-lg font-semibold text-fg-success">$23,635</dd>
     </dl>
-    <dl class="flex items-center justify-end">
-        <dt class="text-body text-sm font-normal me-1">Conversion:</dt>
-        <dd class="text-heading text-sm font-semibold">1.2%</dd>
+    <dl>
+      <dt class="text-body">Expense</dt>
+      <dd class="text-lg font-semibold text-fg-danger">-$18,230</dd>
     </dl>
   </div>
-  <div id="column-chart"></div>
+
+  <div id="bar-chart"></div>
+    
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDaysButton" data-dropdown-toggle="LastDaysdropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays3Button" data-dropdown-toggle="LastDays3dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDaysdropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDaysButton">
+      <div id="LastDays3dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays3Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -544,19 +604,15 @@ You can represent multiple data entries using columns by setting the `type: "bar
           </ul>
       </div>
       <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
-        Leads Report
+        Revenue Report
         <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
       </a>
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-## Bar chart
-
-Create a horizontal bar chart with as many data series as you like by setting the `type: "bar"` chart type via JavaScript and copy the example below into your project. You can enable or disable the labels on the X or Y axis by setting `show` to `false` for the `xaxis` and `yaxis` objects of the chart options.
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
+```javascript
 const options = {
   series: [
     {
@@ -655,167 +711,13 @@ if(document.getElementById("bar-chart") && typeof ApexCharts !== 'undefined') {
   const chart = new ApexCharts(document.getElementById("bar-chart"), options);
   chart.render();
 }
-` >}}
-<div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
-  <div class="flex justify-between border-light border-b pb-3">
-    <dl>
-      <dt class="text-body">Profit</dt>
-      <dd class="text-2xl font-semibold text-heading">$5,405</dd>
-    </dl>
-    <div>
-      <span class="inline-flex items-center bg-success-soft border border-success-subtle text-fg-success-strong text-xs font-medium px-1.5 py-0.5 rounded">
-        <svg class="w-4 h-4 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
-        Profit rate 23.5%
-      </span>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-2 py-3">
-    <dl>
-      <dt class="text-body">Income</dt>
-      <dd class="text-lg font-semibold text-fg-success">$23,635</dd>
-    </dl>
-    <dl>
-      <dt class="text-body">Expense</dt>
-      <dd class="text-lg font-semibold text-fg-danger">-$18,230</dd>
-    </dl>
-  </div>
-
-  <div id="bar-chart"></div>
-    
-  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
-    <div class="flex justify-between items-center pt-4 md:pt-6">
-      <!-- Button -->
-      <button id="dropdownLastDays3Button" data-dropdown-toggle="LastDays3dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
-          Last 7 days
-          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
-      </button>
-      <!-- Dropdown menu -->
-      <div id="LastDays3dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays3Button">
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
-            </li>
-          </ul>
-      </div>
-      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
-        Revenue Report
-        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
-{{< /example >}}
+```
 
 ## Pie chart
 
 Create a pie chart with multiple data series by setting the `type: "pie"` chart type option via JavaScript and copy the following HTML markup code and options from below:
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
-  const getBrandColor = () => {
-    // Get the computed style of the document's root element
-    const computedStyle = getComputedStyle(document.documentElement);
-    
-    // Get the value of the --color-brand CSS variable
-    return computedStyle.getPropertyValue('--color-fg-brand').trim() || "#1447E6";
-  };
-
-  const getBrandSecondaryColor = () => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    return computedStyle.getPropertyValue('--color-fg-brand-subtle').trim() || "#1447E6";
-  };
-
-  const getBrandTertiaryColor = () => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    return computedStyle.getPropertyValue('--color-fg-brand-strong').trim() || "#1447E6";
-  };
-
-  const getNeutralPrimaryColor = () => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    return computedStyle.getPropertyValue('--color-neutral-primary').trim() || "#1447E6";
-  };
-
-  const brandColor = getBrandColor();
-  const brandSecondaryColor = getBrandSecondaryColor();
-  const brandTertiaryColor = getBrandTertiaryColor();
-  const neutralPrimaryColor = getNeutralPrimaryColor();
-
-  const getChartOptions = () => {
-    return {
-      series: [52.8, 26.8, 20.4],
-      colors: [brandColor, brandSecondaryColor, brandTertiaryColor],
-      chart: {
-        height: 420,
-        width: "100%",
-        type: "pie",
-      },
-      stroke: {
-        colors: [neutralPrimaryColor],
-        lineCap: "",
-      },
-      plotOptions: {
-        pie: {
-          labels: {
-            show: true,
-          },
-          size: "100%",
-          dataLabels: {
-            offset: -25
-          }
-        },
-      },
-      labels: ["Direct", "Organic search", "Referrals"],
-      dataLabels: {
-        enabled: true,
-        style: {
-          fontFamily: "Inter, sans-serif",
-        },
-      },
-      legend: {
-        position: "bottom",
-        fontFamily: "Inter, sans-serif",
-      },
-      yaxis: {
-        labels: {
-          formatter: function (value) {
-            return value + "%"
-          },
-        },
-      },
-      xaxis: {
-        labels: {
-          formatter: function (value) {
-            return value  + "%"
-          },
-        },
-        axisTicks: {
-          show: false,
-        },
-        axisBorder: {
-          show: false,
-        },
-      },
-    }
-  }
-
-  if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
-    const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
-    chart.render();
-  }
-` >}}
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
 
   <div class="flex justify-between items-start w-full">
@@ -933,7 +835,101 @@ Create a pie chart with multiple data series by setting the `type: "pie"` chart 
   </div>
 
 </div>
-{{< /example >}}
+```
+
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
+  const getBrandColor = () => {
+    // Get the computed style of the document's root element
+    const computedStyle = getComputedStyle(document.documentElement);
+    
+    // Get the value of the --color-brand CSS variable
+    return computedStyle.getPropertyValue('--color-fg-brand').trim() || "#1447E6";
+  };
+
+  const getBrandSecondaryColor = () => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue('--color-fg-brand-subtle').trim() || "#1447E6";
+  };
+
+  const getBrandTertiaryColor = () => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue('--color-fg-brand-strong').trim() || "#1447E6";
+  };
+
+  const getNeutralPrimaryColor = () => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue('--color-neutral-primary').trim() || "#1447E6";
+  };
+
+  const brandColor = getBrandColor();
+  const brandSecondaryColor = getBrandSecondaryColor();
+  const brandTertiaryColor = getBrandTertiaryColor();
+  const neutralPrimaryColor = getNeutralPrimaryColor();
+
+  const getChartOptions = () => {
+    return {
+      series: [52.8, 26.8, 20.4],
+      colors: [brandColor, brandSecondaryColor, brandTertiaryColor],
+      chart: {
+        height: 420,
+        width: "100%",
+        type: "pie",
+      },
+      stroke: {
+        colors: [neutralPrimaryColor],
+        lineCap: "",
+      },
+      plotOptions: {
+        pie: {
+          labels: {
+            show: true,
+          },
+          size: "100%",
+          dataLabels: {
+            offset: -25
+          }
+        },
+      },
+      labels: ["Direct", "Organic search", "Referrals"],
+      dataLabels: {
+        enabled: true,
+        style: {
+          fontFamily: "Inter, sans-serif",
+        },
+      },
+      legend: {
+        position: "bottom",
+        fontFamily: "Inter, sans-serif",
+      },
+      yaxis: {
+        labels: {
+          formatter: function (value) {
+            return value + "%"
+          },
+        },
+      },
+      xaxis: {
+        labels: {
+          formatter: function (value) {
+            return value  + "%"
+          },
+        },
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
+      },
+    }
+  }
+
+  if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
+    const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
+    chart.render();
+  }
+```
 
 ## Donut chart
 
@@ -941,8 +937,97 @@ Set the JavaScript API option to `type: "donut"` to create a donut chart and cop
 
 In this example we also show how you can set event listeners on the UI components from Flowbite to update the data series from the chart by clicking the device checkboxes.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```html
+<div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
+  
+  <div class="flex justify-between mb-3">
+        <div class="flex justify-center items-center">
+          <h5 class="text-xl font-semibold text-heading me-1">Website traffic</h5>
+          <svg data-popover-target="traffic-info-2" data-popover-placement="bottom" class="w-4 h-4 text-body hover:text-heading cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <div data-popover id="traffic-info-2" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
+          <div>
+            <h3 class="font-semibold text-heading mb-2">Activity growth - Incremental</h3>
+            <p class="mb-4">Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
+            <h3 class="font-semibold text-heading mb-2">Calculation</h3>
+            <p class="mb-4">For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
+                <a href="#" class="flex items-center font-medium text-fg-brand hover:underline">
+                  Read more 
+                  <svg class="w-4 h-4 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+                </a>
+          </div>
+          <div data-popper-arrow></div>
+          </div>
+        </div>
+      <div>
+        <button type="button" data-tooltip-target="data-tooltip" data-tooltip-placement="bottom" class="hidden sm:inline-flex items-center justify-center text-body hover:text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm w-9 h-9 focus:outline-none">
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/></svg>
+          <span class="sr-only">Download data</span>
+        </button>
+        <div id="data-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+            Download CSV
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+      </div>
+  </div>
+
+  <div>
+    <div class="flex" id="devices">
+      <div class="flex items-center me-4">
+          <input id="desktop" type="checkbox" value="desktop" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+          <label for="desktop" class="select-none ms-2 text-sm font-medium text-heading">Desktop</label>
+      </div>
+      <div class="flex items-center me-4">
+          <input id="tablet" type="checkbox" value="tablet" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+          <label for="tablet" class="select-none ms-2 text-sm font-medium text-heading">Tablet</label>
+      </div>
+      <div class="flex items-center me-4">
+          <input id="mobile" type="checkbox" value="mobile" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+          <label for="mobile" class="select-none ms-2 text-sm font-medium text-heading">Mobile</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Donut Chart -->
+  <div class="py-6" id="donut-chart"></div>
+
+  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
+    <div class="flex justify-between items-center pt-4 md:pt-6">
+      <!-- Button -->
+      <button id="dropdownLastDays5Button" data-dropdown-toggle="LastDays5dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+          Last 7 days
+          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="LastDays5dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays5Button">
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
+            </li>
+          </ul>
+      </div>
+      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+        Traffic analysis
+        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+```
+
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -1084,193 +1169,13 @@ In this example we also show how you can set event listeners on the UI component
         checkbox.addEventListener('change', (event) => handleCheckboxChange(event, chart));
     });
   }
-` >}}
-<div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
-  
-  <div class="flex justify-between mb-3">
-        <div class="flex justify-center items-center">
-          <h5 class="text-xl font-semibold text-heading me-1">Website traffic</h5>
-          <svg data-popover-target="traffic-info-2" data-popover-placement="bottom" class="w-4 h-4 text-body hover:text-heading cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-          <div data-popover id="traffic-info-2" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
-          <div>
-            <h3 class="font-semibold text-heading mb-2">Activity growth - Incremental</h3>
-            <p class="mb-4">Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
-            <h3 class="font-semibold text-heading mb-2">Calculation</h3>
-            <p class="mb-4">For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
-                <a href="#" class="flex items-center font-medium text-fg-brand hover:underline">
-                  Read more 
-                  <svg class="w-4 h-4 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-                </a>
-          </div>
-          <div data-popper-arrow></div>
-          </div>
-        </div>
-      <div>
-        <button type="button" data-tooltip-target="data-tooltip" data-tooltip-placement="bottom" class="hidden sm:inline-flex items-center justify-center text-body hover:text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm w-9 h-9 focus:outline-none">
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/></svg>
-          <span class="sr-only">Download data</span>
-        </button>
-        <div id="data-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-            Download CSV
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
-      </div>
-  </div>
-
-  <div>
-    <div class="flex" id="devices">
-      <div class="flex items-center me-4">
-          <input id="desktop" type="checkbox" value="desktop" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-          <label for="desktop" class="select-none ms-2 text-sm font-medium text-heading">Desktop</label>
-      </div>
-      <div class="flex items-center me-4">
-          <input id="tablet" type="checkbox" value="tablet" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-          <label for="tablet" class="select-none ms-2 text-sm font-medium text-heading">Tablet</label>
-      </div>
-      <div class="flex items-center me-4">
-          <input id="mobile" type="checkbox" value="mobile" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-          <label for="mobile" class="select-none ms-2 text-sm font-medium text-heading">Mobile</label>
-      </div>
-    </div>
-  </div>
-
-  <!-- Donut Chart -->
-  <div class="py-6" id="donut-chart"></div>
-
-  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
-    <div class="flex justify-between items-center pt-4 md:pt-6">
-      <!-- Button -->
-      <button id="dropdownLastDays5Button" data-dropdown-toggle="LastDays5dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
-          Last 7 days
-          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
-      </button>
-      <!-- Dropdown menu -->
-      <div id="LastDays5dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays5Button">
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
-            </li>
-          </ul>
-      </div>
-      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
-        Traffic analysis
-        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
-{{< /example >}}
+```
 
 ## Radial chart
 
 To create a radial chart with multiple data entries you need to set the `type: "radialBar"` when initialising a new chart and introduce multiple series and labels to the options and copy the following code:
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
-  const getBrandColor = () => {
-    // Get the computed style of the document's root element
-    const computedStyle = getComputedStyle(document.documentElement);
-    
-    // Get the value of the --color-brand CSS variable
-    return computedStyle.getPropertyValue('--color-fg-brand').trim() || "#1447E6";
-  };
-
-  const getWarningColor = () => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    return computedStyle.getPropertyValue('--color-warning').trim() || "#1447E6";
-  };
-
-  const getSuccessColor = () => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    return computedStyle.getPropertyValue('--color-success').trim() || "#1447E6";
-  };
-  const getNeutralSecondaryMediumColor = () => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    return computedStyle.getPropertyValue('--color-neutral-secondary-medium').trim() || "#1447E6";
-  };
-  
-
-  const brandColor = getBrandColor();
-  const warningColor = getWarningColor();
-  const successColor = getSuccessColor();
-  const neutralSecondaryMediumColor = getNeutralSecondaryMediumColor();
-
-  const getChartOptions = () => {
-    return {
-      series: [90, 85, 70],
-      colors: [brandColor, warningColor, successColor],
-      chart: {
-        height: "350px",
-        width: "100%",
-        type: "radialBar",
-        sparkline: {
-          enabled: true,
-        },
-      },
-      plotOptions: {
-        radialBar: {
-          track: {
-            background: neutralSecondaryMediumColor,
-          },
-          dataLabels: {
-            show: false,
-          },
-          hollow: {
-            margin: 0,
-            size: "32%",
-          }
-        },
-      },
-      grid: {
-        show: false,
-        strokeDashArray: 4,
-        padding: {
-          left: 2,
-          right: 2,
-          top: -23,
-          bottom: -20,
-        },
-      },
-      labels: ["To do", "In progress", "Done"],
-      legend: {
-        show: true,
-        position: "bottom",
-        fontFamily: "Inter, sans-serif",
-      },
-      tooltip: {
-        enabled: true,
-        x: {
-          show: false,
-        },
-      },
-      yaxis: {
-        show: false,
-        labels: {
-          formatter: function (value) {
-            return value + '%';
-          }
-        }
-      }
-    }
-  }
-
-  if (document.getElementById("radial-chart") && typeof ApexCharts !== 'undefined') {
-    const chart = new ApexCharts(document.querySelector("#radial-chart"), getChartOptions());
-    chart.render();
-  }
-` >}}
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between mb-4 md:mb-6">
     <div class="flex items-center">
@@ -1372,7 +1277,102 @@ To create a radial chart with multiple data entries you need to set the `type: "
     </div>
   </div>
 </div>
-{{< /example >}}
+```
+
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
+  const getBrandColor = () => {
+    // Get the computed style of the document's root element
+    const computedStyle = getComputedStyle(document.documentElement);
+    
+    // Get the value of the --color-brand CSS variable
+    return computedStyle.getPropertyValue('--color-fg-brand').trim() || "#1447E6";
+  };
+
+  const getWarningColor = () => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue('--color-warning').trim() || "#1447E6";
+  };
+
+  const getSuccessColor = () => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue('--color-success').trim() || "#1447E6";
+  };
+  const getNeutralSecondaryMediumColor = () => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue('--color-neutral-secondary-medium').trim() || "#1447E6";
+  };
+  
+
+  const brandColor = getBrandColor();
+  const warningColor = getWarningColor();
+  const successColor = getSuccessColor();
+  const neutralSecondaryMediumColor = getNeutralSecondaryMediumColor();
+
+  const getChartOptions = () => {
+    return {
+      series: [90, 85, 70],
+      colors: [brandColor, warningColor, successColor],
+      chart: {
+        height: "350px",
+        width: "100%",
+        type: "radialBar",
+        sparkline: {
+          enabled: true,
+        },
+      },
+      plotOptions: {
+        radialBar: {
+          track: {
+            background: neutralSecondaryMediumColor,
+          },
+          dataLabels: {
+            show: false,
+          },
+          hollow: {
+            margin: 0,
+            size: "32%",
+          }
+        },
+      },
+      grid: {
+        show: false,
+        strokeDashArray: 4,
+        padding: {
+          left: 2,
+          right: 2,
+          top: -23,
+          bottom: -20,
+        },
+      },
+      labels: ["To do", "In progress", "Done"],
+      legend: {
+        show: true,
+        position: "bottom",
+        fontFamily: "Inter, sans-serif",
+      },
+      tooltip: {
+        enabled: true,
+        x: {
+          show: false,
+        },
+      },
+      yaxis: {
+        show: false,
+        labels: {
+          formatter: function (value) {
+            return value + '%';
+          }
+        }
+      }
+    }
+  }
+
+  if (document.getElementById("radial-chart") && typeof ApexCharts !== 'undefined') {
+    const chart = new ApexCharts(document.querySelector("#radial-chart"), getChartOptions());
+    chart.render();
+  }
+```
 
 ## Options
 
@@ -1382,8 +1382,57 @@ Learn more about how you can customize the charts including the data, labels, le
 
 You can add multiple data sets by using the `series` object and setting a name, array of data and custom color of choice. In this example we added two data series based on a blue and purple color.
 
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```html
+<div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
+  <div class="flex justify-between">
+    <div>
+      <h5 class="text-2xl font-bold text-heading">$12,423</h5>
+      <p class="text-body">Sales this week</p>
+    </div>
+    <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
+      12%
+    </div>
+  </div>
+  <div id="data-series-chart"></div>
+  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
+    <div class="flex justify-between items-center pt-4 md:pt-6">
+      <!-- Button -->
+      <button id="dropdownLastDays8Button" data-dropdown-toggle="LastDays8dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+          Last 7 days
+          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="LastDays8dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays8Button">
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
+            </li>
+          </ul>
+      </div>
+      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+        Progress report
+        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+```
+
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -1485,7 +1534,13 @@ You can add multiple data sets by using the `series` object and setting a name, 
   const chart = new ApexCharts(document.getElementById("data-series-chart"), options);
   chart.render();
   }
-` >}}
+```
+
+### Labels
+
+Show labels for the X and Y axis by enabling the `xaxis: {show: true}` and `yaxis: {show: true}` and customize the appearance of the labels by adding Tailwind CSS utility classes to the `cssClass` object based on the following example:
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between">
     <div>
@@ -1497,17 +1552,17 @@ You can add multiple data sets by using the `series` object and setting a name, 
       12%
     </div>
   </div>
-  <div id="data-series-chart"></div>
+  <div id="labels-chart" class="py-4 md:py-6"></div>
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDays8Button" data-dropdown-toggle="LastDays8dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays9Button" data-dropdown-toggle="LastDays9dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDays8dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays8Button">
+      <div id="LastDays9dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays9Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -1532,14 +1587,10 @@ You can add multiple data sets by using the `series` object and setting a name, 
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-### Labels
-
-Show labels for the X and Y axis by enabling the `xaxis: {show: true}` and `yaxis: {show: true}` and customize the appearance of the labels by adding Tailwind CSS utility classes to the `cssClass` object based on the following example:
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -1648,7 +1699,13 @@ Show labels for the X and Y axis by enabling the `xaxis: {show: true}` and `yaxi
   const chart = new ApexCharts(document.getElementById("labels-chart"), options);
   chart.render();
   }
-` >}}
+```
+
+### Legends
+
+Automatically show the legend indicators of the chart by setting the `legend: { show: true }` value when configuring the options via JavaScript. You can also set position of the legend by using the `position: {x}` option inside the legend object to place it to the top or bottom side of the chart.  
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between">
     <div>
@@ -1660,17 +1717,17 @@ Show labels for the X and Y axis by enabling the `xaxis: {show: true}` and `yaxi
       12%
     </div>
   </div>
-  <div id="labels-chart" class="py-4 md:py-6"></div>
+  <div id="legend-chart" class="py-4 md:py-6"></div>
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDays9Button" data-dropdown-toggle="LastDays9dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays10Button" data-dropdown-toggle="LastDays10dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDays9dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays9Button">
+      <div id="LastDays10dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays10Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -1695,14 +1752,10 @@ Show labels for the X and Y axis by enabling the `xaxis: {show: true}` and `yaxi
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-### Legends
-
-Automatically show the legend indicators of the chart by setting the `legend: { show: true }` value when configuring the options via JavaScript. You can also set position of the legend by using the `position: {x}` option inside the legend object to place it to the top or bottom side of the chart.  
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -1804,7 +1857,16 @@ Automatically show the legend indicators of the chart by setting the `legend: { 
   const chart = new ApexCharts(document.getElementById("legend-chart"), options);
   chart.render();
   }
-` >}}
+```
+
+### Tooltip
+
+Enable the tooltip that is shown when hovering over a data set by setting `{tooltip: {enabled: true}}` and customize the tooltip component via the following options:
+
+- `x: {show: false}` will show or hide the X axis data
+- `y: {show: true}` will show or hide the Y axis data
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between">
     <div>
@@ -1816,17 +1878,17 @@ Automatically show the legend indicators of the chart by setting the `legend: { 
       12%
     </div>
   </div>
-  <div id="legend-chart" class="py-4 md:py-6"></div>
+  <div id="tooltip-chart" class="py-4 md:py-6"></div>
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDays10Button" data-dropdown-toggle="LastDays10dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays11Button" data-dropdown-toggle="LastDays11dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDays10dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays10Button">
+      <div id="LastDays11dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays11Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -1851,17 +1913,10 @@ Automatically show the legend indicators of the chart by setting the `legend: { 
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-### Tooltip
-
-Enable the tooltip that is shown when hovering over a data set by setting `{tooltip: {enabled: true}}` and customize the tooltip component via the following options:
-
-- `x: {show: false}` will show or hide the X axis data
-- `y: {show: true}` will show or hide the Y axis data
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -1966,7 +2021,13 @@ Enable the tooltip that is shown when hovering over a data set by setting `{tool
   const chart = new ApexCharts(document.getElementById("tooltip-chart"), options);
   chart.render();
   }
-` >}}
+```
+
+### Grid
+
+Add a grid layout of dashed lines to improve the readability of the data entries for the charts by configuring the `{grid: { show: true }}` object and customize the appearance via the `strokeDashArray` object.
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between">
     <div>
@@ -1978,17 +2039,17 @@ Enable the tooltip that is shown when hovering over a data set by setting `{tool
       12%
     </div>
   </div>
-  <div id="tooltip-chart" class="py-4 md:py-6"></div>
+  <div id="grid-chart" class="py-4 md:py-6"></div>
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDays11Button" data-dropdown-toggle="LastDays11dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays12Button" data-dropdown-toggle="LastDays12dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDays11dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays11Button">
+      <div id="LastDays12dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays12Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -2013,14 +2074,10 @@ Enable the tooltip that is shown when hovering over a data set by setting `{tool
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-### Grid
-
-Add a grid layout of dashed lines to improve the readability of the data entries for the charts by configuring the `{grid: { show: true }}` object and customize the appearance via the `strokeDashArray` object.
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -2122,7 +2179,13 @@ Add a grid layout of dashed lines to improve the readability of the data entries
   const chart = new ApexCharts(document.getElementById("grid-chart"), options);
   chart.render();
   }
-` >}}
+```
+
+### Data labels
+
+Show data points on the chart by enable the `dataLabels: {enabled: true}` object when configuring the options via JavaScript and customize the appearance based on the following example:
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between">
     <div>
@@ -2134,17 +2197,17 @@ Add a grid layout of dashed lines to improve the readability of the data entries
       12%
     </div>
   </div>
-  <div id="grid-chart" class="py-4 md:py-6"></div>
+  <div id="data-labels-chart" class="py-4 md:py-6"></div>
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDays12Button" data-dropdown-toggle="LastDays12dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays13Button" data-dropdown-toggle="LastDays13dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDays12dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays12Button">
+      <div id="LastDays13dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays13Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -2169,14 +2232,10 @@ Add a grid layout of dashed lines to improve the readability of the data entries
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-### Data labels
-
-Show data points on the chart by enable the `dataLabels: {enabled: true}` object when configuring the options via JavaScript and customize the appearance based on the following example:
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -2282,7 +2341,13 @@ Show data points on the chart by enable the `dataLabels: {enabled: true}` object
   const chart = new ApexCharts(document.getElementById("data-labels-chart"), options);
   chart.render();
   }
-` >}}
+```
+
+### Format data
+
+If you want to format and prefix your data with something such as a currency sign you can do that by using the `formatter` function. For example, here we use the euro ("€") sign instead of the dollar ("$").
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between">
     <div>
@@ -2294,17 +2359,17 @@ Show data points on the chart by enable the `dataLabels: {enabled: true}` object
       12%
     </div>
   </div>
-  <div id="data-labels-chart" class="py-4 md:py-6"></div>
+  <div id="main-chart" class="py-4 md:py-6"></div>
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDays13Button" data-dropdown-toggle="LastDays13dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays14Button" data-dropdown-toggle="LastDays14dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDays13dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays13Button">
+      <div id="LastDays14dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays14Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -2329,14 +2394,10 @@ Show data points on the chart by enable the `dataLabels: {enabled: true}` object
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-### Format data
-
-If you want to format and prefix your data with something such as a currency sign you can do that by using the `formatter` function. For example, here we use the euro ("€") sign instead of the dollar ("$").
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -2435,7 +2496,13 @@ If you want to format and prefix your data with something such as a currency sig
   const chart = new ApexCharts(document.getElementById("main-chart"), options);
   chart.render();
   }
-` >}}
+```
+
+### Chart size
+
+You can set the size (width and height) of the chart by passing the `width: {size}` and `height: {size}` options via JavaScript to the chart object using pixels or percentages:
+
+```html
 <div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
   <div class="flex justify-between">
     <div>
@@ -2447,17 +2514,17 @@ If you want to format and prefix your data with something such as a currency sig
       12%
     </div>
   </div>
-  <div id="main-chart" class="py-4 md:py-6"></div>
+  <div id="size-chart" class="[&>div]:mx-auto py-4 md:py-6"></div>
   <div class="grid grid-cols-1 items-center border-light border-t justify-between">
     <div class="flex justify-between items-center pt-4 md:pt-6">
       <!-- Button -->
-      <button id="dropdownLastDays14Button" data-dropdown-toggle="LastDays14dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+      <button id="dropdownLastDays15Button" data-dropdown-toggle="LastDays15dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
           Last 7 days
           <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
       </button>
       <!-- Dropdown menu -->
-      <div id="LastDays14dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays14Button">
+      <div id="LastDays15dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays15Button">
             <li>
               <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
             </li>
@@ -2482,14 +2549,10 @@ If you want to format and prefix your data with something such as a currency sig
     </div>
   </div>
 </div>
-{{< /example >}}
+```
 
-### Chart size
-
-You can set the size (width and height) of the chart by passing the `width: {size}` and `height: {size}` options via JavaScript to the chart object using pixels or percentages:
-
-{{< example class="flex justify-center bg-neutral-primary" github="plugins/charts.md" show_dark=true charts=true loadJavascriptListener=true disable_init_js=true javascript=`
-  // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+```javascript
+// Get the CSS variable --color-brand and convert it to hex for ApexCharts
   const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -2588,54 +2651,7 @@ You can set the size (width and height) of the chart by passing the `width: {siz
     const chart = new ApexCharts(document.getElementById("size-chart"), options);
     chart.render();
   }
-` >}}
-<div class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
-  <div class="flex justify-between">
-    <div>
-      <h5 class="text-2xl font-bold text-heading">$12,423</h5>
-      <p class="text-body">Sales this week</p>
-    </div>
-    <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
-      12%
-    </div>
-  </div>
-  <div id="size-chart" class="[&>div]:mx-auto py-4 md:py-6"></div>
-  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
-    <div class="flex justify-between items-center pt-4 md:pt-6">
-      <!-- Button -->
-      <button id="dropdownLastDays15Button" data-dropdown-toggle="LastDays15dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
-          Last 7 days
-          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
-      </button>
-      <!-- Dropdown menu -->
-      <div id="LastDays15dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
-          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays15Button">
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
-            </li>
-            <li>
-              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
-            </li>
-          </ul>
-      </div>
-      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
-        Progress report
-        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -2643,24 +2659,24 @@ With the charts from Flowbite and through the API of ApexCharts you can programm
 
 For example, here's how you can initialize a new chart with an options object and call the `render()` function:
 
-{{< code lang="javascript" file="charts.js" icon="file" >}}
+```javascript
 const chart = new ApexCharts(el, options);
 chart.render();
-{{< /code >}}
+```
 
 You can also update the options or data on demand. Here's an example how you can add or remove data:
 
-{{< code lang="javascript" file="charts.js" icon="file" >}}
+```javascript
 const chart = new ApexCharts(el, options);
 
 chart.updateSeries([{
   data: [342, 442, 311, 421, 212]
 }]);
-{{< /code >}}
+```
 
 You can also toggle the visibility of a data series by calling the `toggleSeries()` method:
 
-{{< code lang="javascript" file="charts.js" icon="file" >}}
+```javascript
 const chart = new ApexCharts(el, {
   series: [{
     name: 'Developer Edition'
@@ -2672,7 +2688,7 @@ const chart = new ApexCharts(el, {
 });
 
 chart.toggleSeries('Designer Edition');
-{{< /code >}}
+```
 
 You can read more about all of the methods by checking out the official <a href="https://apexcharts.com/docs/methods/#render" rel="nofollow">ApexCharts documentation</a>.
 

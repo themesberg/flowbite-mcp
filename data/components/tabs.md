@@ -1,23 +1,10 @@
----
-layout: docs
-title: Tailwind CSS Tabs - Flowbite
-description: Use these responsive tabs components to create a secondary navigational hierarchy for your website or toggle content inside a container
-group: components
-toc: true
-
-previous: Tables
-previousLink: components/tables/
-next: Timeline
-nextLink: components/timeline/
----
-
 The tabs component can be used either as an extra navigational hierarchy complementing the main navbar or you can also use it to change content inside a container just below the tabs using the data attributes from Flowbite.
 
 ## Default tabs
 
 Use the following default tabs component example to show a list of links that the user can navigate from on your website.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <ul class="flex flex-wrap text-sm font-medium text-center text-body border-b border-default">
     <li class="me-2">
@@ -36,13 +23,13 @@ Use the following default tabs component example to show a list of links that th
         <a class="inline-block p-4 text-fg-disabled rounded-t-base cursor-not-allowed">Disabled</a>
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Tabs with underline
 
 Use this alternative tabs component style with an underline instead of a background when hovering and being active on a certain page.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <div class="text-sm font-medium text-center text-body border-b border-default">
     <ul class="flex flex-wrap -mb-px">
@@ -63,13 +50,13 @@ Use this alternative tabs component style with an underline instead of a backgro
         </li>
     </ul>
 </div>
-{{< /example >}}
+```
 
 ## Tabs with icons
 
 This is an example of the tabs component where you can also use a SVG powered icon to complement the text within the navigational tabs.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <div class="border-b border-default">
     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-body">
@@ -102,13 +89,13 @@ This is an example of the tabs component where you can also use a SVG powered ic
         </li>
     </ul>
 </div>
-{{< /example >}}
+```
 
 ## Pills tabs
 
 If you want to use pills as a style for the tabs component you can do so by using this example.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <ul class="flex flex-wrap text-sm font-medium text-center text-body">
     <li class="me-2">
@@ -127,13 +114,13 @@ If you want to use pills as a style for the tabs component you can do so by usin
         <a class="inline-block px-4 py-3 text-fg-disabled cursor-not-allowed">Tab 5</a>
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Vertical tabs
 
 Use this example to show a vertically aligned set of tabs on the left side of the page.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <div class="md:flex">
     <ul class="flex-column space-y space-y-4 text-sm font-medium text-body md:me-4 mb-4 md:mb-0">
@@ -175,14 +162,14 @@ Use this example to show a vertically aligned set of tabs on the left side of th
     </div>
 </div>
 
-{{< /example >}}
+```
 
 
 ## Full width tabs
 
 If you want to show the tabs on the full width relative to the parent element you can do so by using the full width tabs component example.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <div class="sm:hidden">
     <label for="tabs" class="sr-only">Select your country</label>
@@ -207,13 +194,13 @@ If you want to show the tabs on the full width relative to the parent element yo
         <a href="#" class="inline-block w-full text-body bg-neutral-primary-soft border border-default rounded-e-base hover:bg-neutral-secondary-medium hover:text-heading focus:ring-4 focus:ring-neutral-secondary-strong font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none">Invoice</a>
     </li>
 </ul>
-{{< /example >}}
+```
 
 ## Tabs with icons
 
 This example can be used to show a list of tabs with icons from our [SVG icons](https://flowbite.com/icons/).
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <div class="sm:hidden">
     <label for="tabs-icons" class="sr-only">Select your country</label>
@@ -250,11 +237,9 @@ This example can be used to show a list of tabs with icons from our [SVG icons](
         </a>
     </li>
 </ul>
-{{< /example >}}
+```
 
-<div class="mt-8 -mb-5">
-  {{< requires_js >}}
-</div>
+
 
 ## Interactive tabs
 
@@ -268,7 +253,7 @@ Apply the `role="tabpanel"` data attribute to every tab content element and set 
 
 You can use multiple tab components on a single page but make sure that the id's are different.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <div class="mb-4 border-b border-default">
     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
@@ -300,13 +285,13 @@ You can use multiple tab components on a single page but make sure that the id's
         <p class="text-sm text-body">This is some placeholder content the <strong class="font-medium text-heading">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Active tab style
 
 Use the `data-tabs-active-classes` and the `data-tabs-inactive-classes` to set the active and inactive tab Tailwind CSS classes. In this example we set the active classes to the purple color instead of blue.
 
-{{< example github="components/tabs.md" show_dark=true >}}
+```html
 
 <div class="mb-4 border-b border-default">
     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple hover:text-purple border-purple" data-tabs-inactive-classes="dark:border-transparent text-body hover:text-fg-brand border-default hover:border-brand" role="tablist">
@@ -338,7 +323,7 @@ Use the `data-tabs-active-classes` and the `data-tabs-inactive-classes` to set t
         <p class="text-sm text-body">This is some placeholder content the <strong class="font-medium text-heading">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -546,7 +531,7 @@ Check out the following example to learn how to initialize and manipulate a Tabs
 
 First of all, create an array of objects that contains the id, trigger element, and content element of each tab, set the active tab based on the id, and optionally set a callback function after a new tab has been shown.
 
-{{< code lang="javascript" file="tabs.js" icon="file" >}}
+```javascript
 const tabsElement = document.getElementById('tabs-example');
 
 // create an array of objects with the id, trigger element (eg. button), and the content element
@@ -590,11 +575,11 @@ const instanceOptions = {
   id: 'tabs-example',
   override: true
 };
-{{< /code >}}
+```
 
 Create a new Tabs object based on the parameters we've previously set.
 
-{{< code lang="javascript" file="tabs.js" icon="file" >}}
+```javascript
 import { Tabs } from 'flowbite';
 
 /*
@@ -604,11 +589,11 @@ import { Tabs } from 'flowbite';
 * instanceOptions (optional)
 */
 const tabs = new Tabs(tabsElement, tabElements, options, instanceOptions);
-{{< /code >}}
+```
 
 Lastly, you can now use the methods on the Tabs object to show another tab element, get a tab element based on the id, or get the current active tab element.
 
-{{< code lang="javascript" file="tabs.js" icon="file" >}}
+```javascript
 // shows another tab element
 tabs.show('dashboard');
 
@@ -617,13 +602,13 @@ tabs.getTab('contacts');
 
 // get the current active tab object
 tabs.getActiveTab();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 You can use this HTML code as an example for the JavaScript code from above.
 
-{{< code lang="html" file="tabs.html" icon="file" >}}
+```html
 <div class="mb-4 border-b border-default dark:border-gray-700">
     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-body dark:text-gray-400" id="tabs-example" role="tablist">
         <li class="me-2" role="presentation">
@@ -738,15 +723,15 @@ You can use this HTML code as an example for the JavaScript code from above.
         </p>
     </div>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Tabs class, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Tabs class, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="tabs.ts" icon="file" >}}
+```typescript
 import { Tabs } from 'flowbite';
 import type { TabsOptions, TabsInterface, TabItem } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -805,4 +790,4 @@ const tabs: TabsInterface = new Tabs(tabsElement, tabElements, options, instance
 
 // open tab item based on id
 tabs.show('contacts');
-{{< /code >}}
+```

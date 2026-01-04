@@ -1,40 +1,25 @@
----
-layout: docs
-title: Tailwind CSS Tooltip - Flowbite
-description: Use the following Tailwind CSS powered tooltips to show extra content when hovering or focusing on an element
-group: components
-toc: true
-requires_js: true
-
-previous: Toast
-previousLink: components/toast/
-
-next: Typography
-nextLink: components/typography/
----
-
 Flowbite allows you to use the Tailwind CSS tooltip component to show extra information when hovering or focusing over an element in multiple positions, styles, and animations.
 
-Before continuing, make sure that you have the <a href="{{< ref "getting-started/quickstart" >}}">Flowbite JavaScript file</a> included in your project in order to make the tooltip component work.
+Before continuing, make sure that you have the Flowbite JavaScript file included in your project in order to make the tooltip component work.
 
 ## Default tooltip example
 
 To get started with using tooltips all you need to do is add the `data-tooltip-target="{elementId}"` data attribute to an element where `elementId` is the id of the tooltip component. In the following example you can see the button that will trigger the `tooltip-default` element to be shown when hovered or focused.
 
-{{< example class="flex justify-center pt-8" github="components/tooltips.md" show_dark=true >}}
+```html
 <button data-tooltip-target="tooltip-default" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Default tooltip</button>
 
 <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
     Tooltip content
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Tooltip styles
 
 You can use choose between dark and light version styles for the tooltip component by changing the utility classes from Tailwind CSS and by applying the `data-tooltip-style="{light|dark}"` data attribute.
 
-{{< example class="flex justify-center pt-8 " github="components/tooltips.md" show_dark=true >}}
+```html
 
 <!-- Light style tooltip -->
 
@@ -53,13 +38,13 @@ You can use choose between dark and light version styles for the tooltip compone
     Tooltip content
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Placement
 
 The positioning of the tooltip element relative to the triggering element (eg. button, link) can be set using the `data-tooltip-placement="{top|right|bottom|left}"` data attribute.
 
-{{< example class="flex flex-wrap justify-center py-8" github="components/tooltips.md" show_dark=true >}}
+```html
 
 <!-- Show tooltip on top -->
 
@@ -96,13 +81,13 @@ The positioning of the tooltip element relative to the triggering element (eg. b
     Tooltip on left
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Triggering
 
 You can choose the triggering event by using the `data-tooltip-trigger="{hover|click}"` data attributes to choose whether you want to show the tooltip when hovering or clicking on the element. By default this option is set to `hover`.
 
-{{< example class="flex justify-center pt-8" github="components/tooltips.md" show_dark=true >}}
+```html
 
 <!-- Show tooltip on hover -->
 
@@ -121,32 +106,32 @@ You can choose the triggering event by using the `data-tooltip-trigger="{hover|c
     Tooltip content
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Animation
 
 You can set tooltip animation styles by using the transition utility classes from Tailwind CSS. Make sure that you add `transition-opacity` and `duration-{x}` to set the animation duration.
 
-{{< example class="flex justify-center pt-8" github="components/tooltips.md" show_dark=true >}}
+```html
 <button data-tooltip-target="tooltip-animation" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Animated tooltip</button>
 
 <div id="tooltip-animation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
     Tooltip content
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
-{{< /example >}}
+```
 
 ## Disable arrow
 
 You can also disable the tooltip arrow by not including the `data-popper-arrow` element.
 
-{{< example class="flex justify-center pt-8" github="components/tooltips.md" show_dark=true >}}
+```html
 <button data-tooltip-target="tooltip-no-arrow" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Default tooltip</button>
 
 <div id="tooltip-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-dark rounded-base shadow-xs opacity-0 tooltip">
     Tooltip content
 </div>
-{{< /example >}}
+```
 
 ## JavaScript behaviour
 
@@ -391,7 +376,7 @@ First of all, set the target element as the tooltip itself and the trigger eleme
 
 After that you can also set the options object to change the placement and trigger type of the tooltip, alongside with the callback functions.
 
-{{< code lang="javascript" file="tooltip.js" icon="file" >}}
+```javascript
 // set the tooltip content element
 const $targetEl = document.getElementById('tooltipContent');
 
@@ -419,11 +404,11 @@ const instanceOptions = {
   id: 'tooltipContent',
   override: true
 };
-{{< /code >}}
+```
 
 Create a new Tooltip object based on the options above.
 
-{{< code lang="javascript" file="tooltip.js" icon="file" >}}
+```javascript
 import { Tooltip } from 'flowbite';
 
 /*
@@ -432,11 +417,11 @@ import { Tooltip } from 'flowbite';
  * options: optional
  */
 const tooltip = new Tooltip($targetEl, $triggerEl, options, instanceOptions);
-{{< /code >}}
+```
 
 Use the `show` and `hide` methods on the Tooltip object to programmatically show and hide the tooltip element using JavaScript.
 
-{{< code lang="javascript" >}}
+```javascript
 // show the tooltip
 tooltip.show();
 
@@ -451,13 +436,13 @@ tooltip.destroy();
 
 // re-initialize tooltip object
 tooltip.init();
-{{< /code >}}
+```
 
 ### HTML Markup
 
 Use the following HTML code for the JavaScript example above.
 
-{{< code lang="html" file="tooltip.html" icon="file" >}}
+```html
 <button
     id="tooltipButton"
     type="button"
@@ -472,15 +457,15 @@ Use the following HTML code for the JavaScript example above.
     Tooltip content
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
-{{< /code >}}
+```
 
 ### TypeScript
 
-If you're using the <a href="{{< ref "getting-started/typescript" >}}">TypeScript configuration</a> from Flowbite then you can import the types for the Tooltip class, parameters and its options.
+If you're using the TypeScript configuration from Flowbite then you can import the types for the Tooltip class, parameters and its options.
 
 Here's an example that applies the types from Flowbite to the code above:
 
-{{< code lang="typescript" file="tooltip.ts" icon="file" >}}
+```typescript
 import { Tooltip } from 'flowbite';
 import type { TooltipOptions, TooltipInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
@@ -521,4 +506,4 @@ const tooltip: TooltipInterface = new Tooltip($targetEl, $triggerEl, options, in
 
 // show the tooltip
 tooltip.show();
-{{< /code >}}
+```

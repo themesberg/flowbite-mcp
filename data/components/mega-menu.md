@@ -1,17 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Mega Menu - Flowbite
-description: Use the mega menu component as a full-width dropdown inside the navbar to show a list of menu items based on multiple sizes, variants, and styles.
-group: components
-toc: true
-requires_js: true
-
-previous: List group
-previousLink: components/list-group/
-next: Modal
-nextLink: components/modal/
----
-
 The mega menu component is a full-width dropdown that can be triggered by clicking on the menu item and it shows a list of links that you can use to navigate through the pages on a website.
 
 Make sure that you have included the Flowbite JavaScript file inside your project to enable the interactivity of the hamburger icon on mobile devices and the dropdown functionality.
@@ -20,7 +6,7 @@ Make sure that you have included the Flowbite JavaScript file inside your projec
 
 Use this example to show a list of links aligned on three columns inside the mega menu dropdown.
 
-{{< example bodyClass="!p-0" github="components/mega-menu.md" show_dark=true iframeHeight="300" >}}
+```html
 
 <nav class="bg-neutral-primary border-default">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
@@ -126,13 +112,13 @@ Use this example to show a list of links aligned on three columns inside the meg
         </div>
     </div>
 </nav>
-{{< /example >}}
+```
 
 ## Mega menu with icons
 
 This example of a mega menu dropdown can be used to also show an icon near the text of the link.
 
-{{< example bodyClass="!p-0" github="components/mega-menu.md" show_dark=true iframeHeight="300" >}}
+```html
 
 <nav class="bg-neutral-primary border-default">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
@@ -249,13 +235,13 @@ This example of a mega menu dropdown can be used to also show an icon near the t
         </div>
     </div>
 </nav>
-{{< /example >}}
+```
 
 ## Full width dropdown
 
 Use this example to show a mega menu dropdown that spans the entire width of the document page.
 
-{{< example bodyClass="!p-0" github="components/mega-menu.md" show_dark=true iframeHeight="440" >}}
+```html
 
 <nav class="bg-neutral-primary-soft border-default">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
@@ -355,13 +341,13 @@ Use this example to show a mega menu dropdown that spans the entire width of the
         </div>
     </div>
 </nav>
-{{< /example >}}
+```
 
 ## Full width with CTA
 
 This example can be used to also show a CTA button or link next to the menu items inside the dropdown.
 
-{{< example bodyClass="!p-0" github="components/mega-menu.md" show_dark=true iframeHeight="360" >}}
+```html
 
 <nav class="bg-neutral-primary-soft border-default">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
@@ -454,13 +440,13 @@ This example can be used to also show a CTA button or link next to the menu item
         </div>
     </div>
 </nav>
-{{< /example >}}
+```
 
 ## Full width with image
 
 This example can be used to also show a CTA with a backdround image inside the dropdown next to the other menu items and links.
 
-{{< example bodyClass="!p-0" github="components/mega-menu.md" show_dark=true iframeHeight="360" >}}
+```html
 
 <nav class="bg-neutral-primary-soft border-default">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
@@ -551,7 +537,7 @@ This example can be used to also show a CTA with a backdround image inside the d
         </div>
     </div>
 </nav>
-{{< /example >}}
+```
 
 ## More examples
 

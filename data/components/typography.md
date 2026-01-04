@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Typography - Flowbite
-description: Use the typography plugin from Flowbite to apply styles to all inline elements like headings, paragraphs, lists, and images using a single format class
-group: components
-toc: true
-
-previous: Tooltips
-previousLink: components/tooltips/
-next: QR Code
-nextLink: components/qr-code/
----
-
 Get started with the [Flowbite Typography](https://github.com/themesberg/flowbite-typography) plugin forked from the official [Tailwind CSS Typography](https://tailwindcss.com/docs/typography-plugin) plugin to set a custom `format` class to a wrapper element to apply styles to all inline child elements such as headings, paragraphs, images, lists, and more and apply font sizes, font weights, colors, and spacings.
 
 You can check out this [live demo](https://flowbite.com/plugins/typography/) to see how content inside an article will render like.
@@ -21,19 +8,19 @@ Make sure that you have both [Node.js](https://nodejs.org/) and [Tailwind CSS](h
 
 1. Install the Flowbite Typography plugin via NPM:
 
-{{< code lang="bash" >}}
+```bash
 npm i -D flowbite-typography
-{{< /code >}}
+```
 
 2. Import the `flowbite-typography` plugin inside your main Tailwind CSS file:
 
-{{< code lang="javascript" >}}
+```javascript
 @plugin "flowbite-typography";
-{{< /code >}}
+```
 
 Alternatively you can do the same but in your `tailwind.config.js` file:
 
-{{< code lang="javascript" >}}
+```javascript
 // import the tailwind.config.js file in your main CSS file if using Tailwind CSS v4
 module.exports = {
   theme: {
@@ -44,7 +31,7 @@ module.exports = {
     // ...
   ],
 }
-{{< /code >}}
+```
 
 Now you can go ahead and use the new formatting classes from the Flowbite Typography plugin.
 
@@ -54,7 +41,7 @@ Once you have installed the plugin inside your project you can add the `format` 
 
 All of these elements will be automatically styled with proper spacing, font sizing, font weight, colors, and more based on recommended UI/UX readability and accessibility standards.
 
-{{< code lang="html" >}}
+```html
 <article class="format lg:format-lg">
     <h1>Prototyping from A to Z: best practices for successful prototypes</h1>
     <p class="lead">Flowbite is an open-source library of UI components built with the utility-first classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals, datepickers.</p>
@@ -72,7 +59,7 @@ All of these elements will be automatically styled with proper spacing, font siz
         <li><strong>Communicating your vision</strong>. By using an interactive medium to preview and test design elements, designers and developers can understand each other — and the project — better.</li>
     </ol>
 </article>
-{{< /code >}}
+```
 
 You can also set the `lg:format-lg` class to set increase font sizes and spacings for larger viewport devices.
 
@@ -80,19 +67,19 @@ You can also set the `lg:format-lg` class to set increase font sizes and spacing
 
 You can update the default blue link color to anything you'd like by setting the `format-{color}` class:
 
-{{< code lang="html" >}}
+```html
 <article class="format lg:format-lg format-red">
     <h1>Prototyping from A to Z: best practices for successful prototypes</h1>
     <p class="lead">Flowbite is an open-source library of UI components built with the utility-first classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals, datepickers.</p>
     <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way, you can think things through before committing to an actual design project.</p>
     <p>But then I found a <a href="#">component library based on Tailwind CSS called Flowbite</a>. It comes with the most commonly used UI components, such as buttons, navigation bars, cards, form elements, and more which are conveniently built with the utility classes from Tailwind CSS.</p>
 </article>
-{{< /code >}}
+```
 ## Dark mode
 
 Enable dark mode for the typography by using the `dark:format-invert` class on the article wrapper element:
 
-{{< code lang="html" >}}
+```html
 <article class="format lg:format-lg dark:format-invert">
     <h1>The content inside this article will invert when switching to dark mode</h1>
     <p class="lead">Flowbite is an open-source library of UI components built with the utility-first classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals, datepickers.</p>
@@ -110,26 +97,26 @@ Enable dark mode for the typography by using the `dark:format-invert` class on t
         <li><strong>Communicating your vision</strong>. By using an interactive medium to preview and test design elements, designers and developers can understand each other — and the project — better.</li>
     </ol>
 </article>
-{{< /code >}}
+```
 
 ## Max width
 
 Override the default maximum width by setting a custom `max-w-{size}` class next to the `format` class:
 
-{{< code lang="html" >}}
+```html
 <article class="max-w-none format lg:format-lg format-red">
     <h1>Prototyping from A to Z: best practices for successful prototypes</h1>
     <p class="lead">Flowbite is an open-source library of UI components built with the utility-first classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals, datepickers.</p>
     <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way, you can think things through before committing to an actual design project.</p>
     <p>But then I found a <a href="#">component library based on Tailwind CSS called Flowbite</a>. It comes with the most commonly used UI components, such as buttons, navigation bars, cards, form elements, and more which are conveniently built with the utility classes from Tailwind CSS.</p>
 </article>
-{{< /code >}}
+```
 
 ## Disable format
 
 If you want to disable formatting inside the typography content you can use the `not-format` class:
 
-{{< code lang="html" >}}
+```html
 <article class="format lg:format-lg dark:format-invert">
     <h1>The content inside this article will invert when switching to dark mode</h1>
     <p class="lead">Flowbite is an open-source library of UI components built with the utility-first classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals, datepickers.</p>
@@ -150,7 +137,7 @@ If you want to disable formatting inside the typography content you can use the 
         </ol>
     </div>
 </article>
-{{< /code >}}
+```
 
 ## Options
 
@@ -160,7 +147,7 @@ Extend the plugin's options inside the Tailwind configuration file to set your o
 
 You can set your own colors by extending the typography plugin inside the `tailwind.config.js` file:
 
-{{< code lang="javascript" >}}
+```javascript
 module.exports = {
   theme: {
     extend: {
@@ -212,7 +199,7 @@ module.exports = {
     // ...
   ],
 }
-{{< /code >}}
+```
 
 Now you can use the `format-red` class and apply these styles.
 
@@ -220,7 +207,7 @@ Now you can use the `format-red` class and apply these styles.
 
 Change the default `format` class to your own choosing by updating the `tailwind.config.js` file:
 
-{{< code lang="javascript" >}}
+```javascript
 module.exports = {
   theme: {
     // ...
@@ -232,13 +219,13 @@ module.exports = {
   ]
   ...
 }
-{{< /code >}}
+```
 
 ### Custom CSS
 
 You can also customize the default CSS by extending the `css` key value pair from the Tailwind configuration file:
 
-{{< code lang="javascript" >}}
+```javascript
 module.exports = {
   theme: {
     extend: {
@@ -262,7 +249,7 @@ module.exports = {
     // ...
   ],
 }
-{{< /code >}}
+```
 
 ## Blog templates
 

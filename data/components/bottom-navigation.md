@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Bottom Navigation - Flowbite
-description: Use the bottom navigation bar component to allow users to navigate through your website or create a control bar using a menu that is positioned at the bottom of the page
-group: components
-toc: true
-
-previous: Banner
-previousLink: components/banner/
-next: Breadcrumbs
-nextLink: components/breadcrumb/
----
-
 The bottom bar component can be used to allow menu items and certain control actions to be performed by the user through the usage of a fixed bar positioning to the bottom side of your page.
 
 Check out multiple examples of the bottom navigation component based on various styles, controls, sizes, content and leverage the utility classes from Tailwind CSS to integrate into your own project.
@@ -19,7 +6,7 @@ Check out multiple examples of the bottom navigation component based on various 
 
 Use the default bottom navigation bar example to show a list of menu items as buttons to allow the user to navigate through your website based on a fixed position. You can also use anchor tags instead of buttons.
 
-{{< example class="p-0" github="components/bottom-navigation.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
+```html
 
 <div class="fixed bottom-0 left-0 z-50 w-full h-16 bg-neutral-primary-soft border-t border-default">
     <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
@@ -41,13 +28,13 @@ Use the default bottom navigation bar example to show a list of menu items as bu
         </button>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Menu items with border
 
 This example can be used to show a border between the menu items inside the bottom navbar.
 
-{{< example class="p-0" github="components/bottom-navigation.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
+```html
 
 <div class="fixed bottom-0 left-0 z-50 w-full h-16 bg-neutral-primary-soft border-t border-default">
     <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
@@ -69,13 +56,13 @@ This example can be used to show a border between the menu items inside the bott
         </button>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Application bar example
 
 Use this example to show a CTA button in the center of the navigation component to create new items.
 
-{{< example class="p-0" github="components/bottom-navigation.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
+```html
 
 <div class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-neutral-primary-soft border border-default rounded-full bottom-4 left-1/2">
     <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
@@ -123,13 +110,13 @@ Use this example to show a CTA button in the center of the navigation component 
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Example with pagination
 
 This example be used to paginate multiple pages on a single view alongside other menu items.
 
-{{< example class="p-0" github="components/bottom-navigation.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
+```html
 
 <div class="fixed bottom-0 z-50 w-full h-16 -translate-x-1/2 bg-neutral-primary-soft border-t border-default left-1/2">
     <div class="grid h-full max-w-lg grid-cols-6 mx-auto">
@@ -180,11 +167,11 @@ This example be used to paginate multiple pages on a single view alongside other
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Button group bottom bar
 
-{{< example class="p-0" github="components/bottom-navigation.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true show_dark=true >}}
+```html
 
 <div class="fixed bottom-0 z-50 w-full -translate-x-1/2 bg-neutral-primary-soft border-t border-default left-1/2">
     <div class="w-full">
@@ -243,7 +230,7 @@ This example be used to paginate multiple pages on a single view alongside other
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Card with bottom bar
 
@@ -251,7 +238,7 @@ This example can be used to position a bottom navigation bar inside of a card el
 
 You can even use the other bottom navbar examples to exchange the default one presented here.
 
-{{< example class="flex items-center justify-center p-4" github="components/bottom-navigation.md" show_dark=true >}}
+```html
  
 <div class="relative w-full max-w-sm overflow-y-scroll bg-neutral-primary-soft border border-default shadow-xs rounded-base h-96">
     <ul>
@@ -318,13 +305,13 @@ You can even use the other bottom navbar examples to exchange the default one pr
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Online meeting control bar
 
 Use this component to show a list of options for online video meetings by showing a list of options such as muting the microphone, hiding the camera, adjusting the volume and more.
 
-{{< example class="p-0" github="components/bottom-navigation.md" iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true disable_init_js=true show_dark=true >}}
+```html
 
 <div class="fixed bottom-0 left-0 z-50 grid w-full h-16 grid-cols-1 px-8 bg-neutral-primary-soft border-t border-default md:grid-cols-3">
     <div class="items-center justify-center hidden text-body me-auto md:flex">
@@ -409,13 +396,13 @@ Use this component to show a list of options for online video meetings by showin
         </div>
     </div>
 </div>
-{{< /example >}}
+```
 
 ## Video player bar
 
 Use this component to show control buttons for a video or audio that is playing in the browser to control the volume, navigate between videos, pause or start the video, and more.
 
-{{< example class="p-0" github="components/bottom-navigation.md" iframeHeight="480" iframeMaxHeight="480" disable_init_js=true skeletonPlaceholders=true show_dark=true >}}
+```html
 
 <div class="fixed bottom-0 left-0 z-50 grid w-full h-24 grid-cols-1 px-8 bg-neutral-primary-soft border-t border-default md:grid-cols-3">
     <div class="items-center justify-center hidden me-auto md:flex">
@@ -510,4 +497,4 @@ Use this component to show control buttons for a video or audio that is playing 
         </div>
     </div>
 </div>
-{{< /example >}}
+```

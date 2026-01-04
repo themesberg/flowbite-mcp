@@ -1,16 +1,3 @@
----
-layout: docs
-title: Tailwind CSS Footer - Flowbite
-description: Use the footer section at the bottom of every page to show valuable information to your users, such as sitemap links, a copyright notice, and a logo
-group: components
-toc: true
-
-previous: Dropdowns
-previousLink: components/dropdowns/
-next: Forms
-nextLink: components/forms/
----
-
 The footer is one of the most underestimated sections of a website being located at the very bottom of every page, however, it can be used as a way to try to convince users to stay on your website if they haven't found the information they've been looking for inside the main content area.
 
 Use these footer sections coded with the utility classes from Tailwind CSS and components from Flowbite to offer valuable information to your users such as the brand's logo, sitemap links, copyright notice, social media profiles, and more.
@@ -19,11 +6,11 @@ Use these footer sections coded with the utility classes from Tailwind CSS and c
 
 Use this footer component to show a copyright notice and some helpful website links.
 
-{{< example bodyClass="!p-0" github="components/footer.md" class="p-2" show_dark=true >}}
+```html
 
 <footer class="bg-neutral-primary-soft rounded-base shadow-xs border border-default m-4">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-body sm:text-center">© 2023 <a href="{{< param homepage >}}/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+      <span class="text-sm text-body sm:text-center">© 2023 <a href="https://flowbite.com" class="hover:underline">Flowbite™</a>. All Rights Reserved.
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-body sm:mt-0">
         <li>
@@ -41,13 +28,13 @@ Use this footer component to show a copyright notice and some helpful website li
     </ul>
     </div>
 </footer>
-{{< /example >}}
+```
 
 ## Footer with logo
 
 Use this component to show your brand's logo, a few website links and the copyright notice on a second row.
 
-{{< example bodyClass="!p-0" github="components/footer.md" class="p-2" show_dark=true >}}
+```html
 
 <footer class="bg-neutral-primary-soft rounded-base shadow-xs border border-default m-4">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -76,19 +63,19 @@ Use this component to show your brand's logo, a few website links and the copyri
     </div>
 </footer>
 
-{{< /example >}}
+```
 
 ## Social media icons
 
 This footer component can be used to show your brand's logo, multiple rows of website links, a copyright notice and social media profile icons including Twitter, Facebook, Instagram, and more.
 
-{{< example bodyClass="!p-0" github="components/footer.md" show_dark=true >}}
+```html
 
 <footer class="bg-neutral-primary-soft">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-              <a href="{{< param homepage >}}/" class="flex items-center">
+              <a href="https://flowbite.com" class="flex items-center">
                   <img src="https://flowbite.com/docs/images/logo.svg" class="h-7 me-3" alt="FlowBite Logo" />
                   <span class="text-heading self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span>
               </a>
@@ -98,7 +85,7 @@ This footer component can be used to show your brand's logo, multiple rows of we
                   <h2 class="mb-6 text-sm font-semibold text-heading uppercase">Resources</h2>
                   <ul class="text-body font-medium">
                       <li class="mb-4">
-                          <a href="{{< param homepage >}}/" class="hover:underline">Flowbite</a>
+                          <a href="https://flowbite.com" class="hover:underline">Flowbite</a>
                       </li>
                       <li>
                           <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
@@ -131,7 +118,7 @@ This footer component can be used to show your brand's logo, multiple rows of we
       </div>
       <hr class="my-6 border-default sm:mx-auto lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-body sm:text-center">© 2023 <a href="{{< param homepage >}}/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+          <span class="text-sm text-body sm:text-center">© 2023 <a href="https://flowbite.com" class="hover:underline">Flowbite™</a>. All Rights Reserved.
           </span>
           <div class="flex mt-4 sm:justify-center sm:mt-0">
             <a href="#" class="text-body hover:text-heading">
@@ -158,13 +145,13 @@ This footer component can be used to show your brand's logo, multiple rows of we
       </div>
     </div>
 </footer>
-{{< /example >}}
+```
 
 ## Sitemap links
 
 If you have a website with many pages you can use this footer component to show a sitemap spanning the entire width of a row followed below by a copyright notice and social media icons.
 
-{{< example bodyClass="!p-0" github="components/footer.md" show_dark=true >}}
+```html
 
 <footer class="bg-neutral-primary">
     <div class="mx-auto w-full max-w-screen-xl">
@@ -236,7 +223,7 @@ If you have a website with many pages you can use this footer component to show 
         </div>
     </div>
     <div class="px-4 py-6 bg-neutral-secondary-soft md:flex md:items-center md:justify-between">
-        <span class="text-sm text-body sm:text-center">© 2023 <a href="{{< param homepage >}}/">Flowbite™</a>. All Rights Reserved.
+        <span class="text-sm text-body sm:text-center">© 2023 <a href="https://flowbite.com">Flowbite™</a>. All Rights Reserved.
         </span>
         <div class="flex mt-4 sm:justify-center md:mt-0 space-x-2 rtl:space-x-reverse">
           <a href="#" class="text-body hover:text-heading">
@@ -263,16 +250,16 @@ If you have a website with many pages you can use this footer component to show 
       </div>
     </div>
 </footer>
-{{< /example >}}
+```
 
 ## Sticky footer
 
 Use this example to set create a sticky footer by using a fixed position to the bottom of the document page as the user scrolls up or down the main content area.
 
-{{< example bodyClass="!p-0" github="components/navbar.md" show_dark=true iframeHeight="480" iframeMaxHeight="480" skeletonPlaceholders=true >}}
+```html
 
 <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-neutral-primary-soft border-t border-default shadow-sm md:flex md:items-center md:justify-between md:p-6">
-    <span class="text-sm text-body sm:text-center">© 2023 <a href="{{< param homepage >}}/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+    <span class="text-sm text-body sm:text-center">© 2023 <a href="https://flowbite.com" class="hover:underline">Flowbite™</a>. All Rights Reserved.
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-body sm:mt-0">
         <li>
@@ -289,7 +276,7 @@ Use this example to set create a sticky footer by using a fixed position to the 
         </li>
     </ul>
 </footer>
-{{< /example >}}
+```
 
 ## More examples
 
