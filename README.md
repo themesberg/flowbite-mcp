@@ -309,3 +309,8 @@ This project is licensed under the MIT License License - see the [LICENSE](LICEN
 - [ ] Enhanced theme customization options
 - [ ] Component search and filtering
 - [ ] Real-time component preview generation
+
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/themesberg-flowbite-mcp).
+
